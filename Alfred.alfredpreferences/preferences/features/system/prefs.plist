@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ejectBlacklist</key>
+	<array>
+		<string>Backup HD</string>
+		<string>Backup USB</string>
+		<string>com.apple.TimeMachine.localsnapshots</string>
+		<string>Data Raid SSD</string>
+		<string>Macintosh HD</string>
+		<string>MobileBackups</string>
+		<string>Recovery</string>
+	</array>
+	<key>ejectKeywordEnabled</key>
+	<true/>
+	<key>ejectType</key>
+	<integer>2</integer>
+	<key>ejectallKeywordEnabled</key>
+	<true/>
+	<key>quitallConfirm</key>
+	<true/>
+</dict>
+</plist>

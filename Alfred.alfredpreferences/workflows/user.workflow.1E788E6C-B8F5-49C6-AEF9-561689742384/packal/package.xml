@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Wi-Fi</name>
+  <version>1.0</version>
+  <bundle>com.ravelll.wifi</bundle>
+  <updated>1440509113</updated>
+  <file>wi-fi.alfredworkflow</file>
+</workflow>

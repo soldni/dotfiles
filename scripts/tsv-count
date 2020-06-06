@@ -1,0 +1,58 @@
+#! /usr/bin/env python3
+
+import argparse
+import collections
+import sys
+
+
+def parse_arguments():
+    ap = argparse.ArgumentParser()
+
+    ap.add_argument('-H', '--header', action='store_true',
+                    help='Whether the input file has a header')
+    ap.add_argument('-f', '--fields', default='',
+                    help='Fields to use as key for counting; by default, the '
+                         'entire line is used.')
+    ap.add_argument('-s', '--sort', default='descending',
+                    choices=('ascending', 'descending'),
+                    help='Whether to sort output in ascending or '
+                         'descending order (default: descending)')
+
+    opts, args = ap.parse_known_args()
+
+    assert len(args) < 2, "Too many non-keyword arguments"
+    path = args[0] if len(args) else None
+
+    if len(opts.fields) > 0:
+        opts.fields = set(map(int, opts.fields.split(',')))
+    else:
+        opts.fields = set()
+
+    return opts, path
+
+
+def main():
+    opts, path = parse_arguments()
+    cnt = collections.defaultdict(int)
+
+    with (open(path) if path else sys.stdin) as f:
+        if opts.header:
+            next(f)
+        for ln in f:
+            if len(opts.fields) > 0:
+                k = '\t'.join(e for i, e in enumerate(ln.strip().split('\t'), start=1) if i in opts.fields)
+            else:
+                k = ln.strip()
+
+            cnt[k] += 1
+
+    sort_fn = (lambda t: -t[1]) if opts.sort == 'descending' else (lambda t: t[1])
+
+    try:
+        print('\n'.join(f'{k}\t{v}' for k, v in sorted(cnt.items(), key=sort_fn)))
+    except BrokenPipeError:
+        pass
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,106 @@
+# Base 16 Eighties
+# https://chriskempson.github.io/base16/#eighties
+# ForegroundColour=211,208,200
+# BackgroundColour=45,45,45
+# Black=30,30,30
+# BoldBlack=30,30,30
+# Red=242,119,122
+# BoldRed=242,119,122
+# Green=153,204,153
+# BoldGreen=153,204,153
+# Yellow=255,204,102
+# BoldYellow=255,204,102
+# Blue=102,153,204
+# BoldBlue=102,153,204
+# Magenta=204,153,204
+# BoldMagenta=204,153,204
+# Cyan=102,204,204
+# BoldCyan=102,204,204
+# White=211,208,200
+# BoldWhite=211,208,200
+
+############################################
+############################################
+
+# Dracula theme
+# https://github.com/dracula/dracula-theme
+ForegroundColour=248 248 242
+BackgroundColour=40,42,54
+Black=68,71,90
+BoldBlack=68,71,90
+Red=255,85,85
+BoldRed=255,85,85
+Green=80,250,123
+BoldGreen=80,250,123
+Yellow=241,250,140
+BoldYellow=241,250,140
+Blue=98,114,164
+BoldBlue=98,114,164
+Magenta=255,121,198
+BoldMagenta=255,121,198
+Cyan=139,233,253
+BoldCyan=139,233,253
+White=211,208,200
+BoldWhite=211,208,200
+
+######################################
+######################################
+
+# # Solarized Theme
+# # https://github.com/altercation/vim-colors-solarized
+# ForegroundColour=131,148,150
+# BackgroundColour= 0,43,54
+# CursorColour=220,50,47
+# Black=7,54,66
+# BoldBlack=0,43,54
+# Red=220,50,47
+# BoldRed=203,75,22
+# Green=133,153,0
+# BoldGreen=88,110,117
+# Yellow=181,137,0
+# BoldYellow=101,123,131
+# Blue=38,139,210
+# BoldBlue=131,148,150
+# Magenta=211,54,130
+# BoldMagenta=108,113,196
+# Cyan=42,161,152
+# BoldCyan=147,161,161
+# White=238,232,213
+# BoldWhite=253,246,227
+
+
+####################################
+####################################
+
+# # Base16 Ocean
+# # https://github.com/ticky/base16-mintty
+# ForegroundColour=192,197,206
+# BackgroundColour=43,48,59
+# CursorColour=192,197,206
+# Black=43,48,59
+# BoldBlack=101,115,126
+# Red=191,97,106
+# BoldRed=191,97,106
+# Green=163,190,140
+# BoldGreen=163,190,140
+# Yellow=235,203,139
+# BoldYellow=235,203,139
+# Blue=143,161,179
+# BoldBlue=143,161,179
+# Magenta=180,142,173
+# BoldMagenta=180,142,173
+# Cyan=150,181,180
+# BoldCyan=150,181,180
+# White=192,197,206
+# BoldWhite=192,197,206
+
+
+BoldAsFont=no
+Font=InputMonoCompressed
+FontHeight=13
+Rows=32
+Transparency=Off
+Term=xterm
+Locale=en_US
+Charset=UTF-8
+BellType=0

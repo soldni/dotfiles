@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.khayes.cleanapp</string>
+	<key>connections</key>
+	<dict>
+		<key>D5011F65-1101-4B97-83C0-F1ABC0DFE560</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D3B4C401-8DFE-47A2-8EB5-459C72814556</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Kyle Hayes</string>
+	<key>description</key>
+	<string>Uninstalls applications using AppCleaner</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Clean App</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>openwith</key>
+				<string>/Applications/AppCleaner.app</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>D3B4C401-8DFE-47A2-8EB5-459C72814556</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>anchorfields</key>
+				<true/>
+				<key>daterange</key>
+				<integer>0</integer>
+				<key>fields</key>
+				<array>
+					<dict>
+						<key>field</key>
+						<string>kMDItemDisplayName</string>
+						<key>not</key>
+						<false/>
+						<key>split</key>
+						<true/>
+						<key>value</key>
+						<string>{query}</string>
+						<key>words</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>field</key>
+						<string>kMDItemAlternateNames</string>
+						<key>not</key>
+						<false/>
+						<key>split</key>
+						<true/>
+						<key>value</key>
+						<string>{query}</string>
+						<key>words</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>field</key>
+						<string>kMDItemFinderComment</string>
+						<key>not</key>
+						<false/>
+						<key>split</key>
+						<true/>
+						<key>value</key>
+						<string>{query}</string>
+						<key>words</key>
+						<true/>
+					</dict>
+				</array>
+				<key>includesystem</key>
+				<false/>
+				<key>keyword</key>
+				<string>clean</string>
+				<key>scopes</key>
+				<array>
+					<string>/Applications</string>
+				</array>
+				<key>title</key>
+				<string>Clean Application</string>
+				<key>types</key>
+				<array>
+					<string>com.apple.application-bundle</string>
+				</array>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.filefilter</string>
+			<key>uid</key>
+			<string>D5011F65-1101-4B97-83C0-F1ABC0DFE560</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>This is a simple utility to make it easier to send applications that you want to fully uninstall to AppCleaner.
+
+Requirements
+- Must have the free AppCleaner application installed (http://www.freemacsoft.net/appcleaner/)
+
+Usage:
+Use the keyword “clean” followed by the name of the application you want to uninstall from your Mac.
+
+Commands used:
+- Open file in…
+
+Tested:
+- OS X 10.9</string>
+	<key>uidata</key>
+	<dict>
+		<key>D3B4C401-8DFE-47A2-8EB5-459C72814556</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>D5011F65-1101-4B97-83C0-F1ABC0DFE560</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://khay.es</string>
+</dict>
+</plist>

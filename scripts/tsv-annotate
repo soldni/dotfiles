@@ -1,0 +1,72 @@
+#! /usr/bin/env python3
+
+import argparse
+import collections
+import sys
+import random
+
+
+def parse_arguments():
+    ap = argparse.ArgumentParser()
+
+    ap.add_argument('-H', '--header', action='store_true',
+                    help='Whether the input file has a header')
+    ap.add_argument('-f', '--fields', default='',
+                    help='Fields to display during annotation; by default, the '
+                    'entire line is displayed.')
+    ap.add_argument('-s', '--seed', default=42, type=int, help='')
+    ap.add_argument('-d', '--destination', default=None,
+                    help='Destination where to save the annotation')
+
+    opts, args = ap.parse_known_args()
+
+    assert len(args) < 2, "Too many non-keyword arguments"
+    path = args[0] if len(args) else None
+
+    opts.fields = set(map(int, opts.fields.split(',')))
+
+    return opts, path
+
+
+def main():
+    opts, path = parse_arguments()
+    random.seed(opts.seed)
+
+    with (open(path) if path else sys.stdin) as f:
+        if opts.header:
+            header = next(f)
+        else:
+            header = None
+        input_data = [tuple(ln.strip().split('\t')) for ln in f]
+
+    write_header = opts.header
+    if os.path.exist(opts.destination):
+        to_annotate = []
+        write_header = False
+        with open(opts.destination) as f:
+            if opts.header:
+                next(f)
+            already_annotated = set(tuple(ln.strip().split('\t')[:-1]) for ln in f)
+
+        for elem in input_data:
+            if elem not in already_annotated:
+                to_annotate.append(elem)
+    else:
+        to_annotate = input_data
+
+    random.shuffle(to_annotate)
+
+    with open(opts.destination, 'a'), f:
+        if write_header:
+            f.write(f'{header}\t_annotation\n')
+        try:
+            for row in to_annotate:
+                print('Sample:\t' + '\t'.join(elem for i, elem in enumerate(row) if i in opts.fields))
+                annotation = input('Annotation: ').strip()
+                f.write(f'\t'.join(row) + f'\t{annotation}\n')
+        except BrokenPipeError:
+            print('\nBye.')
+
+
+if __name__ == "__main__":
+    main()

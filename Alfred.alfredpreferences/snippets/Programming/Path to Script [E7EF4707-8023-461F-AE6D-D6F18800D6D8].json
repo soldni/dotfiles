@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "# get script directory\nSOURCE=\"${BASH_SOURCE[0]}\"\nwhile [ -h \"$SOURCE\" ]; do # resolve $SOURCE until the file is no longer a symlink\n  SCRIPT_DIR=\"$( cd -P \"$( dirname \"$SOURCE\" )\" >\/dev\/null 2>&1 && pwd )\"\n  SOURCE=\"$(readlink \"$SOURCE\")\"\n  # if $SOURCE was a relative symlink, we need to resolve it \n  # relative to the path where the symlink file was located\n  [[ $SOURCE != \/* ]] && SOURCE=\"$SCRIPT_DIR\/$SOURCE\" \ndone\nSCRIPT_DIR=\"$( cd -P \"$( dirname \"$SOURCE\" )\" >\/dev\/null 2>&1 && pwd )\"",
+    "uid" : "E7EF4707-8023-461F-AE6D-D6F18800D6D8",
+    "name" : "Path to Script",
+    "keyword" : ""
+  }
+}

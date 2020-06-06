@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>63810D56-4804-4617-B88F-8A59481D3257</key>
+		<array/>
+		<key>C210BAD4-FC9A-4B2F-8670-996084053B86</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>63810D56-4804-4617-B88F-8A59481D3257</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Luca Soldaini</string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Restart Audio</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>osascript -e  "do shell script \"sudo kill -9 `ps ax|grep 'coreaudio[a-z]' | awk '{print $1}'` &gt;/dev/null;\" with administrator privileges"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>63810D56-4804-4617-B88F-8A59481D3257</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>coreaudiod</string>
+				<key>subtext</key>
+				<string>Restart coreaudiod daemon to fix Bluetooth audio issues</string>
+				<key>text</key>
+				<string>Fix Audio</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>C210BAD4-FC9A-4B2F-8670-996084053B86</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>restarts coreaudod and asks for sudo</string>
+	<key>uidata</key>
+	<dict>
+		<key>63810D56-4804-4617-B88F-8A59481D3257</key>
+		<dict>
+			<key>xpos</key>
+			<integer>425</integer>
+			<key>ypos</key>
+			<integer>170</integer>
+		</dict>
+		<key>C210BAD4-FC9A-4B2F-8670-996084053B86</key>
+		<dict>
+			<key>xpos</key>
+			<integer>255</integer>
+			<key>ypos</key>
+			<integer>170</integer>
+		</dict>
+	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>0.2</string>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>

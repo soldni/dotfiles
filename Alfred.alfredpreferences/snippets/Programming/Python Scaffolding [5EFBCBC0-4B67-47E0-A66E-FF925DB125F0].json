@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "#! \/usr\/bin\/env\tpython\n\n\"\"\"\n\nAuthor: \nEmail:  \n\"\"\"\n\nimport argparse\n\n\ndef parse_options():\n    ap = argparse.ArgumentParser()\n\n    opts = ap.parse_args()\n    return opts\n\n\ndef main():\n    opts = parse_options()\n\n\nif __name__ == '__main__':\n    main()",
+    "uid" : "5EFBCBC0-4B67-47E0-A66E-FF925DB125F0",
+    "name" : "Python Scaffolding",
+    "keyword" : ""
+  }
+}

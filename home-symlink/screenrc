@@ -1,0 +1,2 @@
+#Ensures that Control+a is the escape combination
+escape ^Ss

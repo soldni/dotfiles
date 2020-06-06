@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Clean App</name>
+  <version>1.0</version>
+  <bundle>com.khayes.cleanapp</bundle>
+  <updated>1396809679</updated>
+  <file>clean_app.alfredworkflow</file>
+</workflow>

@@ -1,0 +1,9 @@
+*.swp
+.vim/bundle/*
+*/.netrwhist
+.vim/yankring_history_v2.txt
+.DS_Store
+.emacs~
+powerline-fonts/
+*.pyc
+__pycache__

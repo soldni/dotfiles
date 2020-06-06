@@ -1,0 +1,500 @@
+#!/usr/bin/env bash
+
+# System-wide .bashrc file for interactive bash(1) shells.
+if [ -z "$PS1" ]; then
+   return
+fi
+
+# this fixes errors you might get from using sudo before aliases
+alias sudo="sudo "
+
+# MacOS complaining is no fun
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+if [[ ! -z "${ZSH_NAME}" ]]; then
+    CURRENT_SHELL_NAME='zsh'
+elif [[ ! -z "${BASH}" ]]; then
+    CURRENT_SHELL_NAME='bash'
+elif [[ ! -z "${version}" ]]; then
+    CURRENT_SHELL_NAME='tcsh'
+elif [[ ! -z "${shell}" ]]; then
+    CURRENT_SHELL_NAME=$(basename ${shell})
+else
+    # last resort
+    CURRENT_SHELL_NAME=$(echo $0 | sed 's/\-//g' )
+fi
+
+# add location of binaries in local
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+# execute machine specific bash script
+source "$HOME/.prelocalrc"
+
+export HOSTNAME=`hostname`
+export TERM=screen-256color
+
+if [[ "${CURRENT_SHELL_NAME}" == "bash" ]]; then
+    # Make bash check its window size after a process completes
+    shopt -s checkwinsize
+elif [[ "${CURRENT_SHELL_NAME}" == "zsh" ]]; then
+    setopt PROMPT_SUBST
+    bindkey -e
+    bindkey "[D" backward-word
+    bindkey "[C" forward-word
+    # bindkey "^[a" beginning-of-line
+    # bindkey "^[e" end-of-line
+fi
+
+# Tell the terminal about the working directory at each prompt.
+if [[ "${TERM_PROGRAM}" == "Apple_Terminal" ]] && [[ -z "${INSIDE_EMACS}" ]]; then
+    update_terminal_cwd() {
+        # Identify the directory using a "file:" scheme URL,
+        # including the host name to disambiguate local vs.
+        # remote connections. Percent-escape spaces.
+	local SEARCH=' '
+	local REPLACE='%20'
+	local PWD_URL="file://$HOSTNAME${PWD//$SEARCH/$REPLACE}"
+	printf '\e]7;%s\a' "$PWD_URL"
+    }
+    PROMPT_COMMAND="update_terminal_cwd; $PROMPT_COMMAND"
+fi
+
+
+###############################
+# SET OS SPECIFIC COMMANDS HERE
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # uses GNU coretuils instead of OSX's
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+fi
+if [[ "$OSTYPE" == "linux"* ]]; then
+    alias hdtemp="hddtemp /dev/sd[abcdefghi]"
+fi
+
+###############################
+
+
+# add both local and .local to the path
+if [ -d "$HOME/local" ]; then
+    export PATH="$HOME/local/bin:$PATH"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOME}/local/lib"
+fi
+if [ -d "$HOME/.local" ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:$HOME/.local/lib"
+fi
+
+# add Cisco AnyConnect executable to the path
+if [ -d "/opt/cisco/anyconnect/bin" ]; then
+    export PATH="$PATH:/opt/cisco/anyconnect/bin"
+fi
+
+# check if gurobi is installed; if so, add it to path
+if [ -d "/usr/local/gurobi" ]; then
+    export GUROBI_HOME="/usr/local/gurobi"
+    export PATH="${PATH}:${GUROBI_HOME}/bin"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
+fi
+
+
+# add path to ruby
+MACOS_RUBY_PATH=/usr/local/opt/ruby/bin
+if [ -d $"{MACOS_RUBY_PATH}" ]; then
+    PATH="${MACOS_RUBY_PATH}:${PATH}"
+fi
+
+
+# add command to quickly unlock keychain for macOS
+if [ -d "${HOME}/Library/Keychains" ]; then
+    function unlock-login-keychain {
+        security unlock-keychain "${HOME}/Library/Keychains/login.keychain-db"
+    }
+fi
+
+# Tell ls to be colourful
+export CLICOLOR=1
+
+# Tell grep to highlight matches
+alias grep="grep --color=auto"
+
+# $GREP_OPTIONS is deprecated (this solves it)
+# export GREP_OPTIONS='--color=auto'
+
+export VISUAL=vim
+export EDITOR=vim
+
+# force color for ls when using GNU coreutils
+if ls --color -d . >/dev/null 2>&1; then
+    alias ls="ls --color=yes"
+elif ls -G -d . >/dev/null 2>&1; then
+    alias ls="ls -G"
+fi
+
+# ls behaves like ll in fish
+alias ll="ls -lh"
+
+# just like ll, but with more recent at the bottom
+alias lo="ls -lrth"
+
+# just like ll, but with larger at the bottom
+alias lS="ls -lrSh"
+
+# shortcut for quick shell exit
+alias q="exit"
+
+export PYENV_ROOT="$HOME/.pyenv"
+# activate pyenv
+if [[ -d "$PYENV_ROOT" ]]; then
+    export PATH=$PYENV_ROOT/bin:$PATH
+    eval "$(pyenv init -)"
+fi
+
+# remove annoying bell
+set bell-style none
+
+# everyone loves fuck!
+alias fu='eval $(thefuck $(fc -ln -1))'
+
+# alias for sublime
+has_subl=$(which subl 2>/dev/null)
+if [[ ! -z $has_subl ]]; then
+    alias e='subl -n'
+fi
+
+# command to see which processes are using the gpu
+has_nvidia=$(which nvidia-smi 2>/dev/null)
+if [[ ! -z $has_nvidia ]]; then
+    alias nvidia-who='sudo fuser -v /dev/nvidia*'
+fi
+
+# quick jupyter aliases
+alias jc="jupyter console"
+alias jn="jupyter notebook"
+
+# handle color in grep/less
+alias cgrep="grep --color=always"
+alias cless="less -R"
+
+# convenient vim alias
+alias v='vim'
+alias gv='gvim'
+
+# tmux shortcuts
+function ta { if [ -z ${1} ]; then tmux -2 attach; else tmux -2 attach -t ${1}; fi }
+function tn { if [ -z ${1} ]; then tmux -2; else tmux -2 new -s ${1}; fi }
+function tl { tmux -2 list-sessions; }
+
+alias git-freeze='git update-index --assume-unchanged'
+alias git-thaw='git update-index --no-assume-unchanged'
+alias git-undo='git reset --soft HEAD~1'
+
+# one line script to update all pip packages
+alias pip-upgrade-all='python -c "import pip, subprocess; [subprocess.call(\"pip install -U \" + d.project_name, shell=1) for d in pip.get_installed_distributions()]"'
+alias pip3-upgrade-all='python3 -c "import pip, subprocess; [subprocess.call(\"pip install -U \" + d.project_name, shell=1) for d in pip.get_installed_distributions()]"'
+
+# increase bash history file size
+HISTFILESIZE=50000
+
+if [ -d "$HOME/anaconda3" ]; then
+    . $HOME/anaconda3/etc/profile.d/conda.sh
+fi
+if [ -d "$HOME/anaconda2" ]; then
+    . $HOME/anaconda2/etc/profile.d/conda.sh
+fi
+
+# add scripts folder to path
+for SCRIPT_DIR in ".local/scripts" ".local/share/scripts"; do
+    if [ -d "${HOME}/${SCRIPT_DIR}" ]; then
+        export PATH="${PATH}:${HOME}/${SCRIPT_DIR}"
+    fi
+done
+
+# alias for sizing the current folder (du + options is hard
+# to remember!)
+alias s0="du --summarize -h"
+alias s1="du --max-depth=1 -h"
+alias s2="du --max-depth=2 -h"
+
+# alias to find things easily
+alias f='find . -name'
+
+# toggles for bash history
+alias history-off='set +o history'
+alias history-on='set -o history'
+
+# define commands for vnc if tightvncserver is present
+if command -v tightvncserver >/dev/null 2>&1; then
+    alias vnc-start='tightvncserver -depth 16 -geometry 1024x768 -localhost :1'
+    alias vnc-stop='tightvncserver -kill :1'
+fi
+
+
+
+# REMOVING THIS BECAUSE IT HAS BEEN CAUSING NOTHIGN BUT ISSUES
+# # replace ipython with jupyter console if jupyter
+# # console is present; also, disabling banner because
+# # who cares really.
+# if command -v 'jupyter' > /dev/null 2>&1; then
+#    function ipython { jupyter console --ZMQTerminalInteractiveShell.banner="" "$@"; }
+# fi
+
+# start a jupyter QTconsole with the right colors
+alias visual-ipython='jupyter qtconsole --ConsoleWidget.font_family="Consolas" --ConsoleWidget.font_size="12" --style monokai'
+
+# get indices of headers
+tsv-header () { head -n 1 $* | tr $'\t' '\n' | nl ; }
+csv-header () { head -n 1 $* | tr ',' '\n' | nl ; }
+but-first () { tail -n +2 $* ; }
+
+# shortcuts for python 2/3
+alias p2="python"
+alias p3="python3"
+
+# makes sure that pkg-config works properly
+if [ -d "/usr/local/lib/pkgconfig" ]; then
+    export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
+fi
+
+# mute the fucking bell
+setterm -blength 0 >/dev/null 2>&1
+
+# shortcut for compressing and decompressing files
+function multi-compress () {
+    SRC=$2
+    DST=$1
+
+    if [ -z "${SRC}" ] || [ -z "${DST}" ]; then
+        echo "USAGE: multicompress [dst] [src]" > /dev/stderr
+        exit 1
+    fi
+
+    tar vcf - $SRC | pigz > $DST
+}
+
+function compress () {
+    SRC=$2
+    DST=$1
+
+    if [ -z "${SRC}" ] || [ -z "${DST}" ]; then
+        echo "USAGE: compress [dst] [src]" > /dev/stderr
+        exit 1
+    fi
+
+    tar zcvf $DST $SRC
+}
+
+
+function decompress () {
+    SRC=$1
+
+    if [ -z "${SRC}" ]; then
+        echo "USAGE: decompress [src]" > /dev/stderr
+        exit 1
+    fi
+
+    tar zxvf $SRC
+}
+
+function multi-decompress () {
+    SRC=$1
+
+    if [ -z "${SRC}" ]; then
+        echo "USAGE: multi-decompress [src]" > /dev/stderr
+        exit 1
+    fi
+
+    pigz -dc $SRC | tar xvf -
+
+}
+
+#so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
+stty -ixon
+
+# better copy (uses rsync for progressbar shit)
+alias copy='rsync -rva --info=progress2'
+
+# set java home if JDK is installed
+has_java=`which javac 2>/dev/null`
+
+if [[ ! -z $has_java ]]; then
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        export JAVA_HOME=$(/usr/libexec/java_home)
+    else
+        export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+    fi
+fi
+
+# shortcuts for git submodules
+alias git-clone-submodules="git clone --recursive -j8"
+alias git-init-submodules="git submodule update --init --recursive"
+alias git-pull-submodules="git pull --recurse-submodules"
+alias git-rm-submodule="submodule deinit"
+
+# Use bash-completion, if available; the first one should work on macOS, while the 2nd should be for ubuntu
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+[[ -r "/etc/profile.d/bash_completion.sh" ]] && . "/etc/profile.d/bash_completion.sh"
+
+# if it is a raspberry pi, enable some useful alieases
+
+is_raspberry=$(tr 2> /dev/null < /proc/device-tree/model -d '\000' | grep "Raspberry")
+if [[ ! -z $is_raspberry ]]; then
+    alias wifi-off="sudo ifconfig wlan0 down"
+    alias wifi-on="sudo ifconfig wlan0 up"
+    alias temp="/opt/vc/bin/vcgencmd measure_temp"
+    alias led-on="echo 1 | sudo tee /sys/class/leds/led0/brightness"
+    alias led-off="echo 0 | sudo tee /sys/class/leds/led0/brightness"
+fi
+
+# if you have acme.sh installed for
+# Let's Encrypt, add it to the path
+if [ -d "$HOME/.acme.sh" ]; then
+    . "${HOME}/.acme.sh/acme.sh.env"
+fi
+
+# fuction to get what's changed
+get_dirty_git() {
+    porcelain=$(git status --porcelain 2>/dev/null)
+
+    if [ -z "${porcelain}" ]; then
+        git_sync_status="$(git status 2>/dev/null)"
+        git_ahead=$(echo "${git_sync_status}" | grep 'Your branch is ahead')
+        if [ ! -z "${git_ahead}" ]; then
+            echo 'P'
+        else
+            echo ''
+        fi
+    else
+        git_status=""
+        if ([ ! -z "$(echo $porcelain | grep 'M ')" ] || [ ! -z "$(echo $porcelain | grep 'R ')" ]); then
+            # Modified/renamed
+            git_status="S${git_status}"
+        fi
+        if ([ ! -z "$(echo $porcelain | grep '? ')" ] || [ ! -z "$(echo $porcelain | grep 'A ')" ]); then
+            # Added/to add
+            git_status="I${git_status}"
+        fi
+        if [ ! -z "$(echo $porcelain | grep 'D ')" ]; then
+            # Deleted
+            git_status="D${git_status}"
+        fi
+
+        if [ -z $git_status ]; then
+            git_status="O"
+        fi
+
+        echo $git_status
+    fi
+}
+
+# get the name of the branch we are in
+parse_git_branch() {
+    branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+    if [ ! -z "${branch}" ]; then
+        dirty="$(get_dirty_git)"
+        if [ -z "${dirty}" ]; then
+            echo "${branch}"
+        else
+            echo "${branch} [${dirty}]"
+        fi
+    fi
+}
+
+# shorter prompt
+short_pwd() {
+    cwd=$(pwd | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')
+    echo -n $cwd
+}
+
+
+# We want to have the ability to set a custom hostname
+# that will make the machine easier to identify
+if [ -z "${CUSTOM_HOSTNAME}" ]; then
+    export CUSTOM_HOSTNAME=$(hostname)
+fi
+
+
+hostcolor="38;2;$(context-color-rgb -r)"
+greycolor="38;5;247"
+whitecolor="38;5;255"
+
+if [[ "${CURRENT_SHELL_NAME}" == "bash" ]]; then
+    hostchange="\[\033[${hostcolor}m\]"
+    rightgray="\[\033[${greycolor}m\]"
+    white_reset='\[\e[0m\]'
+
+    # notice how we need to escape the dollar sign, otherwise it doesn't get evaluated every time the prompt is re-drawn!
+    export PS1="${hostchange}\u ${rightgray}on ${hostchange}${CUSTOM_HOSTNAME} ${rightgray}in ${hostchange}\$(short_pwd) ${rightgray}at ${hostchange}\D{%F %H:%M} ${rightgray}\$(parse_git_branch)${hostchange}\n\\$ ${white_reset}"
+    export LS_COLORS="di=${greycolor}:ln=${whitecolor}:or=${whitecolor}:so=${whitecolor}:su=${whitecolor}:sg=${whitecolor}:ow=${whitecolor}:tw=${whitecolor}:ex=${hostcolor}:mi=${whitecolor}"
+
+elif [[ "${CURRENT_SHELL_NAME}" == "zsh" ]]; then
+    # same as before, but for zsh
+    NEWLINE=$'\n'
+    LAMBDA=$'\u03bb'
+    NOCOLOR=$'\033[0m'
+    HOSTCHANGE=$(echo -ne "\033[${hostcolor}m")
+    RIGHTGRAY=$(echo -ne "\033[${greycolor}m")
+
+    export PS1="%{${HOSTCHANGE}%}%n %{${RIGHTGRAY}%}on %{${HOSTCHANGE}%}$CUSTOM_HOSTNAME %{${RIGHTGRAY}%}in %{${HOSTCHANGE}%}\$(short_pwd) %{${RIGHTGRAY}%}at %{${HOSTCHANGE}%}%D %T %{${RIGHTGRAY}%}\$(parse_git_branch)${NEWLINE}%{${HOSTCHANGE}%}${LAMBDA}%{${NOCOLOR}%} "
+    LS_COLORS="di=${greycolor}:ln=${whitecolor}:or=${whitecolor}:so=${whitecolor}:su=${whitecolor}:sg=${whitecolor}:ow=${whitecolor}:tw=${whitecolor}:ex=${hostcolor}:mi=${whitecolor}"
+fi
+
+
+# returns a random hash based on current time, machine name, and user
+random_hash() {
+    echo "${USER}_${HOSTNAME}_$(date)" | md5sum | cut -f1 -d ' '
+}
+
+
+if [[ "${CURRENT_SHELL_NAME}" == "zsh" ]]; then
+    macos_autosuggest='/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
+    if [[ -f "${macos_autosuggest}" ]]; then
+        source "${macos_autosuggest}"
+    fi
+fi
+
+######## SSH AGENT SNAFU ########
+
+SSH_ENV_LOC="${HOME}/.ssh/environment"
+SSH_KEY_LOC="${HOME}/.ssh/id_rsa"
+
+
+# Check if we have a private key; if not, we don't care about
+# the ssh agent.
+if [ -f "${SSH_KEY_LOC}" ]; then
+
+    if [ -f "${SSH_ENV_LOC}" ]; then
+        # An ssh agent is registered in the environment file;
+        # let's see if it is still running
+        ENV_AGENT_PID=$(cat ${SSH_ENV_LOC} | grep -oE "SSH_AGENT_PID=[0-9]+" | cut -d "=" -f 2)
+
+        # this will be empty if the agent is not running anymore
+        USE_OLD_AGENT=$(ps -ef | grep "${ENV_AGENT_PID}" | grep 'ssh-agent')
+    fi
+
+    if [ -z "${USE_OLD_AGENT}" ]; then
+        # we need to start a new agent!
+        ssh-agent -s > "${SSH_ENV_LOC}"
+
+        # gotta protect the agent
+        chmod 700 ${SSH_ENV_LOC}
+    fi
+
+    # ssh agent running will be empty if everything
+    eval $(cat "${SSH_ENV_LOC}") > /dev/null
+
+    if [ ! -z "${SSH_AUTH_SOCK}" ] && [ ! -z "$(ssh-add -L | grep 'has no identities')" ]; then
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            ssh-add -K
+        else
+            ssh-add
+        fi
+    fi
+
+fi
+
+#################################
+
+
+# execute machine specific bash script
+source "$HOME/.postlocalrc"

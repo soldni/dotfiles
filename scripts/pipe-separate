@@ -1,0 +1,39 @@
+#! /usr/bin/env python3
+
+import argparse
+import collections
+import sys
+
+
+def parse_arguments():
+    ap = argparse.ArgumentParser()
+
+    ap.add_argument('-H', '--header', action='store_true',
+                    help='Whether the input file has a header')
+    ap.add_argument('-m', '--mode', required=True, choices=('text', 'labels'))
+
+    opts, args = ap.parse_known_args()
+
+    assert len(args) < 2, "Too many non-keyword arguments"
+    path = args[0] if len(args) else None
+
+    return opts, path
+
+
+def main():
+    opts, path = parse_arguments()
+
+    with (open(path) if path else sys.stdin) as f:
+        if opts.header:
+            next(f)
+
+        try:
+            for ln in f:
+                text, labels = zip(*(elem.split('|') for elem in ln.strip().split()))
+                print(' '.join(text if (opts.mode == 'text') else labels))
+        except BrokenPipeError:
+            pass
+
+
+if __name__ == "__main__":
+    main()

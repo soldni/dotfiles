@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "SCRIPT_NAME=$(cat <<END\n# python script starts here\n\nprint('Hello, World!')\n\n# script ends here\nEND\n)",
+    "uid" : "AE2A2A12-F82D-4D8C-9BA8-2ADDEDE8AD09",
+    "name" : "Python in Bash",
+    "keyword" : ""
+  }
+}

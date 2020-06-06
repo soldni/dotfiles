@@ -1,0 +1,9 @@
+[MASTER]
+
+# Python code to execute, usually for sys.path manipulation such as
+# pygtk.require().
+init-hook="sys.path.insert(0, os.getcwd())"
+
+# Use multiple processes to speed up Pylint.
+jobs=1
+
