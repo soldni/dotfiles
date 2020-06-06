@@ -32,11 +32,18 @@ __rgb_to_hex() {
 }
 
 context_color_rgb_nubers() {
+    has_python3=$(which python3 2>/dev/null)
+    if [[ ! -z $has_python3 ]]; then
+        python_exec="$(which python3)"
+    else
+        python_exec="$(which python)"
+    fi
+
     context="${LOCAL_CONTEXT_COLOR} $(eval "${CONTEXT}")"
     # echo $context
     fullhash=$(echo $context | sha256sum | awk '{ print $1 }')
     # echo $fullhash
-    rgb="$(python -c "$QUANTIZE_SCRIPT" ${fullhash} 150 255 3)"
+    rgb="$(${python_exec} -c "$QUANTIZE_SCRIPT" ${fullhash} 150 255 3)"
     echo "${rgb}"
 }
 
@@ -55,4 +62,3 @@ while getopts ":xr" opt; do
       ;;
   esac
 done
-
