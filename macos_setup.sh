@@ -207,13 +207,11 @@ brew_packages_to_install=(
     'gawk'
     'gnutls'
     'gnu-indent'
-    'oracle-jdk'
     'gnu-getopt'
     'grep'
     'wget'
     'zsh-autosuggestions'
     'pigz'
-    'devonthink'
 )
 
 for package in "${brew_packages_to_install[@]}"; do
@@ -257,12 +255,13 @@ brew_cask_to_install=(
     'pdf-expert'            # edit pdfs
     'geekbench'             # benchmarking
     'sensiblesidebuttons'   # 3rd party mice
+    'devonthink'            # reference manager
 )
 
 for cask in "${brew_cask_to_install[@]}"; do
     has_cask=$(brew cask list $cask 2>/dev/null)
     if [[ -z $has_cask ]]; then
-        brew cask install $cask
+        brew cask install "${cask}"
     fi
 done
 
