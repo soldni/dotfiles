@@ -244,7 +244,6 @@ brew_cask_to_install=(
     'transmit'              # (s)ftp app
     'mactex'                # latex distribution for mac
     'alfred'                # launcher and clipboard manager
-    'deckset'               # markdown presentations
     'coderunner'            # Lightweight IDE
     '1password'             # Password Manager
     'skype'                 # communication
@@ -257,7 +256,6 @@ brew_cask_to_install=(
     'araxis-merge'          # diff tool
     'pdf-expert'            # edit pdfs
     'geekbench'             # benchmarking
-    'muse'                  # control spotify from touchbar + show status
     'sensiblesidebuttons'   # 3rd party mice
 )
 
@@ -280,7 +278,6 @@ mas_install=(
     '1191449274'    # ToothFairy
     '904280696'     # Things
     '775737590'     # iA Writer
-    '1510445899'    # Meeter
     '1107421413'    # 1Blocker
     '1482490089'    # TamperMonkey
 )
