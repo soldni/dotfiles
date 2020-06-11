@@ -209,6 +209,7 @@ brew_packages_to_install=(
     'gnu-indent'
     'gnu-getopt'
     'grep'
+    'fswatch'
     'wget'
     'zsh-autosuggestions'
     'pigz'
