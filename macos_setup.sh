@@ -270,7 +270,6 @@ mas_install=(
     '890031187'     # Marked 2
     '494803304'     # WiFi Explorer
     '497799835'     # Xcode
-    '1289583905'    # Pixelmator Pro
     '969418666'     # ColorSnapper 2
     '429449079'     # Patterns
     '425424353'     # The Unarchiver
@@ -280,6 +279,10 @@ mas_install=(
     '775737590'     # iA Writer
     '1107421413'    # 1Blocker
     '1482490089'    # TamperMonkey
+    '924726344'     # Deliveries
+    '1160374471'    # PiPifier
+    '824171161'     # Affinity Designer
+    '824183456'     # Affinity Photo
 )
 
 not_signed_in_mas="Not signed in"
