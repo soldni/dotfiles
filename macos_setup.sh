@@ -257,6 +257,8 @@ brew_cask_to_install=(
     'geekbench'             # benchmarking
     'sensiblesidebuttons'   # 3rd party mice
     'devonthink'            # reference manager
+    'vlc'                   # player
+    'beardedspice'          # control playback
 )
 
 for cask in "${brew_cask_to_install[@]}"; do
