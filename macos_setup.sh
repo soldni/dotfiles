@@ -256,9 +256,9 @@ brew_cask_to_install=(
     'pdf-expert'            # edit pdfs
     'geekbench'             # benchmarking
     'sensiblesidebuttons'   # 3rd party mice
-    'devonthink'            # reference manager
     'vlc'                   # player
-    'beardedspice'          # control playback
+    'EagleFiler'            # data organizers
+    'evernote'              # note-taking
 )
 
 for cask in "${brew_cask_to_install[@]}"; do
