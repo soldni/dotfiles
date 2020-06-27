@@ -413,6 +413,15 @@ if [ -z "${CUSTOM_HOSTNAME}" ]; then
     export CUSTOM_HOSTNAME=$(hostname)
 fi
 
+# sometimes binaries are installed in this directory in macos, so we
+# add it to the path if we find any binary files.
+if [ -d "${HOME}/Library/Python" ]; then
+    for python_install in $(ls --color=no "${HOME}/Library/Python"); do
+        if [ -d "${HOME}/Library/Python/${python_install}/bin" ]; then
+            export PATH="${HOME}/Library/Python/${python_install}/bin:${PATH}"
+        fi
+    done
+fi
 
 hostcolor="38;2;$(context-color-rgb -r)"
 greycolor="38;5;247"
