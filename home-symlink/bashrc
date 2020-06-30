@@ -196,12 +196,12 @@ alias pip3-upgrade-all='python3 -c "import pip, subprocess; [subprocess.call(\"p
 # increase bash history file size
 HISTFILESIZE=50000
 
-# if [ -d "$HOME/anaconda3" ]; then
-#     . $HOME/anaconda3/etc/profile.d/conda.sh
-# fi
-# if [ -d "$HOME/anaconda2" ]; then
-#     . $HOME/anaconda2/etc/profile.d/conda.sh
-# fi
+if [ -d "${HOME}/anaconda3" ]; then
+    source $HOME/anaconda3/etc/profile.d/conda.sh
+fi
+if [ -d "${HOME}/anaconda2" ]; then
+    source $HOME/anaconda2/etc/profile.d/conda.sh
+fi
 
 # add scripts folder to path
 for SCRIPT_DIR in ".local/scripts" ".local/share/scripts"; do
