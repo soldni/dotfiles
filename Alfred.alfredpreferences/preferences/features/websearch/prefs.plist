@@ -20,7 +20,7 @@
 		<key>22CCA2C2-15F8-439C-BE2B-2527346AF33D</key>
 		<dict>
 			<key>enabled</key>
-			<true/>
+			<false/>
 			<key>keyword</key>
 			<string>lucky</string>
 			<key>spaces</key>
