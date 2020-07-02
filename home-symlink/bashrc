@@ -64,9 +64,18 @@ fi
 # SET OS SPECIFIC COMMANDS HERE
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
+    # We're on macos
+
+    # upgrade remotely
+    alias reboot='sudo fdesetup authrestart'
+    alias software-update='sudo softwareupdate --install -a'
+    alias software-update-reboot='sudo softwareupdate --install -a && sudo fdesetup authrestart'
+
     # uses GNU coretuils instead of OSX's
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
+
 fi
 if [[ "$OSTYPE" == "linux"* ]]; then
     alias hdtemp="hddtemp /dev/sd[abcdefghi]"
