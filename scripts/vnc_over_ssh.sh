@@ -8,7 +8,7 @@ fi
 ssh -NL 5900:localhost:5900 "${@}" &
 TUNNEL_PID=$!
 
-printf "Connecting in "
+printf "Connecting to '${1}' in "
 
 for i in 3 2 1; do
     printf "${i}..."
@@ -17,7 +17,7 @@ done
 
 printf "0\n"
 
-open "vnc://127.0.0.1:5900"
+open "vnc://localhost:5900"
 
 # trap ctrl-c and call ctrl_c()
 trap ctrl_c INT
