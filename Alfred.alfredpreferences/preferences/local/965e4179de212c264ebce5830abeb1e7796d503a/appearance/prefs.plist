@@ -4,5 +4,7 @@
 <dict>
 	<key>currentthemeuid</key>
 	<string>theme.bundled.osx</string>
+	<key>darkthemeuid</key>
+	<string>theme.custom.81C1948E-4D12-41BB-B0CE-12E88A7A770B</string>
 </dict>
 </plist>

@@ -19,6 +19,9 @@ defaults write -globalDomain NSUserKeyEquivalents -dict-add "Merge All Windows" 
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "Show Help Menu" "~\\U0020"
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "Edit Tab Title" "@~^e"
 
+# Local connections only for VNC
+sudo defaults write /Library/Preferences/com.apple.RemoteManagement.plist VNCOnlyLocalConnections -bool yes
+
 # set it up so that CMD+W doesn't close Amazon Chime windows anymore
 defaults write com.amazon.Amazon-Chime NSUserKeyEquivalents -dict-add "Hide Tab" "@\$w"
 
