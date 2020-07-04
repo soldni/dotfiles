@@ -71,6 +71,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias software-update='sudo softwareupdate --install -a'
     alias software-update-reboot='sudo softwareupdate --install -a && sudo fdesetup authrestart'
 
+    # add a space to the dock
+    alias dock-spacer="defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"spacer-tile\";}'; killall Dock"
+
+
     # uses GNU coretuils instead of OSX's
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
