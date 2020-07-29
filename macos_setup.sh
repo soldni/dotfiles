@@ -262,6 +262,7 @@ brew_cask_to_install=(
     'vlc'                   # player
     'EagleFiler'            # data organizers
     'evernote'              # note-taking
+    'overkill'              # no itunes buttons
 )
 
 for cask in "${brew_cask_to_install[@]}"; do
