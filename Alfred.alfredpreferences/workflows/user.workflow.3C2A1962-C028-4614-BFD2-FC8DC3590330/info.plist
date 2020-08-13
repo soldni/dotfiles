@@ -34,6 +34,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>6D4866EF-DC78-4389-AA08-B9D520055120</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>11896205-26E6-4528-86FB-65370D64C15E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>81F29126-A757-49B7-9B65-B93E136BCD2B</key>
 		<array>
 			<dict>
@@ -68,9 +81,24 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Lock Mac</string>
+	<string>Automate Mac</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>command</key>
+				<integer>1</integer>
+				<key>confirm</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.systemcommand</string>
+			<key>uid</key>
+			<string>3F9C47AF-FF7F-4A0D-BBC3-6F42EC85F4AB</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -99,21 +127,6 @@
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>294A52DC-6FB9-4549-8665-D58FDE0223F3</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>command</key>
-				<integer>1</integer>
-				<key>confirm</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.systemcommand</string>
-			<key>uid</key>
-			<string>3F9C47AF-FF7F-4A0D-BBC3-6F42EC85F4AB</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -213,6 +226,58 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>79</integer>
+				<key>hotmod</key>
+				<integer>8388608</integer>
+				<key>hotstring</key>
+				<string>F18</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>6D4866EF-DC78-4389-AA08-B9D520055120</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+tell application "System Events"
+    tell process "Notification Center"
+        click menu bar item 1 of menu bar 1
+    end tell
+end tell
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>11896205-26E6-4528-86FB-65370D64C15E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>Search on labcollab.net</string>
@@ -224,6 +289,13 @@
 			<integer>280</integer>
 			<key>ypos</key>
 			<integer>185</integer>
+		</dict>
+		<key>11896205-26E6-4528-86FB-65370D64C15E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>305</integer>
+			<key>ypos</key>
+			<integer>465</integer>
 		</dict>
 		<key>294A52DC-6FB9-4549-8665-D58FDE0223F3</key>
 		<dict>
@@ -238,6 +310,13 @@
 			<integer>280</integer>
 			<key>ypos</key>
 			<integer>50</integer>
+		</dict>
+		<key>6D4866EF-DC78-4389-AA08-B9D520055120</key>
+		<dict>
+			<key>xpos</key>
+			<integer>40</integer>
+			<key>ypos</key>
+			<integer>465</integer>
 		</dict>
 		<key>81F29126-A757-49B7-9B65-B93E136BCD2B</key>
 		<dict>
