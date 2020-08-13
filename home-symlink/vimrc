@@ -273,3 +273,5 @@ let g:vimtex_compiler_latexmk = {'callback' : 0}
 " " color change after 80 columns
 " autocmd FileType cpp,c,cxx,h,hpp,python,sh  let &colorcolumn=join(range(81,999),",")
 
+" set latex config
+let g:tex_flavor = "latex"
