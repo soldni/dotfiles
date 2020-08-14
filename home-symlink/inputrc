@@ -1,12 +1,22 @@
+
+# bells are annoying
 set completion-ignore-case on
 set bell-style none
 
+# alt/cmd + arrows keys on macOS
+"\e[C": forward-word
+"\e[D": backward-word
+"\e[1;3D": beginning-of-line
+"\e[1;3C": end-of-line
+# ???: backward-kill-word (unfortunately nothing is sent!)
+"\e[3~": forward-kill-word
+
+# same as before, but for control
 "\e[1;5C": forward-word
 "\e[1;5D": backward-word
 "\e[5C": forward-word
 "\e[5D": backward-word
 "\e\e[C": forward-word
 "\e\e[D": backward-word
-"\C-h": backward-kill-word
+"\C-H": backward-kill-word
 "\e[3;5~": forward-kill-word
-
