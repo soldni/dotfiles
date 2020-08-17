@@ -297,13 +297,13 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>289 426 834 541 0 0 3008 1669 </string>
+	<string>971 337 978 693 0 0 3008 1669 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>1203 450 1146 845 0 0 3008 1669 </string>
+	<string>1149 958 650 503 0 0 3008 1669 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>108 75 1058 1092 0 0 3008 1669 </string>
+	<string>53 32 1218 978 0 0 3008 1669 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>1452 911 858 655 0 0 3008 1669 </string>
+	<string>1452 1063 650 503 0 0 3008 1669 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
 	<string>472 278 650 503 0 0 3008 1669 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
@@ -650,9 +650,9 @@
 				<key>0x7f-0x100000</key>
 				<dict>
 					<key>Action</key>
-					<integer>13</integer>
+					<integer>11</integer>
 					<key>Text</key>
-					<string></string>
+					<string>0x15</string>
 				</dict>
 				<key>0x7f-0x40000</key>
 				<dict>
@@ -664,9 +664,9 @@
 				<key>0x7f-0x80000</key>
 				<dict>
 					<key>Action</key>
-					<integer>13</integer>
+					<integer>11</integer>
 					<key>Text</key>
-					<string></string>
+					<string>0x1b 0x08</string>
 				</dict>
 				<key>0xf700-0x220000</key>
 				<dict>
@@ -748,16 +748,17 @@
 				<key>0xf702-0x280000</key>
 				<dict>
 					<key>Action</key>
-					<integer>13</integer>
+					<integer>11</integer>
 					<key>Text</key>
-					<string></string>
+					<string>0x1b 0x62
+</string>
 				</dict>
 				<key>0xf702-0x300000</key>
 				<dict>
 					<key>Action</key>
-					<integer>13</integer>
+					<integer>11</integer>
 					<key>Text</key>
-					<string></string>
+					<string>0x01</string>
 				</dict>
 				<key>0xf703-0x220000</key>
 				<dict>
@@ -783,9 +784,16 @@
 				<key>0xf703-0x280000</key>
 				<dict>
 					<key>Action</key>
-					<integer>13</integer>
+					<integer>11</integer>
 					<key>Text</key>
-					<string></string>
+					<string>0x1b 0x66</string>
+				</dict>
+				<key>0xf703-0x300000</key>
+				<dict>
+					<key>Action</key>
+					<integer>11</integer>
+					<key>Text</key>
+					<string>0x05</string>
 				</dict>
 				<key>0xf704-0x20000</key>
 				<dict>
@@ -1005,14 +1013,14 @@
 		<key>screenFrame</key>
 		<string>{{0, 0}, {3008, 1692}}</string>
 		<key>topLeft</key>
-		<string>{1507, 703}</string>
+		<string>{1918, 703}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
 	<string>BC669507-80FE-4FE8-9C3C-090075D227CA</string>
 	<key>NoSyncLastTipTime</key>
 	<real>615961870.06967795</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>11</integer>
+	<integer>12</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1799,7 +1807,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-08-13T23:29:49Z</date>
+	<date>2020-08-14T23:29:49Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
