@@ -163,6 +163,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>6AF4800A-A72F-4E36-AFA1-5C255FBE2C44</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>DE26058B-66D8-464C-B116-3C36FC69D3FA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>7686C74A-A33F-49C2-8231-40F1569A481A</key>
 		<array/>
 		<key>A9672888-73C0-4D89-A497-B85E986C1D50</key>
@@ -375,10 +388,45 @@ on extract_argv(source_string, new_delimiter)	set backup to AppleScript's text 
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>action</key>
+				<integer>1</integer>
+				<key>argument</key>
+				<integer>3</integer>
+				<key>argumenttext</key>
+				<string>w </string>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>48</integer>
+				<key>hotmod</key>
+				<integer>655360</integer>
+				<key>hotstring</key>
+				<string>⇥</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>6AF4800A-A72F-4E36-AFA1-5C255FBE2C44</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -417,7 +465,7 @@ on extract_argv(source_string, new_delimiter)	set backup to AppleScript's text 
 			<key>uid</key>
 			<string>DE26058B-66D8-464C-B116-3C36FC69D3FA</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -461,8 +509,6 @@ on extract_argv(source_string, new_delimiter)	set backup to AppleScript's text 
 			<integer>1</integer>
 		</dict>
 		<dict>
-			<key>config</key>
-			<dict/>
 			<key>type</key>
 			<string>alfred.workflow.utility.junction</string>
 			<key>uid</key>
@@ -526,6 +572,12 @@ on extract_argv(source_string, new_delimiter)	set backup to AppleScript's text 
 				<false/>
 				<key>focusedappvariablename</key>
 				<string></string>
+				<key>hotkey</key>
+				<integer>48</integer>
+				<key>hotmod</key>
+				<integer>524288</integer>
+				<key>hotstring</key>
+				<string>⇥</string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -566,6 +618,8 @@ on extract_argv(source_string, new_delimiter)	set backup to AppleScript's text 
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -604,7 +658,7 @@ on extract_argv(source_string, new_delimiter)	set backup to AppleScript's text 
 			<key>uid</key>
 			<string>BBE27144-1C88-4DB4-BCF3-B4E7CCE3A14B</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1000,6 +1054,13 @@ Inspration is taken from "Windows Switcher" workflow from Emanuele Munafò (kudo
 			<integer>550</integer>
 			<key>ypos</key>
 			<integer>590</integer>
+		</dict>
+		<key>6AF4800A-A72F-4E36-AFA1-5C255FBE2C44</key>
+		<dict>
+			<key>xpos</key>
+			<integer>15</integer>
+			<key>ypos</key>
+			<integer>210</integer>
 		</dict>
 		<key>7686C74A-A33F-49C2-8231-40F1569A481A</key>
 		<dict>
