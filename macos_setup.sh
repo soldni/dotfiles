@@ -171,6 +171,16 @@ chflags nohidden ~/Library
 # Restore boot sound on new macs
 sudo nvram StartupMute=%00
 
+# install powerline fonts
+current_dir="$(pwd)"
+cd "${HOME}/Downloads"
+git clone https://github.com/powerline/fonts.git
+cd fonts
+bash install.sh
+cd ..
+rm fonts
+cd "${current_dir}"
+
 # Check if brew is installed; if not, install brew
 has_brew=`which brew 2>/dev/null`
 if [[ -z $has_brew ]]

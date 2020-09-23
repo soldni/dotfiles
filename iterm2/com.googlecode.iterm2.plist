@@ -297,13 +297,13 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>971 337 978 693 0 0 3008 1669 </string>
+	<string>6 463 650 503 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>1149 958 650 503 0 0 3008 1669 </string>
+	<string>572 564 650 503 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>53 32 1218 978 0 0 3008 1669 </string>
+	<string>731 377 650 503 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>1452 1063 650 503 0 0 3008 1669 </string>
+	<string>698 776 1570 864 0 0 3008 1669 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
 	<string>472 278 650 503 0 0 3008 1669 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
@@ -1020,7 +1020,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>615961870.06967795</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>12</integer>
+	<integer>17</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1807,11 +1807,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-08-14T23:29:49Z</date>
+	<date>2020-09-23T16:25:50Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>

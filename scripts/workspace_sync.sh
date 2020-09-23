@@ -22,10 +22,12 @@ function workspaces_sync() {
         echo "Usage: ${0} {-w src1,dest1}, ..., {-w srcN,destN}" 1>&2; exit 1;
     }
 
-    while getopts ":w:" option; do
+    while getopts ":d:w:" option; do
         case "${option}" in
             w)
                 WORKSPACES+=("${OPTARG}");;
+            d)
+                DRYRUN=1;;
             *)
                 usage;;
         esac
@@ -69,8 +71,16 @@ function workspaces_sync() {
             usage
         fi
 
-        SYNC_CMD=${SYNC_CMD} _workspace_sync ${LOCAL} ${REMOTE} &
-        record_pid $!
+        if [ -z "${DRYRUN}" ]; then
+            SYNC_CMD=${SYNC_CMD} _workspace_sync ${LOCAL} ${REMOTE} &
+            record_pid $!
+        else
+            echo "DRYRUN: "
+            echo "${SYNC_CMD}"
+            echo "${LOCAL}"
+            echo "${REMOTE}"
+            echo
+        fi
 
     done
 
