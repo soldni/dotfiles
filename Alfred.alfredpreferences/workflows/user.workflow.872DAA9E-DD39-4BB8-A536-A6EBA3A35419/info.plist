@@ -3,11 +3,24 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string></string>
+	<string>net.soldaini.fix_audio</string>
 	<key>category</key>
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
+		<key>39AE3F5E-9624-4B2B-980C-FFCCB2CBF1D0</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>86CBB3CF-2355-40CF-8B42-31DC56AECB5A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>63810D56-4804-4617-B88F-8A59481D3257</key>
 		<array/>
 		<key>C210BAD4-FC9A-4B2F-8670-996084053B86</key>
@@ -31,7 +44,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Restart Audio</string>
+	<string>Fix Audio Issues</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -78,17 +91,67 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>balancefix</string>
+				<key>subtext</key>
+				<string>Re-center L/R audio balance for the current output source</string>
+				<key>text</key>
+				<string>Fix Audio Balance</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>39AE3F5E-9624-4B2B-980C-FFCCB2CBF1D0</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>tell application "System Preferences"	activate	reveal anchor "output" of pane id "com.apple.preference.sound"	delay 0.5 -- If you get an error, it's possible this delay isn't long enough.end telltell application "System Events"	tell slider 1 of group 1 of tab group 1 of window 1 of process "System Preferences"		set value to 0.5	end tellend telltell application "System Preferences"	quitend tell</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>86CBB3CF-2355-40CF-8B42-31DC56AECB5A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>restarts coreaudod and asks for sudo</string>
 	<key>uidata</key>
 	<dict>
+		<key>39AE3F5E-9624-4B2B-980C-FFCCB2CBF1D0</key>
+		<dict>
+			<key>xpos</key>
+			<integer>255</integer>
+			<key>ypos</key>
+			<integer>295</integer>
+		</dict>
 		<key>63810D56-4804-4617-B88F-8A59481D3257</key>
 		<dict>
 			<key>xpos</key>
 			<integer>425</integer>
 			<key>ypos</key>
 			<integer>170</integer>
+		</dict>
+		<key>86CBB3CF-2355-40CF-8B42-31DC56AECB5A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>430</integer>
+			<key>ypos</key>
+			<integer>295</integer>
 		</dict>
 		<key>C210BAD4-FC9A-4B2F-8670-996084053B86</key>
 		<dict>
