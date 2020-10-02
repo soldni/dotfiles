@@ -168,6 +168,9 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
+# Restart SystemUIServer
+killall SystemUIServer
+
 # Restore boot sound on new macs
 sudo nvram StartupMute=%00
 
