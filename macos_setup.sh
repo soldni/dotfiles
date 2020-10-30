@@ -276,6 +276,7 @@ brew_cask_to_install=(
     'EagleFiler'            # data organizers
     'evernote'              # note-taking
     'overkill'              # no itunes buttons
+    'monitorcontrol'        # control external monitor setttings
 )
 
 for cask in "${brew_cask_to_install[@]}"; do
