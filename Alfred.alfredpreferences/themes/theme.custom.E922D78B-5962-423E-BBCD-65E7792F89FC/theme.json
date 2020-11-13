@@ -1,0 +1,60 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 4,
+      "subtext" : {
+        "size" : 10,
+        "colorSelected" : "#CBCBCBFF",
+        "font" : "System",
+        "color" : "#7F7F7FFF"
+      },
+      "shortcut" : {
+        "size" : 18,
+        "colorSelected" : "#FFFFFFB1",
+        "font" : "System",
+        "color" : "#FFFFFF4B"
+      },
+      "backgroundSelected" : "#535353FF",
+      "text" : {
+        "size" : 18,
+        "colorSelected" : "#F3F3F3FF",
+        "font" : "System",
+        "color" : "#E4E4E4CB"
+      },
+      "iconPaddingHorizontal" : 8,
+      "paddingVertical" : 2,
+      "iconSize" : 40
+    },
+    "separator" : {
+      "color" : "#CBCBCB00",
+      "thickness" : 2
+    },
+    "search" : {
+      "paddingVertical" : 0,
+      "background" : "#00000000",
+      "spacing" : 6,
+      "text" : {
+        "size" : 32,
+        "colorSelected" : "#F2F2F2FF",
+        "font" : "System Light",
+        "color" : "#E6E6E6FF"
+      },
+      "backgroundSelected" : "#535453FF"
+    },
+    "scrollbar" : {
+      "color" : "#A550A6A6",
+      "thickness" : 0
+    },
+    "name" : "Night by Luca",
+    "window" : {
+      "color" : "#181818F1",
+      "paddingHorizontal" : 11,
+      "width" : 469,
+      "borderPadding" : 0,
+      "borderColor" : "#00000082",
+      "blur" : 0,
+      "roundness" : 20,
+      "paddingVertical" : 6
+    }
+  }
+}
