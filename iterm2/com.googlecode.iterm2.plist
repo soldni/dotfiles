@@ -935,7 +935,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Menlo-Regular 14</string>
+			<string>DejaVuSansMonoPowerline 14</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<true/>
 			<key>Option Key Sends</key>
@@ -1008,12 +1008,18 @@
 		<string>3.3.11</string>
 		<string>3.3.12</string>
 	</array>
+	<key>NoSyncBFPRecents</key>
+	<array>
+		<string>DejaVu Sans Mono for Powerline</string>
+		<string>Noto Mono for Powerline</string>
+		<string>Menlo</string>
+	</array>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {1440, 900}}</string>
+		<string>{{0, 0}, {3440, 1440}}</string>
 		<key>topLeft</key>
-		<string>{398, 710}</string>
+		<string>{1512, 887}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
 	<string>252C25F6-44F9-4275-AFB6-1387A0B8C73C</string>
