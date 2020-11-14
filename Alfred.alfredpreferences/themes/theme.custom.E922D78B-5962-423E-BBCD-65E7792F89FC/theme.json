@@ -22,19 +22,19 @@
         "color" : "#E4E4E4CB"
       },
       "iconPaddingHorizontal" : 8,
-      "paddingVertical" : 2,
+      "paddingVertical" : 4,
       "iconSize" : 40
     },
     "separator" : {
       "color" : "#CBCBCB00",
-      "thickness" : 2
+      "thickness" : 6
     },
     "search" : {
       "paddingVertical" : 0,
       "background" : "#00000000",
-      "spacing" : 6,
+      "spacing" : 7,
       "text" : {
-        "size" : 32,
+        "size" : 31,
         "colorSelected" : "#F2F2F2FF",
         "font" : "System Light",
         "color" : "#E6E6E6FF"
@@ -53,8 +53,8 @@
       "borderPadding" : 0,
       "borderColor" : "#00000082",
       "blur" : 0,
-      "roundness" : 20,
-      "paddingVertical" : 6
+      "roundness" : 14,
+      "paddingVertical" : 11
     }
   }
 }
