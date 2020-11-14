@@ -264,7 +264,7 @@ brew_cask_to_install=(
     'skype'                 # communication
     'visual-studio-code'    # text editor
     'istat-menus'           # menubar info
-    'bartender'             # hide menu-bar icons
+    'vanilla'               # hide menu-bar icons
     'moom'					# window managment
     'lingon-x'              # manage startup items
     'jump'                  # remote desktop client
@@ -274,7 +274,6 @@ brew_cask_to_install=(
     'sensiblesidebuttons'   # 3rd party mice
     'vlc'                   # player
     'EagleFiler'            # data organizers
-    'evernote'              # note-taking
     'overkill'              # no itunes buttons
     'monitorcontrol'        # control external monitor setttings
 )
