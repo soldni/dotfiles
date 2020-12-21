@@ -170,9 +170,8 @@ set bell-style none
 alias fu='eval $(thefuck $(fc -ln -1))'
 
 # alias for sublime
-has_subl=$(which subl 2>/dev/null)
-if [[ ! -z $has_subl ]]; then
-    alias e='subl -n'
+if [[ -f "/usr/local/bin/nova" ]]; then
+    alias edit='/usr/local/bin/nova'
 fi
 
 # command to see which processes are using the gpu
