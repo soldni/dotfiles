@@ -515,13 +515,20 @@ if [ -f "${SSH_KEY_LOC}" ]; then
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/ubuntu/.local/google-cloud-sdk/path.bash.inc' ]; then
-    source '/home/ubuntu/.local/google-cloud-sdk/path.bash.inc'
+if [ -f '${HOME}/.local/google-cloud-sdk/path.bash.inc' ]; then
+    source '${HOME}/.local/google-cloud-sdk/path.bash.inc'
 fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/ubuntu/.local/google-cloud-sdk/completion.bash.inc' ]; then
-    source '/home/ubuntu/.local/google-cloud-sdk/completion.bash.inc'
+if [ -f '${HOME}/.local/google-cloud-sdk/completion.bash.inc' ]; then
+    source '${HOME}/.local/google-cloud-sdk/completion.bash.inc'
+fi
+
+# this is for supporting nvm
+if [ -d "${HOME}/.nvm" ]; then
+   export NVM_DIR="$HOME/.nvm"
+   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
 #################################
@@ -529,4 +536,5 @@ fi
 
 # execute machine specific bash script
 source "$HOME/.postlocalrc"
+
 
