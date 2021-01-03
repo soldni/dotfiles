@@ -8,6 +8,8 @@
 		<string>Backup USB</string>
 		<string>com.apple.TimeMachine.localsnapshots</string>
 		<string>Data Raid SSD</string>
+		<string>Dropbox</string>
+		<string>Google Drive</string>
 		<string>Macintosh HD</string>
 		<string>MobileBackups</string>
 		<string>Recovery</string>
