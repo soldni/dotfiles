@@ -17,21 +17,6 @@
 			<key>utf8</key>
 			<false/>
 		</dict>
-		<key>22CCA2C2-15F8-439C-BE2B-2527346AF33D</key>
-		<dict>
-			<key>enabled</key>
-			<false/>
-			<key>keyword</key>
-			<string>lucky</string>
-			<key>spaces</key>
-			<string>+</string>
-			<key>text</key>
-			<string>I'm feeling lucky for '{query}'</string>
-			<key>url</key>
-			<string>http://www.google.com/search?q={query}&amp;btnI</string>
-			<key>utf8</key>
-			<true/>
-		</dict>
 		<key>285394CE-90EA-4AC4-BADB-407BA23776B1</key>
 		<dict>
 			<key>enabled</key>
@@ -42,6 +27,19 @@
 			<string>Load utterance '{query}' on coldplay</string>
 			<key>url</key>
 			<string>https://coldplay.amazon.com/datamart/content/ANNOTATION/DATA/{query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>53D72661-80B6-4280-80B4-99AD048F03CF</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>lucky</string>
+			<key>text</key>
+			<string>I'm Feeling Lucky for '{query}'</string>
+			<key>url</key>
+			<string>https://duckduckgo.com/?q=\{query}</string>
 			<key>utf8</key>
 			<true/>
 		</dict>
