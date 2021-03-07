@@ -8,6 +8,19 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
+		<key>0E5FA1D6-F1F4-4545-8CDC-797585BE868B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>23F1E2AA-043F-4D20-BE73-31783B137800</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>1124C543-675A-4717-985B-4D4A64D3EA43</key>
 		<array>
 			<dict>
@@ -34,6 +47,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>56530AA8-8E31-4E9F-9327-F32D2E2F7D3F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2AE2D123-6C9F-4325-99CD-3973249CD45F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>81F29126-A757-49B7-9B65-B93E136BCD2B</key>
 		<array>
 			<dict>
@@ -52,6 +78,58 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>1124C543-675A-4717-985B-4D4A64D3EA43</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A1719BC6-178D-4645-965E-D2D4AF3CAB05</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0E5FA1D6-F1F4-4545-8CDC-797585BE868B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>AD034C91-BD63-4D56-90CC-55B409692174</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0ABCF834-1C77-40AD-B7CE-23C69A69576D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>CEBDE9CD-99EE-4313-8EB4-B078F187DBC4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>AD034C91-BD63-4D56-90CC-55B409692174</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>F865918D-BE60-42D2-8110-D8B5FC61300F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>56530AA8-8E31-4E9F-9327-F32D2E2F7D3F</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -141,6 +219,29 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>SafeEjectGPU Eject</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1124C543-675A-4717-985B-4D4A64D3EA43</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -172,29 +273,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>SafeEjectGPU Eject</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>1124C543-675A-4717-985B-4D4A64D3EA43</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
@@ -213,17 +291,245 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>126</integer>
+				<key>hotmod</key>
+				<integer>10747904</integer>
+				<key>hotstring</key>
+				<string>↑</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>CEBDE9CD-99EE-4313-8EB4-B078F187DBC4</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>/System/Applications/Mission\ Control.app/Contents/MacOS/Mission\ Control</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>0ABCF834-1C77-40AD-B7CE-23C69A69576D</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>This is for showing mission control when using logitech mx keys</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>AD034C91-BD63-4D56-90CC-55B409692174</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>126</integer>
+				<key>hotmod</key>
+				<integer>11272192</integer>
+				<key>hotstring</key>
+				<string>↑</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>A1719BC6-178D-4645-965E-D2D4AF3CAB05</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>/System/Applications/Mission\ Control.app/Contents/MacOS/Mission\ Control 1</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>23F1E2AA-043F-4D20-BE73-31783B137800</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>This is for showing desktop when using logitech mx keys</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>0E5FA1D6-F1F4-4545-8CDC-797585BE868B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>111</integer>
+				<key>hotmod</key>
+				<integer>8388608</integer>
+				<key>hotstring</key>
+				<string>F12</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>F865918D-BE60-42D2-8110-D8B5FC61300F</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/System/Applications/Launchpad.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>2AE2D123-6C9F-4325-99CD-3973249CD45F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>This is for launching launchpad when using logitech mx keys</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>56530AA8-8E31-4E9F-9327-F32D2E2F7D3F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>Search on labcollab.net</string>
 	<key>uidata</key>
 	<dict>
+		<key>0ABCF834-1C77-40AD-B7CE-23C69A69576D</key>
+		<dict>
+			<key>xpos</key>
+			<integer>285</integer>
+			<key>ypos</key>
+			<integer>465</integer>
+		</dict>
+		<key>0E5FA1D6-F1F4-4545-8CDC-797585BE868B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>200</integer>
+			<key>ypos</key>
+			<integer>625</integer>
+		</dict>
 		<key>1124C543-675A-4717-985B-4D4A64D3EA43</key>
 		<dict>
 			<key>xpos</key>
 			<integer>280</integer>
 			<key>ypos</key>
 			<integer>185</integer>
+		</dict>
+		<key>23F1E2AA-043F-4D20-BE73-31783B137800</key>
+		<dict>
+			<key>xpos</key>
+			<integer>285</integer>
+			<key>ypos</key>
+			<integer>595</integer>
 		</dict>
 		<key>294A52DC-6FB9-4549-8665-D58FDE0223F3</key>
 		<dict>
@@ -232,12 +538,26 @@
 			<key>ypos</key>
 			<integer>50</integer>
 		</dict>
+		<key>2AE2D123-6C9F-4325-99CD-3973249CD45F</key>
+		<dict>
+			<key>xpos</key>
+			<integer>285</integer>
+			<key>ypos</key>
+			<integer>740</integer>
+		</dict>
 		<key>3F9C47AF-FF7F-4A0D-BBC3-6F42EC85F4AB</key>
 		<dict>
 			<key>xpos</key>
 			<integer>280</integer>
 			<key>ypos</key>
 			<integer>50</integer>
+		</dict>
+		<key>56530AA8-8E31-4E9F-9327-F32D2E2F7D3F</key>
+		<dict>
+			<key>xpos</key>
+			<integer>200</integer>
+			<key>ypos</key>
+			<integer>770</integer>
 		</dict>
 		<key>81F29126-A757-49B7-9B65-B93E136BCD2B</key>
 		<dict>
@@ -253,12 +573,40 @@
 			<key>ypos</key>
 			<integer>185</integer>
 		</dict>
+		<key>A1719BC6-178D-4645-965E-D2D4AF3CAB05</key>
+		<dict>
+			<key>xpos</key>
+			<integer>45</integer>
+			<key>ypos</key>
+			<integer>595</integer>
+		</dict>
+		<key>AD034C91-BD63-4D56-90CC-55B409692174</key>
+		<dict>
+			<key>xpos</key>
+			<integer>200</integer>
+			<key>ypos</key>
+			<integer>495</integer>
+		</dict>
 		<key>AEE6B122-4FB1-44D5-9690-6AF29B55ACB9</key>
 		<dict>
 			<key>xpos</key>
 			<integer>515</integer>
 			<key>ypos</key>
 			<integer>185</integer>
+		</dict>
+		<key>CEBDE9CD-99EE-4313-8EB4-B078F187DBC4</key>
+		<dict>
+			<key>xpos</key>
+			<integer>40</integer>
+			<key>ypos</key>
+			<integer>465</integer>
+		</dict>
+		<key>F865918D-BE60-42D2-8110-D8B5FC61300F</key>
+		<dict>
+			<key>xpos</key>
+			<integer>45</integer>
+			<key>ypos</key>
+			<integer>740</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
