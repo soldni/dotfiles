@@ -152,21 +152,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>command</key>
-				<integer>1</integer>
-				<key>confirm</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.systemcommand</string>
-			<key>uid</key>
-			<string>3F9C47AF-FF7F-4A0D-BBC3-6F42EC85F4AB</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -192,6 +177,21 @@
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>294A52DC-6FB9-4549-8665-D58FDE0223F3</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>command</key>
+				<integer>1</integer>
+				<key>confirm</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.systemcommand</string>
+			<key>uid</key>
+			<string>3F9C47AF-FF7F-4A0D-BBC3-6F42EC85F4AB</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -294,6 +294,29 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>/System/Applications/Mission\ Control.app/Contents/MacOS/Mission\ Control</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>0ABCF834-1C77-40AD-B7CE-23C69A69576D</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -319,29 +342,6 @@
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>CEBDE9CD-99EE-4313-8EB4-B078F187DBC4</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>/System/Applications/Mission\ Control.app/Contents/MacOS/Mission\ Control</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>0ABCF834-1C77-40AD-B7CE-23C69A69576D</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
