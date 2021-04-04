@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "import multiprocessing\nimport concurrent\nimport tqdm\n\noutput = []\nwith tqdm.tqdm(desc='DESCRIPTION', unit=' UNIT', total=len(DATA)) as pbar:\n    with concurrent.futures.ProcessPoolExecutor(multiprocessing.cpu_count() - 1) as executor:\n        for path in DATA:\n            single_exec = executor.submit(FUNCTION, *ARGS, **KWARGS)\n            single_exec.add_done_callback(lambda p: pbar.update(1))\n            output.append(single_exec)\noutput = [ex.result() for ex in output]",
+    "uid" : "8068ED6E-20B9-49EA-802C-C7F7BC2FD16E",
+    "name" : "Python Multiprocess with Progress Bar",
+    "keyword" : ""
+  }
+}
