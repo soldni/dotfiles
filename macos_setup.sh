@@ -298,7 +298,11 @@ mas_install=(
     '1482490089'    # TamperMonkey
     '824171161'     # Affinity Designer
     '824183456'     # Affinity Photo
-    '639968404'     # Parcel
+    '924726344'     # Deliveries
+    '1438243180'    # Dark Reader for Safari
+    '904280696'     # Things 3
+    '1447778660'    # iStatistica Pro
+    '956377119'     # WorldClock
 )
 
 not_signed_in_mas="Not signed in"
