@@ -181,7 +181,7 @@ git clone https://github.com/powerline/fonts.git
 cd fonts
 bash install.sh
 cd ..
-rm fonts
+rm -rf fonts
 cd "${current_dir}"
 
 # Check if brew is installed; if not, install brew
