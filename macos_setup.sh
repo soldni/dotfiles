@@ -257,18 +257,15 @@ brew_cask_to_install=(
     'slack'                 # chat app
     'spotify'               # music player
     'transmit'              # (s)ftp app
-    'mactex'                # latex distribution for mac
     'alfred'                # launcher and clipboard manager
     'sketch'                # vector design
     'coderunner'            # Lightweight IDE
     '1password'             # Password Manager
-    'skype'                 # communication
     'visual-studio-code'    # text editor
     'istat-menus'           # menubar info
     'vanilla'               # hide menu-bar icons
     'moom'					# window managment
     'lingon-x'              # manage startup items
-    'jump'                  # remote desktop client
     'araxis-merge'          # diff tool
     'pdf-expert'            # edit pdfs
     'geekbench'             # benchmarking
@@ -277,6 +274,7 @@ brew_cask_to_install=(
     'EagleFiler'            # data organizers
     'overkill'              # no itunes buttons
     'monitorcontrol'        # control external monitor setttings
+    'mactex'                # latex distribution for mac
 )
 
 for cask in "${brew_cask_to_install[@]}"; do
@@ -300,9 +298,9 @@ mas_install=(
     '924726344'     # Deliveries
     '1438243180'    # Dark Reader for Safari
     '904280696'     # Things 3
-    '1447778660'    # iStatistica Pro
     '956377119'     # WorldClock
     '1289583905'    # Pixelmator Pro
+    '688211836'     # EasyRes
 )
 
 not_signed_in_mas="Not signed in"
