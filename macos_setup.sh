@@ -259,6 +259,7 @@ brew_cask_to_install=(
     'transmit'              # (s)ftp app
     'mactex'                # latex distribution for mac
     'alfred'                # launcher and clipboard manager
+    'sketch'                # vector design
     'coderunner'            # Lightweight IDE
     '1password'             # Password Manager
     'skype'                 # communication
@@ -281,7 +282,7 @@ brew_cask_to_install=(
 for cask in "${brew_cask_to_install[@]}"; do
     has_cask=$(brew cask list $cask 2>/dev/null)
     if [[ -z $has_cask ]]; then
-        brew cask install "${cask}"
+        brew install --cask "${cask}"
     fi
 done
 
@@ -296,13 +297,12 @@ mas_install=(
     '775737590'     # iA Writer
     '1107421413'    # 1Blocker
     '1482490089'    # TamperMonkey
-    '824171161'     # Affinity Designer
-    '824183456'     # Affinity Photo
     '924726344'     # Deliveries
     '1438243180'    # Dark Reader for Safari
     '904280696'     # Things 3
     '1447778660'    # iStatistica Pro
     '956377119'     # WorldClock
+    '1289583905'    # Pixelmator Pro
 )
 
 not_signed_in_mas="Not signed in"
