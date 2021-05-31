@@ -67,9 +67,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # We're on macos
 
     # upgrade remotely
-    alias reboot='sudo fdesetup authrestart'
-    alias software-update='sudo softwareupdate --install -a'
-    alias software-update-reboot='sudo softwareupdate --install -a && sudo fdesetup authrestart'
+    alias macos-reboot='sudo fdesetup authrestart'
+    alias macos-reboot-delay='sudo fdesetup authrestart -delayminutes -1'
+    alias macos-run-software-update='sudo softwareupdate --install -a'
+    alias macos-run-software-update-and-reboot='sudo fdesetup authrestart -delayminutes -1 && sudo softwareupdate --install -a --restart'
 
     # add a space to the dock
     alias dock-spacer="defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"spacer-tile\";}'; killall Dock"
@@ -536,5 +537,3 @@ fi
 
 # execute machine specific bash script
 source "$HOME/.postlocalrc"
-
-
