@@ -4,20 +4,20 @@
       "textSpacing" : 6,
       "subtext" : {
         "size" : 11,
-        "colorSelected" : "#000000A5",
+        "colorSelected" : "#CFD1D0FF",
         "font" : "System",
         "color" : "#00000059"
       },
       "shortcut" : {
         "size" : 16,
-        "colorSelected" : "#000000FF",
+        "colorSelected" : "#EAE6ECFF",
         "font" : "System",
         "color" : "#00000059"
       },
-      "backgroundSelected" : "#DFE2E0FF",
+      "backgroundSelected" : "#026ADDFF",
       "text" : {
         "size" : 16,
-        "colorSelected" : "#000000FF",
+        "colorSelected" : "#EAE6ECFF",
         "font" : "System",
         "color" : "#000000CB"
       },

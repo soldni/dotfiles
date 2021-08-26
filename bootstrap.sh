@@ -40,7 +40,7 @@ current=$(pwd)
 
 to_symlink_to_home="$(ls home-symlink)"
 
-
+git config pull.rebase false
 
 for f in $to_symlink_to_home
 do

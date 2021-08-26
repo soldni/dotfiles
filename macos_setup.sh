@@ -193,6 +193,7 @@ fi
 
 brew_taps_to_add=(
     'homebrew/cask'
+    'jlhonora/lsusb'
 )
 
 for tap in "${brew_taps_to_add[@]}"; do
@@ -229,6 +230,7 @@ brew_packages_to_install=(
     'wget'
     'zsh-autosuggestions'
     'pigz'
+    'lsusb'
 )
 
 for package in "${brew_packages_to_install[@]}"; do
@@ -277,6 +279,7 @@ brew_cask_to_install=(
     'mactex'                # latex distribution for mac
 )
 
+
 for cask in "${brew_cask_to_install[@]}"; do
     has_cask=$(brew cask list $cask 2>/dev/null)
     if [[ -z $has_cask ]]; then
@@ -323,16 +326,14 @@ while [ ! -z "${not_signed_in_mas}" ]; do
 done
 
 
-# Install apps from github releases
-github_install=(
-    'Lord-Kamina/SwiftDefaultApps'
-)
-for gh_repo in "${github_install[@]}"; do
+function install_from_repo () {
+    github_repo_name="${1}"
+
     # get release URL
-    uri="$(curl https://api.github.com/repos/${gh_repo}/releases | jq -r '.[0].assets[0].browser_download_url')"
+    uri="$(curl https://api.github.com/repos/${github_repo_name}/releases | jq -r '.[0].assets[0].browser_download_url')"
 
     # make a temp dir where to download stuff
-    repo_dir="/tmp/$(echo ${gh_repo} | tr '/' '_')"
+    repo_dir="/tmp/$(echo ${github_repo_name} | tr '/' '_')"
     mkdir -p ${repo_dir}
 
     # download the file
@@ -362,7 +363,15 @@ for gh_repo in "${github_install[@]}"; do
     done
 
     rm -rf ${repo_dir}
+}
 
+# Install apps from github releases
+github_install=(
+    'Lord-Kamina/SwiftDefaultApps'
+    'pallotron/yubiswitch'
+)
+for gh in "${github_install[@]}"; do
+    install_from_repo "${gh}"
 done
 
 # configure sync folder iterm2
