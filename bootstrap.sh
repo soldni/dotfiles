@@ -30,14 +30,6 @@ to_ignore=(
 
 current=$(pwd)
 
-# # currently commented out -- run macos_setup.sh separately
-# # if this is osx configure little things as I like them :)
-# if [[ "$OSTYPE" == "darwin"* ]]; then
-#     echo "Configuring macOS to my liking..."
-#     bash "$current/macos_setup.sh"
-# fi
-
-
 to_symlink_to_home="$(ls home-symlink)"
 
 git config pull.rebase false
@@ -127,6 +119,20 @@ for plugin in "${plugins[@]}"; do
 done
 
 cd ${current}
+
+# setup tsv-utils
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    echo "Configuring macOS to my liking..."
+    $ curl -L "https://github.com/eBay/tsv-utils/releases/download/v2.2.0/tsv-utils-v2.2.0_osx-x86_64_ldc2.tar.gz" | tar xz
+elif [[ "$OSTYPE" == "linux"* ]]; then
+    curl -L "https://github.com/eBay/tsv-utils/releases/download/v2.2.0/tsv-utils-v2.2.0_linux-x86_64_ldc2.tar.gz" | tar xz
+fi
+cd tsv-utils*
+mkdir -p "${HOME}/.local/bin"
+cp bin/* "${HOME}/.local/bin/"
+cd ..
+rm -rf tsv-utils*
+
 
 # for the next command, exit on error must be disabled
 set +e
