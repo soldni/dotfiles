@@ -14,7 +14,7 @@
         "font" : "System",
         "color" : "#FFFFFF59"
       },
-      "backgroundSelected" : "#026ADEFF",
+      "backgroundSelected" : "#5D5E5DFF",
       "text" : {
         "size" : 16,
         "colorSelected" : "#FFFFFFFF",
@@ -27,7 +27,7 @@
       "iconSize" : 40
     },
     "search" : {
-      "backgroundSelected" : "#323332FF",
+      "backgroundSelected" : "#5D5E5DFF",
       "paddingHorizontal" : 7,
       "spacing" : 9,
       "text" : {
