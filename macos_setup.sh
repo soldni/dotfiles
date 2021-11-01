@@ -194,6 +194,8 @@ fi
 brew_taps_to_add=(
     'homebrew/cask'
     'jlhonora/lsusb'
+    'homebrew/cask-fonts'
+
 )
 
 for tap in "${brew_taps_to_add[@]}"; do
@@ -277,6 +279,7 @@ brew_cask_to_install=(
     'overkill'              # no itunes buttons
     'monitorcontrol'        # control external monitor setttings
     'mactex'                # latex distribution for mac
+    'font-fira-code'        # font with ligatures
 )
 
 
