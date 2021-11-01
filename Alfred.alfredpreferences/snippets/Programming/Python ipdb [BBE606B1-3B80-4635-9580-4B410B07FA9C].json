@@ -2,7 +2,7 @@
   "alfredsnippet" : {
     "snippet" : "import ipdb; ipdb.set_trace()",
     "uid" : "BBE606B1-3B80-4635-9580-4B410B07FA9C",
-    "name" : "ipdb",
+    "name" : "Python: ipdb",
     "keyword" : ""
   }
 }

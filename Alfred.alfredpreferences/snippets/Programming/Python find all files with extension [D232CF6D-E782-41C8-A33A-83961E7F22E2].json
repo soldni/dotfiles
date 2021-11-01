@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "import os\n\npaths = []\nfor root, dirs, filenames in os.walk(PATH):\n    for fn in filenames:\n        if fn.endswith(EXTENSION):\n            paths.append(os.path.join(root, fn))",
+    "uid" : "D232CF6D-E782-41C8-A33A-83961E7F22E2",
+    "name" : "Python: find all files with extension",
+    "keyword" : ""
+  }
+}
