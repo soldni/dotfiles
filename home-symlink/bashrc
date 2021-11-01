@@ -507,7 +507,15 @@ if [ -f "${SSH_KEY_LOC}" ]; then
 
     if [ ! -z "${SSH_AUTH_SOCK}" ] && [ ! -z "$(ssh-add -L | grep 'has no identities')" ]; then
         if [[ "$OSTYPE" == "darwin"* ]]; then
-            ssh-add -K
+
+            # since macOS 12.x, `-K` is deprecated, so we use the new
+            # command instead. Use `-K` on older version
+            MACOS_VERSION="$(sw_vers | grep 'ProductVersion' | cut -d$'\t' -f 2)"
+            if [[ "$MACOS_VERSION" == "12"* ]]; then
+                ssh-add --apple-use-keychain
+            else
+                ssh-add -K
+            fi
         else
             ssh-add
         fi
