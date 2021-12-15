@@ -27,21 +27,21 @@
       "iconSize" : 40
     },
     "search" : {
-      "backgroundSelected" : "#DFE2E0FF",
+      "backgroundSelected" : "#0469DCFF",
       "paddingHorizontal" : 7,
       "spacing" : 9,
       "text" : {
         "size" : 32,
-        "colorSelected" : "#000000FF",
+        "colorSelected" : "#FFFFFFFF",
         "font" : "System Light",
         "color" : "#000000FF"
       },
-      "background" : "#00000000",
+      "background" : "#FFFFFF00",
       "roundness" : 8,
       "paddingVertical" : 1
     },
     "window" : {
-      "color" : "#FFFFFF7F",
+      "color" : "#FFFFFFC9",
       "paddingHorizontal" : 8,
       "width" : 481,
       "borderPadding" : 0,

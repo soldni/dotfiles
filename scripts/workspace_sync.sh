@@ -43,11 +43,19 @@ function _remote_to_local_workspace_sync() {
 
 function workspaces_sync() {
     function usage() {
-        echo "Usage: ${0} {-w src1,dest1}, ..., {-w srcN,destN}" 1>&2; exit 1;
+        echo "Usage: ${0} {-w sync_profile_1}, ..., {-w sync_profile_n}" 1>&2
+        echo "       where sync_profile_n contains the following options:" 1>&2
+        echo "         - src=___ source path" 1>&2
+        echo "         - dst=___ destination path" 1>&2
+        echo "         - noDel (optional) do not delete remote files" 1>&2
+        echo "         - cmd=___ (optional) sync command" 1>&2
+        echo "       option is a profile must be joined by commas (,):" 1>&2
+        echo "       ${0} -w src=/path/to/src,dst=ip:/path/to/dst,noDel" 1>&2
+        exit 1;
     }
 
-    while getopts ":d:w:" option; do
-        case "${option}" in
+    while getopts ":dw:" FLAG; do
+        case "${FLAG}" in
             w)
                 WORKSPACES+=("${OPTARG}");;
             d)
@@ -57,6 +65,7 @@ function workspaces_sync() {
         esac
     done
     shift $((OPTIND-1))
+
 
     if [ -z "${CONFIG}" ]; then
         CONFIG="${HOME}/.config/workspace_sync"
@@ -83,51 +92,78 @@ function workspaces_sync() {
         exit
     }
 
+    SYNC_COUNTER=0
+
     for WORKSPACE in "${WORKSPACES[@]}"; do
-        IFS=',' read -r LOCAL REMOTE SYNC_CMD <<< "${WORKSPACE}"
+        IFS=',' read -r -a OPTIONS <<< "${WORKSPACE}"
+
+        for OPTION in "${OPTIONS[@]}"; do
+            if [[ "${OPTION}" == "src="* ]]; then
+                IFS='=' read -r _IGNORE SOURCE <<< "${OPTION}"
+            fi
+            if [[ "${OPTION}" == "dst="* ]]; then
+                IFS='=' read -r _IGNORE DESTINATION <<< "${OPTION}"
+            fi
+            if [[ "${OPTION}" == "cmd="* ]]; then
+                IFS='=' read -r _IGNORE SYNC_CMD <<< "${OPTION}"
+            fi
+            if [[ "${OPTION}" == "noDel" ]]; then
+                NO_DELETE_DESTINATION=1
+            fi
+
+        done
 
         if [ -z "${SYNC_CMD}" ]; then
-            SYNC_CMD='rsync --update --recursive --times --perms --copy-links --delete --info=progress2 --exclude=.DS_Store --exclude=.git --rsh=ssh'
+            SYNC_CMD='rsync --update --recursive --times --perms --copy-links --info=progress2 --exclude=.DS_Store --exclude=.git --rsh=ssh'
         fi
 
-        if [ -z "${REMOTE}" ]; then
-            echo 'LOCAL or REMOTE not provided!' 1>&2
+        if [ -z $"{NO_DELETE_DESTINATION}" ]; then
+            SYNC_CMD="${SYNC_CMD} --delete"
+        fi
+
+        if [ -z "${DESTINATION}" ]; then
+            echo 'dst not provided!' 1>&2
             usage
         fi
 
-        if [[ "${LOCAL}" == *":"* ]]; then
+        if [ -z "${SOURCE}" ]; then
+            echo 'src not provided!' 1>&2
+            usage
+        fi
+
+        if [[ "${SOURCE}" == *":"* ]]; then
             REMOTE_TO_LOCAL=1
         fi
 
         if [ -z "${DRYRUN}" ]; then
             if [ -z "${REMOTE_TO_LOCAL}" ]; then
-                SRC_DIR=${LOCAL}
-                DST_DIR=${REMOTE}
-                SYNC_CMD=${SYNC_CMD} _local_to_remote_workspace_sync ${LOCAL} ${REMOTE} &
+                SYNC_CMD=${SYNC_CMD} _local_to_remote_workspace_sync ${SOURCE} ${DESTINATION} &
             else
-                SRC_DIR=${REMOTE}
-                DST_DIR=${LOCAL}
-                SYNC_CMD=${SYNC_CMD} _remote_to_local_workspace_sync ${REMOTE} ${LOCAL} &
+                SYNC_CMD=${SYNC_CMD} _remote_to_local_workspace_sync ${SOURCE} ${DESTINATION} &
             fi
             record_pid $!
         else
-            echo "DRYRUN: "
+            echo "DRYRUN ${SYNC_COUNTER}: "
             echo "  CMD:  ${SYNC_CMD}"
-            echo "  SRC:  ${SRC_DIR}"
-            echo "  DST:  ${DST_DIR}"
+            echo "  SRC:  ${SOURCE}"
+            echo "  DST:  ${DESTINATION}"
             echo
         fi
 
+        let SYNC_COUNTER++
+
     done
 
-    trap terminate_all SIGINT
-    trap terminate_all SIGTERM
+    if [ -z "${DRYRUN}" ]; then
+        trap terminate_all SIGINT
+        trap terminate_all SIGTERM
 
-    echo "Starting... press CTRL-C to terminate sync."
+        echo "Starting... press CTRL-C to terminate sync."
 
-    while true; do
-        sleep 60
-    done
+        while true; do
+            sleep 60
+        done
+    fi
 }
 
 workspaces_sync "${@}"
