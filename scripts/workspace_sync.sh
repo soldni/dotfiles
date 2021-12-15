@@ -14,6 +14,8 @@
 #    machines at the same time. Syncs are triggered every time
 #    you save a file in any local directory.
 
+BASE_SYNC_CMD='rsync --update --recursive --times --perms --copy-links --info=progress2 --exclude=.DS_Store --exclude=.git --rsh=ssh'
+
 function _local_to_remote_workspace_sync() {
     LOCAL_WORKSPACE=${1}
     REMOTE_WORKSPACE=${2}
@@ -114,10 +116,10 @@ function workspaces_sync() {
         done
 
         if [ -z "${SYNC_CMD}" ]; then
-            SYNC_CMD='rsync --update --recursive --times --perms --copy-links --info=progress2 --exclude=.DS_Store --exclude=.git --rsh=ssh'
+          SYNC_CMD="${BASE_SYNC_CMD}"
         fi
 
-        if [ -z $"{NO_DELETE_DESTINATION}" ]; then
+        if [ -z $"{NO_DELETE_DESTINATION}" ] && [[ "${SYNC_CMD}" == "${BASE_SYNC_CMD}" ]]; then
             SYNC_CMD="${SYNC_CMD} --delete"
         fi
 
@@ -135,6 +137,26 @@ function workspaces_sync() {
             REMOTE_TO_LOCAL=1
         fi
 
+        if [[ "${SYNC_CMD}" == "${BASE_SYNC_CMD}" ]]; then
+            if [ -z "${REMOTE_TO_LOCAL}" ]; then
+                DIR_TO_CREATE="$(dirname $(echo ${DESTINATION} | cut -d ':' -f 2))"
+                DEST_HOST="$(echo ${DESTINATION} | cut -d ':' -f 1)"
+                if [ -z "${DRYRUN}" ]; then
+                    ssh ${DEST_HOST} "mkdir -p ${DIR_TO_CREATE}"
+                else
+                    echo "[DRYRUN ${SYNC_COUNTER}] CREATE ${DIR_TO_CREATE} ON ${DEST_HOST}"
+                fi
+            else
+                # create local path if not exists
+                DIR_TO_CREATE="$(diname ${DESTINATION})"
+                if [ -z "${DRYRUN}" ]; then
+                    mkdir -p ${DIR_TO_CREATE}
+                else
+                    echo "[DRYRUN ${SYNC_COUNTER}] CREATE ${DIR_TO_CREATE}"
+                fi
+            fi
+        fi
+
         if [ -z "${DRYRUN}" ]; then
             if [ -z "${REMOTE_TO_LOCAL}" ]; then
                 SYNC_CMD=${SYNC_CMD} _local_to_remote_workspace_sync ${SOURCE} ${DESTINATION} &
@@ -143,11 +165,9 @@ function workspaces_sync() {
             fi
             record_pid $!
         else
-            echo "DRYRUN ${SYNC_COUNTER}: "
-            echo "  CMD:  ${SYNC_CMD}"
-            echo "  SRC:  ${SOURCE}"
-            echo "  DST:  ${DESTINATION}"
-            echo
+            echo "[DRYRUN ${SYNC_COUNTER}] CMD: ${SYNC_CMD}"
+            echo "[DRYRUN ${SYNC_COUNTER}] SRC: ${SOURCE}"
+            echo "[DRYRUN ${SYNC_COUNTER}] DST:  ${DESTINATION}"
         fi
 
         let SYNC_COUNTER++
