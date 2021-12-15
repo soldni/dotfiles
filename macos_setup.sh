@@ -299,7 +299,7 @@ mas_install=(
     '425424353'     # The Unarchiver
     '403304796'     # iNet Network Scanner
     '775737590'     # iA Writer
-    '1107421413'    # 1Blocker
+    '1365531024'    # 1Blocker
     '1482490089'    # TamperMonkey
     '924726344'     # Deliveries
     '1438243180'    # Dark Reader for Safari
