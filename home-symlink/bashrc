@@ -545,3 +545,4 @@ fi
 
 # execute machine specific bash script
 source "$HOME/.postlocalrc"
+export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"

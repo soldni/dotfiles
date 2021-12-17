@@ -4,32 +4,6 @@
 <dict>
 	<key>customSites</key>
 	<dict>
-		<key>0E77A29B-5121-4D7D-BB14-862545BBF78D</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>tt</string>
-			<key>text</key>
-			<string>Trouble Ticket: {query}</string>
-			<key>url</key>
-			<string>http://omni-redirect.corp.amazon.com/redirect/tt/{query}</string>
-			<key>utf8</key>
-			<false/>
-		</dict>
-		<key>285394CE-90EA-4AC4-BADB-407BA23776B1</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>coldplay</string>
-			<key>text</key>
-			<string>Load utterance '{query}' on coldplay</string>
-			<key>url</key>
-			<string>https://coldplay.amazon.com/datamart/content/ANNOTATION/DATA/{query}</string>
-			<key>utf8</key>
-			<true/>
-		</dict>
 		<key>53D72661-80B6-4280-80B4-99AD048F03CF</key>
 		<dict>
 			<key>enabled</key>
@@ -43,112 +17,6 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
-		<key>61E2B8A1-BA52-4220-BB34-FBB81C37181C</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>cb</string>
-			<key>text</key>
-			<string>Code Browser: {query}</string>
-			<key>url</key>
-			<string>http://omni-redirect.corp.amazon.com/redirect/code/{query}</string>
-			<key>utf8</key>
-			<false/>
-		</dict>
-		<key>774760E8-F1D2-47F7-BC8D-464812EA5562</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>is</string>
-			<key>text</key>
-			<string>Internal Search for '{query}'</string>
-			<key>url</key>
-			<string>https://is.amazon.com/search/all?q={query}</string>
-			<key>utf8</key>
-			<true/>
-		</dict>
-		<key>857A31E1-03D9-4843-82C7-0DCEBB6643FB</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>sage</string>
-			<key>text</key>
-			<string>Sage: {query}</string>
-			<key>url</key>
-			<string>http://omni-redirect.corp.amazon.com/redirect/sage/{query}</string>
-			<key>utf8</key>
-			<false/>
-		</dict>
-		<key>88D966E5-1411-429E-A3C3-1CDC8E6E7AF7</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>aw</string>
-			<key>text</key>
-			<string>Search Amazon Wiki for '{query}'</string>
-			<key>url</key>
-			<string>https://w.amazon.com/bin/view/Main/Search?text={query}</string>
-			<key>utf8</key>
-			<true/>
-		</dict>
-		<key>94ACF5F2-A8CE-4B61-820A-E00F6DEEB689</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>ap</string>
-			<key>text</key>
-			<string>Apollo: {query}</string>
-			<key>url</key>
-			<string>http://omni-redirect.corp.amazon.com/redirect/apollo/{query}</string>
-			<key>utf8</key>
-			<false/>
-		</dict>
-		<key>A59DBC93-E5F1-4B0B-8B4F-5AB3F61304C6</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>sim</string>
-			<key>text</key>
-			<string>Simple Issues Manager: {query}</string>
-			<key>url</key>
-			<string>http://omni-redirect.corp.amazon.com/redirect/issues/{query}</string>
-			<key>utf8</key>
-			<false/>
-		</dict>
-		<key>ABF24C29-2B7B-497D-A953-61E015EEC08D</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>pt</string>
-			<key>spaces</key>
-			<string>+</string>
-			<key>text</key>
-			<string>Phone Tool: {query}</string>
-			<key>url</key>
-			<string>https://phonetool.amazon.com/search?query={query}</string>
-			<key>utf8</key>
-			<false/>
-		</dict>
-		<key>AC590258-2E90-4AF6-9F00-4A69EAEAD728</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>pi</string>
-			<key>text</key>
-			<string>Pipelines: {query}</string>
-			<key>url</key>
-			<string>http://omni-redirect.corp.amazon.com/redirect/pipelines/{query}</string>
-			<key>utf8</key>
-			<false/>
-		</dict>
 		<key>B8D6D36F-C827-40ED-B400-72DBC2F719D8</key>
 		<dict>
 			<key>enabled</key>
@@ -161,32 +29,6 @@
 			<string>https://www.semanticscholar.org/search?q={query}</string>
 			<key>utf8</key>
 			<true/>
-		</dict>
-		<key>BEC1AC55-B0A7-4DA6-986D-7A3FCBB41A50</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>vs</string>
-			<key>text</key>
-			<string>Version Set: {query}</string>
-			<key>url</key>
-			<string>http://omni-redirect.corp.amazon.com/redirect/versionset/{query}</string>
-			<key>utf8</key>
-			<false/>
-		</dict>
-		<key>D25E40F7-50B0-428C-A57A-6EC7EC8788BB</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>env</string>
-			<key>text</key>
-			<string>Apollo Environment: {query}</string>
-			<key>url</key>
-			<string>http://omni-redirect.corp.amazon.com/redirect/apolloenv/{some_apollo_env_path}/{query}</string>
-			<key>utf8</key>
-			<false/>
 		</dict>
 		<key>EEFB16BA-CD31-4EA2-87FE-0A8166765D15</key>
 		<dict>
