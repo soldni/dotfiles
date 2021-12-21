@@ -174,6 +174,8 @@ function workspaces_sync() {
 
     done
 
+    sleep 1
+
     if [ -z "${DRYRUN}" ]; then
         trap terminate_all SIGINT
         trap terminate_all SIGTERM
