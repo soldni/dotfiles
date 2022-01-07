@@ -4,8 +4,8 @@
 <dict>
 	<key>fallbacks</key>
 	<array>
-		<string>features.websearch.custom.53D72661-80B6-4280-80B4-99AD048F03CF.fallback</string>
-		<string>features.websearch.duckduckgo.fallback</string>
+		<string>features.websearch.lucky.fallback</string>
+		<string>features.websearch.google.fallback</string>
 		<string>features.websearch.custom.B8D6D36F-C827-40ED-B400-72DBC2F719D8.fallback</string>
 		<string>features.websearch.twittersearch.fallback</string>
 		<string>features.websearch.gtranslate.fallback</string>
