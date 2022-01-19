@@ -174,6 +174,22 @@ killall SystemUIServer
 # Restore boot sound on new macs
 sudo nvram StartupMute=%00
 
+# Gotta install xcode optional tools
+xcode-select --install
+
+# Waiting for xcode tools to be installed; adapted from here:
+#   https://stackoverflow.com/a/35005051
+check=$((xcode-\select --install) 2>&1)
+checkOut="xcode-select: note: install requested for command line developer tools"
+sleep_timeout=30
+while [[ "$check" == "$checkOut" ]];
+do
+  echo "xcode-select not completed, waiting ${sleep_timeout} s before checking again..."
+  sleep ${sleep_timeout}
+  check=$((xcode-\select --install) 2>&1)
+  checkOut="xcode-select: note: install requested for command line developer tools"
+done
+
 # install powerline fonts
 current_dir="$(pwd)"
 cd "${HOME}/Downloads"
@@ -233,6 +249,7 @@ brew_packages_to_install=(
     'zsh-autosuggestions'
     'pigz'
     'lsusb'
+    'diff-pdf'
 )
 
 for package in "${brew_packages_to_install[@]}"; do
@@ -294,7 +311,6 @@ mas_install=(
     '890031187'     # Marked 2
     '494803304'     # WiFi Explorer
     '497799835'     # Xcode
-    '969418666'     # ColorSnapper 2
     '429449079'     # Patterns
     '425424353'     # The Unarchiver
     '403304796'     # iNet Network Scanner
