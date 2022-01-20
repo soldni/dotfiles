@@ -295,7 +295,6 @@ brew_cask_to_install=(
     'EagleFiler'            # data organizers
     'overkill'              # no itunes buttons
     'monitorcontrol'        # control external monitor setttings
-    'mactex'                # latex distribution for mac
     'font-fira-code'        # font with ligatures
 )
 
@@ -310,7 +309,6 @@ done
 mas_install=(
     '890031187'     # Marked 2
     '494803304'     # WiFi Explorer
-    '497799835'     # Xcode
     '429449079'     # Patterns
     '425424353'     # The Unarchiver
     '403304796'     # iNet Network Scanner
