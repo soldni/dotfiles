@@ -253,9 +253,11 @@ brew_packages_to_install=(
 )
 
 for package in "${brew_packages_to_install[@]}"; do
-    has_package=`brew ls --versions $package`
+    has_package=$(brew list ${package} 2>/dev/null)
     if [[ -z $has_package ]]; then
         brew install $package
+    else
+        brew upgrade $package
     fi
 done
 
@@ -288,7 +290,6 @@ brew_cask_to_install=(
     'moom'					# window managment
     'lingon-x'              # manage startup items
     'araxis-merge'          # diff tool
-    'pdf-expert'            # edit pdfs
     'geekbench'             # benchmarking
     'sensiblesidebuttons'   # 3rd party mice
     'vlc'                   # player
@@ -300,9 +301,11 @@ brew_cask_to_install=(
 
 
 for cask in "${brew_cask_to_install[@]}"; do
-    has_cask=$(brew cask list $cask 2>/dev/null)
-    if [[ -z $has_cask ]]; then
-        brew install --cask "${cask}"
+    has_package=$(brew list ${package} 2>/dev/null)
+    if [[ -z $has_package ]]; then
+        brew install --cask $package
+    else
+        brew upgrade $package
     fi
 done
 
