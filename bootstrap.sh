@@ -123,7 +123,7 @@ cd ${current}
 # setup tsv-utils
 if [[ "$OSTYPE" == "darwin"* ]]; then
     echo "Configuring macOS to my liking..."
-    $ curl -L "https://github.com/eBay/tsv-utils/releases/download/v2.2.0/tsv-utils-v2.2.0_osx-x86_64_ldc2.tar.gz" | tar xz
+    curl -L "https://github.com/eBay/tsv-utils/releases/download/v2.2.0/tsv-utils-v2.2.0_osx-x86_64_ldc2.tar.gz" | tar xz
 elif [[ "$OSTYPE" == "linux"* ]]; then
     curl -L "https://github.com/eBay/tsv-utils/releases/download/v2.2.0/tsv-utils-v2.2.0_linux-x86_64_ldc2.tar.gz" | tar xz
 fi
