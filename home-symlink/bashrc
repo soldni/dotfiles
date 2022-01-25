@@ -519,8 +519,10 @@ if [ -f "${SSH_KEY_LOC}" ]; then
             ssh-add
         fi
     fi
-
 fi
+
+#################################
+
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '${HOME}/.local/google-cloud-sdk/path.bash.inc' ]; then
@@ -539,9 +541,8 @@ if [ -d "${HOME}/.nvm" ]; then
    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
-#################################
-
+# log4j vulnerability fix
+export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
 
 # execute machine specific bash script
 source "$HOME/.postlocalrc"
-export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
