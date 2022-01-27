@@ -223,6 +223,22 @@ elif [ -d "${HOME}/miniconda3" ]; then
     source "${HOME}/miniconda3/etc/profile.d/conda.sh"
 fi
 
+if [ -d "${HOME}/miniforge3" ]; then
+    # initialization of miniforge
+    __conda_setup="$('/Users/lucas/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/Users/lucas/miniforge3/etc/profile.d/conda.sh" ]; then
+            . "/Users/lucas/miniforge3/etc/profile.d/conda.sh"
+        else
+            export PATH="/Users/lucas/miniforge3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+fi
+
+
 # add scripts folder to path
 for SCRIPT_DIR in ".local/scripts" ".local/share/scripts"; do
     if [ -d "${HOME}/${SCRIPT_DIR}" ]; then

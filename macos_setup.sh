@@ -311,9 +311,6 @@ for package in "${brew_cask_to_install[@]}"; do
     fi
 done
 
-# gotta refresh to get mas
-exec $SHELL
-
 mas_install=(
     '890031187'     # Marked 2
     '494803304'     # WiFi Explorer
