@@ -253,6 +253,7 @@ brew_packages_to_install=(
     'diff-pdf'
 )
 
+
 for package in "${brew_packages_to_install[@]}"; do
     has_package=$(brew list ${package} 2>/dev/null)
     if [[ -z $has_package ]]; then
@@ -301,7 +302,7 @@ brew_cask_to_install=(
 )
 
 
-for cask in "${brew_cask_to_install[@]}"; do
+for package in "${brew_cask_to_install[@]}"; do
     has_package=$(brew list ${package} 2>/dev/null)
     if [[ -z $has_package ]]; then
         brew install --cask $package
@@ -309,6 +310,9 @@ for cask in "${brew_cask_to_install[@]}"; do
         brew upgrade $package
     fi
 done
+
+# gotta refresh to get mas
+exec $SHELL
 
 mas_install=(
     '890031187'     # Marked 2
