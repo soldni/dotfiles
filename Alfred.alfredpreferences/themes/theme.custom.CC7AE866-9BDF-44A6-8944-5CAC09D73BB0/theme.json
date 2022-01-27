@@ -1,0 +1,64 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 6,
+      "subtext" : {
+        "size" : 11,
+        "colorSelected" : "#FFFFFFA5",
+        "font" : "System",
+        "color" : "#FFFFFF59"
+      },
+      "shortcut" : {
+        "size" : 16,
+        "colorSelected" : "#FFFFFFFF",
+        "font" : "System",
+        "color" : "#FFFFFF59"
+      },
+      "backgroundSelected" : "#C03076FF",
+      "text" : {
+        "size" : 16,
+        "colorSelected" : "#FFFFFFFF",
+        "font" : "System",
+        "color" : "#FFFFFFCB"
+      },
+      "iconPaddingHorizontal" : 4,
+      "roundness" : 10,
+      "paddingVertical" : 3,
+      "iconSize" : 40
+    },
+    "search" : {
+      "backgroundSelected" : "#5D5E5DFF",
+      "paddingHorizontal" : 7,
+      "spacing" : 9,
+      "text" : {
+        "size" : 32,
+        "colorSelected" : "#FFFFFFFF",
+        "font" : "System Light",
+        "color" : "#FFFFFFFF"
+      },
+      "background" : "#00000000",
+      "roundness" : 8,
+      "paddingVertical" : 1
+    },
+    "window" : {
+      "color" : "#00000068",
+      "paddingHorizontal" : 8,
+      "width" : 481,
+      "borderPadding" : 0,
+      "borderColor" : "#0000007F",
+      "blur" : 0,
+      "roundness" : 15,
+      "paddingVertical" : 8
+    },
+    "visualEffectMode" : 2,
+    "separator" : {
+      "color" : "#CBCBCBF3",
+      "thickness" : 0
+    },
+    "scrollbar" : {
+      "color" : "#3F3F3F00",
+      "thickness" : 3
+    },
+    "name" : "Luca Noir Pink"
+  }
+}
