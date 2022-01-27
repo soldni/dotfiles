@@ -115,8 +115,16 @@ fi
 # add path to ruby
 MACOS_RUBY_PATH=/usr/local/opt/ruby/bin
 if [ -d $"{MACOS_RUBY_PATH}" ]; then
-    PATH="${MACOS_RUBY_PATH}:${PATH}"
+    export PATH="${MACOS_RUBY_PATH}:${PATH}"
 fi
+
+
+# adding brew to path
+if [ -d "/opt/homebrew" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    export PATH="/opt/homebrew/sbin:$PATH"
+fi
+
 
 
 # add command to quickly unlock keychain for macOS

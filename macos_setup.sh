@@ -179,14 +179,14 @@ xcode-select --install
 
 # Waiting for xcode tools to be installed; adapted from here:
 #   https://stackoverflow.com/a/35005051
-check=$((xcode-\select --install) 2>&1)
+check="$($(xcode-\select --install) 2>&1)"
 checkOut="xcode-select: note: install requested for command line developer tools"
 sleep_timeout=30
 while [[ "$check" == "$checkOut" ]];
 do
   echo "xcode-select not completed, waiting ${sleep_timeout} s before checking again..."
   sleep ${sleep_timeout}
-  check=$((xcode-\select --install) 2>&1)
+  check="$($(xcode-\select --install) 2>&1)"
   checkOut="xcode-select: note: install requested for command line developer tools"
 done
 
@@ -204,7 +204,8 @@ cd "${current_dir}"
 has_brew=`which brew 2>/dev/null`
 if [[ -z $has_brew ]]
 then
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 brew_taps_to_add=(
