@@ -4,8 +4,6 @@
 <dict>
 	<key>ejectBlacklist</key>
 	<array>
-		<string>Backup HD</string>
-		<string>Backup USB</string>
 		<string>com.apple.TimeMachine.localsnapshots</string>
 		<string>Data Raid SSD</string>
 		<string>Dropbox</string>
