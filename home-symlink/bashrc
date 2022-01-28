@@ -568,5 +568,10 @@ fi
 # log4j vulnerability fix
 export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
 
+# Rust
+if [ -d "${HOME}/.cargo" ]; then
+    source "$HOME/.cargo/env"
+fi
+
 # execute machine specific bash script
 source "$HOME/.postlocalrc"
