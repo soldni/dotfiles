@@ -273,7 +273,6 @@ brew_cask_to_install=(
     'quicklook-csv'         # quicklook plugin for csv
     'ttscoff-mmd-quicklook' # quicklook plugin for multimarkdown
     'qlmarkdown'            # quicklook plugin for markdown
-    'qlstephen'             # quicklook plugin for plain text w/o extension
     'aerial'                # screen saver
     'keepingyouawake'       # prevent sleep
     'skim'                  # PDF viewer for latex
@@ -287,15 +286,13 @@ brew_cask_to_install=(
     'coderunner'            # Lightweight IDE
     '1password'             # Password Manager
     'visual-studio-code'    # text editor
-    'istat-menus'           # menubar info
-    'vanilla'               # hide menu-bar icons
+    'mimestream'            # email client
     'moom'					# window managment
     'lingon-x'              # manage startup items
-    'araxis-merge'          # diff tool
+    'kaleidoscope'          # diff tool
+    'tower'                 # git client
     'geekbench'             # benchmarking
-    'sensiblesidebuttons'   # 3rd party mice
     'vlc'                   # player
-    'EagleFiler'            # data organizers
     'overkill'              # no itunes buttons
     'monitorcontrol'        # control external monitor setttings
     'font-fira-code'        # font with ligatures
