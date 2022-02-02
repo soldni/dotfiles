@@ -188,7 +188,7 @@ fi
 # command to see which processes are using the gpu
 has_slurm=$(which srun 2>/dev/null)
 if [[ ! -z $has_slurm ]]; then
-    function slurm-interative {
+    function slurm-interactive {
         gpus="${1}"
         host="${2}"
         usage='slurm-interative [num gpus] {host}'
