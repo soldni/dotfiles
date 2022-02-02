@@ -185,6 +185,30 @@ if [[ ! -z $has_nvidia ]]; then
     alias nvidia-who='sudo fuser -v /dev/nvidia*'
 fi
 
+# command to see which processes are using the gpu
+has_slurm=$(which srun 2>/dev/null)
+if [[ ! -z $has_slurm ]]; then
+    function slurm-interative {
+        gpus="${1}"
+        host="${2}"
+        usage='slurm-interative [num gpus] {host}'
+
+        if [[ "${gpus}" == "-h" ]]; then
+            printf "USAGE: ${usage}\n" > /dev/stderr
+            return
+        fi
+        if [ -z "${gpus}" ]; then
+            printf "Number of GPUs to use not provided;\nUSAGE: ${usage}\n" > /dev/stderr
+            return
+        fi
+
+        if [ -z "${host}" ]; then
+            host="${HOSTNAME}"
+        fi
+        srun -w "${host}" --gpus="${1}" --pty bash
+    }
+fi
+
 # quick jupyter aliases
 alias jc="jupyter console"
 alias jn="jupyter notebook"
@@ -363,8 +387,9 @@ alias git-init-submodules="git submodule update --init --recursive"
 alias git-pull-submodules="git pull --recurse-submodules"
 alias git-rm-submodule="submodule deinit"
 
-# Use bash-completion, if available; the first one should work on macOS, while the 2nd should be for ubuntu
+# Use bash-completion if available
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 [[ -r "/etc/profile.d/bash_completion.sh" ]] && . "/etc/profile.d/bash_completion.sh"
 
 # if it is a raspberry pi, enable some useful alieases
