@@ -524,7 +524,6 @@ fi
 SSH_ENV_LOC="${HOME}/.ssh/environment"
 SSH_KEY_LOC="${HOME}/.ssh/id_rsa"
 
-
 # Check if we have a private key; if not, we don't care about
 # the ssh agent.
 if [ -f "${SSH_KEY_LOC}" ]; then
@@ -532,18 +531,31 @@ if [ -f "${SSH_KEY_LOC}" ]; then
     if [ -f "${SSH_ENV_LOC}" ]; then
         # An ssh agent is registered in the environment file;
         # let's see if it is still running
-        ENV_AGENT_PID=$(cat ${SSH_ENV_LOC} | grep -oE "SSH_AGENT_PID=[0-9]+" | cut -d "=" -f 2)
+        IFS='=' read -r _ ENV_AGENT_PID <<< "$(cat ${SSH_ENV_LOC} | grep -oE 'SSH_AGENT_PID=[0-9]+' | cut -d ';' -f 1)"
+
+        # this is the lovcation where the socket for the agent is...
+        IFS='=' read -r _ ENV_SOCK <<< "$(cat ${SSH_ENV_LOC} | grep -oE 'SSH_AUTH_SOCK=(/[^/ ]*)+/?' | sed 's/;$//')"
 
         # this will be empty if the agent is not running anymore
         USE_OLD_AGENT=$(ps -ef | grep "${ENV_AGENT_PID}" | grep 'ssh-agent')
+
+        # The old socket has been deleted; so we kill the old agent and start a new one
+        if  [ "${USE_OLD_AGENT}" != "" ] && [ ! -S "${ENV_SOCK}" ]; then
+            echo "Socket disconnected for SSH agent ${ENV_AGENT_PID}; killing..."
+            USE_OLD_AGENT=""
+        fi
     fi
 
-    if [ -z "${USE_OLD_AGENT}" ]; then
+    if [ "${USE_OLD_AGENT}" == "" ]; then
+        echo "Starting new SSH agent..."
+
         # we need to start a new agent!
         ssh-agent -s > "${SSH_ENV_LOC}"
 
         # gotta protect the agent
         chmod 700 ${SSH_ENV_LOC}
+    else
+        echo "Reconnecting to SSH agent PID ${ENV_AGENT_PID}..."
     fi
 
     # ssh agent running will be empty if everything
@@ -554,17 +566,22 @@ if [ -f "${SSH_KEY_LOC}" ]; then
 
             # since macOS 12.x, `-K` is deprecated, so we use the new
             # command instead. Use `-K` on older version
-            MACOS_VERSION="$(sw_vers | grep 'ProductVersion' | cut -d$'\t' -f 2)"
-            if [[ "$MACOS_VERSION" == "12"* ]]; then
+            MACOS_MAJOR_VERSION="$(sw_vers | grep 'ProductVersion' | cut -d$'\t' -f 2 | cut -d '.' -f 1)"
+            USING_MACOS_SSH="$(if [[ "$(which ssh-add)" == '/usr/bin/ssh-add' ]]; then echo 1; else echo 0; fi)"
+            if [ $MACOS_MAJOR_VERSION -gt 12 ]; then
                 ssh-add --apple-use-keychain
-            else
+            elif [ $USING_MACOS_SSH -eq 1 ]; then
+                # this only works when using macos's built in ssh client
                 ssh-add -K
+            else
+                ssh-add
             fi
         else
             ssh-add
         fi
     fi
 fi
+
 
 #################################
 
@@ -592,6 +609,11 @@ export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
 # Rust
 if [ -d "${HOME}/.cargo" ]; then
     source "$HOME/.cargo/env"
+fi
+
+# AI2ools
+if [ -d "/opt/ai2ools" ]; then
+    export PATH="${PATH}:/opt/ai2ools/bin"
 fi
 
 # execute machine specific bash script
