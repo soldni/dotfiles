@@ -119,7 +119,7 @@ function workspaces_sync() {
           SYNC_CMD="${BASE_SYNC_CMD}"
         fi
 
-        if [ -z $"{NO_DELETE_DESTINATION}" ] && [[ "${SYNC_CMD}" == "${BASE_SYNC_CMD}" ]]; then
+        if [ -z "${NO_DELETE_DESTINATION}" ] && [[ "${SYNC_CMD}" == "${BASE_SYNC_CMD}" ]]; then
             SYNC_CMD="${SYNC_CMD} --delete"
         fi
 
