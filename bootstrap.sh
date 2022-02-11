@@ -79,7 +79,7 @@ fi
 if [ ! -f "${HOME}/.vim/autoload/pathogen.vim" ]; then
     echo "Installing Pathogen for vim..."
     mkdir -p ${HOME}/.vim/autoload ${HOME}/.vim/bundle && \
-        curl -LSso ${HOME}/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+        curl -LSkso ${HOME}/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 fi
 
 plugins=(
