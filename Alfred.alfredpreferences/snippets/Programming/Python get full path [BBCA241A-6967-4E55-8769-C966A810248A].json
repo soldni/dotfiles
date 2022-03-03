@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "import os\n\ndef get_full_absolute_path(path):\n    if '~' in path:\n        path = os.path.expanduser(path)\n    path = os.path.realpath(os.path.abspath(path))\n    return path",
+    "uid" : "BBCA241A-6967-4E55-8769-C966A810248A",
+    "name" : "Python: get full path",
+    "keyword" : ""
+  }
+}
