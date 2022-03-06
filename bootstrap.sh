@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# get script directory
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  SCRIPT_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  # if $SOURCE was a relative symlink, we need to resolve it
+  # relative to the path where the symlink file was located
+  [[ $SOURCE != /* ]] && SOURCE="$SCRIPT_DIR/$SOURCE"
+done
+SCRIPT_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
 set -e
 
 echo "Setting up environment..."
@@ -21,31 +32,7 @@ array_contains () {
     return $in
 }
 
-to_ignore=(
-    'scripts' 'vim' '.zlogin' 'win-bootstrap.sh' 'Alfred.alfredpreferences'
-    'bootstrap.sh' '..' '.' 'ssh.rc' 'other' 'install.sh' '.git'
-    '.gitignore' 'README.md' 'setup.sh' 'fix_newline_windows.py'
-    '.minttyrc' 'cygwin.bkp' 'rc.local' 'macos_setup.sh'
-)
-
-current=$(pwd)
-
-to_symlink_to_home="$(ls home-symlink)"
-
-git config pull.rebase false
-
-for f in $to_symlink_to_home
-do
-    valid=$(array_contains to_ignore "${f}" && echo 0 || echo 1)
-    if [[ "$valid" -gt 0 &&  $f != '*.bkp' && $f != '*.swp' ]]
-    then
-        echo "symlinking \"$f\"..."
-        rm -rf "$HOME/.$f" 2> /dev/null
-        chmod 755 "${current}/home-symlink/${f}"
-        ln -s "${current}/home-symlink/${f}" "${HOME}/.${f}"
-    fi
-done
-
+bash ${SCRIPT_DIR}/home-symlink.sh
 
 # create pre- and post-localrc
 if [ ! -f "${HOME}/.prelocalrc" ]; then
@@ -59,14 +46,11 @@ if [ ! -d "${HOME}/.ssh" ]; then
     mkdir "$HOME/.ssh"
 fi
 
-rm -rf "$HOME/.ssh/rc" 2> /dev/null
-ln -s "$current/ssh.rc" "$HOME/.ssh/rc"
-
 # create a local folder
 echo "making \".local/scripts\" folder..."
 mkdir -p "${HOME}/.local"
 rm -rf "${HOME}/.local/scripts" 2> /dev/null
-ln -s "${current}/scripts" "${HOME}/.local/scripts"
+ln -s "${SCRIPT_DIR}/scripts" "${HOME}/.local/scripts"
 
 # vim setup
 if [ ! -d "$HOME/.vim" ]; then
@@ -118,7 +102,6 @@ for plugin in "${plugins[@]}"; do
     set -e
 done
 
-cd ${current}
 
 # setup tsv-utils
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -143,4 +126,4 @@ if [ -z "${has_bc}" ]; then
     echo "WARNING: your system doesn't appear to have bc installed!"
 fi
 
-echo "${BASH_SOURCE[0]}: done!"
+echo "${SOURCE}: done!"

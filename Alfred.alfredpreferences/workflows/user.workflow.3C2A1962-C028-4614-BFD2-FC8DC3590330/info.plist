@@ -34,6 +34,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>472862AD-9E63-47C5-A3D4-C460511B777E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C65D5DCB-4E6B-4067-90E7-945609E5B45B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>81F29126-A757-49B7-9B65-B93E136BCD2B</key>
 		<array>
 			<dict>
@@ -73,6 +86,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>B6CEDD88-91E0-44ED-8D04-0700FAD425C2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C65D5DCB-4E6B-4067-90E7-945609E5B45B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>EAC71AD7-6378-4DD7-BAB0-6DFAA47D7A36</key>
 		<array>
 			<dict>
@@ -97,21 +123,6 @@
 	<string>Automate Mac</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>command</key>
-				<integer>1</integer>
-				<key>confirm</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.systemcommand</string>
-			<key>uid</key>
-			<string>3F9C47AF-FF7F-4A0D-BBC3-6F42EC85F4AB</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -140,6 +151,21 @@
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>294A52DC-6FB9-4549-8665-D58FDE0223F3</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>command</key>
+				<integer>1</integer>
+				<key>confirm</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.systemcommand</string>
+			<key>uid</key>
+			<string>3F9C47AF-FF7F-4A0D-BBC3-6F42EC85F4AB</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -242,15 +268,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>command</key>
-				<integer>6</integer>
-				<key>confirm</key>
+				<key>concurrently</key>
 				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>sleep 1
+/usr/local/bin/screenresolution set 1024x600x32@60
+sleep 1</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.systemcommand</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>30C63C69-4E44-4C2D-934E-8C7293DA1FA1</string>
+			<string>9541024D-1027-4A3F-9AF7-F7B9611C749D</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -288,25 +324,84 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
+				<key>command</key>
+				<integer>6</integer>
+				<key>confirm</key>
 				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>sleep 1
-/usr/local/bin/screenresolution set 1024x600x32@60
-sleep 1</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.systemcommand</string>
+			<key>uid</key>
+			<string>30C63C69-4E44-4C2D-934E-8C7293DA1FA1</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+tell application "System Events"	tell appearance preferences		set dark mode to not dark mode	end tellend tell
+end alfred_script</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>C65D5DCB-4E6B-4067-90E7-945609E5B45B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>toggletheme</string>
+				<key>subtext</key>
+				<string>Switch between light and dark modes</string>
+				<key>text</key>
+				<string>Toggle Light/Dark Mode</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>B6CEDD88-91E0-44ED-8D04-0700FAD425C2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
 				<string></string>
-				<key>type</key>
+				<key>hotkey</key>
+				<integer>99</integer>
+				<key>hotmod</key>
+				<integer>8388608</integer>
+				<key>hotstring</key>
+				<string>F3</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
 				<integer>0</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
-			<string>9541024D-1027-4A3F-9AF7-F7B9611C749D</string>
+			<string>472862AD-9E63-47C5-A3D4-C460511B777E</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -343,6 +438,13 @@ sleep 1</string>
 			<key>ypos</key>
 			<integer>50</integer>
 		</dict>
+		<key>472862AD-9E63-47C5-A3D4-C460511B777E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>55</integer>
+			<key>ypos</key>
+			<integer>750</integer>
+		</dict>
 		<key>81F29126-A757-49B7-9B65-B93E136BCD2B</key>
 		<dict>
 			<key>xpos</key>
@@ -370,6 +472,20 @@ sleep 1</string>
 			<integer>505</integer>
 			<key>ypos</key>
 			<integer>315</integer>
+		</dict>
+		<key>B6CEDD88-91E0-44ED-8D04-0700FAD425C2</key>
+		<dict>
+			<key>xpos</key>
+			<integer>50</integer>
+			<key>ypos</key>
+			<integer>625</integer>
+		</dict>
+		<key>C65D5DCB-4E6B-4067-90E7-945609E5B45B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>280</integer>
+			<key>ypos</key>
+			<integer>625</integer>
 		</dict>
 		<key>EAC71AD7-6378-4DD7-BAB0-6DFAA47D7A36</key>
 		<dict>

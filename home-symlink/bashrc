@@ -480,7 +480,7 @@ if [ -d "${HOME}/Library/Python" ]; then
     done
 fi
 
-hostcolor="38;2;$(context-color-rgb -r)"
+hostcolor="38;2;$(rgb_color_generator.py -r)"
 greycolor="38;5;247"
 whitecolor="38;5;255"
 
