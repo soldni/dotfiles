@@ -1,4 +1,4 @@
-#! /usr/bin/env	python
+#! /usr/bin/env	python3
 
 """
 Generate RGB colors that are pleasant to look at on light
