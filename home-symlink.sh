@@ -21,6 +21,10 @@ for f in $(find ${to_symlink_dir}/* -name '*' -not -name ".DS_Store"); do
       dst="${HOME}/.${relative}"
 
       if [ "${relative_dir}" != '.' ]; then
+        dest_rel_dir="${HOME}/.${relative_dir}"
+        if [ ! -d "${dest_rel_dir}" ]; then
+            rm -rf $dest_rel_dir
+        fi
         mkdir -p "${HOME}/.${relative_dir}"
       fi
       printf "Symlinking '${relative}':\n  src: ${src}\n  dst: ${dst}\n\n"
