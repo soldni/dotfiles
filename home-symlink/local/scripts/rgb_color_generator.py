@@ -77,6 +77,9 @@ class RgbChannel(Generic[CH]):
             ch.is_float = False
         return ch
 
+    def as_hex(self: CH) -> str:
+        return hex(self.as_int().value).lstrip('0x').zfill(2)
+
 class RgbColor(Generic[CL]):
     def __init__(self: CL, *args: Sequence[RgbChannel]):
         [setattr(self, ch.value, None) for ch in CH_NAMES]
@@ -97,6 +100,9 @@ class RgbColor(Generic[CL]):
 
     def as_float(self: CL) -> CL:
         return self.__class__(*(ch.as_float() for ch in self))
+
+    def as_hex(self: CL) -> str:
+        return '#' + ''.join(ch.as_hex() for ch in self)
 
 
 def generate_random_neutral_brightness(lightness: float):
@@ -226,11 +232,11 @@ def main():
               color_escape.reset())
 
     elif opts.rgb_output:
-        print(';'.join(map(str, random_color.as_int())))
+        random_color = random_color.as_int()
+        print(f'{random_color.r};{random_color.g};{random_color.b}')
 
     elif opts.hex_output:
-        print('#' + ''.join(hex(ch.value).lstrip("0x")
-                            for ch in random_color.as_int()), end='')
+        print(random_color.as_hex(), end='')
 
 if __name__ == '__main__':
     main()
