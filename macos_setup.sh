@@ -393,8 +393,11 @@ for gh in "${github_install[@]}"; do
     install_from_repo "${gh}"
 done
 
-# configure sync folder iterm2
+# configure sync folder iterm2 & symlink scripts
 defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "${HOME}/dotfiles/iterm2"
+rm -rf "${HOME}/Library/Application Support/iTerm2/Scripts"
+ln -s ${script_dir}/iterm2-scripts "${HOME}/Library/Application Support/iTerm2/Scripts"
+
 
 bash ${script_dir}/macos_import_prefs.sh
 
