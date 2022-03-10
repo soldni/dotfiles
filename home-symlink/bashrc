@@ -168,17 +168,6 @@ if [[ -d "$PYENV_ROOT" ]]; then
     eval "$(pyenv init -)"
 fi
 
-# remove annoying bell
-set bell-style none
-
-# everyone loves fuck!
-alias fu='eval $(thefuck $(fc -ln -1))'
-
-# alias for sublime
-if [[ -f "/usr/local/bin/nova" ]]; then
-    alias edit='/usr/local/bin/nova'
-fi
-
 # command to see which processes are using the gpu
 has_nvidia=$(which nvidia-smi 2>/dev/null)
 if [[ ! -z $has_nvidia ]]; then
