@@ -5,7 +5,7 @@ if [ -z "${BEAKER_WORKSPACE}" ]; then
 fi
 
 if [ -z "${BEAKER_IMAGE}" ]; then
-    BEAKER_IMAGE="beaker://lucas/pytorch_p39"
+    BEAKER_IMAGE="beaker://lucas/pytorch_p310"
 fi
 
 if [ -z "${BEAKER_GPU_COUNT}" ]; then

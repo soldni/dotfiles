@@ -69,6 +69,7 @@ fi
 plugins=(
     'https://github.com/vim-airline/vim-airline'
     'https://github.com/vim-airline/vim-airline-themes'
+    'https://github.com/rakr/vim-one'
     'https://github.com/soldni/dracula-vim'
     'https://github.com/scrooloose/nerdtree'
     'https://github.com/mkitt/tabline.vim'

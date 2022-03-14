@@ -227,6 +227,7 @@ brew_packages_to_install=(
     'bash-completion'
     'tmux'
     'macvim'
+    'homebrew/cask/macvim'
     'mosh'
     'gnu-sed'
     'rsync'

@@ -6,9 +6,9 @@ execute pathogen#infect()
 
 " syntax and color scheme
 syntax enable
-colorscheme dracula
+" colorscheme dracula
 let base16colorspace=256  " Access colors present in 256 colorspace
-set background=dark
+" set background=dark
 
 " store swap files in a centralized location instead
 " that all over the files system
@@ -218,9 +218,20 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
+" setting up theme
+if system("defaults read -g AppleInterfaceStyle 2>/dev/null") =~ '^Dark'
+    set background=dark
+    colorscheme dracula
+    let g:airline_theme='dracula'
+else
+    colorscheme one
+    set background=light
+    let g:airline_theme='one'
+endif
+
 " use ASCII fonts, because powerline is a mess sometimes.
 if has('gui_running')
-    set guifont=Meslo\ LG\ S\ for\ Powerline:h14
+    set guifont=Fira\ MOono\ for\ Powerline:h15
     let g:airline_powerline_fonts = 1
 else
     let g:airline_symbols_ascii = 1
