@@ -1,6 +1,6 @@
 {
   "alfredsnippet" : {
-    "snippet" : "import errno\nimport os\n\n\ndef mkdir_p(path):\n    try:\n        os.makedirs(path)\n    except OSError as exc:  # Python >2.5\n        if exc.errno == errno.EEXIST and os.path.isdir(path):\n            pass\n        else:\n            raise",
+    "snippet" : "import errno\nimport os\n\n\ndef mkdir_p(path):\n    try:\n        os.makedirs(path)\n    except OSError as exc:  # Python >2.5\n        if exc.errno == errno.EEXIST and os.path.isdir(path):\n            pass\n        else:\n            raise\n    return path",
     "uid" : "3629785D-36BB-4393-9658-741400971B9B",
     "name" : "Python: mkdir -p equivalent",
     "keyword" : ""
