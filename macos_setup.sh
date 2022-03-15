@@ -212,7 +212,7 @@ brew_taps_to_add=(
     'homebrew/cask'
     'jlhonora/lsusb'
     'homebrew/cask-fonts'
-
+    'mczachurski/wallpapper'
 )
 
 for tap in "${brew_taps_to_add[@]}"; do
@@ -250,6 +250,7 @@ brew_packages_to_install=(
     'wget'
     'zsh-autosuggestions'
     'pigz'
+    'wallpaper'
     'lsusb'
     'diff-pdf'
 )
