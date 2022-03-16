@@ -123,35 +123,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>fixedorder</key>
-				<false/>
-				<key>items</key>
-				<string>[{"imagefile":"e0cd2b83ef9f3097762b9d9ec4ca76507b4320cd.png","title":"Safari","arg":"safari"},{"imagefile":"4d82b9405951f3b7f56f9ca12103eb0acaac7cc5.png","title":"Google Chrome","arg":"chrome"},{"imagefile":"fc8d3f3b73c2a81841472d490648b50b7b2c1a62.png","title":"Firefox","arg":"firefox"}]</string>
-				<key>keyword</key>
-				<string>geturl</string>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Choose Between Supported Browsers</string>
-				<key>title</key>
-				<string>Get URL From Browser</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
-			<key>uid</key>
-			<string>BE718F3F-452F-4B1A-BAA6-9E0F1DA21535</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>autopaste</key>
 				<false/>
 				<key>clipboardtext</key>
@@ -194,6 +165,35 @@ end run</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"imagefile":"e0cd2b83ef9f3097762b9d9ec4ca76507b4320cd.png","title":"Safari","arg":"safari"},{"imagefile":"4d82b9405951f3b7f56f9ca12103eb0acaac7cc5.png","title":"Google Chrome","arg":"chrome"},{"imagefile":"fc8d3f3b73c2a81841472d490648b50b7b2c1a62.png","title":"Firefox","arg":"firefox"}]</string>
+				<key>keyword</key>
+				<string>geturl</string>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Choose Between Supported Browsers</string>
+				<key>title</key>
+				<string>Get URL From Browser</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>BE718F3F-452F-4B1A-BAA6-9E0F1DA21535</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>Search on labcollab.net</string>
@@ -235,6 +235,10 @@ end run</string>
 			<integer>155</integer>
 		</dict>
 	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string></string>
 	<key>webaddress</key>
 	<string>https://gist.github.com/prashanthrajagopal/08ab39d62725c8a8716b</string>
 </dict>
