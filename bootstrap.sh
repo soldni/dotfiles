@@ -32,8 +32,6 @@ array_contains () {
     return $in
 }
 
-bash ${SCRIPT_DIR}/home-symlink.sh
-
 # create pre- and post-localrc
 if [ ! -f "${HOME}/.prelocalrc" ]; then
     touch "${HOME}/.prelocalrc"
@@ -46,11 +44,7 @@ if [ ! -d "${HOME}/.ssh" ]; then
     mkdir "$HOME/.ssh"
 fi
 
-# create a local folder
-echo "making \".local/scripts\" folder..."
-mkdir -p "${HOME}/.local"
-rm -rf "${HOME}/.local/scripts" 2> /dev/null
-ln -s "${SCRIPT_DIR}/scripts" "${HOME}/.local/scripts"
+bash ${SCRIPT_DIR}/home-symlink.sh
 
 # vim setup
 if [ ! -d "$HOME/.vim" ]; then

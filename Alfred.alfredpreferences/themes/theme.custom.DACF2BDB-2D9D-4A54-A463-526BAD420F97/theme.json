@@ -14,7 +14,7 @@
         "font" : "System",
         "color" : "#00000059"
       },
-      "backgroundSelected" : "#0168DDFF",
+      "backgroundSelected" : "#C03075FF",
       "text" : {
         "size" : 16,
         "colorSelected" : "#EAE6ECFF",
@@ -27,7 +27,7 @@
       "iconSize" : 40
     },
     "search" : {
-      "backgroundSelected" : "#B2D7FEFF",
+      "backgroundSelected" : "#FDCAE2FF",
       "paddingHorizontal" : 7,
       "spacing" : 9,
       "text" : {
@@ -60,6 +60,6 @@
       "color" : "#3F3F3F00",
       "thickness" : 3
     },
-    "name" : "Luca Light"
+    "name" : "Luca Light Pink"
   }
 }
