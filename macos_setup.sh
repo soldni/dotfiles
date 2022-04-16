@@ -268,14 +268,8 @@ done
 
 brew_cask_to_install=(
     'iterm2'                # terminal
-    'qlvideo'               # quicklook plugin for better viewo preview
-    'suspicious-package'    # quicklook plugin to review the contents of a pkg
-    'qlimagesize'           # quicklook plugin for showing img size
     'quicklook-json'        # quicklook plugin for json
     'quicklook-csv'         # quicklook plugin for csv
-    'ttscoff-mmd-quicklook' # quicklook plugin for multimarkdown
-    'qlmarkdown'            # quicklook plugin for markdown
-    'aerial'                # screen saver
     'keepingyouawake'       # prevent sleep
     'skim'                  # PDF viewer for latex
     'coconutbattery'        # check battery status
@@ -298,6 +292,7 @@ brew_cask_to_install=(
     'overkill'              # no itunes buttons
     'monitorcontrol'        # control external monitor setttings
     'font-fira-code'        # font with ligatures
+    'screens'               # VNC client
 )
 
 

@@ -360,14 +360,22 @@ stty -ixon
 alias copy='rsync -rva --info=progress2'
 
 # set java home if JDK is installed
-has_java=`which javac 2>/dev/null`
+has_java=$(which javac 2>/dev/null)
 
 if [[ ! -z $has_java ]]; then
     if [[ "$OSTYPE" == "darwin"* ]]; then
-        export JAVA_HOME=$(/usr/libexec/java_home)
+        # macos has symlinks for javac, but that
+        # does not mean java is installed. Checking again
+        has_java=$(javac 2> /dev/null)
+        if [[ ! -z $has_java ]]; then
+            export JAVA_HOME=$(/usr/libexec/java_home)
+        fi
     else
         export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
     fi
+
+    # log4j vulnerability fix
+    export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
 fi
 
 # shortcuts for git submodules
@@ -591,9 +599,6 @@ if [ -d "${HOME}/.nvm" ]; then
    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
-
-# log4j vulnerability fix
-export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
 
 # Rust
 if [ -d "${HOME}/.cargo" ]; then
