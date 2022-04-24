@@ -229,6 +229,7 @@ brew_packages_to_install=(
     'macvim'
     'homebrew/cask/macvim'
     'mosh'
+    'blueutil'
     'gnu-sed'
     'rsync'
     'thefuck'

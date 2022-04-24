@@ -21,6 +21,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>27E22B9F-B384-46EA-A842-7D2528B6298C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>406C8C5C-A66C-4E02-A0A7-A3EFD87C230A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>294A52DC-6FB9-4549-8665-D58FDE0223F3</key>
 		<array>
 			<dict>
@@ -39,6 +52,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>C65D5DCB-4E6B-4067-90E7-945609E5B45B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>5951FB5C-C50E-4488-B7ED-3485C88F84E8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E3D797CE-D09B-4B89-9A36-04576B54FDC3</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -91,6 +117,32 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>C65D5DCB-4E6B-4067-90E7-945609E5B45B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>D83D7CFB-D541-4389-8F5D-688E1222497A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>27E22B9F-B384-46EA-A842-7D2528B6298C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E3D797CE-D09B-4B89-9A36-04576B54FDC3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>406C8C5C-A66C-4E02-A0A7-A3EFD87C230A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -405,6 +457,142 @@ end alfred_script</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>wifi</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Toggle Wi-Fi</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>D83D7CFB-D541-4389-8F5D-688E1222497A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>is_on=$(networksetup -getairportpower en0 | grep "On")
+if [ -z "${is_on}" ]; then 
+	query="on"
+else
+	query="off"
+fi
+
+networksetup -setairportpower en0 ${query}
+
+echo "Wi-Fi is now ${query}"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>27E22B9F-B384-46EA-A842-7D2528B6298C</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string></string>
+				<key>title</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>406C8C5C-A66C-4E02-A0A7-A3EFD87C230A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>bluetooth</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Toggle Bluetooth</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>5951FB5C-C50E-4488-B7ED-3485C88F84E8</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>blt="/opt/homebrew/bin/blueutil"
+
+if [ ! -f ${blt} ]; then
+	echo "Please Install "blueutil" with brew"
+	exit 1
+fi
+
+is_on=$(/opt/homebrew/bin/blueutil | grep "Power: 1")
+if [ -z "${is_on}" ]; then 
+	query=1
+	msg="on"
+else
+	query=0
+	msg="off"
+fi
+
+/opt/homebrew/bin/blueutil -p ${query}
+
+echo "Bluetooth is now ${msg}"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>E3D797CE-D09B-4B89-9A36-04576B54FDC3</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>Search on labcollab.net</string>
@@ -416,6 +604,13 @@ end alfred_script</string>
 			<integer>275</integer>
 			<key>ypos</key>
 			<integer>315</integer>
+		</dict>
+		<key>27E22B9F-B384-46EA-A842-7D2528B6298C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>335</integer>
+			<key>ypos</key>
+			<integer>875</integer>
 		</dict>
 		<key>294A52DC-6FB9-4549-8665-D58FDE0223F3</key>
 		<dict>
@@ -438,12 +633,26 @@ end alfred_script</string>
 			<key>ypos</key>
 			<integer>50</integer>
 		</dict>
+		<key>406C8C5C-A66C-4E02-A0A7-A3EFD87C230A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>605</integer>
+			<key>ypos</key>
+			<integer>950</integer>
+		</dict>
 		<key>472862AD-9E63-47C5-A3D4-C460511B777E</key>
 		<dict>
 			<key>xpos</key>
 			<integer>55</integer>
 			<key>ypos</key>
 			<integer>750</integer>
+		</dict>
+		<key>5951FB5C-C50E-4488-B7ED-3485C88F84E8</key>
+		<dict>
+			<key>xpos</key>
+			<integer>60</integer>
+			<key>ypos</key>
+			<integer>1010</integer>
 		</dict>
 		<key>81F29126-A757-49B7-9B65-B93E136BCD2B</key>
 		<dict>
@@ -486,6 +695,20 @@ end alfred_script</string>
 			<integer>280</integer>
 			<key>ypos</key>
 			<integer>625</integer>
+		</dict>
+		<key>D83D7CFB-D541-4389-8F5D-688E1222497A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>55</integer>
+			<key>ypos</key>
+			<integer>875</integer>
+		</dict>
+		<key>E3D797CE-D09B-4B89-9A36-04576B54FDC3</key>
+		<dict>
+			<key>xpos</key>
+			<integer>340</integer>
+			<key>ypos</key>
+			<integer>1010</integer>
 		</dict>
 		<key>EAC71AD7-6378-4DD7-BAB0-6DFAA47D7A36</key>
 		<dict>
