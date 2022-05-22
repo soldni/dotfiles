@@ -76,15 +76,18 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias dock-spacer="defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"spacer-tile\";}'; killall Dock"
 
     # override all gnubin when available
-    OPTBASE=/opt/homebrew/opt
-    for fn in $(ls --color=no $OPTBASE); do
-        gnubin="${OPTBASE}/${fn}/libexec/gnubin"
-        gnuman="${OPTBASE}/${fn}/libexec/gnuman"
-        if [ -d "${gnubin}" ]; then
-            export PATH="${gnubin}:$PATH"
-            export MANPATH="${gnumain}:$MANPATH"
-        fi
-    done
+    OPTBASE="/opt/homebrew/opt"
+
+    if [ -d "${OPTBASE}" ]; then
+        for fn in $(ls --color=no $OPTBASE); do
+            gnubin="${OPTBASE}/${fn}/libexec/gnubin"
+            gnuman="${OPTBASE}/${fn}/libexec/gnuman"
+            if [ -d "${gnubin}" ]; then
+                export PATH="${gnubin}:$PATH"
+                export MANPATH="${gnumain}:$MANPATH"
+            fi
+        done
+    fi
 fi
 if [[ "$OSTYPE" == "linux"* ]]; then
     alias hdtemp="hddtemp /dev/sd[abcdefghi]"
