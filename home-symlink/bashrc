@@ -5,6 +5,7 @@ if [ -z "$PS1" ]; then
    return
 fi
 
+
 # this fixes errors you might get from using sudo before aliases
 alias sudo="sudo "
 
@@ -76,15 +77,18 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias dock-spacer="defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"spacer-tile\";}'; killall Dock"
 
     # override all gnubin when available
-    OPTBASE=/opt/homebrew/opt
-    for fn in $(ls --color=no $OPTBASE); do
-        gnubin="${OPTBASE}/${fn}/libexec/gnubin"
-        gnuman="${OPTBASE}/${fn}/libexec/gnuman"
-        if [ -d "${gnubin}" ]; then
-            export PATH="${gnubin}:$PATH"
-            export MANPATH="${gnumain}:$MANPATH"
-        fi
-    done
+    OPTBASE="/opt/homebrew/opt"
+
+    if [ -d "${OPTBASE}" ]; then
+        for fn in $(ls --color=no $OPTBASE); do
+            gnubin="${OPTBASE}/${fn}/libexec/gnubin"
+            gnuman="${OPTBASE}/${fn}/libexec/gnuman"
+            if [ -d "${gnubin}" ]; then
+                export PATH="${gnubin}:$PATH"
+                export MANPATH="${gnumain}:$MANPATH"
+            fi
+        done
+    fi
 fi
 if [[ "$OSTYPE" == "linux"* ]]; then
     alias hdtemp="hddtemp /dev/sd[abcdefghi]"
@@ -629,7 +633,7 @@ if [ -d "${HOME}/.nvm" ]; then
 fi
 
 # Rust
-if [ -d "${HOME}/.cargo" ]; then
+if [ -f "${HOME}/.cargo/env" ]; then
     source "$HOME/.cargo/env"
 fi
 
@@ -640,4 +644,4 @@ fi
 
 # execute machine specific bash script
 source "$HOME/.postlocalrc"
-. "$HOME/.cargo/env"
+

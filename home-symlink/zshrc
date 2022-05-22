@@ -1,3 +1,2 @@
-# The bashrc file is now compatible with zsh as well! 
+# The bashrc file is now compatible with zsh as well!
 [[ -s "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
-export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
