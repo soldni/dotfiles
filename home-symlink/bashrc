@@ -179,6 +179,30 @@ if [[ ! -z $has_nvidia ]]; then
 fi
 
 # command to see which processes are using the gpu
+has_aws_cli=$(which aws 2>/dev/null)
+if [[ ! -z $has_aws_cli ]]; then
+    function ec2-list {
+        aws ec2 describe-instances --output json | jq -r '.Reservations[].Instances[] | [.InstanceId,.PublicDnsName,.State.Name,(.Tags[] | select(.Key == "Name") | .Value)] | @csv'
+    }
+    function ec2-stop {
+        aws ec2 stop-istances --instance-ids
+    }
+    function ec2-boot {
+        aws ec2 start-istances --instance-ids
+    }
+    function ec2-desc {
+        aws ec2 describe-instances --instance-ids ${1} | jq '.Reservations[0]' -M
+    }
+fi
+
+
+# command to quickly build and run a container
+has_docker=$(which docker 2>/dev/null)
+if [[ ! -z $has_docker ]]; then
+    alias docker-build-and-run='docker run --rm -it $(docker build -q .)'
+fi
+
+# command to see which processes are using the gpu
 has_slurm=$(which srun 2>/dev/null)
 if [[ ! -z $has_slurm ]]; then
     function slurm-interactive {
