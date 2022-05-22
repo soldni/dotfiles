@@ -5,6 +5,7 @@ if [ -z "$PS1" ]; then
    return
 fi
 
+
 # this fixes errors you might get from using sudo before aliases
 alias sudo="sudo "
 
@@ -608,7 +609,7 @@ if [ -d "${HOME}/.nvm" ]; then
 fi
 
 # Rust
-if [ -d "${HOME}/.cargo" ]; then
+if [ -f "${HOME}/.cargo/env" ]; then
     source "$HOME/.cargo/env"
 fi
 
@@ -619,3 +620,4 @@ fi
 
 # execute machine specific bash script
 source "$HOME/.postlocalrc"
+
