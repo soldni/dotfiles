@@ -189,10 +189,10 @@ if [[ ! -z $has_aws_cli ]]; then
         aws ec2 describe-instances --output json | jq -r '.Reservations[].Instances[] | [.InstanceId,.PublicDnsName,.State.Name,(.Tags[] | select(.Key == "Name") | .Value)] | @csv'
     }
     function ec2-stop {
-        aws ec2 stop-instances --instance-ids
+        aws ec2 stop-instances --instance-ids ${1}
     }
     function ec2-boot {
-        aws ec2 start-instances --instance-ids
+        aws ec2 start-instances --instance-ids ${1}
     }
     function ec2-desc {
         aws ec2 describe-instances --instance-ids ${1} | jq '.Reservations[0]' -M
