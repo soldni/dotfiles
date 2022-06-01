@@ -20,8 +20,8 @@ defaults write -globalDomain NSUserKeyEquivalents -dict-add "Show Help Menu" "~\
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "Edit Tab Title" "@~^e"
 
 # Make CMD+Q keep window, CMD+ALT+Q not
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit Safari" "@~q"
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit and Keep Windows" "@q"
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit Safari" "@~^q"
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit and Keep Windows" "@~q"
 
 
 # Local connections only for VNC
