@@ -19,6 +19,11 @@ defaults write -globalDomain NSUserKeyEquivalents -dict-add "Merge All Windows" 
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "Show Help Menu" "~\\U0020"
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "Edit Tab Title" "@~^e"
 
+# Make CMD+Q keep window, CMD+ALT+Q not
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit Safari" "@~q"
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit and Keep Windows" "@q"
+
+
 # Local connections only for VNC
 sudo defaults write /Library/Preferences/com.apple.RemoteManagement.plist VNCOnlyLocalConnections -bool yes
 
