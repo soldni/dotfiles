@@ -295,6 +295,7 @@ brew_cask_to_install=(
     'tower'                 # git client
     'geekbench'             # benchmarking
     'vlc'                   # player
+    'viscosity'             # openVPN client
     'overkill'              # no itunes buttons
     'monitorcontrol'        # control external monitor setttings
     'font-fira-code'        # font with ligatures
@@ -317,15 +318,14 @@ mas_install=(
     '429449079'     # Patterns
     '425424353'     # The Unarchiver
     '403304796'     # iNet Network Scanner
-    '775737590'     # iA Writer
     '1365531024'    # 1Blocker
-    '1482490089'    # TamperMonkey
     '924726344'     # Deliveries
-    '1438243180'    # Dark Reader for Safari
     '904280696'     # Things 3
     '956377119'     # WorldClock
     '1289583905'    # Pixelmator Pro
-    '688211836'     # EasyRes
+    '1592917505'    # Noir
+    '992115977'     # image2icon
+    '1376402589'    # Stop the Madness
 )
 
 not_signed_in_mas="Not signed in"
