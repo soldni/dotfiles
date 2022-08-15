@@ -90,8 +90,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         done
     fi
 
-    if
-
     # export path to openblas if it is installed
     export OPENBLAS="$(brew --prefix openblas 2&> /dev/null)"
 
