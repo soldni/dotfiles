@@ -245,6 +245,7 @@ brew_packages_to_install=(
     'nativefier'
     'jq'
     'findutils'
+    'openblas'
     'gnu-tar'
     'gnu-sed'
     'gawk'

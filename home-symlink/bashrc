@@ -89,6 +89,12 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             fi
         done
     fi
+
+    if
+
+    # export path to openblas if it is installed
+    export OPENBLAS="$(brew --prefix openblas 2&> /dev/null)"
+
 fi
 if [[ "$OSTYPE" == "linux"* ]]; then
     alias hdtemp="hddtemp /dev/sd[abcdefghi]"
@@ -196,6 +202,17 @@ if [[ ! -z $has_aws_cli ]]; then
     }
     function ec2-desc {
         aws ec2 describe-instances --instance-ids ${1} | jq '.Reservations[0]' -M
+    }
+    function aws-cred-to-env {
+        # get profile from input if provided, otherwise set it to "default"
+        if [[ -z $1 ]]; then
+            profile="default"
+        else
+            profile="$1"
+        fi
+
+        export AWS_ACCESS_KEY_ID=$(aws configure get ${profile}.aws_access_key_id)
+        export AWS_SECRET_ACCESS_KEY=$(aws configure get ${profile}.aws_secret_access_key)
     }
 fi
 
@@ -644,4 +661,3 @@ fi
 
 # execute machine specific bash script
 source "$HOME/.postlocalrc"
-

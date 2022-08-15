@@ -14,7 +14,7 @@
         "font" : "System",
         "color" : "#FFFFFF59"
       },
-      "backgroundSelected" : "#0269DDFF",
+      "backgroundSelected" : "#5D5E5DFF",
       "text" : {
         "size" : 16,
         "colorSelected" : "#FFFFFFFF",
@@ -60,6 +60,6 @@
       "color" : "#3F3F3F00",
       "thickness" : 3
     },
-    "name" : "Luca Noir"
+    "name" : "Luca Noir Graphite"
   }
 }
