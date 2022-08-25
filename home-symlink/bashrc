@@ -162,7 +162,7 @@ elif ls -G -d . >/dev/null 2>&1; then
 fi
 
 # ls behaves like ll in fish
-alias ll="ls -lh"
+alias ll="ls -alGh"
 
 # just like ll, but with more recent at the bottom
 alias lo="ls -lrth"
@@ -321,18 +321,37 @@ if command -v tightvncserver >/dev/null 2>&1; then
     alias vnc-stop='tightvncserver -kill :1'
 fi
 
+# Shortcuts to common linting tools in python
+function pypretty () {
+    path_to_process="${1}"
 
+    if [ -z "${path_to_process}" ]; then
+        path_to_process="."
+    fi
 
-# REMOVING THIS BECAUSE IT HAS BEEN CAUSING NOTHIGN BUT ISSUES
-# # replace ipython with jupyter console if jupyter
-# # console is present; also, disabling banner because
-# # who cares really.
-# if command -v 'jupyter' > /dev/null 2>&1; then
-#    function ipython { jupyter console --ZMQTerminalInteractiveShell.banner="" "$@"; }
-# fi
+    has_autopep8=$(which autopep8 2>/dev/null)
+    if [[ -z ${has_autopep8} ]]; then
+        echo 'autopep8 not found. Please run `pip install autopep8`' > /dev/stderr
+        return
+    fi
 
-# start a jupyter QTconsole with the right colors
-alias visual-ipython='jupyter qtconsole --ConsoleWidget.font_family="Consolas" --ConsoleWidget.font_size="12" --style monokai'
+    has_isort=$(which isort 2>/dev/null)
+    if [[ -z ${has_isort} ]]; then
+        echo 'isort not found. Please run `pip install isort`' > /dev/stderr
+        return
+    fi
+
+    has_black=$(which black 2>/dev/null)
+    if [[ -z ${has_black} ]]; then
+        echo 'black not found. Please run `pip install black`' > /dev/stderr
+        return
+    fi
+
+    autopep8 --in-place --recursive ${path_to_process} \
+        && isort ${path_to_process} \
+        && black ${path_to_process}
+}
+
 
 # get indices of headers
 tsv-header () { head -n 1 $* | tr $'\t' '\n' | nl ; }
@@ -406,24 +425,34 @@ stty -ixon
 # better copy (uses rsync for progressbar shit)
 alias copy='rsync -rva --info=progress2'
 
-# set java home if JDK is installed
-has_java=$(which javac 2>/dev/null)
-
-if [[ ! -z $has_java ]]; then
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        # macos has symlinks for javac, but that
-        # does not mean java is installed. Checking again
-        has_java=$(javac 2> /dev/null)
-        if [[ ! -z $has_java ]]; then
-            export JAVA_HOME=$(/usr/libexec/java_home)
-        fi
-    else
-        export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
-    fi
-
-    # log4j vulnerability fix
-    export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
+# use openjdk if that's what the system has
+if [ -d "/opt/homebrew/opt/openjdk" ]; then
+    export PATH="/opt/homebrew/opt/openjdk/bin:${PATH}"
+    export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include:${CPPFLAGS}"
+    export JAVA_HOME="/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home/"
 fi
+
+if [ -z "${JAVA_HOME}" ]; then
+
+    # set java home if JDK is installed
+    has_java=$(which javac 2>/dev/null)
+
+    if [[ ! -z $has_java ]]; then
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            # macos has symlinks for javac, but that
+            # does not mean java is installed. Checking again
+            has_java=$(javac 2> /dev/null)
+            if [[ ! -z $has_java ]]; then
+                export JAVA_HOME=$(/usr/libexec/java_home)
+            fi
+        else
+            export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+        fi
+    fi
+fi
+
+# log4j vulnerability fix
+export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"
 
 # shortcuts for git submodules
 alias git-clone-submodules="git clone --recursive -j8"
@@ -524,29 +553,78 @@ if [ -d "${HOME}/Library/Python" ]; then
     done
 fi
 
-hostcolor="38;2;$(rgb_color_generator.py -r)"
-greycolor="38;5;247"
-whitecolor="38;5;255"
+
+# set this variable to anything but the empty string to enable
+# hostname-based prompt coloring in bash/zsh
+HOST_BASED_PROMPT_COLORS=''
+
+if [ -z "${HOST_BASED_PROMPT_COLORS}" ]; then
+    # use the standard mapping for colors
+    eval "$(dircolors -b)"
+else
+    hostcolor="38;2;$(rgb_color_generator.py -r)"
+    greycolor="38;5;247"
+
+    # some custom LS_COLORS to match the prompt
+    export LS_COLORS="di=${hostcolor}:ln=${greycolor}:or=${greycolor}:so=${greycolor}:su=${greycolor}:sg=${greycolor}:ow=${greycolor}:tw=${greycolor}:ex=${hostcolor}:mi=${greycolor}"
+fi
 
 if [[ "${CURRENT_SHELL_NAME}" == "bash" ]]; then
-    hostchange="\[\033[${hostcolor}m\]"
-    rightgray="\[\033[${greycolor}m\]"
-    white_reset='\[\e[0m\]'
+    reset_color='\[\e[m\]'
+
+    if [ -z "${HOST_BASED_PROMPT_COLORS}" ]; then
+        magenta_color='\[\e[35m\]'
+        green_color='\[\e[32m\]'
+        yellow_color='\[\e[33m\]'
+        blue_color='\[\e[34m\]'
+        cyan_color='\[\e[36m\]'
+
+        black_color='\[\e[m\]'
+
+    else
+        # we use the host color everywhere
+        magenta_color="\[\033[${hostcolor}m\]"
+        green_color="\[\033[${hostcolor}m\]"
+        yellow_color="\[\033[${hostcolor}m\]"
+        blue_color="\[\033[${hostcolor}m\]"
+
+        # instead of black, we use this grey
+        black_color="\[\033[${greycolor}m\]"
+        cyan_color="\[\033[${greycolor}m\]"
+    fi
 
     # notice how we need to escape the dollar sign, otherwise it doesn't get evaluated every time the prompt is re-drawn!
-    export PS1="${hostchange}\u ${rightgray}on ${hostchange}${CUSTOM_HOSTNAME} ${rightgray}in ${hostchange}\$(short_pwd) ${rightgray}at ${hostchange}\D{%F %H:%M} ${rightgray}\$(parse_git_branch)${hostchange}\n\\$ ${white_reset}"
-    export LS_COLORS="di=${greycolor}:ln=${whitecolor}:or=${whitecolor}:so=${whitecolor}:su=${whitecolor}:sg=${whitecolor}:ow=${whitecolor}:tw=${whitecolor}:ex=${hostcolor}:mi=${whitecolor}"
+    export PS1="${magenta_color}\u ${black_color}on ${green_color}${CUSTOM_HOSTNAME} ${black_color}in ${yellow_color}\$(short_pwd) ${black_color}at ${blue_color}\D{%F %H:%M} ${black_color}\$(parse_git_branch)${cyan_color}\n\\$ ${reset_color}"
+
 
 elif [[ "${CURRENT_SHELL_NAME}" == "zsh" ]]; then
     # same as before, but for zsh
-    NEWLINE=$'\n'
-    LAMBDA=$'\u03bb'
-    NOCOLOR=$'\033[0m'
-    HOSTCHANGE=$(echo -ne "\033[${hostcolor}m")
-    RIGHTGRAY=$(echo -ne "\033[${greycolor}m")
+    new_line_symbol=$'\n'
+    lambda_symbol=$'\u03bb'
+    no_color='%f'
 
-    export PS1="%{${HOSTCHANGE}%}%n %{${RIGHTGRAY}%}on %{${HOSTCHANGE}%}$CUSTOM_HOSTNAME %{${RIGHTGRAY}%}in %{${HOSTCHANGE}%}\$(short_pwd) %{${RIGHTGRAY}%}at %{${HOSTCHANGE}%}%D %T %{${RIGHTGRAY}%}\$(parse_git_branch)${NEWLINE}%{${HOSTCHANGE}%}${LAMBDA}%{${NOCOLOR}%} "
-    LS_COLORS="di=${greycolor}:ln=${whitecolor}:or=${whitecolor}:so=${whitecolor}:su=${whitecolor}:sg=${whitecolor}:ow=${whitecolor}:tw=${whitecolor}:ex=${hostcolor}:mi=${whitecolor}"
+    if [ -z "${HOST_BASED_PROMPT_COLORS}" ]; then
+        magenta_color='%F{magenta}'
+        green_color='%F{green}'
+        yellow_color='%F{yellow}'
+        blue_color='%F{blue}'
+        cyan_color='%F{cyan}'
+
+        # this is the default color
+        black_color='%f'
+
+    else
+        magenta_color="%{$(echo -ne "\033[${hostcolor}m")%}"
+        green_color="%{$(echo -ne "\033[${hostcolor}m")%}"
+        yellow_color="%{$(echo -ne "\033[${hostcolor}m")%}"
+        blue_color="%{$(echo -ne "\033[${hostcolor}m")%}"
+
+        # instead of black, we use this grey
+        cyan_color="%{$(echo -ne "\033[${greycolor}m")%}"
+        black_color="%{$(echo -ne "\033[${greycolor}m")%}"
+    fi
+
+    export PS1="${magenta_color}%n ${black_color}on ${green_color}$CUSTOM_HOSTNAME ${black_color}in ${yellow_color}\$(short_pwd) ${black_color}at ${blue_color}%D %T ${black_color}\$(parse_git_branch)${new_line_symbol}${cyan_color}${lambda_symbol}${no_color} "
 fi
 
 
@@ -590,7 +668,7 @@ if [ -f "${SSH_KEY_LOC}" ]; then
         fi
     fi
 
-    if [ "${USE_OLD_AGENT}" == "" ]; then
+    if [[ "${USE_OLD_AGENT}" == "" ]]; then
         echo "Starting new SSH agent..."
 
         # we need to start a new agent!

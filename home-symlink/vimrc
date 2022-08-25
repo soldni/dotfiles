@@ -153,10 +153,11 @@ set splitbelow
 " use U for redo
 nmap U <c-r>
 
-" use 'jj' to exit insert mode, 'v' to toggle visual mdoe
-ino jj <esc>
-cno jj <c-c>
-vno v <esc>
+" " use 'jj' to exit insert mode, 'v' to toggle visual mdoe
+" REMOVING THIS TO UNTRAIN MUSCLE MEMORY
+" ino jj <esc>
+" cno jj <c-c>
+" vno v <esc>
 
 " removes scrollbar in Gui VIM
 set guioptions-=r

@@ -298,7 +298,7 @@ brew_cask_to_install=(
     'vlc'                   # player
     'viscosity'             # openVPN client
     'overkill'              # no itunes buttons
-    'monitorcontrol'        # control external monitor setttings
+    # 'monitorcontrol'        # control external monitor setttings
     'font-fira-code'        # font with ligatures
     'screens'               # VNC client
 )
