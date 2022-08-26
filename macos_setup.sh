@@ -23,6 +23,12 @@ defaults write -globalDomain NSUserKeyEquivalents -dict-add "Edit Tab Title" "@~
 defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit Safari" "@~^q"
 defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit and Keep Windows" "@~q"
 
+# Adjust Siri settings
+defaults write com.apple.Siri TypeToSiriEnabled -bool true
+defaults write com.apple.Siri VoiceTriggerUserEnabled -bool false
+defaults write com.apple.Siri StatusMenuVisible -bool false
+defaults write com.apple.Siri LockscreenEnabled -bool false
+defaults write com.apple.Siri HotkeyTag -int 4
 
 # Local connections only for VNC
 sudo defaults write /Library/Preferences/com.apple.RemoteManagement.plist VNCOnlyLocalConnections -bool yes
