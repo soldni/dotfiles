@@ -84,6 +84,7 @@ strict_optional = false
 per-file-ignores = [
     '__init__.py:F401',
     '*.pyi:E302,E305',
+    '*.py:E203'
 ]
 
 [tool.setuptools.package-data]
