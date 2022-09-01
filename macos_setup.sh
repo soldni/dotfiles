@@ -49,7 +49,7 @@ defaults write com.apple.dock mru-spaces -bool false
 defaults write com.apple.dashboard mcx-disabled -boolean no
 defaults write com.apple.dock showhidden -bool true
 defaults write com.apple.dock autohide-delay -float 0
-defaults write com.apple.dock tilesize -int 64
+defaults write com.apple.dock tilesize -int 48
 defaults write com.apple.dock orientation -string bottom
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-time-modifier -float 0.05
