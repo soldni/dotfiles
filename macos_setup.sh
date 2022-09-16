@@ -325,7 +325,7 @@ mas_install=(
     '429449079'     # Patterns
     '425424353'     # The Unarchiver
     '403304796'     # iNet Network Scanner
-    '1365531024'    # 1Blocker
+    # '1365531024'    # 1Blocker
     '924726344'     # Deliveries
     '904280696'     # Things 3
     '956377119'     # WorldClock
@@ -333,6 +333,8 @@ mas_install=(
     '1592917505'    # Noir
     '992115977'     # image2icon
     '1376402589'    # Stop the Madness
+    '1453654905'    # Closer
+    '1569813296'    # 1Password Extension
 )
 
 not_signed_in_mas="Not signed in"
