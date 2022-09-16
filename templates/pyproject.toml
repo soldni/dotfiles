@@ -18,10 +18,10 @@ dependencies = [
 "Bug Tracker" = "{{TODO-FILL-ME-IN}}"
 
 [tool.setuptools.packages.find]
-where = ["."]
-include = ["{{TODO-FILL-ME-IN}}"]
-namespaces = false
+where = ["src"]
 
+[tool.setuptools.package-data]
+"{{TODO-FILL-ME-IN}}" = ["py.typed", "*.pyi"]
 
 [build-system]
 build-backend = "setuptools.build_meta"
@@ -76,6 +76,13 @@ python_version = 3.8
 ignore_missing_imports = true
 no_site_packages = true
 allow_redefinition = false
+warn_unused_configs = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_return_any = false
+warn_unreachable = true
+show_error_codes = true
+pretty = true
 
 [tool.mypy-tests]
 strict_optional = false
@@ -86,6 +93,3 @@ per-file-ignores = [
     '*.pyi:E302,E305',
     '*.py:E203'
 ]
-
-[tool.setuptools.package-data]
-springs = ["py.typed"]
