@@ -553,6 +553,12 @@ if [ -d "${HOME}/Library/Python" ]; then
     done
 fi
 
+# on macOS, in case gnu dircolors is not mapped
+has_dircolors=$(which dircolors 2>/dev/null)
+if [[ -z $has_dircolors ]]; then
+    alias dircolors='gdircolors'
+fi
+
 
 # set this variable to anything but the empty string to enable
 # hostname-based prompt coloring in bash/zsh
