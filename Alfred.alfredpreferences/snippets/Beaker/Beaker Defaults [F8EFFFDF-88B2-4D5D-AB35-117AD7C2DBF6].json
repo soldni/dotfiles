@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "beaker session create --secret-mount ssh-key=~\/.ssh\/id_rsa --secret-mount aws-cred=~\/.aws\/credentials --secret-env OPENAI_API_KEY=OPENAI_API_KEY -i docker:\/\/ghcr.io\/allenai\/cuda:11.3-cudnn8-dev-ubuntu20.04",
+    "uid" : "F8EFFFDF-88B2-4D5D-AB35-117AD7C2DBF6",
+    "name" : "Beaker Defaults",
+    "keyword" : "bsc"
+  }
+}

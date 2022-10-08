@@ -53,51 +53,6 @@ if [ ! -d "$HOME/.vim" ]; then
     mkdir -p $HOME/.vim/tmp
 fi
 
-# install pathogen for vim
-if [ ! -f "${HOME}/.vim/autoload/pathogen.vim" ]; then
-    echo "Installing Pathogen for vim..."
-    mkdir -p ${HOME}/.vim/autoload ${HOME}/.vim/bundle && \
-        curl -LSkso ${HOME}/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-fi
-
-plugins=(
-    'https://github.com/vim-airline/vim-airline'
-    'https://github.com/vim-airline/vim-airline-themes'
-    'https://github.com/rakr/vim-one'
-    'https://github.com/soldni/dracula-vim'
-    'https://github.com/scrooloose/nerdtree'
-    'https://github.com/mkitt/tabline.vim'
-    'https://github.com/tpope/vim-fugitive'
-    'https://github.com/svermeulen/vim-easyclip'
-    'https://github.com/tpope/vim-repeat'
-    'https://github.com/vim-syntastic/syntastic'
-    'https://github.com/heavenshell/vim-pydocstring'
-    'https://github.com/lervag/vimtex'
-    'https://github.com/ervandew/supertab'
-    'https://github.com/flazz/vim-colorschemes'
-    'https://github.com/terryma/vim-multiple-cursors'
-    'https://github.com/tpope/vim-eunuch'
-    'https://github.com/tpope/vim-commentary'
-)
-
-mkdir -p $HOME/.vim/bundle
-cd $HOME/.vim/bundle
-for plugin in "${plugins[@]}"; do
-    plugin_dir=$(basename ${plugin})
-    set +e
-    if [ ! -d $plugin_dir ]; then
-        echo "cloning \"${plugin_dir}\"..."
-        git clone --recursive ${plugin} $plugin_dir
-    else
-         echo "updating \"${plugin_dir}\"..."
-        cd ${plugin_dir}
-        git pull
-        cd ..
-    fi
-    set -e
-done
-
-
 # setup tsv-utils
 if [[ "$OSTYPE" == "darwin"* ]]; then
     echo "Configuring macOS to my liking..."

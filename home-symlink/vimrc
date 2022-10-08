@@ -1,14 +1,10 @@
 " NOTE -- THERE IS NOT NO COPYING WITH "d",
 " USE "m" FOR THAT (thanks, EasyClip!)
 
-" Enable Pathogen
-execute pathogen#infect()
-
 " syntax and color scheme
 syntax enable
-" colorscheme dracula
 let base16colorspace=256  " Access colors present in 256 colorspace
-" set background=dark
+
 
 " store swap files in a centralized location instead
 " that all over the files system
@@ -60,21 +56,21 @@ set mouse=a
 "move forward with f
 map     f   e
 
-" Leaving this here for reference
-if v:version >= 704 && has("unix")
-    let s:uname = system("uname")
-    let s:uname_full = system("cat /etc/*-release")
-    if s:uname == "Darwin\n"
-        set clipboard=unnamed
-    elseif s:uname_full =~ "Amazon Linux"
-        " dev-desktop doesn't like unnamed clipboard
-        set clipboard=
-    else
-        set clipboard=unnamedplus
-    endif
-else
-    set clipboard=unnamed
-endif
+" " Leaving this here for reference
+" if v:version >= 704 && has("unix")
+"     let s:uname = system("uname")
+"     let s:uname_full = system("cat /etc/*-release")
+"     if s:uname == "Darwin\n"
+"         set clipboard=unnamed
+"     elseif s:uname_full =~ "Amazon Linux"
+"         " dev-desktop doesn't like unnamed clipboard
+"         set clipboard=
+"     else
+"         set clipboard=unnamedplus
+"     endif
+" else
+"     set clipboard=unnamed
+" endif
 
 " remap ctrl + w by itself to nothing
 inoremap <C-w> <Nop>
@@ -83,24 +79,6 @@ inoremap <C-w> <Nop>
 nmap <silent> <leader-e> :e $MYVIMRC<CR>
 nmap <silent> <leader-r> :so $MYVIMRC<CR>
 
-" Ebable autocomplete
-filetype plugin on
-
-" configure autocomplete
-set omnifunc=syntaxcomplete#Complete
-let OmniCpp_GlobalScopeSearch   = 1
-let OmniCpp_DisplayMode         = 1
-let OmniCpp_SelectFirstItem     = 1 "select first item in pop-up
-set completeopt=menuone,menu,longest
-
-" popup closes with supertab
-let g:SuperTabClosePreviewOnPopupClose = 1
-
-" dismiss
-" autocmd CompleteDone * pclose
-" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-" inoremap <silent> <C-_>  <C-X><C-O>
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -153,12 +131,6 @@ set splitbelow
 " use U for redo
 nmap U <c-r>
 
-" " use 'jj' to exit insert mode, 'v' to toggle visual mdoe
-" REMOVING THIS TO UNTRAIN MUSCLE MEMORY
-" ino jj <esc>
-" cno jj <c-c>
-" vno v <esc>
-
 " removes scrollbar in Gui VIM
 set guioptions-=r
 
@@ -196,94 +168,7 @@ nnoremap <C-w>-     <C-W>n
 nnoremap <C-w>\     :vnew<CR>
 
 " Invoke explorer
-nnoremap <C-k><C-e>     :Explore<CR>
+nnoremap <C-e>     :Explore<CR>
 
-" Change background color of suggestions
-hi Pmenu ctermbg=236 ctermfg=15
-hi PmenuSel ctermbg=Blue ctermfg=White
-
-" always show NERDTree when opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
-" shortcut for NERDTree
-map <C-k><C-n> :NERDTreeToggle<CR>
-let NERDTreeMapOpenSplit='-'
-let NERDTreeMapOpenVSplit='<Bslash>'
-
-" close all if NERDTree is the only window open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" appearance settings for airline
-" enable tab support extension
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-
-" setting up theme
-if system("defaults read -g AppleInterfaceStyle 2>/dev/null") =~ '^Dark'
-    set background=dark
-    colorscheme dracula
-    let g:airline_theme='dracula'
-else
-    colorscheme one
-    set background=light
-    let g:airline_theme='one'
-endif
-
-" use ASCII fonts, because powerline is a mess sometimes.
-if has('gui_running')
-    set guifont=Fira\ MOono\ for\ Powerline:h15
-    let g:airline_powerline_fonts = 1
-else
-    let g:airline_symbols_ascii = 1
-endif
-
-" Shared clipboard betwen instances of vim
-let g:EasyClipShareYanks = 1
-
-" Setting shortcuts for easy pasting from yank ring
-noremap <silent> <C-p>          :Paste
-vnoremap <silent> <C-p>         <C-C>:Paste
-inoremap <silent> <C-p>         <C-O>:Paste
-
-" Configure tab appearance
-let g:tablineclosebutton=1
-
-" vim-easyclip ring shortcut
-noremap <silent> <C-y>          :Yanks<cr>
-vnoremap <silent> <C-y>         <C-C>:Yanks<cr>
-inoremap <silent> <C-y>         <C-O>:Yanks<cr>
-
-" syntastic configuration
-let g:airline#extensions#syntastic#enabled = 1
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" let g:syntastic_quiet_messages = {"!level":  "errors"}
-hi SpellBad ctermfg=red ctermbg=NONE guifg=red guibg=NONE
-hi SpellCap ctermfg=yellow ctermbg=NONE guifg=NONE guibg=NONE
-hi SyntasticError ctermfg=red ctermbg=NONE guifg=red guibg=NONE
-hi SyntasticWarning ctermfg=yellow ctermbg=NONE guifg=NONE guibg=NONE
-hi SyntasticErrorSign ctermfg=red ctermbg=NONE guifg=red guibg=NONE
-hi SyntasticStyleErrorSign ctermfg=red ctermbg=NONE guifg=red guibg=NONE
-hi SyntasticWarningSign ctermfg=yellow ctermbg=NONE guifg=yellow guibg=NONE
-hi SyntasticStyleWarningSign ctermfg=yellow ctermbg=NONE guifg=yellow guibg=NONE
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '‼'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '‼'
-
-" python configuration
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args = "--ignore=E731"
-let g:syntastic_python_flake8_args = "--max-line-length=120"
-
-" disable callback for LaTeX compilation
-let g:vimtex_compiler_latexmk = {'callback' : 0}
-
-" " color change after 80 columns
-" autocmd FileType cpp,c,cxx,h,hpp,python,sh  let &colorcolumn=join(range(81,999),",")
-
-" set latex config
-let g:tex_flavor = "latex"
+" Map multiple escape sequences to <Esc>
+:inoremap <Esc> <Esc><Esc>
