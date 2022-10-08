@@ -149,7 +149,9 @@
 				<key>script</key>
 				<string>on run argv
   set inp to item 1 of argv
-tell application "System Events"	if inp is "chrome" then		tell application "Google Chrome" to return URL of active tab of front window	else if inp is "safari" then		tell application "Safari" to return URL of front document	else if inp is "firefox" then		tell application "Firefox" to activate		tell application "System Events"			keystroke "l" using command down			keystroke "c" using command down		end tell		delay 0.5		return the clipboard	else		return	end ifend tell
+tell application "System Events"
+	if inp is "arc" then
+		tell application "Arc" to return URL of active tab of front window	if inp is "chrome" then		tell application "Google Chrome" to return URL of active tab of front window	else if inp is "safari" then		tell application "Safari" to return URL of front document	else if inp is "firefox" then		tell application "Firefox" to activate		tell application "System Events"			keystroke "l" using command down			keystroke "c" using command down		end tell		delay 0.5		return the clipboard	else		return	end ifend tell
 end run</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -175,9 +177,11 @@ end run</string>
 				<key>fixedorder</key>
 				<false/>
 				<key>items</key>
-				<string>[{"imagefile":"e0cd2b83ef9f3097762b9d9ec4ca76507b4320cd.png","title":"Safari","arg":"safari"},{"imagefile":"4d82b9405951f3b7f56f9ca12103eb0acaac7cc5.png","title":"Google Chrome","arg":"chrome"},{"imagefile":"fc8d3f3b73c2a81841472d490648b50b7b2c1a62.png","title":"Firefox","arg":"firefox"}]</string>
+				<string>[{"imagefile":"e0cd2b83ef9f3097762b9d9ec4ca76507b4320cd.png","title":"Safari","arg":"safari"},{"imagefile":"4d82b9405951f3b7f56f9ca12103eb0acaac7cc5.png","title":"Google Chrome","arg":"chrome"},{"imagefile":"fc8d3f3b73c2a81841472d490648b50b7b2c1a62.png","title":"Firefox","arg":"firefox"},{"imagefile":"f45bfa4cb28317424d1cc133d47450d65f532cd6.png","title":"Arc Browser","arg":"arc"}]</string>
 				<key>keyword</key>
 				<string>geturl</string>
+				<key>matchmode</key>
+				<integer>0</integer>
 				<key>runningsubtext</key>
 				<string></string>
 				<key>subtext</key>
@@ -202,39 +206,41 @@ end run</string>
 		<key>14FD6955-7BB0-411F-8089-C5D151EC82E9</key>
 		<dict>
 			<key>xpos</key>
-			<integer>350</integer>
+			<real>350</real>
 			<key>ypos</key>
-			<integer>155</integer>
+			<real>155</real>
 		</dict>
 		<key>B8942063-A1A7-4070-88BF-C591DBFEB107</key>
 		<dict>
 			<key>xpos</key>
-			<integer>590</integer>
+			<real>590</real>
 			<key>ypos</key>
-			<integer>10</integer>
+			<real>15</real>
 		</dict>
 		<key>BE718F3F-452F-4B1A-BAA6-9E0F1DA21535</key>
 		<dict>
 			<key>xpos</key>
-			<integer>120</integer>
+			<real>120</real>
 			<key>ypos</key>
-			<integer>155</integer>
+			<real>155</real>
 		</dict>
 		<key>D07AF34B-EA69-43E2-A7FC-FBA245B745DC</key>
 		<dict>
 			<key>xpos</key>
-			<integer>125</integer>
+			<real>125</real>
 			<key>ypos</key>
-			<integer>10</integer>
+			<real>15</real>
 		</dict>
 		<key>D17701D6-B116-4E1A-ACE0-3E1C044630D3</key>
 		<dict>
 			<key>xpos</key>
-			<integer>590</integer>
+			<real>590</real>
 			<key>ypos</key>
-			<integer>155</integer>
+			<real>155</real>
 		</dict>
 	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>

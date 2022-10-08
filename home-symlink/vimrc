@@ -56,21 +56,21 @@ set mouse=a
 "move forward with f
 map     f   e
 
-" Leaving this here for reference
-if v:version >= 704 && has("unix")
-    let s:uname = system("uname")
-    let s:uname_full = system("cat /etc/*-release")
-    if s:uname == "Darwin\n"
-        set clipboard=unnamed
-    elseif s:uname_full =~ "Amazon Linux"
-        " dev-desktop doesn't like unnamed clipboard
-        set clipboard=
-    else
-        set clipboard=unnamedplus
-    endif
-else
-    set clipboard=unnamed
-endif
+" " Leaving this here for reference
+" if v:version >= 704 && has("unix")
+"     let s:uname = system("uname")
+"     let s:uname_full = system("cat /etc/*-release")
+"     if s:uname == "Darwin\n"
+"         set clipboard=unnamed
+"     elseif s:uname_full =~ "Amazon Linux"
+"         " dev-desktop doesn't like unnamed clipboard
+"         set clipboard=
+"     else
+"         set clipboard=unnamedplus
+"     endif
+" else
+"     set clipboard=unnamed
+" endif
 
 " remap ctrl + w by itself to nothing
 inoremap <C-w> <Nop>
@@ -79,14 +79,6 @@ inoremap <C-w> <Nop>
 nmap <silent> <leader-e> :e $MYVIMRC<CR>
 nmap <silent> <leader-r> :so $MYVIMRC<CR>
 
-" popup closes with supertab
-let g:SuperTabClosePreviewOnPopupClose = 1
-
-" dismiss
-" autocmd CompleteDone * pclose
-" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-" inoremap <silent> <C-_>  <C-X><C-O>
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -139,12 +131,6 @@ set splitbelow
 " use U for redo
 nmap U <c-r>
 
-" " use 'jj' to exit insert mode, 'v' to toggle visual mdoe
-" REMOVING THIS TO UNTRAIN MUSCLE MEMORY
-" ino jj <esc>
-" cno jj <c-c>
-" vno v <esc>
-
 " removes scrollbar in Gui VIM
 set guioptions-=r
 
@@ -182,24 +168,7 @@ nnoremap <C-w>-     <C-W>n
 nnoremap <C-w>\     :vnew<CR>
 
 " Invoke explorer
-nnoremap <C-[>     :Explore<CR>
+nnoremap <C-e>     :Explore<CR>
 
-" Change background color of suggestions
-hi Pmenu ctermbg=236 ctermfg=15
-hi PmenuSel ctermbg=Blue ctermfg=White
-
-" Shared clipboard betwen instances of vim
-let g:EasyClipShareYanks = 1
-
-" Setting shortcuts for easy pasting from yank ring
-noremap <silent> <C-p>          :Paste
-vnoremap <silent> <C-p>         <C-C>:Paste
-inoremap <silent> <C-p>         <C-O>:Paste
-
-" vim-easyclip ring shortcut
-noremap <silent> <C-y>          :Yanks<cr>
-vnoremap <silent> <C-y>         <C-C>:Yanks<cr>
-inoremap <silent> <C-y>         <C-O>:Yanks<cr>
-
-" set latex config
-let g:tex_flavor = "latex"
+" Map multiple escape sequences to <Esc>
+:inoremap <Esc> <Esc><Esc>
