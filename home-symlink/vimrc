@@ -79,6 +79,8 @@ inoremap <C-w> <Nop>
 nmap <silent> <leader-e> :e $MYVIMRC<CR>
 nmap <silent> <leader-r> :so $MYVIMRC<CR>
 
+" Reverse colors on selection
+hi Visual term=reverse cterm=reverse guibg=Grey
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
