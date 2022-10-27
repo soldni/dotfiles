@@ -410,9 +410,6 @@ defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "${HOME}/do
 rm -rf "${HOME}/Library/Application Support/iTerm2/Scripts"
 ln -s ${script_dir}/iterm2-scripts "${HOME}/Library/Application Support/iTerm2/Scripts"
 
-
-bash ${script_dir}/macos_import_prefs.sh
-
 bash ${script_dir}/bootstrap.sh
 
 echo "macOS setup completed."
