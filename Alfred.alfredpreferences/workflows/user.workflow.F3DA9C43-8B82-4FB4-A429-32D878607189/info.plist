@@ -1,0 +1,1355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>in.sball.searchnotes</string>
+	<key>connections</key>
+	<dict>
+		<key>060809AF-8160-439A-85F9-D672664E3A1A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5BC84589-FA2A-459F-982A-54B612C9BA7F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>092EA403-A1D7-49DA-B8DD-8D785DDAB3B9</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0B8A749B-E2E7-4B1B-9711-1C77A495BD97</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>19CCE92E-2C07-4CB4-9874-E29AA3563F37</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0B8A749B-E2E7-4B1B-9711-1C77A495BD97</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>1A6D4810-ABAF-4604-9639-CC1327A279B7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5BC84589-FA2A-459F-982A-54B612C9BA7F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>2A3C974B-57DF-4601-8EFC-4158CAA2005A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A057AD2C-473A-4823-8624-8891E5C187F6</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>4D8E3444-14C2-4D0E-A8C1-AA67988AE358</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0B8A749B-E2E7-4B1B-9711-1C77A495BD97</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>5BC84589-FA2A-459F-982A-54B612C9BA7F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CE746687-24FD-4E5C-841F-0D4826E007C4</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>Search in Notes toolbar</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>6740BCB6-6818-49E2-A88A-9D19EA132F08</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Copy link to note</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>DC692798-E272-4547-BE83-4B63B823E456</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Copy note body</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>4D8E3444-14C2-4D0E-A8C1-AA67988AE358</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>6740BCB6-6818-49E2-A88A-9D19EA132F08</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0B8A749B-E2E7-4B1B-9711-1C77A495BD97</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>69AB99D4-3231-4959-828B-383C93051FCC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>092EA403-A1D7-49DA-B8DD-8D785DDAB3B9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>6F3DD843-22EF-4A97-BAF8-511894B5202D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CE746687-24FD-4E5C-841F-0D4826E007C4</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>Search in Notes toolbar</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>4D8E3444-14C2-4D0E-A8C1-AA67988AE358</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>19CCE92E-2C07-4CB4-9874-E29AA3563F37</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Move currently selected note to this folder</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A057AD2C-473A-4823-8624-8891E5C187F6</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E91B4B80-CB26-4BC2-B808-5EC8A43F3E25</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>B9ECD7D6-EA33-4E2E-AE3E-4E22EEDD6097</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CE746687-24FD-4E5C-841F-0D4826E007C4</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>Search in Notes toolbar</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>6740BCB6-6818-49E2-A88A-9D19EA132F08</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Copy link to note</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>DC692798-E272-4547-BE83-4B63B823E456</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Copy note body</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>4D8E3444-14C2-4D0E-A8C1-AA67988AE358</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>CAA4E408-453B-4518-B2B1-CD024BAA493C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CE746687-24FD-4E5C-841F-0D4826E007C4</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>Search in Notes toolbar</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>6740BCB6-6818-49E2-A88A-9D19EA132F08</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Copy link to note</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>DC692798-E272-4547-BE83-4B63B823E456</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Copy note body</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>4D8E3444-14C2-4D0E-A8C1-AA67988AE358</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>CE746687-24FD-4E5C-841F-0D4826E007C4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0B8A749B-E2E7-4B1B-9711-1C77A495BD97</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>DC692798-E272-4547-BE83-4B63B823E456</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0B8A749B-E2E7-4B1B-9711-1C77A495BD97</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E91B4B80-CB26-4BC2-B808-5EC8A43F3E25</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0B8A749B-E2E7-4B1B-9711-1C77A495BD97</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Sean Ballinger</string>
+	<key>description</key>
+	<string>Open notes in iCloud/Apple Notes</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Search Notes</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>44</integer>
+				<key>hotmod</key>
+				<integer>1835008</integer>
+				<key>hotstring</key>
+				<string>/</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>1A6D4810-ABAF-4604-9639-CC1327A279B7</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>-- This script takes "URLs" of format "identifier,itemID,accountID,userQuery" or just "userQuery"
+
+on alfred_script(q)
+	try
+		tell application "System Events"
+			tell process "Notes"
+				-- Get search string 
+				if q contains "/ICNote/p" or q contains "/ICFolder/p" then
+					set AppleScript's text item delimiters to ","
+					set userQuery to text from text item 4 to text item -1 of q
+					set AppleScript's text item delimiters to ""
+				else
+					set userQuery to q
+				end if
+				-- Enter the string in the Notes search bar
+				set frontmost to true
+				click menu item 1 of menu of menu item 16 of menu 4 of menu bar 1 -- Edit, Find, Note List Search…
+				set clipboardOld to the clipboard
+				set the clipboard to userQuery
+				click menu item 6 of menu 4 of menu bar 1 -- Edit, Paste
+				delay 0.1
+				set the clipboard to clipboardOld
+			end tell
+		end tell
+	on error errorMessage number errorNumber
+		display alert "Search in Notes Toolbar Error" message (errorNumber as string &amp; ": " &amp; errorMessage &amp; "\n\nInput: " &amp; q) as critical
+	end try
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>CE746687-24FD-4E5C-841F-0D4826E007C4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>keyword</key>
+				<string>n</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string>Getting notes...</string>
+				<key>script</key>
+				<string>scope="title"
+workflow_dir="$alfred_preferences/workflows/$alfred_workflow_uid"
+search_notes="$workflow_dir/search_notes/search_notes"
+if [[ ! -f "$workflow_dir/authorized" ]]; then
+	xattr -rd com.apple.quarantine "$workflow_dir"
+	touch "$workflow_dir/authorized"
+fi
+out=`"$search_notes" $scope "$@" 2&gt;&amp;1`
+if [[ $? != 0 ]]; then
+	nl=$'\n'
+	notes_db="$HOME/Library/Group Containers/group.com.apple.notes/NoteStore.sqlite"
+	macos="macOS: $(sw_vers -productVersion)${nl}"
+	alf_version="Alfred: ${alfred_version}${nl}"
+	workflow_version="Workflow: ${alfred_workflow_version}${nl}"
+	cpu_arch="CPU: $(machine)${nl}"
+	bin_xattrs="Binary xattrs: $(xattr "$search_notes")${nl}"
+	db_xattrs="Notes DB xattrs: $(xattr "$notes_db")${nl}"
+	bin_info="Binary info: $(stat -f "%Mp%Lp %u/%Su %g/%Sg" "$search_notes")${nl}"
+	db_info="Notes DB info: $(stat -f "%Mp%Lp %u/%Su %g/%Sg" "$notes_db")${nl}"
+	alfred_query="Query: $scope '$@'${nl}"
+	osascript "$workflow_dir/handle_error.scpt" "Please copy this entire text if submitting an error report. You may need to scroll.${nl}${nl}${out}${nl}${nl}${macos}${alf_version}${workflow_version}${cpu_arch}${bin_xattrs}${db_xattrs}${bin_info}${db_info}${alfred_query}"
+else
+	echo $out
+fi</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>cmd/search_titles/search_titles</string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Search notes</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>5BC84589-FA2A-459F-982A-54B612C9BA7F</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>2</integer>
+				<key>relatedApps</key>
+				<array>
+					<string>com.apple.Notes</string>
+				</array>
+				<key>relatedAppsMode</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>060809AF-8160-439A-85F9-D672664E3A1A</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>keyword</key>
+				<string>nb</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string>Getting notes...</string>
+				<key>script</key>
+				<string>scope="body"
+workflow_dir="$alfred_preferences/workflows/$alfred_workflow_uid"
+search_notes="$workflow_dir/search_notes/search_notes"
+if [[ ! -f "$workflow_dir/authorized" ]]; then
+	xattr -rd com.apple.quarantine "$workflow_dir"
+	touch "$workflow_dir/authorized"
+fi
+out=`"$search_notes" $scope "$@" 2&gt;&amp;1`
+if [[ $? != 0 ]]; then
+	nl=$'\n'
+	notes_db="$HOME/Library/Group Containers/group.com.apple.notes/NoteStore.sqlite"
+	macos="macOS: $(sw_vers -productVersion)${nl}"
+	alf_version="Alfred: ${alfred_version}${nl}"
+	workflow_version="Workflow: ${alfred_workflow_version}${nl}"
+	cpu_arch="CPU: $(machine)${nl}"
+	bin_xattrs="Binary xattrs: $(xattr "$search_notes")${nl}"
+	db_xattrs="Notes DB xattrs: $(xattr "$notes_db")${nl}"
+	bin_info="Binary info: $(stat -f "%Mp%Lp %u/%Su %g/%Sg" "$search_notes")${nl}"
+	db_info="Notes DB info: $(stat -f "%Mp%Lp %u/%Su %g/%Sg" "$notes_db")${nl}"
+	alfred_query="Query: $scope '$@'${nl}"
+	osascript "$workflow_dir/handle_error.scpt" "Please copy this entire text if submitting an error report. You may need to scroll.${nl}${nl}${out}${nl}${nl}${macos}${alf_version}${workflow_version}${cpu_arch}${bin_xattrs}${db_xattrs}${bin_info}${db_info}${alfred_query}"
+else
+	echo $out
+fi</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>get_note_bodies.py</string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Search note bodies</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>B9ECD7D6-EA33-4E2E-AE3E-4E22EEDD6097</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>-- This script takes "URLs" of format "identifier,itemID,accountID,userQuery"
+
+use framework "Foundation"
+use scripting additions
+
+property NSMutableAttributedString : a reference to current application's NSMutableAttributedString
+property NSNull : a reference to current application's NSNull
+property NSPasteboardTypeRTF : a reference to current application's NSPasteboardTypeRTF
+property NSRTFTextDocumentType : a reference to current application's NSRTFTextDocumentType
+property NSString : a reference to current application's NSString
+property NSUTF8StringEncoding : a reference to current application's NSUTF8StringEncoding
+
+on HTMLToClipboard(HTMLContent)
+	set HTMLBody to ("&lt;html&gt;&lt;head&gt;&lt;meta charset=\"UTF-8\" /&gt;&lt;/head&gt;&lt;body&gt;" &amp; HTMLContent &amp; "&lt;/body&gt;&lt;/html&gt;")
+	set NSStringHTMLBody to NSString's stringWithString:HTMLBody
+	set HTMLBodyData to NSStringHTMLBody's dataUsingEncoding:NSUTF8StringEncoding
+	set attributedString to NSMutableAttributedString's alloc()
+	attributedString's initWithHTML:HTMLBodyData documentAttributes:NSNull
+	set range to {0, attributedString's |length|}
+	set RTF to (attributedString's RTFFromRange:range documentAttributes:{DocumentType:NSRTFTextDocumentType})
+	set pasteboard to current application's NSPasteboard's generalPasteboard()
+	pasteboard's clearContents()
+	pasteboard's setData:RTF forType:NSPasteboardTypeRTF
+end clipTextAndHtml
+
+on alfred_script(q)
+	try
+		set AppleScript's text item delimiters to ","
+		set identifier to text item 1 of q
+		set itemID to text item 2 of q
+		set accountID to text item 3 of q
+		set AppleScript's text item delimiters to ""
+		tell application "Notes"
+			if accountID is "null" then
+				set noteName to name of note id itemID in default account
+			else
+				set noteName to name of note id itemID in account id accountID
+			end if
+			set HTMLLink to "&lt;a href=\"notes://showNote?identifier=" &amp; identifier &amp; "\"&gt;" &amp; noteName &amp; "&lt;/a&gt; (&lt;a href=\"mobilenotes://showNote?identifier=" &amp; identifier &amp; "\"&gt;iOS&lt;/a&gt;)"
+		end tell
+		my HTMLToClipboard(HTMLLink)
+	on error errorMessage number errorNumber
+		display alert "Copy Link to Note Error" message (errorNumber as string &amp; ": " &amp; errorMessage &amp; "\n\nInput: " &amp; q) as critical
+	end try
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>6740BCB6-6818-49E2-A88A-9D19EA132F08</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>keyword</key>
+				<string>nf</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string>Getting folders...</string>
+				<key>script</key>
+				<string>scope="folder"
+workflow_dir="$alfred_preferences/workflows/$alfred_workflow_uid"
+search_notes="$workflow_dir/search_notes/search_notes"
+if [[ ! -f "$workflow_dir/authorized" ]]; then
+	xattr -rd com.apple.quarantine "$workflow_dir"
+	touch "$workflow_dir/authorized"
+fi
+out=`"$search_notes" $scope "$@" 2&gt;&amp;1`
+if [[ $? != 0 ]]; then
+	nl=$'\n'
+	notes_db="$HOME/Library/Group Containers/group.com.apple.notes/NoteStore.sqlite"
+	macos="macOS: $(sw_vers -productVersion)${nl}"
+	alf_version="Alfred: ${alfred_version}${nl}"
+	workflow_version="Workflow: ${alfred_workflow_version}${nl}"
+	cpu_arch="CPU: $(machine)${nl}"
+	bin_xattrs="Binary xattrs: $(xattr "$search_notes")${nl}"
+	db_xattrs="Notes DB xattrs: $(xattr "$notes_db")${nl}"
+	bin_info="Binary info: $(stat -f "%Mp%Lp %u/%Su %g/%Sg" "$search_notes")${nl}"
+	db_info="Notes DB info: $(stat -f "%Mp%Lp %u/%Su %g/%Sg" "$notes_db")${nl}"
+	alfred_query="Query: $scope '$@'${nl}"
+	osascript "$workflow_dir/handle_error.scpt" "Please copy this entire text if submitting an error report. You may need to scroll.${nl}${nl}${out}${nl}${nl}${macos}${alf_version}${workflow_version}${cpu_arch}${bin_xattrs}${db_xattrs}${bin_info}${db_info}${alfred_query}"
+else
+	echo $out
+fi</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>get_folders.py</string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Search note folders</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>6F3DD843-22EF-4A97-BAF8-511894B5202D</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>-- This script takes "URLs" of format "identifier,itemID,accountID,userQuery"
+-- accountID can be the string "null", if so the default account is used
+
+on alfred_script(q)
+	try
+		set AppleScript's text item delimiters to ","
+		set identifier to text item 1 of q
+		set itemID to text item 2 of q
+		set accountID to text item 3 of q
+		set AppleScript's text item delimiters to ""
+		if accountID is "null" then
+			tell application "Notes" to get plaintext of note id itemID in default account
+		else
+			tell application "Notes" to get plaintext of note id itemID in account id accountID
+		end if
+		set body to text (paragraph 2) thru -1 of the result
+		set the clipboard to body
+	on error errorMessage number errorNumber
+		display alert "Copy Note Body Error" message (errorNumber as string &amp; ": " &amp; errorMessage &amp; "\n\nInput: " &amp; q) as critical
+	end try
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>DC692798-E272-4547-BE83-4B63B823E456</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>workflow_dir=$alfred_preferences/workflows/$alfred_workflow_uid
+/usr/bin/python2 "$workflow_dir/update.py"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>update.py</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>0B8A749B-E2E7-4B1B-9711-1C77A495BD97</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>keyword</key>
+				<string>nt</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string>Getting folders...</string>
+				<key>script</key>
+				<string>scope="hashtag"
+workflow_dir="$alfred_preferences/workflows/$alfred_workflow_uid"
+search_notes="$workflow_dir/search_notes/search_notes"
+if [[ ! -f "$workflow_dir/authorized" ]]; then
+	xattr -rd com.apple.quarantine "$workflow_dir"
+	touch "$workflow_dir/authorized"
+fi
+out=`"$search_notes" $scope "$@" 2&gt;&amp;1`
+if [[ $? != 0 ]]; then
+	nl=$'\n'
+	notes_db="$HOME/Library/Group Containers/group.com.apple.notes/NoteStore.sqlite"
+	macos="macOS: $(sw_vers -productVersion)${nl}"
+	alf_version="Alfred: ${alfred_version}${nl}"
+	workflow_version="Workflow: ${alfred_workflow_version}${nl}"
+	cpu_arch="CPU: $(machine)${nl}"
+	bin_xattrs="Binary xattrs: $(xattr "$search_notes")${nl}"
+	db_xattrs="Notes DB xattrs: $(xattr "$notes_db")${nl}"
+	bin_info="Binary info: $(stat -f "%Mp%Lp %u/%Su %g/%Sg" "$search_notes")${nl}"
+	db_info="Notes DB info: $(stat -f "%Mp%Lp %u/%Su %g/%Sg" "$notes_db")${nl}"
+	alfred_query="Query: $scope '$@'${nl}"
+	osascript "$workflow_dir/handle_error.scpt" "Please copy this entire text if submitting an error report. You may need to scroll.${nl}${nl}${out}${nl}${nl}${macos}${alf_version}${workflow_version}${cpu_arch}${bin_xattrs}${db_xattrs}${bin_info}${db_info}${alfred_query}"
+else
+	echo $out
+fi</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>get_folders.py</string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Search note hashtags</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>CAA4E408-453B-4518-B2B1-CD024BAA493C</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>-- This script takes "URLs" of format "identifier,itemID,accountID,userQuery" or just "userQuery"
+-- accountID can be the string "null", if so the default account is used
+-- Some commands need to run twice, otherwise they fail when toolbar search is active
+
+on alfred_script(q)
+	try
+		if q contains "/ICNote/p" or q contains "/ICFolder/p" then 
+			set AppleScript's text item delimiters to ","
+			set identifier to text item 1 of q
+			set itemID to text item 2 of q
+			set accountID to text item 3 of q
+			set AppleScript's text item delimiters to ""
+		end if
+		tell application "Notes"
+			if q contains "/ICNote/p" then
+				-- Show user-requested note
+				open location "notes://showNote?identifier=" &amp; identifier
+				open location "notes://showNote?identifier=" &amp; identifier
+				-- Compatibility with macOS &lt; 11 which does not support notes://
+				set OSVersion to system version of (system info)
+				set mainVersion to text 1 thru ((offset of "." in OSVersion) - 1) of OSVersion as number
+				if mainVersion &lt; 11 then
+					if accountID is "null" then
+						show note id itemID in default account
+						show note id itemID in default account
+					else
+						show note id itemID in account id accountID
+						show note id itemID in account id accountID
+					end if 
+				end if
+			else if q contains "/ICFolder/p" then
+				-- Show user-requested folder
+				if accountID is "null" then
+					show folder id itemID in default account
+					show folder id itemID in default account
+				else
+					show folder id itemID in account id accountID
+					show folder id itemID in account id accountID
+				end if 
+			else
+				-- Create new note from user query
+				tell default account to make new note at default folder with properties {body:"&lt;div&gt;&lt;h1&gt;" &amp; q &amp; "&lt;/h1&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;"}
+				show first note in default account
+				show first note in default account
+				tell application "System Events"
+					tell process "Notes"
+						-- Try because coming from a different space can cause an error
+						try
+							set focused of text area of scroll area of group 1 of splitter group 1 of splitter group 1 of window 1 to true
+							key code {125,125} -- down, down
+						end try
+					end tell
+				end tell
+			end if
+		end tell
+	on error errorMessage number errorNumber
+		display alert "Show Note Error" message (errorNumber as string &amp; ": " &amp; errorMessage &amp; "\n\nInput: " &amp; q) as critical
+	end try
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>4D8E3444-14C2-4D0E-A8C1-AA67988AE358</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>-- This script takes "URLs" of format "identifier,itemID,accountID,userQuery"
+-- accountID can be the string "null", if so the default account is used
+-- Some commands need to run twice, otherwise they fail when toolbar search is active
+
+on alfred_script(q)
+	try
+		set AppleScript's text item delimiters to ","
+		set identifier to text item 1 of q
+		set itemID to text item 2 of q
+		set accountID to text item 3 of q
+		set AppleScript's text item delimiters to ""
+		tell application "Notes"
+			-- Show user-requested folder
+			set s to selection
+			repeat with n in s
+				if accountID is "null" then
+					move n to folder id itemID in default account
+					move n to folder id itemID in default account
+				else
+					move n to folder id itemID in account id accountID
+					move n to folder id itemID in account id accountID
+				end if
+			end repeat
+		end tell
+	on error errorMessage number errorNumber
+		display alert "Move Note to Folder Error" message ((errorNumber as string) &amp; ": " &amp; errorMessage &amp; "
+
+Input: " &amp; q) as critical
+	end try
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>19CCE92E-2C07-4CB4-9874-E29AA3563F37</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>nc</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Create new note '{query}'</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>69AB99D4-3231-4959-828B-383C93051FCC</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>-- Some commands need to run twice, otherwise they fail when toolbar search is active
+
+on alfred_script(q)
+	try
+		tell application "Notes"
+			-- Create new note from user query
+			tell default account to make new note at default folder with properties {body:"&lt;div&gt;&lt;h1&gt;" &amp; q &amp; "&lt;/h1&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;"}
+			show first note in default account
+			show first note in default account
+			tell application "System Events"
+				tell process "Notes"
+					set focused of text area of scroll area of group 1 of splitter group 1 of splitter group 1 of window 1 to true
+					key code {125,125} -- down, down
+				end tell
+			end tell
+		end tell
+	on error errorMessage number errorNumber
+		display alert "Create Note Error" message (errorNumber as string &amp; ": " &amp; errorMessage &amp; "\n\nInput: " &amp; q) as critical
+	end try
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>092EA403-A1D7-49DA-B8DD-8D785DDAB3B9</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>-- This script takes "URLs" of format "identifier,itemID,accountID,userQuery"
+
+use framework "Foundation"
+use scripting additions
+
+property NSMutableAttributedString : a reference to current application's NSMutableAttributedString
+property NSNull : a reference to current application's NSNull
+property NSPasteboardTypeRTF : a reference to current application's NSPasteboardTypeRTF
+property NSRTFTextDocumentType : a reference to current application's NSRTFTextDocumentType
+property NSString : a reference to current application's NSString
+property NSUTF8StringEncoding : a reference to current application's NSUTF8StringEncoding
+
+on HTMLToClipboard(HTMLContent)
+	set HTMLBody to ("&lt;html&gt;&lt;head&gt;&lt;meta charset=\"UTF-8\" /&gt;&lt;/head&gt;&lt;body&gt;" &amp; HTMLContent &amp; "&lt;/body&gt;&lt;/html&gt;")
+	set NSStringHTMLBody to NSString's stringWithString:HTMLBody
+	set HTMLBodyData to NSStringHTMLBody's dataUsingEncoding:NSUTF8StringEncoding
+	set attributedString to NSMutableAttributedString's alloc()
+	attributedString's initWithHTML:HTMLBodyData documentAttributes:NSNull
+	set range to {0, attributedString's |length|}
+	set RTF to (attributedString's RTFFromRange:range documentAttributes:{DocumentType:NSRTFTextDocumentType})
+	set pasteboard to current application's NSPasteboard's generalPasteboard()
+	pasteboard's clearContents()
+	pasteboard's setData:RTF forType:NSPasteboardTypeRTF
+end clipTextAndHtml
+
+on alfred_script(q)
+	try
+		set AppleScript's text item delimiters to ","
+		set identifier to text item 1 of q
+		set itemID to text item 2 of q
+		set accountID to text item 3 of q
+		set AppleScript's text item delimiters to ""
+		tell application "Notes"
+			if accountID is "null" then
+				set noteName to name of note id itemID in default account
+			else
+				set noteName to name of note id itemID in account id accountID
+			end if
+			set HTMLLink to "&lt;a href=\"notes://showNote?identifier=" &amp; identifier &amp; "\"&gt;" &amp; noteName &amp; "&lt;/a&gt; (&lt;a href=\"mobilenotes://showNote?identifier=" &amp; identifier &amp; "\"&gt;iOS&lt;/a&gt;)"
+		end tell
+		my HTMLToClipboard(HTMLLink)
+		tell application "System Events" to keystroke "v" using command down
+	on error errorMessage number errorNumber
+		display alert "Paste Link to Note Error" message (errorNumber as string &amp; ": " &amp; errorMessage &amp; "\n\nInput: " &amp; q) as critical
+	end try
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>E91B4B80-CB26-4BC2-B808-5EC8A43F3E25</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string>Getting notes...</string>
+				<key>script</key>
+				<string>scope="title"
+workflow_dir="$alfred_preferences/workflows/$alfred_workflow_uid"
+search_notes="$workflow_dir/search_notes/search_notes"
+if [[ ! -f "$workflow_dir/authorized" ]]; then
+	xattr -rd com.apple.quarantine "$workflow_dir"
+	touch "$workflow_dir/authorized"
+fi
+out=`"$search_notes" $scope "$@" 2&gt;&amp;1`
+if [[ $? != 0 ]]; then
+	nl=$'\n'
+	notes_db="$HOME/Library/Group Containers/group.com.apple.notes/NoteStore.sqlite"
+	macos="macOS: $(sw_vers -productVersion)${nl}"
+	alf_version="Alfred: ${alfred_version}${nl}"
+	workflow_version="Workflow: ${alfred_workflow_version}${nl}"
+	cpu_arch="CPU: $(machine)${nl}"
+	bin_xattrs="Binary xattrs: $(xattr "$search_notes")${nl}"
+	db_xattrs="Notes DB xattrs: $(xattr "$notes_db")${nl}"
+	bin_info="Binary info: $(stat -f "%Mp%Lp %u/%Su %g/%Sg" "$search_notes")${nl}"
+	db_info="Notes DB info: $(stat -f "%Mp%Lp %u/%Su %g/%Sg" "$notes_db")${nl}"
+	alfred_query="Query: $scope '$@'${nl}"
+	osascript "$workflow_dir/handle_error.scpt" "Please copy this entire text if submitting an error report. You may need to scroll.${nl}${nl}${out}${nl}${nl}${macos}${alf_version}${workflow_version}${cpu_arch}${bin_xattrs}${db_xattrs}${bin_info}${db_info}${alfred_query}"
+else
+	echo $out
+fi</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>cmd/search_titles/search_titles</string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Search notes</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>A057AD2C-473A-4823-8624-8891E5C187F6</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.snippet</string>
+			<key>uid</key>
+			<string>2A3C974B-57DF-4601-8EFC-4158CAA2005A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Setup Instructions and Help
+---------------------------
+https://github.com/sballin/alfred-search-notes-app
+
+
+Environment Variables
+---------------------
+- fallbackCreateNew: 1 = offer to create a new note if none was found, 0 = don't
+- fallbackSearchBody: 1 = if a title search returns no results, search note bodies too, 0 = don't
+- searchFolders: in title search, 1 = return all notes from any folder matching the search query, 0 = don't
+- sortByDate: 1 = most recently modified note first, 0 = alphabetical order</string>
+	<key>uidata</key>
+	<dict>
+		<key>060809AF-8160-439A-85F9-D672664E3A1A</key>
+		<dict>
+			<key>xpos</key>
+			<real>50</real>
+			<key>ypos</key>
+			<real>160</real>
+		</dict>
+		<key>092EA403-A1D7-49DA-B8DD-8D785DDAB3B9</key>
+		<dict>
+			<key>note</key>
+			<string>Create new note</string>
+			<key>xpos</key>
+			<real>605</real>
+			<key>ypos</key>
+			<real>800</real>
+		</dict>
+		<key>0B8A749B-E2E7-4B1B-9711-1C77A495BD97</key>
+		<dict>
+			<key>note</key>
+			<string>Check for updates if more than 24 hours since last check</string>
+			<key>xpos</key>
+			<real>875</real>
+			<key>ypos</key>
+			<real>450</real>
+		</dict>
+		<key>19CCE92E-2C07-4CB4-9874-E29AA3563F37</key>
+		<dict>
+			<key>note</key>
+			<string>⌥ Move note to folder</string>
+			<key>xpos</key>
+			<real>605</real>
+			<key>ypos</key>
+			<real>665</real>
+		</dict>
+		<key>1A6D4810-ABAF-4604-9639-CC1327A279B7</key>
+		<dict>
+			<key>xpos</key>
+			<real>50</real>
+			<key>ypos</key>
+			<real>50</real>
+		</dict>
+		<key>2A3C974B-57DF-4601-8EFC-4158CAA2005A</key>
+		<dict>
+			<key>note</key>
+			<string>Paste link to note</string>
+			<key>xpos</key>
+			<real>50</real>
+			<key>ypos</key>
+			<real>935</real>
+		</dict>
+		<key>4D8E3444-14C2-4D0E-A8C1-AA67988AE358</key>
+		<dict>
+			<key>note</key>
+			<string>Show note/folder 
+or create note</string>
+			<key>xpos</key>
+			<real>605</real>
+			<key>ypos</key>
+			<real>515</real>
+		</dict>
+		<key>5BC84589-FA2A-459F-982A-54B612C9BA7F</key>
+		<dict>
+			<key>note</key>
+			<string>Search note titles</string>
+			<key>xpos</key>
+			<real>290</real>
+			<key>ypos</key>
+			<real>105</real>
+		</dict>
+		<key>6740BCB6-6818-49E2-A88A-9D19EA132F08</key>
+		<dict>
+			<key>note</key>
+			<string>⌥ Copy link to note</string>
+			<key>xpos</key>
+			<real>605</real>
+			<key>ypos</key>
+			<real>245</real>
+		</dict>
+		<key>69AB99D4-3231-4959-828B-383C93051FCC</key>
+		<dict>
+			<key>note</key>
+			<string>Create new note</string>
+			<key>xpos</key>
+			<real>290</real>
+			<key>ypos</key>
+			<real>800</real>
+		</dict>
+		<key>6F3DD843-22EF-4A97-BAF8-511894B5202D</key>
+		<dict>
+			<key>note</key>
+			<string>Search folder names</string>
+			<key>xpos</key>
+			<real>290</real>
+			<key>ypos</key>
+			<real>375</real>
+		</dict>
+		<key>A057AD2C-473A-4823-8624-8891E5C187F6</key>
+		<dict>
+			<key>note</key>
+			<string>Search note titles</string>
+			<key>xpos</key>
+			<real>290</real>
+			<key>ypos</key>
+			<real>935</real>
+		</dict>
+		<key>B9ECD7D6-EA33-4E2E-AE3E-4E22EEDD6097</key>
+		<dict>
+			<key>note</key>
+			<string>Search note bodies</string>
+			<key>xpos</key>
+			<real>290</real>
+			<key>ypos</key>
+			<real>240</real>
+		</dict>
+		<key>CAA4E408-453B-4518-B2B1-CD024BAA493C</key>
+		<dict>
+			<key>note</key>
+			<string>Search hashtags</string>
+			<key>xpos</key>
+			<real>290</real>
+			<key>ypos</key>
+			<real>510</real>
+		</dict>
+		<key>CE746687-24FD-4E5C-841F-0D4826E007C4</key>
+		<dict>
+			<key>note</key>
+			<string>⇧ Search in Notes toolbar</string>
+			<key>xpos</key>
+			<real>605</real>
+			<key>ypos</key>
+			<real>95</real>
+		</dict>
+		<key>DC692798-E272-4547-BE83-4B63B823E456</key>
+		<dict>
+			<key>note</key>
+			<string>⌘ Copy note body</string>
+			<key>xpos</key>
+			<real>605</real>
+			<key>ypos</key>
+			<real>380</real>
+		</dict>
+		<key>E91B4B80-CB26-4BC2-B808-5EC8A43F3E25</key>
+		<dict>
+			<key>note</key>
+			<string>Paste link to note</string>
+			<key>xpos</key>
+			<real>605</real>
+			<key>ypos</key>
+			<real>935</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>variables</key>
+	<dict>
+		<key>fallbackCreateNew</key>
+		<string>1</string>
+		<key>fallbackSearchBody</key>
+		<string>1</string>
+		<key>searchFolders</key>
+		<string>1</string>
+		<key>sortByDate</key>
+		<string>1</string>
+	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>3.5.2</string>
+	<key>webaddress</key>
+	<string>https://github.com/sballin/alfred-search-notes-app</string>
+</dict>
+</plist>

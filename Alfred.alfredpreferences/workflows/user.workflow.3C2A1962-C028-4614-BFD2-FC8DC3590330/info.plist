@@ -438,6 +438,35 @@ end alfred_script</string>
 				<key>focusedappvariablename</key>
 				<string></string>
 				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>893621F5-9A20-454F-A48D-1F33F61CAC8F</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
 				<integer>17</integer>
 				<key>hotmod</key>
 				<integer>1835008</integer>
@@ -601,123 +630,132 @@ echo "Bluetooth is now ${msg}"</string>
 		<key>1124C543-675A-4717-985B-4D4A64D3EA43</key>
 		<dict>
 			<key>xpos</key>
-			<integer>275</integer>
+			<real>275</real>
 			<key>ypos</key>
-			<integer>315</integer>
+			<real>315</real>
 		</dict>
 		<key>27E22B9F-B384-46EA-A842-7D2528B6298C</key>
 		<dict>
 			<key>xpos</key>
-			<integer>335</integer>
+			<real>335</real>
 			<key>ypos</key>
-			<integer>875</integer>
+			<real>875</real>
 		</dict>
 		<key>294A52DC-6FB9-4549-8665-D58FDE0223F3</key>
 		<dict>
 			<key>xpos</key>
-			<integer>50</integer>
+			<real>50</real>
 			<key>ypos</key>
-			<integer>50</integer>
+			<real>50</real>
 		</dict>
 		<key>30C63C69-4E44-4C2D-934E-8C7293DA1FA1</key>
 		<dict>
 			<key>xpos</key>
-			<integer>510</integer>
+			<real>510</real>
 			<key>ypos</key>
-			<integer>460</integer>
+			<real>460</real>
 		</dict>
 		<key>3F9C47AF-FF7F-4A0D-BBC3-6F42EC85F4AB</key>
 		<dict>
 			<key>xpos</key>
-			<integer>280</integer>
+			<real>280</real>
 			<key>ypos</key>
-			<integer>50</integer>
+			<real>50</real>
 		</dict>
 		<key>406C8C5C-A66C-4E02-A0A7-A3EFD87C230A</key>
 		<dict>
 			<key>xpos</key>
-			<integer>605</integer>
+			<real>605</real>
 			<key>ypos</key>
-			<integer>950</integer>
+			<real>950</real>
 		</dict>
 		<key>472862AD-9E63-47C5-A3D4-C460511B777E</key>
 		<dict>
 			<key>xpos</key>
-			<integer>55</integer>
+			<real>55</real>
 			<key>ypos</key>
-			<integer>750</integer>
+			<real>750</real>
 		</dict>
 		<key>5951FB5C-C50E-4488-B7ED-3485C88F84E8</key>
 		<dict>
 			<key>xpos</key>
-			<integer>60</integer>
+			<real>60</real>
 			<key>ypos</key>
-			<integer>1010</integer>
+			<real>1010</real>
 		</dict>
 		<key>81F29126-A757-49B7-9B65-B93E136BCD2B</key>
 		<dict>
 			<key>xpos</key>
-			<integer>40</integer>
+			<real>40</real>
 			<key>ypos</key>
-			<integer>315</integer>
+			<real>315</real>
 		</dict>
 		<key>88E2A2E4-9E34-4AC3-8844-4FA25675535B</key>
 		<dict>
 			<key>xpos</key>
-			<integer>45</integer>
+			<real>45</real>
 			<key>ypos</key>
-			<integer>185</integer>
+			<real>185</real>
+		</dict>
+		<key>893621F5-9A20-454F-A48D-1F33F61CAC8F</key>
+		<dict>
+			<key>xpos</key>
+			<real>500</real>
+			<key>ypos</key>
+			<real>645</real>
 		</dict>
 		<key>9541024D-1027-4A3F-9AF7-F7B9611C749D</key>
 		<dict>
 			<key>xpos</key>
-			<integer>275</integer>
+			<real>275</real>
 			<key>ypos</key>
-			<integer>460</integer>
+			<real>460</real>
 		</dict>
 		<key>AEE6B122-4FB1-44D5-9690-6AF29B55ACB9</key>
 		<dict>
 			<key>xpos</key>
-			<integer>505</integer>
+			<real>505</real>
 			<key>ypos</key>
-			<integer>315</integer>
+			<real>315</real>
 		</dict>
 		<key>B6CEDD88-91E0-44ED-8D04-0700FAD425C2</key>
 		<dict>
 			<key>xpos</key>
-			<integer>50</integer>
+			<real>50</real>
 			<key>ypos</key>
-			<integer>625</integer>
+			<real>625</real>
 		</dict>
 		<key>C65D5DCB-4E6B-4067-90E7-945609E5B45B</key>
 		<dict>
 			<key>xpos</key>
-			<integer>280</integer>
+			<real>280</real>
 			<key>ypos</key>
-			<integer>625</integer>
+			<real>625</real>
 		</dict>
 		<key>D83D7CFB-D541-4389-8F5D-688E1222497A</key>
 		<dict>
 			<key>xpos</key>
-			<integer>55</integer>
+			<real>55</real>
 			<key>ypos</key>
-			<integer>875</integer>
+			<real>875</real>
 		</dict>
 		<key>E3D797CE-D09B-4B89-9A36-04576B54FDC3</key>
 		<dict>
 			<key>xpos</key>
-			<integer>340</integer>
+			<real>340</real>
 			<key>ypos</key>
-			<integer>1010</integer>
+			<real>1010</real>
 		</dict>
 		<key>EAC71AD7-6378-4DD7-BAB0-6DFAA47D7A36</key>
 		<dict>
 			<key>xpos</key>
-			<integer>35</integer>
+			<real>35</real>
 			<key>ypos</key>
-			<integer>460</integer>
+			<real>460</real>
 		</dict>
 	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
 	<key>webaddress</key>
 	<string>soldaini.net</string>
 </dict>
