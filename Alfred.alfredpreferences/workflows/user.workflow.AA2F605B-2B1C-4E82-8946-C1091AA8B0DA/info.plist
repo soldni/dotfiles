@@ -225,7 +225,7 @@ Search app windows in the current Desktop Space via the Windows Keyword (default
 			<key>note</key>
 			<string>Optional Hotkey to invoke window selection</string>
 			<key>xpos</key>
-			<real>45</real>
+			<real>50</real>
 			<key>ypos</key>
 			<real>40</real>
 		</dict>
