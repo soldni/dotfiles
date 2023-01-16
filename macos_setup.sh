@@ -223,7 +223,6 @@ brew_taps_to_add=(
     'homebrew/cask'
     'jlhonora/lsusb'
     'homebrew/cask-fonts'
-    'mczachurski/wallpapper'
 )
 
 for tap in "${brew_taps_to_add[@]}"; do
@@ -243,7 +242,6 @@ brew_packages_to_install=(
     'blueutil'
     'gnu-sed'
     'rsync'
-    'thefuck'
     'tree'
     'glib'
     'colordiff'
@@ -263,7 +261,6 @@ brew_packages_to_install=(
     'wget'
     'zsh-autosuggestions'
     'pigz'
-    'wallpaper'
     'lsusb'
     'diff-pdf'
 )
@@ -281,8 +278,6 @@ done
 
 brew_cask_to_install=(
     'iterm2'                # terminal
-    'quicklook-json'        # quicklook plugin for json
-    'quicklook-csv'         # quicklook plugin for csv
     'keepingyouawake'       # prevent sleep
     'skim'                  # PDF viewer for latex
     'coconutbattery'        # check battery status
@@ -296,15 +291,13 @@ brew_cask_to_install=(
     '1password'             # Password Manager
     'visual-studio-code'    # text editor
     'mimestream'            # email client
-    'moom'					# window managment
     'lingon-x'              # manage startup items
     'kaleidoscope'          # diff tool
     'tower'                 # git client
     'geekbench'             # benchmarking
     'vlc'                   # player
     'viscosity'             # openVPN client
-    'overkill'              # no itunes buttons
-    # 'monitorcontrol'        # control external monitor setttings
+    'monitorcontrol'        # control external monitor setttings
     'font-fira-code'        # font with ligatures
     'screens'               # VNC client
 )
@@ -320,14 +313,10 @@ for package in "${brew_cask_to_install[@]}"; do
 done
 
 mas_install=(
-    '890031187'     # Marked 2
-    '494803304'     # WiFi Explorer
     '429449079'     # Patterns
     '425424353'     # The Unarchiver
     '403304796'     # iNet Network Scanner
-    # '1365531024'    # 1Blocker
-    '924726344'     # Deliveries
-    '904280696'     # Things 3
+    '1365531024'    # 1Blocker
     '956377119'     # WorldClock
     '1289583905'    # Pixelmator Pro
     '1592917505'    # Noir
