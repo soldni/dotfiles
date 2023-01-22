@@ -3,6 +3,7 @@
 from __future__ import print_function, unicode_literals
 
 import json
+import re
 import socket
 import sys
 
@@ -157,9 +158,7 @@ def main():
     ap.add_argument("-k", "--production-key", default=None)
     ap.add_argument("-d", "--domain-name", default=None)
     ap.add_argument("-a", "--a-name", default=None)
-    ap.add_argument(
-        "-m", "--mode", default="remote", choices=["remote", "local"]
-    )
+    ap.add_argument("-m", "--mode", default="remote")
     ap.add_argument("-t", "--ttl", default=300, type=int)
     ap.add_argument(
         "-i", "--ext-ip-server", default="https://ipecho.net/plain"
@@ -190,8 +189,16 @@ def main():
 
     if opts.mode == "remote":
         current_ip = get_remote_ip(opts)
-    else:
+    elif opts.mode == "local":
         current_ip = get_local_ip(opts)
+    elif re.match(r"^\d+\.\d+\.\d+\.\d+$", opts.mode):
+        current_ip = opts.mode
+    else:
+        msg = (
+            "Invalid mode: {}".format(opts.mode) +
+            " (must be 'remote', 'local', or an IP address)"
+        )
+        raise RuntimeError(msg)
 
     update_ip(current_ip.strip(), opts)
 
