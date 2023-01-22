@@ -44,6 +44,8 @@ inoremap <C-d> <Del>
 " shortcuts for begin/end line everywhere!)
 map <C-a> <Home>
 map <C-e> <End>
+imap <C-a> <Home>
+imap <C-e> <End>
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
 
@@ -165,12 +167,16 @@ nnoremap <C-W><Up>        <C-W><C-K>
 nnoremap <C-W><Left>      <C-W><C-L>
 nnoremap <C-W><Right>     <C-W><C-H>
 
-" open a new horizontal split with -, vertical with |
-nnoremap <C-w>-     <C-W>n
-nnoremap <C-w>\     :vnew<CR>
+" open a new horizontal split with ", vertical with %
+" this is like tmux!
+nnoremap <C-w>"     <C-W>n
+nnoremap <C-w>%     :vnew<CR>
 
-" Invoke explorer
-nnoremap <C-e>     :Explore<CR>
+" Toggle explorer with ctrl x
+
+
+" Old shortcut (only opens)
+" nnoremap <C-x>     :Explore<CR>
 
 " Map multiple escape sequences to <Esc>
 :inoremap <Esc> <Esc><Esc>
