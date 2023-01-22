@@ -40,16 +40,28 @@ def main():
             next(f)
         for ln in f:
             if len(opts.fields) > 0:
-                k = '\t'.join(e for i, e in enumerate(ln.strip().split('\t'), start=1) if i in opts.fields)
+                k = '\t'.join(
+                    e for i,
+                    e in enumerate(
+                        ln.strip().split('\t'),
+                        start=1) if i in opts.fields)
             else:
                 k = ln.strip()
 
             cnt[k] += 1
 
-    sort_fn = (lambda t: -t[1]) if opts.sort == 'descending' else (lambda t: t[1])
+    sort_fn = (
+        lambda t: -
+        t[1]) if opts.sort == 'descending' else (
+        lambda t: t[1])
 
     try:
-        print('\n'.join(f'{k}\t{v}' for k, v in sorted(cnt.items(), key=sort_fn)))
+        print(
+            '\n'.join(
+                f'{k}\t{v}' for k,
+                v in sorted(
+                    cnt.items(),
+                    key=sort_fn)))
     except BrokenPipeError:
         pass
 

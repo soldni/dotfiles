@@ -29,7 +29,8 @@ def main():
 
         try:
             for ln in f:
-                text, labels = zip(*(elem.split('|') for elem in ln.strip().split()))
+                text, labels = zip(*(elem.split('|')
+                                   for elem in ln.strip().split()))
                 print(' '.join(text if (opts.mode == 'text') else labels))
         except BrokenPipeError:
             pass

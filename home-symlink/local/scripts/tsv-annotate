@@ -1,9 +1,9 @@
 #! /usr/bin/env python3
 
 import argparse
-import collections
-import sys
+import os
 import random
+import sys
 
 
 def parse_arguments():
@@ -11,9 +11,12 @@ def parse_arguments():
 
     ap.add_argument('-H', '--header', action='store_true',
                     help='Whether the input file has a header')
-    ap.add_argument('-f', '--fields', default='',
-                    help='Fields to display during annotation; by default, the '
-                    'entire line is displayed.')
+    ap.add_argument(
+        '-f',
+        '--fields',
+        default='',
+        help='Fields to display during annotation; by default, the '
+        'entire line is displayed.')
     ap.add_argument('-s', '--seed', default=42, type=int, help='')
     ap.add_argument('-d', '--destination', default=None,
                     help='Destination where to save the annotation')
@@ -40,13 +43,16 @@ def main():
         input_data = [tuple(ln.strip().split('\t')) for ln in f]
 
     write_header = opts.header
-    if os.path.exist(opts.destination):
+    if os.path.exists(opts.destination):
         to_annotate = []
         write_header = False
         with open(opts.destination) as f:
             if opts.header:
                 next(f)
-            already_annotated = set(tuple(ln.strip().split('\t')[:-1]) for ln in f)
+            already_annotated = set(
+                tuple(
+                    ln.strip().split('\t')[
+                        :-1]) for ln in f)
 
         for elem in input_data:
             if elem not in already_annotated:
@@ -61,9 +67,13 @@ def main():
             f.write(f'{header}\t_annotation\n')
         try:
             for row in to_annotate:
-                print('Sample:\t' + '\t'.join(elem for i, elem in enumerate(row) if i in opts.fields))
+                print(
+                    'Sample:\t' +
+                    '\t'.join(
+                        elem for i,
+                        elem in enumerate(row) if i in opts.fields))
                 annotation = input('Annotation: ').strip()
-                f.write(f'\t'.join(row) + f'\t{annotation}\n')
+                f.write('\t'.join(row) + f'\t{annotation}\n')
         except BrokenPipeError:
             print('\nBye.')
 

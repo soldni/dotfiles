@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
-from argparse import ArgumentParser
 import random
+from argparse import ArgumentParser
 from math import ceil, log
 
 
@@ -26,17 +26,30 @@ def driver(opts):
 
 
 if __name__ == "__main__":
-    ap = ArgumentParser('Generate passphrase using a vocabulary')
-    ap.add_argument('length', type=int, help='length of passphrase in words')
-    ap.add_argument('-V', '--vocab', default='/usr/share/dict/words',
-                    help='vocabulary to use (plain text file, 1 word per line)')
-    ap.add_argument('-s', '--separator', default='-', type=str,
-                    help='separator of words in passphrase')
-    ap.add_argument('-M', '--max-length', default=0, type=int,
-                    help='Maximum length for any word')
+    ap = ArgumentParser("Generate passphrase using a vocabulary")
+    ap.add_argument("length", type=int, help="length of passphrase in words")
+    ap.add_argument(
+        "-V",
+        "--vocab",
+        default="/usr/share/dict/words",
+        help="vocabulary to use (plain text file, 1 word per line)",
+    )
+    ap.add_argument(
+        "-s",
+        "--separator",
+        default="-",
+        type=str,
+        help="separator of words in passphrase",
+    )
+    ap.add_argument(
+        "-M",
+        "--max-length",
+        default=0,
+        type=int,
+        help="Maximum length for any word",
+    )
     opts = ap.parse_args()
 
     passphrase = driver(opts)
     out = opts.separator.join(passphrase)
     print(out)
-

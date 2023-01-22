@@ -10,55 +10,61 @@ Email:  luca@soldaini.net
 
 import argparse
 import copy
-from enum import Enum
 import hashlib
-from math import pow
 import os
-from typing import Iterable, Sequence, Union, Generic, TypeVar
+from enum import Enum
+from getpass import getuser
+from math import pow
 from random import random, seed
 from socket import gethostname
-from getpass import getuser
-
+from typing import Generic, Iterable, Sequence, TypeVar, Union
 
 BRIGHTNESS_THRESHOLD = 186
-CH = TypeVar('CH', bound='RgbChannel')
-CL = TypeVar('CL', bound='RgbColor')
+CH = TypeVar("CH", bound="RgbChannel")
+CL = TypeVar("CL", bound="RgbColor")
 CH_VAL = Union[int, float]
 
 
 class CH_NAMES(Enum):
-    RED: str = 'r'
-    GRN: str = 'g'
-    BLE: str = 'b'
+    RED = "r"
+    GRN = "g"
+    BLE = "b"
 
 
 MAX_BRIGHTNESS = 186 / 255
-CHANNEL_BRIGHTNESS = {CH_NAMES.RED: 0.299,
-                      CH_NAMES.BLE: 0.114,
-                      CH_NAMES.GRN: 0.587}
+CHANNEL_BRIGHTNESS = {
+    CH_NAMES.RED: 0.299,
+    CH_NAMES.BLE: 0.114,
+    CH_NAMES.GRN: 0.587,
+}
 
 
 class RgbChannel(Generic[CH]):
+    value: CH_VAL
+    name: CH_NAMES
+
     def __init__(self: CH, name: Union[CH_NAMES, str], value: CH_VAL):
         if isinstance(name, str):
             name = CH_NAMES(name)
 
-        if 0. <= value <= 1. and isinstance(value, float):
+        if 0.0 <= value <= 1.0 and isinstance(value, float):
             self.is_float = True
         elif 0 <= value <= 255 and isinstance(value, int):
             self.is_float = False
         else:
-            raise ValueError(f'Value {value} out of bounds or not the right type')
+            raise ValueError(
+                f"Value {value} out of bounds or not the right type"
+            )
 
         if name not in CH_NAMES:
-            raise ValueError(f'Name {name} not in ChannelNamesEnum')
+            raise ValueError(f"Name {name} not in ChannelNamesEnum")
 
         self.value = value
         self.name = name
 
     def __repr__(self: CH) -> str:
-        value = f'{self.value:.4f}' if self.is_float else f'{self.value:03d}'
-        return f'{self.name.value}={value}'
+        value = f"{self.value:.4f}" if self.is_float else f"{self.value:03d}"
+        return f"{self.name.value}={value}"
 
     def __str__(self: CH) -> str:
         return str(self.value)
@@ -78,22 +84,27 @@ class RgbChannel(Generic[CH]):
         return ch
 
     def as_hex(self: CH) -> str:
-        return hex(self.as_int().value).lstrip('0x').zfill(2)
+        return hex(int(self.as_int().value)).lstrip("0x").zfill(2)
+
 
 class RgbColor(Generic[CL]):
     def __init__(self: CL, *args: Sequence[RgbChannel]):
-        [setattr(self, ch.value, None) for ch in CH_NAMES]
+        for ch in CH_NAMES:
+            setattr(self, ch.value, None)
+
         for ch in args:
             setattr(self, ch.name.value, ch)
         if any(v is None for v in vars(self).values()):
-            raise ValueError('Not all channels provided!')
+            raise ValueError("Not all channels provided!")
 
     def __iter__(self: CL) -> Iterable[CH]:
         yield from (self.r, self.g, self.b)
 
     def __repr__(self: CL) -> str:
-        return (f'{self.__class__.__name__} '
-                f'({repr(self.r)}, {repr(self.g)}, {repr(self.b)})')
+        return (
+            f"{self.__class__.__name__} "
+            f"({repr(self.r)}, {repr(self.g)}, {repr(self.b)})"
+        )
 
     def as_int(self: CL) -> CL:
         return self.__class__(*(ch.as_int() for ch in self))
@@ -102,20 +113,24 @@ class RgbColor(Generic[CL]):
         return self.__class__(*(ch.as_float() for ch in self))
 
     def as_hex(self: CL) -> str:
-        return '#' + ''.join(ch.as_hex() for ch in self)
+        return "#" + "".join(ch.as_hex() for ch in self)
 
 
 def generate_random_neutral_brightness(lightness: float):
-    color = RgbColor(RgbChannel(name='r', value=random()),
-                     RgbChannel(name='g', value=random()),
-                     RgbChannel(name='b', value=random()))
+    color = RgbColor(
+        RgbChannel(name="r", value=random()),
+        RgbChannel(name="g", value=random()),
+        RgbChannel(name="b", value=random()),
+    )
 
     lum_per_channel = list(map(Lightness.channel_to_luminance, color))
     target_lum = Lightness.lightness_to_luminance(lightness)
     correction = target_lum / sum(lum_per_channel)
 
     for ch, lum in zip(color, lum_per_channel):
-        ch.value = Lightness.luminance_to_channel_correction(lum * correction, ch.name)
+        ch.value = Lightness.luminance_to_channel_correction(
+            lum * correction, ch.name
+        )
 
     return color
 
@@ -126,8 +141,9 @@ class Lightness:
     LUMINANCE_CORRECTION_MAP = {
         CH_NAMES.RED: 0.2126,
         CH_NAMES.GRN: 0.7152,
-        CH_NAMES.BLE: 0.0722
+        CH_NAMES.BLE: 0.0722,
     }
+
     @classmethod
     def channel_to_luminance(cls, ch: RgbChannel) -> float:
         ch = ch.as_float()
@@ -138,7 +154,9 @@ class Lightness:
         return cls.LUMINANCE_CORRECTION_MAP[ch.name] * ch.value
 
     @classmethod
-    def luminance_to_channel_correction(cls, lum: float, ch_name: CH_NAMES) -> float:
+    def luminance_to_channel_correction(
+        cls, lum: float, ch_name: CH_NAMES
+    ) -> float:
         lum = lum / cls.LUMINANCE_CORRECTION_MAP[ch_name]
         if lum <= 0.0031308:
             value = lum * 12.92
@@ -170,29 +188,32 @@ class Lightness:
 
 def parse_options():
     ap = argparse.ArgumentParser()
-    ap.add_argument('-d', '--display', action='store_true')
-    ap.add_argument('-s', '--seed', type=int, default=None)
-    ap.add_argument('-l', '--lightness', type=float, default=0.65)
-    ap.add_argument('-r', '--rgb-output', action='store_true')
-    ap.add_argument('-x', '--hex-output', action='store_true')
+    ap.add_argument("-d", "--display", action="store_true")
+    ap.add_argument("-s", "--seed", type=int, default=None)
+    ap.add_argument("-l", "--lightness", type=float, default=0.65)
+    ap.add_argument("-r", "--rgb-output", action="store_true")
+    ap.add_argument("-x", "--hex-output", action="store_true")
 
     opts = ap.parse_args()
 
     if opts.seed is None:
-        context = os.environ.get('LOCAL_CONTEXT_COLOR', '')
-        context = f'{gethostname()}; {getuser()}; {context}'
-        h = hashlib.md5(context.encode('utf-8')).hexdigest()
+        context = os.environ.get("LOCAL_CONTEXT_COLOR", "")
+        context = f"{gethostname()}; {getuser()}; {context}"
+        h = hashlib.md5(context.encode("utf-8")).hexdigest()
         opts.seed = int(h, 16)
 
     return opts
 
+
 class color_escape:
-    ESCAPE: str = '\033[{};2;{};{};{}m'
-    RESET: str = '\033[0m'
+    ESCAPE: str = "\033[{};2;{};{};{}m"
+    RESET: str = "\033[0m"
 
     def __new__(cls, color: CL, background: bool = False) -> str:
         color = color.as_int()
-        return cls.ESCAPE.format(48 if background else 38, color.r, color.g, color.b)
+        return cls.ESCAPE.format(
+            48 if background else 38, color.r, color.g, color.b
+        )
 
     @classmethod
     def foreground(cls, color: CL) -> str:
@@ -215,28 +236,41 @@ def main():
     random_color = generate_random_neutral_brightness(opts.lightness).as_int()
 
     if opts.display:
-        black = RgbColor(RgbChannel('r', 0.), RgbChannel('b', 0.), RgbChannel('g', 0.))
-        white = RgbColor(RgbChannel('r', 1.), RgbChannel('b', 1.), RgbChannel('g', 1.))
+        black = RgbColor(
+            RgbChannel("r", 0.0), RgbChannel("b", 0.0), RgbChannel("g", 0.0)
+        )
+        white = RgbColor(
+            RgbChannel("r", 1.0), RgbChannel("b", 1.0), RgbChannel("g", 1.0)
+        )
 
-        print(f'Color {repr(random_color)} (lightness={Lightness(random_color):.2f}):')
-        print(color_escape.foreground(random_color) +
-              'ON CURRENT BACKGROUND' +
-              color_escape.reset())
-        print(color_escape.foreground(random_color) +
-              color_escape.background(black) +
-              'ON A DARK BACKGROUND' +
-              color_escape.reset())
-        print(color_escape.foreground(random_color) +
-              color_escape.background(white) +
-              'ON A LIGHT BACKGROUND' +
-              color_escape.reset())
+        print(
+            f"Color {repr(random_color)} (lightness={Lightness(random_color):.2f}):"
+        )
+        print(
+            color_escape.foreground(random_color)
+            + "ON CURRENT BACKGROUND"
+            + color_escape.reset()
+        )
+        print(
+            color_escape.foreground(random_color)
+            + color_escape.background(black)
+            + "ON A DARK BACKGROUND"
+            + color_escape.reset()
+        )
+        print(
+            color_escape.foreground(random_color)
+            + color_escape.background(white)
+            + "ON A LIGHT BACKGROUND"
+            + color_escape.reset()
+        )
 
     elif opts.rgb_output:
         random_color = random_color.as_int()
-        print(f'{random_color.r};{random_color.g};{random_color.b}')
+        print(f"{random_color.r};{random_color.g};{random_color.b}")
 
     elif opts.hex_output:
-        print(random_color.as_hex(), end='')
+        print(random_color.as_hex(), end="")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
