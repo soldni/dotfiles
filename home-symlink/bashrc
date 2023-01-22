@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+r!/usr/bin/env bash
 
 # System-wide .bashrc file for interactive bash(1) shells.
 if [ -z "$PS1" ]; then
@@ -40,7 +40,7 @@ fi
 # Tell the terminal about the working directory at each prompt.
 if [[ "${TERM_PROGRAM}" == "Apple_Terminal" ]] && [[ -z "${INSIDE_EMACS}" ]]; then
     update_terminal_cwd() {
-        # Identify the directory using a "file:" scheme URL,
+        # dentify the directory using a "file:" scheme URL,
         # including the host name to disambiguate local vs.
         # remote connections. Percent-escape spaces.
 	local SEARCH=' '

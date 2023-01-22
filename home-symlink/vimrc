@@ -183,10 +183,23 @@ nnoremap <C-w>"     <C-W>n
 nnoremap <C-w>%     :vnew<CR>
 
 " Toggle explorer with ctrl x
-
-
-" Old shortcut (only opens)
-" nnoremap <C-x>     :Explore<CR>
+let g:NetrwIsOpen=0
+function! ToggleNetrw()
+    if g:NetrwIsOpen
+        let i = bufnr("$")
+        while (i >= 1)
+            if (getbufvar(i, "&filetype") == "netrw")
+                silent exe "bwipeout " . i
+            endif
+            let i-=1
+        endwhile
+        let g:NetrwIsOpen=0
+    else
+        let g:NetrwIsOpen=1
+        silent Explore
+    endif
+endfunction
+noremap <silent> <C-x> :call ToggleNetrw()<CR>
 
 " Map multiple escape sequences to <Esc>
 :inoremap <Esc> <Esc><Esc>
