@@ -5,6 +5,16 @@
 syntax enable
 let base16colorspace=256  " Access colors present in 256 colorspace
 
+" In normal mode, press Tab or Shift-Tab to adjust the indent on the current
+" line and position the cursor on the first nonblank character; in insert
+" mode, press Shift-Tab to unindent; in visual mode, press Tab or Shift-Tab to
+" adjust the indent on selected lines.
+" from https://vim.fandom.com/wiki/Shifting_blocks_visually
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
 
 " store swap files in a centralized location instead
 " that all over the files system

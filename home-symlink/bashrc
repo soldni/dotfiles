@@ -6,12 +6,6 @@ if [ -z "$PS1" ]; then
 fi
 
 
-# this fixes errors you might get from using sudo before aliases
-alias sudo="sudo "
-
-# MacOS complaining is no fun
-export BASH_SILENCE_DEPRECATION_WARNING=1
-
 if [[ ! -z "${ZSH_NAME}" ]]; then
     CURRENT_SHELL_NAME='zsh'
 elif [[ ! -z "${BASH}" ]]; then
@@ -24,9 +18,6 @@ else
     # last resort
     CURRENT_SHELL_NAME=$(echo $0 | sed 's/\-//g' )
 fi
-
-# add location of binaries in local
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # execute machine specific bash script
 source "$HOME/.prelocalrc"
@@ -67,6 +58,19 @@ fi
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # We're on macos
 
+    # don't want to hear about bash being deprecated
+    export BASH_SILENCE_DEPRECATION_WARNING=1
+
+    # this is useful for brew
+    export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+    # use openjdk if that's what the system has
+    if [ -d "/opt/homebrew/opt/openjdk" ]; then
+        export PATH="/opt/homebrew/opt/openjdk/bin:${PATH}"
+        export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include:${CPPFLAGS}"
+        export JAVA_HOME="/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home/"
+    fi
+
     # upgrade remotely
     alias macos-reboot='sudo fdesetup authrestart'
     alias macos-reboot-delay='sudo fdesetup authrestart -delayminutes -1'
@@ -76,9 +80,32 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # add a space to the dock
     alias dock-spacer="defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"spacer-tile\";}'; killall Dock"
 
+    # add path to ruby
+    MACOS_RUBY_PATH=/opt/homebrew/opt/ruby/bin
+    if [ -d "${MACOS_RUBY_PATH}" ]; then
+        export PATH="${MACOS_RUBY_PATH}:${PATH}"
+    fi
+
+    # makes sure that pkg-config works properly
+    if [ -d "/usr/local/lib/pkgconfig" ]; then
+        export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
+    fi
+
+    # adding brew to path
+    if [ -d "/opt/homebrew" ]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+        export PATH="/opt/homebrew/sbin:$PATH"
+    fi
+
+    # add command to quickly unlock keychain for macOS
+    if [ -d "${HOME}/Library/Keychains" ]; then
+        function unlock-login-keychain {
+            security unlock-keychain "${HOME}/Library/Keychains/login.keychain-db"
+        }
+    fi
+
     # override all gnubin when available
     OPTBASE="/opt/homebrew/opt"
-
     if [ -d "${OPTBASE}" ]; then
         for fn in $(ls --color=no $OPTBASE); do
             gnubin="${OPTBASE}/${fn}/libexec/gnubin"
@@ -111,67 +138,16 @@ if [ -d "$HOME/.local" ]; then
     export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:$HOME/.local/lib"
 fi
 
-# add Cisco AnyConnect executable to the path
-if [ -d "/opt/cisco/anyconnect/bin" ]; then
-    export PATH="$PATH:/opt/cisco/anyconnect/bin"
-fi
-
-# check if gurobi is installed; if so, add it to path
-if [ -d "/usr/local/gurobi" ]; then
-    export GUROBI_HOME="/usr/local/gurobi"
-    export PATH="${PATH}:${GUROBI_HOME}/bin"
-    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
-fi
-
-# add path to ruby
-MACOS_RUBY_PATH=/opt/homebrew/opt/ruby/bin
-if [ -d "${MACOS_RUBY_PATH}" ]; then
-    export PATH="${MACOS_RUBY_PATH}:${PATH}"
-fi
-
-# adding brew to path
-if [ -d "/opt/homebrew" ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-    export PATH="/opt/homebrew/sbin:$PATH"
-fi
-
-# add command to quickly unlock keychain for macOS
-if [ -d "${HOME}/Library/Keychains" ]; then
-    function unlock-login-keychain {
-        security unlock-keychain "${HOME}/Library/Keychains/login.keychain-db"
-    }
-fi
 
 # Tell ls to be colourful
 export CLICOLOR=1
 
-# Tell grep to highlight matches
-# alias grep="grep --color=auto"
-
-# $GREP_OPTIONS is deprecated (this solves it)
-# export GREP_OPTIONS='--color=auto'
-
+# set vim as the default editor
 export VISUAL=vim
 export EDITOR=vim
 
-# force color for ls when using GNU coreutils
-if ls --color -d . >/dev/null 2>&1; then
-    alias ls="ls --color=yes"
-elif ls -G -d . >/dev/null 2>&1; then
-    alias ls="ls -G"
-fi
-
 # ls behaves like ll in fish
-alias ll="ls -alGh"
-
-# just like ll, but with more recent at the bottom
-alias lo="ls -lrth"
-
-# just like ll, but with larger at the bottom
-alias lS="ls -lrSh"
-
-# shortcut for quick shell exit
-alias q="exit"
+alias ls='ls --color=auto'
 
 export PYENV_ROOT="$HOME/.pyenv"
 # activate pyenv
@@ -180,13 +156,7 @@ if [[ -d "$PYENV_ROOT" ]]; then
     eval "$(pyenv init -)"
 fi
 
-# command to see which processes are using the gpu
-has_nvidia=$(which nvidia-smi 2>/dev/null)
-if [[ ! -z $has_nvidia ]]; then
-    alias nvidia-who='sudo fuser -v /dev/nvidia*'
-fi
-
-# command to see which processes are using the gpu
+# command to stop/start ec2 quickly
 has_aws_cli=$(which aws 2>/dev/null)
 if [[ ! -z $has_aws_cli ]]; then
     function ec2-list {
@@ -221,41 +191,6 @@ if [[ ! -z $has_docker ]]; then
     alias docker-build-and-run='docker run --rm -it $(docker build -q .)'
 fi
 
-# command to see which processes are using the gpu
-has_slurm=$(which srun 2>/dev/null)
-if [[ ! -z $has_slurm ]]; then
-    function slurm-interactive {
-        gpus="${1}"
-        host="${2}"
-        usage='slurm-interative [num gpus] {host}'
-
-        if [[ "${gpus}" == "-h" ]]; then
-            printf "USAGE: ${usage}\n" > /dev/stderr
-            return
-        fi
-        if [ -z "${gpus}" ]; then
-            printf "Number of GPUs to use not provided;\nUSAGE: ${usage}\n" > /dev/stderr
-            return
-        fi
-
-        if [ -z "${host}" ]; then
-            host="${HOSTNAME}"
-        fi
-        srun -w "${host}" --gpus="${1}" --pty bash
-    }
-fi
-
-# quick jupyter aliases
-alias jc="jupyter console"
-alias jn="jupyter notebook"
-
-# handle color in grep/less
-alias cgrep="grep --color=always"
-alias cless="less -R"
-
-# convenient vim alias
-alias v='vim'
-alias gv='gvim'
 
 # tmux shortcuts
 function ta { if [ -z ${1} ]; then tmux -2 attach; else tmux -2 attach -t ${1}; fi }
@@ -263,22 +198,13 @@ function tn { if [ -z ${1} ]; then tmux -2; else tmux -2 new -s ${1}; fi }
 function tl { tmux -2 list-sessions; }
 
 alias git-freeze='git update-index --assume-unchanged'
-alias git-thaw='git update-index --no-assume-unchanged'
+alias git-unfreeze='git update-index --no-assume-unchanged'
 alias git-undo='git reset --soft HEAD~1'
-
-# one line script to update all pip packages
-alias pip-upgrade-all='python -c "import pip, subprocess; [subprocess.call(\"pip install -U \" + d.project_name, shell=1) for d in pip.get_installed_distributions()]"'
-alias pip3-upgrade-all='python3 -c "import pip, subprocess; [subprocess.call(\"pip install -U \" + d.project_name, shell=1) for d in pip.get_installed_distributions()]"'
 
 # increase bash history file size
 HISTFILESIZE=50000
 
-if [ -d "${HOME}/anaconda3" ]; then
-    source "${HOME}/anaconda3/etc/profile.d/conda.sh"
-elif [ -d "${HOME}/miniconda3" ]; then
-    source "${HOME}/miniconda3/etc/profile.d/conda.sh"
-fi
-
+# bootstrap miniforge
 if [ -d "${HOME}/miniforge3" ]; then
     # initialization of miniforge
     __conda_setup="$("${HOME}/miniforge3/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
@@ -302,24 +228,11 @@ for SCRIPT_DIR in ".local/scripts" ".local/share/scripts"; do
     fi
 done
 
-# alias for sizing the current folder (du + options is hard
-# to remember!)
-alias s0="du --summarize -h"
-alias s1="du --max-depth=1 -h"
-alias s2="du --max-depth=2 -h"
-
-# alias to find things easily
-alias f='find . -name'
 
 # toggles for bash history
 alias history-off='set +o history'
 alias history-on='set -o history'
 
-# define commands for vnc if tightvncserver is present
-if command -v tightvncserver >/dev/null 2>&1; then
-    alias vnc-start='tightvncserver -depth 16 -geometry 1024x768 -localhost :1'
-    alias vnc-stop='tightvncserver -kill :1'
-fi
 
 # Shortcuts to common linting tools in python
 function pypretty () {
@@ -356,68 +269,10 @@ function pypretty () {
 # get indices of headers
 tsv-header () { head -n 1 $* | tr $'\t' '\n' | nl ; }
 csv-header () { head -n 1 $* | tr ',' '\n' | nl ; }
-but-first () { tail -n +2 $* ; }
-
-# shortcuts for python 2/3
-alias p2="python"
-alias p3="python3"
-
-# makes sure that pkg-config works properly
-if [ -d "/usr/local/lib/pkgconfig" ]; then
-    export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
-fi
 
 # mute the fucking bell
 setterm -blength 0 >/dev/null 2>&1
 
-# shortcut for compressing and decompressing files
-function multi-compress () {
-    SRC=$2
-    DST=$1
-
-    if [ -z "${SRC}" ] || [ -z "${DST}" ]; then
-        echo "USAGE: multicompress [dst] [src]" > /dev/stderr
-        exit 1
-    fi
-
-    tar vcf - $SRC | pigz > $DST
-}
-
-function compress () {
-    SRC=$2
-    DST=$1
-
-    if [ -z "${SRC}" ] || [ -z "${DST}" ]; then
-        echo "USAGE: compress [dst] [src]" > /dev/stderr
-        exit 1
-    fi
-
-    tar zcvf $DST $SRC
-}
-
-
-function decompress () {
-    SRC=$1
-
-    if [ -z "${SRC}" ]; then
-        echo "USAGE: decompress [src]" > /dev/stderr
-        exit 1
-    fi
-
-    tar zxvf $SRC
-}
-
-function multi-decompress () {
-    SRC=$1
-
-    if [ -z "${SRC}" ]; then
-        echo "USAGE: multi-decompress [src]" > /dev/stderr
-        exit 1
-    fi
-
-    pigz -dc $SRC | tar xvf -
-
-}
 
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
@@ -425,15 +280,7 @@ stty -ixon
 # better copy (uses rsync for progressbar shit)
 alias copy='rsync -rva --info=progress2'
 
-# use openjdk if that's what the system has
-if [ -d "/opt/homebrew/opt/openjdk" ]; then
-    export PATH="/opt/homebrew/opt/openjdk/bin:${PATH}"
-    export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include:${CPPFLAGS}"
-    export JAVA_HOME="/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home/"
-fi
-
 if [ -z "${JAVA_HOME}" ]; then
-
     # set java home if JDK is installed
     has_java=$(which javac 2>/dev/null)
 
@@ -465,16 +312,6 @@ alias git-rm-submodule="submodule deinit"
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 [[ -r "/etc/profile.d/bash_completion.sh" ]] && . "/etc/profile.d/bash_completion.sh"
 
-# if it is a raspberry pi, enable some useful alieases
-
-is_raspberry=$(tr 2> /dev/null < /proc/device-tree/model -d '\000' | grep "Raspberry")
-if [[ ! -z $is_raspberry ]]; then
-    alias wifi-off="sudo ifconfig wlan0 down"
-    alias wifi-on="sudo ifconfig wlan0 up"
-    alias temp="/opt/vc/bin/vcgencmd measure_temp"
-    alias led-on="echo 1 | sudo tee /sys/class/leds/led0/brightness"
-    alias led-off="echo 0 | sudo tee /sys/class/leds/led0/brightness"
-fi
 
 # if you have acme.sh installed for
 # Let's Encrypt, add it to the path
@@ -519,6 +356,11 @@ get_dirty_git() {
 
 # get the name of the branch we are in
 parse_git_branch() {
+    if [ ! -d '.git' ]; then
+        # exit if we are not in a git repo
+        return
+    fi
+
     branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
     if [ ! -z "${branch}" ]; then
         dirty="$(get_dirty_git)"
@@ -647,7 +489,8 @@ if [[ "${CURRENT_SHELL_NAME}" == "zsh" ]]; then
     fi
 fi
 
-######## SSH AGENT SNAFU ########
+#######################################
+########### SSH AGENT SNAFU ###########
 
 SSH_ENV_LOC="${HOME}/.ssh/environment"
 SSH_KEY_LOC="${HOME}/.ssh/id_rsa"
@@ -655,7 +498,6 @@ SSH_KEY_LOC="${HOME}/.ssh/id_rsa"
 # Check if we have a private key; if not, we don't care about
 # the ssh agent.
 if [ -f "${SSH_KEY_LOC}" ]; then
-
     if [ -f "${SSH_ENV_LOC}" ]; then
         # An ssh agent is registered in the environment file;
         # let's see if it is still running
@@ -710,8 +552,8 @@ if [ -f "${SSH_KEY_LOC}" ]; then
     fi
 fi
 
-
-#################################
+####### END OF SSH AGENT SNAFU ########
+#######################################
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -d "${HOME}/.local/google-cloud-sdk/bin" ]; then
