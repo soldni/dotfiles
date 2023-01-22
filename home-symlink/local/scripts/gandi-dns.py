@@ -187,9 +187,9 @@ def main():
         msg = "No A name provided"
         raise RuntimeError(msg)
 
-    if opts.mode == "remote":
+    if opts.mode.strip() == "remote":
         current_ip = get_remote_ip(opts)
-    elif opts.mode == "local":
+    elif opts.mode.strip() == "local":
         current_ip = get_local_ip(opts)
     elif re.match(r"^\d+\.\d+\.\d+\.\d+$", opts.mode):
         current_ip = opts.mode
