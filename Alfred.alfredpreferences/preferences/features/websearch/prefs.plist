@@ -17,6 +17,19 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>813D6B55-8B54-46EE-808D-A512833BF603</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>crowd</string>
+			<key>spaces</key>
+			<string>+</string>
+			<key>text</key>
+			<string>Search Forums on for '{query}'</string>
+			<key>url</key>
+			<string>https://crowdview.ai/search?q={query}</string>
+		</dict>
 		<key>B8D6D36F-C827-40ED-B400-72DBC2F719D8</key>
 		<dict>
 			<key>enabled</key>

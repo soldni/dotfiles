@@ -9,6 +9,7 @@
 		<string>features.websearch.custom.B8D6D36F-C827-40ED-B400-72DBC2F719D8.fallback</string>
 		<string>features.websearch.twittersearch.fallback</string>
 		<string>features.websearch.gtranslate.fallback</string>
+		<string>features.websearch.custom.813D6B55-8B54-46EE-808D-A512833BF603.fallback</string>
 	</array>
 	<key>showUserDefined</key>
 	<array>

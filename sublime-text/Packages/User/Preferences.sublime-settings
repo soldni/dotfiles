@@ -1,0 +1,22 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+{
+	"font_face": "Fira Mono",
+	"font_size": 14,	
+	"font_options": [],
+	"translate_tabs_to_spaces": true,
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"dark_theme": "Gravity.sublime-theme",
+	"light_theme": "Reverse Gravity.sublime-theme",
+	"color_scheme": "auto",
+	"dark_color_scheme": "Monokai Gravity.sublime-color-scheme",
+	"light_color_scheme": "GitHub Light.sublime-color-scheme",
+	"gravity_tab_height_short": true,
+	"gravity_sidebar_header": false,
+	"gravity_title_bar": false,
+	"word_wrap": true,
+
+}

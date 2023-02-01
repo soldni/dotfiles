@@ -1,0 +1,14 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Dockerfile Syntax Highlighting",
+		"GitHub Theme",
+		"Package Control",
+		"requirementstxt",
+		"Theme - Gravity",
+	],
+}

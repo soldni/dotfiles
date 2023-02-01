@@ -300,6 +300,7 @@ brew_cask_to_install=(
     'monitorcontrol'        # control external monitor setttings
     'font-fira-code'        # font with ligatures
     'screens'               # VNC client
+    'sublime-text'          # text editor; faster than vscode
 )
 
 
@@ -398,6 +399,12 @@ done
 defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "${HOME}/dotfiles/iterm2"
 rm -rf "${HOME}/Library/Application Support/iTerm2/Scripts"
 ln -s ${script_dir}/iterm2-scripts "${HOME}/Library/Application Support/iTerm2/Scripts"
+
+# configure symlink for sublime text
+bash ${script_dir}/home-symlink.sh \
+    "${script_dir}/sublime-text" \
+    "${HOME}/Library/Application Support/Sublime Text" \
+    0
 
 bash ${script_dir}/bootstrap.sh
 
