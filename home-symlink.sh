@@ -27,7 +27,7 @@ if [ -z "${SIMLINK_DST}" ]; then
 fi
 
 if [ -z "${USE_HIDDEN}" ]; then
-    USE_HIDDEN=1
+    USE_HIDDEN='1'
 fi
 
 all_files=( )
@@ -38,7 +38,10 @@ for ((i = 0; i < ${#all_files[@]}; i++)) do
         relative=$(echo "${all_files[i]}" | sed "s|${SIMLINK_SRC}/||g")
         relative_dir=$(dirname "${relative}")
 
-        if [ "${USE_HIDDEN}" == 1 ]; then
+        # set hidden prefix if use_hidden is 1
+        if [ "${USE_HIDDEN}" == '1' ]; then
+            hidden_prefix='.'
+        else
             hidden_prefix=''
         fi
 
