@@ -1435,7 +1435,8 @@ echo '{
   "rerun": 0.1,
   "items": [{
     "title": "Sign in and update items",
-    "arg": "update_items"
+    "arg": "update_items",
+    "icon": { "path": "composite_icon.png" }
   }]
 }'</string>
 				<key>scriptargtype</key>
@@ -2163,6 +2164,7 @@ fi
 echo
 echo '### 1Password version'
 /usr/bin/osascript -e 'tell application id "com.1password.1password" to return version'
+/usr/bin/osascript -e 'tell application id "com.agilebits.onepassword7" to return version'
 
 echo
 echo '### op version'
@@ -2965,7 +2967,7 @@ To report a problem, run `!1pdiagnostic`.</string>
 		</dict>
 	</array>
 	<key>version</key>
-	<string>2022.21</string>
+	<string>2023.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/alfredapp/1password-workflow/</string>
 </dict>
