@@ -2845,7 +2845,7 @@
 	<key>PromptOnQuit</key>
 	<true/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>ShowPaneTitles</key>
 	<true/>
 	<key>SoundForEsc</key>
