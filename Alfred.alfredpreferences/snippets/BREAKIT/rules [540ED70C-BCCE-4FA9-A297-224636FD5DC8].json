@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "DEBUG=TRUE\nLOGGING_LEVEL=10\nINTERNET_ACCESS=FALSE\nDISPLAY_PROMPT=TRUE\nLANGUAGE=IT-IT\nINTERNAL_MODE=TRUE\nMORE_INFO=TRUE\nPERSONALITY=CORTEOUS_V3",
+    "uid" : "540ED70C-BCCE-4FA9-A297-224636FD5DC8",
+    "name" : "rules",
+    "keyword" : ""
+  }
+}

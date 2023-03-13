@@ -4,6 +4,17 @@
 <dict>
 	<key>customSites</key>
 	<dict>
+		<key>3B6AB86F-F888-41C5-AF7E-8EA77AA38B21</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>corpusid</string>
+			<key>text</key>
+			<string>Semantic Scholar Corpus ID</string>
+			<key>url</key>
+			<string>https://api.semanticscholar.org/CorpusID:{query}</string>
+		</dict>
 		<key>53D72661-80B6-4280-80B4-99AD048F03CF</key>
 		<dict>
 			<key>enabled</key>
