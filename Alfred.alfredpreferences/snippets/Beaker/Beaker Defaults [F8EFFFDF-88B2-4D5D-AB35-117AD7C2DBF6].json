@@ -1,6 +1,6 @@
 {
   "alfredsnippet" : {
-    "snippet" : "mkdir -p \"${HOME}\/.ssh\" && mkdir -p \"${HOME}\/.huggingface\" && mkdir -p \"${HOME}\/.aws\" && beaker session create --secret-mount ssh-key=\"${HOME}\/.ssh\/id_rsa\" --secret-mount aws-cred=\"${HOME}\/.aws\/credentials\" --secret-mount huggingface-token=\"${HOME}\/.huggingface\/token\" --secret-env S2_KEY=S2_KEY --secret-env OPENAI_API_KEY=OPENAI_API_KEY --secret-env WANDB_API_KEY=WANDB_API_KEY -i docker:\/\/ghcr.io\/allenai\/cuda:11.5-cudnn8-dev-ubuntu20.04-v1.2.2",
+    "snippet" : "mkdir -p \"${HOME}\/.ssh\" && mkdir -p \"${HOME}\/.huggingface\" && mkdir -p \"${HOME}\/.aws\" && beaker session create --secret-mount ssh-key=\"${HOME}\/.ssh\/id_rsa\" --secret-mount aws-cred=\"${HOME}\/.aws\/credentials\" --secret-mount huggingface-token=\"${HOME}\/.huggingface\/token\" --secret-env S2_KEY=S2_KEY --secret-env OPENAI_API_KEY=OPENAI_API_KEY --secret-env WANDB_API_KEY=WANDB_API_KEY -i docker:\/\/ghcr.io\/allenai\/cuda:11.5-cudnn8-dev-ubuntu20.04-v1.2.8",
     "uid" : "F8EFFFDF-88B2-4D5D-AB35-117AD7C2DBF6",
     "name" : "Beaker Defaults",
     "keyword" : "bsc"
