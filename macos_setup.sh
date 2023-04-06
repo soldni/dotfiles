@@ -263,6 +263,7 @@ brew_packages_to_install=(
     'pigz'
     'lsusb'
     'diff-pdf'
+    'ripgrep'
 )
 
 
@@ -324,6 +325,7 @@ mas_install=(
     '1453654905'    # Closer
     '1569813296'    # 1Password Extension
     '1320666476'    # Wipr
+    '2143935391'    # OpenCat
 )
 
 not_signed_in_mas="Not signed in"
