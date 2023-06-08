@@ -594,4 +594,3 @@ fi
 
 # execute machine specific bash script
 source "$HOME/.postlocalrc"
-. "$HOME/.cargo/env"
