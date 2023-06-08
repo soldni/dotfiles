@@ -295,7 +295,6 @@ brew_cask_to_install=(
     'font-fira-code'        # font with ligatures
     'screens'               # VNC client
     'sublime-text'          # text editor; faster than vscode
-    'notion'                # note taking
 )
 
 
@@ -322,7 +321,6 @@ mas_install=(
     '1477857867'    # DevSwatch
     '1502111349'    # PDF Squeezer
     '1475387142'    # TailScale
-    '1559269364'    # Notion Web Clipper
     '1376402589'    # Stop The Maddenss
     '1179623856'    # Pastebot
     '441258766'     # Magnet
