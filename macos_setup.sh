@@ -56,6 +56,12 @@ defaults write com.apple.dock autohide-time-modifier -float 0.05
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 killall Dock
 
+
+# Setup Finder 
+defaults write com.apple.finder CreateDesktop false
+killall Finder
+
+
 # Expand print panel by default
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
