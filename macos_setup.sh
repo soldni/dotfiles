@@ -280,22 +280,16 @@ done
 brew_cask_to_install=(
     'iterm2'                # terminal
     'keepingyouawake'       # prevent sleep
-    'skim'                  # PDF viewer for latex
-    'coconutbattery'        # check battery status
     'appcleaner'            # good for app cleanup
     'slack'                 # chat app
     'spotify'               # music player
     'transmit'              # (s)ftp app
     'alfred'                # launcher and clipboard manager
     'sketch'                # vector design
-    'coderunner'            # Lightweight IDE
     '1password'             # Password Manager
     'visual-studio-code'    # text editor
     'mimestream'            # email client
     'lingon-x'              # manage startup items
-    'kaleidoscope'          # diff tool
-    'tower'                 # git client
-    'geekbench'             # benchmarking
     'vlc'                   # player
     'monitorcontrol'        # control external monitor setttings
     'font-fira-code'        # font with ligatures
@@ -322,10 +316,16 @@ mas_install=(
     '1289583905'    # Pixelmator Pro
     '1592917505'    # Noir
     '992115977'     # image2icon
-    '1453654905'    # Closer
-    '1569813296'    # 1Password Extension
+    '1569813296'    # 1Password For Safari
     '1320666476'    # Wipr
     '2143935391'    # OpenCat
+    '1477857867'    # DevSwatch
+    '1502111349'    # PDF Squeezer
+    '1475387142'    # TailScale
+    '1559269364'    # Notion Web Clipper
+    '1376402589'    # Stop The Maddenss
+    '1179623856'    # Pastebot
+    '441258766'     # Magnet
 )
 
 not_signed_in_mas="Not signed in"
