@@ -52,6 +52,14 @@ if [[ "${TERM_PROGRAM}" == "Apple_Terminal" ]] && [[ -z "${INSIDE_EMACS}" ]]; th
 fi
 
 
+if [[ "${CURRENT_SHELL_NAME}" == "zsh" ]]; then
+    # make tab completion case insesitive
+    autoload -Uz compinit && compinit
+    zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+    export CASE_SENSITIVE="false"
+fi 
+
+
 ###############################
 # SET OS SPECIFIC COMMANDS HERE
 
@@ -447,9 +455,6 @@ if [[ "${CURRENT_SHELL_NAME}" == "bash" ]]; then
 
 
 elif [[ "${CURRENT_SHELL_NAME}" == "zsh" ]]; then
-
-    # make matching case insensitive
-    CASE_SENSITIVE="false"
 
     # same as before, but for zsh
     new_line_symbol=$'\n'
