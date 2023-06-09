@@ -48,13 +48,13 @@ async def main(connection):
                 preset = await iterm2.ColorPreset.async_get(   # type: ignore
                     connection, "Dracula"
                 )
-                font = FontSpec('FiraCodeRoman', 15, 'Regular')
+                font = FontSpec('FiraCode', 15, 'Regular')
             else:
                 preset = await iterm2.ColorPreset.async_get(    # type: ignore
                     connection,
                     "one-light-terminal"
                 )
-                font = FontSpec('FiraCodeRoman', 15, 'Medium')
+                font = FontSpec('FiraCode', 15, 'Medium')
 
             # Update the list of all profiles and iterate over them.
             profiles = await iterm2.PartialProfile.async_query(  # type: ignore

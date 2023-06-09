@@ -404,10 +404,10 @@ if [ -z "${HOST_BASED_PROMPT_COLORS}" ]; then
     # uses either dircolors or gdircolors if they are available
     has_dircolors=$(which dircolors 2>/dev/null)
     has_gdircolors=$(which gdircolors 2>/dev/null)
-    
+
     if [ ! -z "${has_dircolors}" ]; then
         eval "$(dircolors -b)"
-    elif [ ! -z "${has_gdircolors}" ]; then 
+    elif [ ! -z "${has_gdircolors}" ]; then
         eval "$(gdircolors -b)"
     fi
 else
@@ -447,6 +447,10 @@ if [[ "${CURRENT_SHELL_NAME}" == "bash" ]]; then
 
 
 elif [[ "${CURRENT_SHELL_NAME}" == "zsh" ]]; then
+
+    # make matching case insensitive
+    CASE_SENSITIVE="false"
+
     # same as before, but for zsh
     new_line_symbol=$'\n'
     lambda_symbol=$'\u03bb'
@@ -586,8 +590,8 @@ fi
 
 
 # Activate bash integration in iTerm2
-if [ -f "${HOME}/.iterm2_shell_integration.bash" ]; then 
-    test -e "${HOME}/.iterm2_shell_integration.bash" && 
+if [ -f "${HOME}/.iterm2_shell_integration.bash" ]; then
+    test -e "${HOME}/.iterm2_shell_integration.bash" &&
     source "${HOME}/.iterm2_shell_integration.bash" || true
 fi
 
