@@ -56,11 +56,9 @@ defaults write com.apple.dock autohide-time-modifier -float 0.05
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 killall Dock
 
-
-# Setup Finder 
+# Setup Finder
 defaults write com.apple.finder CreateDesktop false
 killall Finder
-
 
 # Expand print panel by default
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
@@ -301,6 +299,7 @@ brew_cask_to_install=(
     'font-fira-code'        # font with ligatures
     'screens'               # VNC client
     'sublime-text'          # text editor; faster than vscode
+    'signal'                # encrypted chat
 )
 
 
@@ -324,12 +323,12 @@ mas_install=(
     '1569813296'    # 1Password For Safari
     '1320666476'    # Wipr
     '2143935391'    # OpenCat
-    '1477857867'    # DevSwatch
     '1502111349'    # PDF Squeezer
     '1475387142'    # TailScale
     '1376402589'    # Stop The Maddenss
     '1179623856'    # Pastebot
     '441258766'     # Magnet
+    '1545870783'    # Color Picker
 )
 
 not_signed_in_mas="Not signed in"
