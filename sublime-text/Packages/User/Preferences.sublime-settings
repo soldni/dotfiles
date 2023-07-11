@@ -2,7 +2,7 @@
 // and are overridden in turn by syntax-specific settings.
 {
 	"font_face": "Fira Code",
-	"font_size": 14,	
+	"font_size": 16,	
 	"font_options": [],
 	"translate_tabs_to_spaces": true,
 	"ignored_packages":
