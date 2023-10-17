@@ -180,6 +180,9 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
+# PasteBot hide menubar and dock
+defaults write com.tapbots.Pastebot2Mac UIVisibilityState 10
+
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
@@ -297,9 +300,9 @@ brew_cask_to_install=(
     'vlc'                   # player
     'monitorcontrol'        # control external monitor setttings
     'font-fira-code'        # font with ligatures
-    'screens'               # VNC client
     'sublime-text'          # text editor; faster than vscode
     'signal'                # encrypted chat
+    'notion'                # note taking
 )
 
 
@@ -324,7 +327,7 @@ mas_install=(
     '1320666476'    # Wipr
     '2143935391'    # OpenCat
     '1502111349'    # PDF Squeezer
-    '1475387142'    # TailScale
+    # '1475387142'    # TailScale
     '1376402589'    # Stop The Maddenss
     '1179623856'    # Pastebot
     '441258766'     # Magnet
