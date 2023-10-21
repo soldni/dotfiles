@@ -56,6 +56,9 @@ defaults write com.apple.dock autohide-time-modifier -float 0.05
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 killall Dock
 
+# Save screenshots to Downloads
+defaults write com.apple.screencapture location "${HOME}/Downloads"
+
 # Setup Finder
 defaults write com.apple.finder CreateDesktop false
 killall Finder
