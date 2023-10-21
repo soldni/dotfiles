@@ -57,6 +57,23 @@ if [[ "${CURRENT_SHELL_NAME}" == "zsh" ]]; then
     autoload -Uz compinit && compinit
     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
     export CASE_SENSITIVE="false"
+
+    # add extra fuction to time command;
+    # from https://superuser.com/a/767491
+    if [[ `uname` == Darwin ]]; then
+        MAX_MEMORY_UNITS=KB
+    else
+        MAX_MEMORY_UNITS=MB
+    fi
+
+    TIMEFMT="%J
+    %U  user %S system %P cpu %*E total
+    avg shared (code):         %X KB
+    avg unshared (data/stack): %D KB
+    total (sum):               %K KB
+    max memory:                %M $MAX_MEMORY_UNITS
+    page faults from disk:     %F
+    other page faults:         %R"
 fi
 
 
