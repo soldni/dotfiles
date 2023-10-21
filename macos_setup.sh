@@ -299,7 +299,7 @@ brew_cask_to_install=(
     '1password'             # Password Manager
     'visual-studio-code'    # text editor
     'mimestream'            # email client
-    'lingon-x'              # manage startup items
+    # 'lingon-x'              # manage startup items
     'vlc'                   # player
     'monitorcontrol'        # control external monitor setttings
     'font-fira-code'        # font with ligatures

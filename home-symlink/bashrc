@@ -567,7 +567,7 @@ if [ -f "${SSH_KEY_LOC}" ]; then
 
             # since macOS 12.x, `-K` is deprecated, so we use the new
             # command instead. Use `-K` on older version
-            MACOS_MAJOR_VERSION="$(sw_vers | grep 'ProductVersion' | cut -d$'\t' -f 2 | cut -d '.' -f 1)"
+            MACOS_MAJOR_VERSION="$(sw_vers| grep -oP '\d+\.\d+' | cut -d '.' -f 1)"
             USING_MACOS_SSH="$(if [[ "$(which ssh-add)" == '/usr/bin/ssh-add' ]]; then echo 1; else echo 0; fi)"
             if [[ $MACOS_MAJOR_VERSION -gt 12 ]]; then
                 ssh-add --apple-use-keychain
