@@ -7,6 +7,7 @@
 	"translate_tabs_to_spaces": true,
 	"ignored_packages":
 	[
+		"Package Control",
 		"Vintage",
 	],
 	"dark_theme": "Gravity.sublime-theme",
@@ -19,4 +20,5 @@
 	"gravity_title_bar": false,
 	"word_wrap": true,
 
+	"index_files": true,
 }
