@@ -617,8 +617,9 @@ fi
 
 # Activate bash integration in iTerm2
 if [ -f "${HOME}/.iterm2_shell_integration.bash" ]; then
-    test -e "${HOME}/.iterm2_shell_integration.bash" &&
-    source "${HOME}/.iterm2_shell_integration.bash" || true
+    source "${HOME}/.iterm2_shell_integration.bash"
+elif [ -f "${HOME}/.iterm2_shell_integration.zsh" ]; then
+    source "${HOME}/.iterm2_shell_integration.zsh"
 fi
 
 
