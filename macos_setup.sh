@@ -44,6 +44,7 @@ defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Archive" '@$A'
 
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
+defaults write -g AppleSpacesSwitchOnActivate -bool false
 
 # Configure dock, expose, and dashboard
 defaults write com.apple.dashboard mcx-disabled -boolean no
@@ -56,6 +57,34 @@ defaults write com.apple.dock autohide-time-modifier -float 0.05
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 defaults write com.apple.dock persistent-apps -array
 killall Dock
+
+# Mouse Settings
+defaults write NSGlobalDomain com.apple.mouse.scaling "0.875"
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior "1"
+defaults write NSGlobalDomain com.apple.scrollwheel.scaling "0.125"
+defaults write NSGlobalDomain com.apple.trackpad.forceClick "1"
+defaults write NSGlobalDomain com.apple.trackpad.scaling "0.875"
+defaults write com.apple.AppleMultitouchMouse MouseButtonDivision "55"
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad MouseButtonDivision "55"
+defaults write com.apple.AppleMultitouchMouse MouseButtonMode "TwoButton"
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad MouseButtonMode "TwoButton"
+defaults write com.apple.AppleMultitouchMouse MouseHorizontalScroll "1"
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad MouseHorizontalScroll "1"
+defaults write com.apple.AppleMultitouchMouse MouseMomentumScroll "1"
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad MouseMomentumScroll "1"
+defaults write com.apple.AppleMultitouchMouse MouseOneFingerDoubleTapGesture "1"
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad MouseOneFingerDoubleTapGesture "1"
+defaults write com.apple.AppleMultitouchMouse MouseTwoFingerDoubleTapGesture "3"
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad MouseTwoFingerDoubleTapGesture "3"
+defaults write com.apple.AppleMultitouchMouse MouseTwoFingerHorizSwipeGesture "2"
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad MouseTwoFingerHorizSwipeGesture "2"
+defaults write com.apple.AppleMultitouchMouse MouseVerticalScroll "1"
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad MouseVerticalScroll "1"
+defaults write com.apple.AppleMultitouchMouse UserPreferences "1"
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad UserPreferences "1"
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+
 
 # Save screenshots to Downloads
 defaults write com.apple.screencapture location "${HOME}/Downloads"
@@ -155,6 +184,11 @@ defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 defaults write NSGlobalDomain AppleActionOnDoubleClick -string "Minimize"
 defaults write NSGlobalDomain AppleICUForce24HourTime -bool true
 defaults write NSGlobalDomain AppleAquaColorVariant -int 1
+
+# start on monday
+defaults write NSGlobalDomain AppleFirstWeekday '{gregorian = 2;}'
+defaults write AppleICUDateFormatStrings '{1 = "y-MM-dd";}'
+defaults write AppleICUForce24HourTime -bool true
 
 # Customize trackpad to my liking
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
@@ -304,19 +338,22 @@ brew_cask_to_install=(
     'appcleaner'            # good for app cleanup
     'slack'                 # chat app
     'spotify'               # music player
-    'transmit'              # (s)ftp app
-    'alfred'                # launcher and clipboard manager
+    # 'transmit'              # (s)ftp app
+    # 'alfred'                # launcher and clipboard manager
     'sketch'                # vector design
     '1password'             # Password Manager
     'visual-studio-code'    # text editor
     'mimestream'            # email client
-    # 'lingon-x'              # manage startup items
-    'vlc'                   # player
+    'lingon-x'              # manage startup items
+    # 'vlc'                   # player
     'monitorcontrol'        # control external monitor setttings
     'font-fira-code'        # font with ligatures
     'sublime-text'          # text editor; faster than vscode
     'signal'                # encrypted chat
-    'notion'                # note taking
+    'discord'               # chat app
+    'orbstack'              # replacement for docker
+    'zoom'                  # video conferencing
+    # 'notion'                # note taking
 )
 
 
@@ -339,13 +376,14 @@ mas_install=(
     '992115977'     # image2icon
     '1569813296'    # 1Password For Safari
     '1320666476'    # Wipr
-    '2143935391'    # OpenCat
+    # '2143935391'    # OpenCat
     '1502111349'    # PDF Squeezer
-    # '1475387142'    # TailScale
+    '1475387142'    # TailScale
     '1376402589'    # Stop The Maddenss
     '1179623856'    # Pastebot
     '441258766'     # Magnet
     '1545870783'    # Color Picker
+    '899247664'     # TestFlight
 )
 
 not_signed_in_mas="Not signed in"
@@ -426,6 +464,15 @@ bash ${script_dir}/home-symlink.sh \
     "${script_dir}/sublime-text" \
     "${HOME}/Library/Application Support/Sublime Text" \
     0
+
+# copy library files
+for lib_dir in $(ls --color=no ${script_dir}/Library); do
+    for lib_file in $(ls --color=no Library/${lib_dir}); do
+        echo "Symlinking ${lib_file} to ${HOME}/Library/${lib_dir}/${lib_file}..."
+        rm -rf "${HOME}/Library/${lib_dir}/${lib_file}"
+        ln -s "${script_dir}/Library/${lib_dir}/${lib_file}" "${HOME}/Library/${lib_dir}/${lib_file}"
+    done
+done
 
 bash ${script_dir}/bootstrap.sh
 
