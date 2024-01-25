@@ -354,6 +354,7 @@ brew_cask_to_install=(
     'orbstack'              # replacement for docker
     'zoom'                  # video conferencing
     # 'notion'                # note taking
+    'mac-mouse-fix'         # fix mouse acceleration and control
 )
 
 
@@ -465,14 +466,6 @@ bash ${script_dir}/home-symlink.sh \
     "${HOME}/Library/Application Support/Sublime Text" \
     0
 
-# copy library files
-for lib_dir in $(ls --color=no ${script_dir}/Library); do
-    for lib_file in $(ls --color=no Library/${lib_dir}); do
-        echo "Symlinking ${lib_file} to ${HOME}/Library/${lib_dir}/${lib_file}..."
-        rm -rf "${HOME}/Library/${lib_dir}/${lib_file}"
-        ln -s "${script_dir}/Library/${lib_dir}/${lib_file}" "${HOME}/Library/${lib_dir}/${lib_file}"
-    done
-done
 
 bash ${script_dir}/bootstrap.sh
 
