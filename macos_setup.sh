@@ -347,7 +347,7 @@ brew_cask_to_install=(
     # 'vlc'                   # player
     'monitorcontrol'        # control external monitor setttings
     'font-fira-code'        # font with ligatures
-    'sublime-text'          # text editor; faster than vscode
+    # 'sublime-text'          # text editor; faster than vscode
     'signal'                # encrypted chat
     'discord'               # chat app
     'orbstack'              # replacement for docker
@@ -355,6 +355,7 @@ brew_cask_to_install=(
     # 'notion'                # note taking
     'mac-mouse-fix'         # fix mouse acceleration and control
     'cyberduck'             # sftp client
+    'netnewswire'           # rss reader
 )
 
 
