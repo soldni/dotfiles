@@ -179,7 +179,6 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
 # Colors and interface
-defaults write NSGlobalDomain AppleHighlightColor -string "0.968627 0.831373 1.000000 Purple"
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 defaults write NSGlobalDomain AppleActionOnDoubleClick -string "Minimize"
 defaults write NSGlobalDomain AppleICUForce24HourTime -bool true
@@ -355,6 +354,7 @@ brew_cask_to_install=(
     'zoom'                  # video conferencing
     # 'notion'                # note taking
     'mac-mouse-fix'         # fix mouse acceleration and control
+    'cyberduck'             # sftp client
 )
 
 
@@ -385,6 +385,7 @@ mas_install=(
     '441258766'     # Magnet
     '1545870783'    # Color Picker
     '899247664'     # TestFlight
+    '904280696'     # Things
 )
 
 not_signed_in_mas="Not signed in"
