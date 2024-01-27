@@ -58,33 +58,6 @@ defaults write com.apple.dock mouse-over-hilite-stack -bool true
 defaults write com.apple.dock persistent-apps -array
 killall Dock
 
-# Mouse Settings
-defaults write NSGlobalDomain com.apple.mouse.scaling "0.875"
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior "1"
-defaults write NSGlobalDomain com.apple.scrollwheel.scaling "0.125"
-defaults write NSGlobalDomain com.apple.trackpad.forceClick "1"
-defaults write NSGlobalDomain com.apple.trackpad.scaling "0.875"
-defaults write com.apple.AppleMultitouchMouse MouseButtonDivision "55"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad MouseButtonDivision "55"
-defaults write com.apple.AppleMultitouchMouse MouseButtonMode "TwoButton"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad MouseButtonMode "TwoButton"
-defaults write com.apple.AppleMultitouchMouse MouseHorizontalScroll "1"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad MouseHorizontalScroll "1"
-defaults write com.apple.AppleMultitouchMouse MouseMomentumScroll "1"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad MouseMomentumScroll "1"
-defaults write com.apple.AppleMultitouchMouse MouseOneFingerDoubleTapGesture "1"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad MouseOneFingerDoubleTapGesture "1"
-defaults write com.apple.AppleMultitouchMouse MouseTwoFingerDoubleTapGesture "3"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad MouseTwoFingerDoubleTapGesture "3"
-defaults write com.apple.AppleMultitouchMouse MouseTwoFingerHorizSwipeGesture "2"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad MouseTwoFingerHorizSwipeGesture "2"
-defaults write com.apple.AppleMultitouchMouse MouseVerticalScroll "1"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad MouseVerticalScroll "1"
-defaults write com.apple.AppleMultitouchMouse UserPreferences "1"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad UserPreferences "1"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
-defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
-
 
 # Save screenshots to Downloads
 defaults write com.apple.screencapture location "${HOME}/Downloads"
