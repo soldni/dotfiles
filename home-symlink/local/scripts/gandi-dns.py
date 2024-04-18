@@ -9,6 +9,7 @@ import sys
 
 # built-in packages
 from argparse import ArgumentParser, Namespace
+from typing import Dict, List
 
 try:
     import requests  # type: ignore
@@ -17,13 +18,10 @@ except ImportError:
     sys.exit(1)
 
 try:
-    import netifaces as ni  # type: ignore
+    import ifaddr
 except ImportError:
-    print('[error] "netifaces" package not found', file=sys.stderr)
+    print('[error] "ifaddr" package not found', file=sys.stderr)
     sys.exit(1)
-
-
-ROOT_API = "https://dns.api.gandi.net/api/v5"
 
 
 def get_local_ip(opts: Namespace):
@@ -50,17 +48,16 @@ def get_local_ip(opts: Namespace):
             sys.exit(1)
 
 
-def get_all_ip_interfaces():
-    interfaces = {
-        interface: ni.ifaddresses(interface) for interface in ni.interfaces()
-    }
+def get_ipv4_then_ipv6(ip: List[ifaddr.IP]) -> ifaddr.IP:
+    return sorted(ip, key=lambda ip: (-1 if isinstance(ip.ip, str) else ip.ip[-1]))[0]
 
-    ips = {
-        interface: ifaddress[ni.AF_INET][0].get("addr", None)
-        for interface, ifaddress in interfaces.items()
-        if ni.AF_INET in ifaddress and len(ifaddress[ni.AF_INET][0]) > 0
-    }
-    return ips
+
+def get_all_ip_interfaces() -> Dict[str, str]:
+    interface_ips = {}
+    for adapter in ifaddr.get_adapters():
+        ip = get_ipv4_then_ipv6(adapter.ips).ip
+        interface_ips[adapter.name] = ip if isinstance(ip, str) else ip[0]
+    return interface_ips
 
 
 def get_remote_ip(opts):
@@ -75,12 +72,10 @@ def get_remote_ip(opts):
 
 
 def update_ip(new_ip, opts):
-    config_url = "{root}/domains/{uuid}/records" "".format(
-        root=ROOT_API, uuid=opts.domain_name
-    )
+    config_url = "https://api.gandi.net/v5/livedns/domains/{uuid}/records".format(uuid=opts.domain_name)
 
     config_resp = requests.get(
-        config_url, headers={"X-Api-Key": opts.production_key}
+        config_url, headers={"Authorization": f"Bearer {opts.production_key}"}
     )
 
     # raise error if 4xx or 5xx
@@ -104,14 +99,14 @@ def update_ip(new_ip, opts):
             )
             return False
         else:
-            delete_url = "{root}/domains/{uuid}/records/{name}/A" "".format(
-                root=ROOT_API, uuid=opts.domain_name, name=opts.a_name
+            delete_url = "https://api.gandi.net/v5/livedns/domains/{uuid}/records/{name}/A".format(
+                uuid=opts.domain_name, name=opts.a_name
             )
             delete_resp = requests.delete(
                 delete_url,
                 headers={
                     "Content-Type": "application/json",
-                    "X-Api-Key": opts.production_key,
+                    "Authorization": f"Bearer {opts.production_key}",
                 },
                 data="{}",
             )
@@ -138,7 +133,7 @@ def update_ip(new_ip, opts):
         config_url,
         headers={
             "Content-Type": "application/json",
-            "X-Api-Key": opts.production_key,
+            "Authorization": f"Bearer {opts.production_key}",
         },
         data=json.dumps(update_req_content),
     )

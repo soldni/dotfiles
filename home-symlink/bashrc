@@ -267,12 +267,6 @@ function pypretty () {
         path_to_process="."
     fi
 
-    has_autopep8=$(which autopep8 2>/dev/null)
-    if [[ -z ${has_autopep8} ]]; then
-        echo 'autopep8 not found. Please run `pip install autopep8`' > /dev/stderr
-        return
-    fi
-
     has_isort=$(which isort 2>/dev/null)
     if [[ -z ${has_isort} ]]; then
         echo 'isort not found. Please run `pip install isort`' > /dev/stderr
@@ -285,9 +279,7 @@ function pypretty () {
         return
     fi
 
-    autopep8 --in-place --recursive ${path_to_process} \
-        && isort ${path_to_process} \
-        && black ${path_to_process}
+    isort ${path_to_process} && black ${path_to_process}
 }
 
 
@@ -624,31 +616,29 @@ elif [ -f "${HOME}/.iterm2_shell_integration.zsh" ]; then
     source "${HOME}/.iterm2_shell_integration.zsh"
 fi
 
+if [[ "${CURRENT_SHELL_NAME}" == "bash" ]]; then
+    # The next line updates PATH for the Google Cloud SDK.
+    if [ -f "${HOME}/.local/google-cloud-sdk/path.bash.inc" ]; then
+        source "${HOME}/.local/google-cloud-sdk/path.bash.inc"
+    fi
+
+    # The next line enables shell command completion for gcloud.
+    if [ -f "${HOME}/.local/google-cloud-sdk/completion.bash.inc" ]; then
+        source "${HOME}/.local/google-cloud-sdk/completion.bash.inc"
+    fi
+elif [[ "${CURRENT_SHELL_NAME}" == "zsh" ]]; then
+    # The next line updates PATH for the Google Cloud SDK.
+    if [ -f "${HOME}/.local/google-cloud-sdk/path.zsh.inc" ]; then
+        source "${HOME}/.local/google-cloud-sdk/path.zsh.inc"
+    fi
+
+    # The next line enables shell command completion for gcloud.
+    if [ -f "${HOME}/.local/google-cloud-sdk/completion.zsh.inc" ]; then
+        source "${HOME}/.local/google-cloud-sdk/completion.zsh.inc"
+    fi
+fi
+
 
 # execute machine specific bash script
 source "$HOME/.postlocalrc"
 . "$HOME/.cargo/env"
-
-
-if [[ "${CURRENT_SHELL_NAME}" == "bash" ]]; then
-    # The next line updates PATH for the Google Cloud SDK.
-    if [ -f '$HOME/.local/google-cloud-sdk/path.bash.inc' ]; then 
-        source '$HOME/.local/google-cloud-sdk/path.bash.inc'
-    fi
-
-    # The next line enables shell command completion for gcloud.
-    if [ -f '$HOME/.local/google-cloud-sdk/completion.bash.inc' ]; then 
-        source '$HOME/.local/google-cloud-sdk/completion.bash.inc'
-    fi
-elif [[ "${CURRENT_SHELL_NAME}" == "zsh" ]]; then
-    # The next line updates PATH for the Google Cloud SDK.
-    if [ -f '$HOME/.local/google-cloud-sdk/path.zsh.inc' ]; then 
-        source '$HOME/.local/google-cloud-sdk/path.zsh.inc'
-    fi
-
-    # The next line enables shell command completion for gcloud.
-    if [ -f '$HOME/.local/google-cloud-sdk/completion.zsh.inc' ]; then 
-        source '$HOME/.local/google-cloud-sdk/completion.zsh.inc'
-    fi
-fi
-
