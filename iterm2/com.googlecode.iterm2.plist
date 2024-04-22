@@ -1883,8 +1883,6 @@
 			</dict>
 			<key>Mouse Reporting</key>
 			<true/>
-			<key>Movement Keys Scroll Outside Interactive Apps</key>
-			<true/>
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
@@ -2023,7 +2021,7 @@
 	<key>PromptOnQuit</key>
 	<true/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>ShowPaneTitles</key>
 	<true/>
 	<key>SoundForEsc</key>
