@@ -259,38 +259,42 @@ done
 brew update && brew upgrade
 
 brew_packages_to_install=(
-    'bash'
-    'coreutils'
     'bash-completion'
-    'tmux'
-    'macvim'
-    'homebrew/cask/macvim'
-    'mosh'
+    'bash'
     'blueutil'
-    'gnu-sed'
-    'rsync'
-    'tree'
-    'glib'
     'colordiff'
-    'mas'
-    'nativefier'
-    'jq'
-    'findutils'
-    'openblas'
-    'gnu-tar'
-    'gnu-sed'
-    'gawk'
-    'gnutls'
-    'gnu-indent'
-    'gnu-getopt'
-    'grep'
-    'fswatch'
-    'wget'
-    'zsh-autosuggestions'
-    'pigz'
-    'lsusb'
+    'coreutils'
     'diff-pdf'
+    'findutils'
+    'fswatch'
+    'gawk'
+    'gcc'
+    'gh'
+    'glib'
+    'gnu-getopt'
+    'gnu-indent'
+    'gnu-sed'
+    'gnu-sed'
+    'gnu-tar'
+    'gnutls'
+    'grep'
+    'jq'
+    'lsusb'
+    'macvim'
+    'mas'
+    'mosh'
+    'openblas'
+    'pigz'
+    'pipx'
     'ripgrep'
+    'rsync'
+    'speedtest-cli'
+    'tmux'
+    'tree'
+    'wget'
+    'xz'
+    'zsh-autosuggestions'
+    'zstd'
 )
 
 
@@ -305,30 +309,28 @@ done
 
 
 brew_cask_to_install=(
+    '1password'             # Password Manager
+    'arc'                   # browser
+    'appcleaner'            # good for app cleanup
+    'cyberduck'             # sftp client
+    'discord'               # chat app
+    'font-fira-code'        # font with ligatures
+    'github'                # git client
+    'imageoptim'            # image optimization
     'iterm2'                # terminal
     'keepingyouawake'       # prevent sleep
-    'appcleaner'            # good for app cleanup
+    'lingon-x'              # manage startup items
+    'macvim'                # vim
+    'mimestream'            # email client
+    'monitorcontrol'        # control external monitor setttings
+    'netnewswire'           # rss reader
+    'orbstack'              # replacement for docker
+    'signal'                # encrypted chat
+    'sketch'                # vector design
     'slack'                 # chat app
     'spotify'               # music player
-    # 'transmit'              # (s)ftp app
-    # 'alfred'                # launcher and clipboard manager
-    'sketch'                # vector design
-    '1password'             # Password Manager
     'visual-studio-code'    # text editor
-    'mimestream'            # email client
-    'lingon-x'              # manage startup items
-    # 'vlc'                   # player
-    'monitorcontrol'        # control external monitor setttings
-    'font-fira-code'        # font with ligatures
-    # 'sublime-text'          # text editor; faster than vscode
-    'signal'                # encrypted chat
-    'discord'               # chat app
-    'orbstack'              # replacement for docker
     'zoom'                  # video conferencing
-    # 'notion'                # note taking
-    'mac-mouse-fix'         # fix mouse acceleration and control
-    'cyberduck'             # sftp client
-    'netnewswire'           # rss reader
 )
 
 
@@ -342,24 +344,26 @@ for package in "${brew_cask_to_install[@]}"; do
 done
 
 mas_install=(
-    '429449079'     # Patterns
-    '425424353'     # The Unarchiver
-    '403304796'     # iNet Network Scanner
-    '956377119'     # WorldClock
-    '1289583905'    # Pixelmator Pro
-    '1592917505'    # Noir
-    '992115977'     # image2icon
-    '1569813296'    # 1Password For Safari
-    '1320666476'    # Wipr
-    # '2143935391'    # OpenCat
-    '1502111349'    # PDF Squeezer
-    '1475387142'    # TailScale
-    '1376402589'    # Stop The Maddenss
-    '1179623856'    # Pastebot
-    '441258766'     # Magnet
-    '1545870783'    # Color Picker
-    '899247664'     # TestFlight
-    '904280696'     # Things
+    '1289583905'    # Pixelmator Pro             (3.6.3)
+    '1376402589'    # StopTheMadness             (40.10)
+    '403304796'     # iNet Network Scanner       (3.1.1)
+    '441258766'     # Magnet                     (2.14.0)
+    '1545870783'    # Color Picker               (2.0.1)
+    '1622835804'    # com.kagimacOS.Kagi-Search  (2.2.3)
+    '425424353'     # The Unarchiver             (4.3.8)
+    '1569813296'    # 1Password for Safari       (2.24.2)
+    '1320666476'    # Wipr                       (1.57)
+    '992115977'     # Image2icon                 (2.18)
+    '429449079'     # Patterns                   (1.3)
+    '1502111349'    # PDF Squeezer               (4.5.3)
+    '497799835'     # Xcode                      (15.4)
+    '1475387142'    # Tailscale                  (1.68.1)
+    '1091189122'    # Bear                       (2.2.0)
+    '1179623856'    # Pastebot                   (2.4.6)
+    '290986013'     # Deliveries                 (9.5.1)
+    '899247664'     # TestFlight                 (3.5.1)
+    '1592917505'    # Noir                       (2024.2.1)
+    '1508732804'    # Soulver 3                  (3.11.2)
 )
 
 not_signed_in_mas="Not signed in"
