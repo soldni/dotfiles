@@ -310,7 +310,7 @@ done
 
 brew_cask_to_install=(
     '1password'             # Password Manager
-    'arc'                   # browser
+    'firefox'               # browser
     'appcleaner'            # good for app cleanup
     'cyberduck'             # sftp client
     'discord'               # chat app
@@ -332,6 +332,9 @@ brew_cask_to_install=(
     'visual-studio-code'    # text editor
     'zoom'                  # video conferencing
     'mac-mouse-fix'         # additonal mouse settings
+    'vanilla'               # hide menubar icons
+    'maccy'                 # clipboard manager
+    'chatgpt'               # OpenAI desktop app
 )
 
 
@@ -346,7 +349,6 @@ done
 
 mas_install=(
     '1091189122'    # Bear                       (2.2.0)
-    '1179623856'    # Pastebot                   (2.4.6)
     '1289583905'    # Pixelmator Pro             (3.6.3)
     '1320666476'    # Wipr                       (1.57)
     '1376402589'    # StopTheMadness             (40.10)

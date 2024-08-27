@@ -2597,7 +2597,7 @@ The script should do this: \(ai.prompt)</string>
 	<key>PromptOnQuit</key>
 	<true/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>ShowPaneTitles</key>
 	<true/>
 	<key>SmartPlacement</key>
