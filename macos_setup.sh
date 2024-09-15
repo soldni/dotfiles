@@ -364,7 +364,6 @@ mas_install=(
     '403304796'     # iNet Network Scanner       (3.1.1)
     '425424353'     # The Unarchiver             (4.3.8)
     '429449079'     # Patterns                   (1.3)
-    '441258766'     # Magnet                     (2.14.0)
     '497799835'     # Xcode                      (15.4)
     '899247664'     # TestFlight                 (3.5.1)
     '992115977'     # Image2icon                 (2.18)
