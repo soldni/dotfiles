@@ -286,6 +286,7 @@ brew_packages_to_install=(
     'openblas'
     'pigz'
     'pipx'
+    'reattach-to-user-namespace'
     'ripgrep'
     'rsync'
     'speedtest-cli'
