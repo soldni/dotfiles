@@ -43,8 +43,8 @@ defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move 
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Right & Left" "@~^\\U2192"
 
 ## Tiles two windows on top of each other (⌃⌥↑) and (⌃⌥↓)
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Up & Down" "@~^\\U2191"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Down & Up" "@~^\\U2193"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top & Bottom" "@~^\\U2191"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom & Top" "@~^\\U2193"
 
 ## Tiles four windows in a 2x2 grid (⌃⌥/)
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Quarters" "@~^/"
