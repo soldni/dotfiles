@@ -16,10 +16,40 @@ defaults write -globalDomain NSUserKeyEquivalents -dict-add "Paste Special…" "
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "Save as PDF" "@p"
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "Save as PDF\\U2026" "@p"
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "Merge All Windows" "@u"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "Show Help Menu" "~\\U0020"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "Show Help Menu" "~ "
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "Edit Tab Title" "@~^e"
 
-# Make CMD+Q keep window, CMD+ALT+Q not
+# Change tiling shortcut to work on external keyboard w/o fn key
+## Fullscreen is ⌃⌥↩
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Fill" "~^\\U21a9"
+
+## Return to Previous Size is ⌃⌥R
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Return to Previous Size" "~^r"
+
+## Arranging to half size for left (⌃⌥←), right (⌃⌥→), top (⌃⌥↑), bottom (⌃⌥↓)
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Left" "~^\\U2190"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Right" "~^\\U2192"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top" "~^\\U2191"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom" "~^\\U2193"
+
+## Arranging to quarters of the screen with top left (⌃⌥H), top right (⌃⌥L), bottom left (⌃⌥J), bottom right (⌃⌥K)
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top Left" "~^h"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top Right" "~^l"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom Left" "~^j"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom Right" "~^k"
+
+## Tiles two windows side by side (⌃⌥←) and (⌃⌥→)
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Left & Right" "@~^\\U2190"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Right & Left" "@~^\\U2192"
+
+## Tiles two windows on top of each other (⌃⌥↑) and (⌃⌥↓)
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Up & Down" "@~^\\U2191"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Down & Up" "@~^\\U2193"
+
+## Tiles four windows in a 2x2 grid (⌃⌥/)
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Quarters" "@~^/"
+
+# Make ⌘Q keep window, ⌘⌥Q not
 defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit Safari" "@~q"
 defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit and Keep Windows" "@q"
 
@@ -33,7 +63,7 @@ defaults write com.apple.Siri HotkeyTag -int 4
 # Local connections only for VNC
 sudo defaults write /Library/Preferences/com.apple.RemoteManagement.plist VNCOnlyLocalConnections -bool yes
 
-# set it up so that CMD+W doesn't close Amazon Chime windows anymore
+# set it up so that ⌘W doesn't close Amazon Chime windows anymore
 defaults write com.amazon.Amazon-Chime NSUserKeyEquivalents -dict-add "Hide Tab" "@\$w"
 
 # add a shortcut for quip to show/hide tab
@@ -57,7 +87,6 @@ defaults write com.apple.dock autohide-time-modifier -float 0.05
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 defaults write com.apple.dock persistent-apps -array
 killall Dock
-
 
 # Save screenshots to Downloads
 defaults write com.apple.screencapture location "${HOME}/Downloads"
