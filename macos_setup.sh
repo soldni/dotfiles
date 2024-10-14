@@ -86,6 +86,7 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-time-modifier -float 0.05
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.dock size-immutable -bool yes
 killall Dock
 
 # Save screenshots to Downloads
