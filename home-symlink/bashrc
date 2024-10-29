@@ -96,6 +96,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         export JAVA_HOME="/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home/"
     fi
 
+    # add command to remove all apps from dock
+    alias dock-remove-all="defaults write com.apple.dock persistent-apps -array"
+
     # upgrade remotely
     alias macos-reboot='sudo fdesetup authrestart'
     alias macos-reboot-delay='sudo fdesetup authrestart -delayminutes -1'

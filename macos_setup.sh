@@ -163,6 +163,9 @@ defaults write com.apple.Safari ShowIconsInTabs -int 1
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
+# Remove all apps from dock
+defaults write com.apple.dock persistent-apps -array
+
 # Show all processes in Activity Monitor
 defaults write com.apple.ActivityMonitor ShowCategory -int 0
 
