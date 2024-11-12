@@ -384,8 +384,8 @@ done
 mas_install=(
     '1091189122'    # Bear                       (2.2.0)
     '1289583905'    # Pixelmator Pro             (3.6.3)
-    '1320666476'    # Wipr                       (1.57)
-    '1376402589'    # StopTheMadness             (40.10)
+    '1662217862'    # Wipr2                      (2.0)
+    '6471380298'    # StopTheMadnessPro          (11.1)
     '1475387142'    # Tailscale                  (1.68.1)
     '1502111349'    # PDF Squeezer               (4.5.3)
     '1508732804'    # Soulver 3                  (3.11.2)
