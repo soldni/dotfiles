@@ -351,7 +351,7 @@ brew_cask_to_install=(
     'font-fira-code'        # font with ligatures
     'github'                # git client
     'imageoptim'            # image optimization
-    'iterm2'                # terminal
+    'ghostty'               # terminal
     'keepingyouawake'       # prevent sleep
     'lingon-x'              # manage startup items
     'macvim'                # vim
@@ -470,10 +470,12 @@ for gh in "${github_install[@]}"; do
     install_from_repo "${gh}"
 done
 
-# configure sync folder iterm2 & symlink scripts
-defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "${HOME}/dotfiles/iterm2"
-rm -rf "${HOME}/Library/Application Support/iTerm2/Scripts"
-ln -s ${script_dir}/iterm2-scripts "${HOME}/Library/Application Support/iTerm2/Scripts"
+if [ -d "/Applications/iTerm.app" ]; then
+    # configure iterm2 if it exists
+    defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "${HOME}/dotfiles/iterm2"
+    rm -rf "${HOME}/Library/Application Support/iTerm2/Scripts"
+    ln -s ${script_dir}/iterm2-scripts "${HOME}/Library/Application Support/iTerm2/Scripts"
+fi
 
 # configure symlink for sublime text
 bash ${script_dir}/home-symlink.sh \
