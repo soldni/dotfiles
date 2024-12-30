@@ -440,6 +440,9 @@ else
     export LS_COLORS="di=${hostcolor}:ln=${greycolor}:or=${greycolor}:so=${greycolor}:su=${greycolor}:sg=${greycolor}:ow=${greycolor}:tw=${greycolor}:ex=${hostcolor}:mi=${greycolor}"
 fi
 
+# Remove the bold attribute from the colors
+export LS_COLORS="$(echo $LS_COLORS | tr ':' '\n' | sed 's/1;/0;/g' | tr '\n' ':')"
+
 if [[ "${CURRENT_SHELL_NAME}" == "bash" ]]; then
     reset_color='\[\e[m\]'
 
@@ -449,7 +452,6 @@ if [[ "${CURRENT_SHELL_NAME}" == "bash" ]]; then
         yellow_color='\[\e[33m\]'
         blue_color='\[\e[34m\]'
         cyan_color='\[\e[36m\]'
-
         black_color='\[\e[m\]'
 
     else
@@ -582,17 +584,6 @@ fi
 
 ####### END OF SSH AGENT SNAFU ########
 #######################################
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -d "${HOME}/.local/google-cloud-sdk/bin" ]; then
-    export PATH="${HOME}/.local/google-cloud-sdk/bin:${PATH}"
-fi
-if [ -f '${HOME}/.local/google-cloud-sdk/path.bash.inc' ]; then
-    source '${HOME}/.local/google-cloud-sdk/path.bash.inc'
-fi
-if [ -f '${HOME}/.local/google-cloud-sdk/completion.bash.inc' ]; then
-    source '${HOME}/.local/google-cloud-sdk/completion.bash.inc'
-fi
 
 # this is for supporting nvm
 if [ -d "${HOME}/.nvm" ]; then
