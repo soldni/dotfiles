@@ -3,13 +3,15 @@ font-family = "Fira Code Medium"
 font-size = "13"
 theme = "light:catppuccin-latte,dark:catppuccin-frappe"
 bold-is-bright = "false"
-background-opacity = "0.9"
-background-blur-radius = "32"
+# background-opacity = "0.9"
+# background-blur-radius = "32"
 adjust-cell-height = "10%"
 cursor-style = "block"
+window-theme = "ghostty"
 
 # MacOS specific settings
-macos-titlebar-style = "transparent"
+# macos-titlebar-style = "transparent"
+macos-titlebar-style = "tabs"
 
 # Shell integration
 shell-integration = "detect"
