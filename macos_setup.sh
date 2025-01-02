@@ -371,6 +371,20 @@ brew_cask_to_install=(
     'chatgpt'               # OpenAI desktop app
 )
 
+# Iosevka is a monospace font with ligatures that is nice and
+# narrow. I install all the variants of it.
+iosevka_fonts=(
+    'font-iosevka'
+    'font-iosevka-comfy'
+    'font-iosevka-curly'
+    'font-iosevka-curly-slab'
+    'font-iosevka-etoile'
+    'font-iosevka-nerd-font'
+    'font-iosevka-term-nerd-font'
+    'font-iosevka-slab'
+    'font-iosevka-term-slab-nerd-font'
+)
+brew_cask_to_install+=("${iosevka_fonts[@]}")
 
 for package in "${brew_cask_to_install[@]}"; do
     has_package=$(brew list ${package} 2>/dev/null)

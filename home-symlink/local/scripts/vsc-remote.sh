@@ -19,12 +19,19 @@ fi
 
 REMOTE_PATH=$2
 
-if [ -z "$REMOTE_PATH" ]; then
-  REMOTE_PATH=$(ssh ${REMOTE_HOST} -- 'pwd' 2>/dev/null)
-  if [ -z "$REMOTE_PATH" ]; then
-    echo "Failed to get remote path. Make sure you can SSH into the remote host."
+function get_remote_path() {
+  local remote_path=$(ssh ${REMOTE_HOST} -- 'pwd' 2>/dev/null)
+  if [ -z "$remote_path" ]; then
+    echo "Failed to get remote path. Make sure you can SSH into the remote host." >&2
     exit 1
   fi
+  echo "$remote_path"
+}
+
+if [ -z "$REMOTE_PATH" ]; then
+  REMOTE_PATH=$(get_remote_path)
+elif [[ ! "$REMOTE_PATH" =~ ^/ ]]; then
+  REMOTE_PATH=$(get_remote_path)/${REMOTE_PATH}
 fi
 
 echo "Opening Visual Studio Code on remote host ${REMOTE_HOST} at ${REMOTE_PATH}..."
