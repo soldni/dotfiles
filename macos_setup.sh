@@ -19,25 +19,6 @@ defaults write -globalDomain NSUserKeyEquivalents -dict-add "Merge All Windows" 
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "Show Help Menu" "~ "
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "Edit Tab Title" "@~^e"
 
-# Change tiling shortcut to work on external keyboard w/o fn key
-## Fullscreen is ⌃⌥↩
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Fill" "~^\\U21a9"
-
-## Return to Previous Size is ⌃⌥R
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Return to Previous Size" "~^r"
-
-## Arranging to half size for left (⌃⌥←), right (⌃⌥→), top (⌃⌥↑), bottom (⌃⌥↓)
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Left" "~^\\U2190"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Right" "~^\\U2192"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top" "~^\\U2191"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom" "~^\\U2193"
-
-## Arranging to quarters of the screen with top left (⌃⌥H), top right (⌃⌥L), bottom left (⌃⌥J), bottom right (⌃⌥K)
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top Left" "~^h"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top Right" "~^l"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom Left" "~^j"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom Right" "~^k"
-
 # Make ⌘Q keep window, ⌘⌥Q not
 defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit Safari" "@~q"
 defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit and Keep Windows" "@q"
@@ -48,6 +29,24 @@ defaults write com.apple.Siri VoiceTriggerUserEnabled -bool false
 defaults write com.apple.Siri StatusMenuVisible -bool false
 defaults write com.apple.Siri LockscreenEnabled -bool false
 defaults write com.apple.Siri HotkeyTag -int 4
+
+# Spaces sensible defaults
+defaults write "com.apple.spaces" "spans-displays" -int 0
+defaults write "com.apple.dock" "mru-spaces" -int 0
+defaults write "Apple Global Domain" "AppleSpacesSwitchOnActivate" -int 0
+
+# Mission control settings
+defaults write "com.apple.dock" "expose-group-apps" -int 1
+
+# Disable all keys/buttons for controlling mission control
+defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" '{32={enabled=0;};34={enabled=0;};38={enabled=0;};40={enabled=0;};44={enabled=0;};46={enabled=0;};}'
+
+# Tiling settings
+defaults write "com.apple.WindowManager" "EnableTilingByEdgeDrag" -int 1
+defaults write "com.apple.WindowManager" "EnableTopTilingByEdgeDrag" -int 1
+defaults write "com.apple.WindowManager" "EnableTilingOptionAccelerator" -int 1
+defaults write "com.apple.WindowManager" "EnableTiledWindowMargins" -int 0
+
 
 # Local connections only for VNC
 sudo defaults write /Library/Preferences/com.apple.RemoteManagement.plist VNCOnlyLocalConnections -bool yes
@@ -76,7 +75,18 @@ defaults write com.apple.dock autohide-time-modifier -float 0.05
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.dock size-immutable -bool yes
+defaults write "com.apple.dock" "show-process-indicators" -int 0
+defaults write "com.apple.dock" "show-recents" -int 0
 killall Dock
+
+# Disable sound for alerts
+defaults write "Apple Global Domain" "com.apple.sound.beep.volume" -int 0
+
+# FN button shows emoji menu
+defaults write "com.apple.HIToolbox" "AppleFnUsageType" -int 2
+
+# No sound
+defaults write "Apple Global Domain" "com.apple.sound.uiaudio.enabled" '0'
 
 # Save screenshots to Downloads
 defaults write com.apple.screencapture location "${HOME}/Downloads"
