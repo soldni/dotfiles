@@ -85,8 +85,8 @@ defaults write "Apple Global Domain" "com.apple.sound.beep.volume" -int 0
 # FN button shows emoji menu
 defaults write "com.apple.HIToolbox" "AppleFnUsageType" -int 2
 
-# No sound
-defaults write "Apple Global Domain" "com.apple.sound.uiaudio.enabled" '0'
+# No sound for UI
+defaults write "Apple Global Domain" "com.apple.sound.uiaudio.enabled" -int 0
 
 # Save screenshots to Downloads
 defaults write com.apple.screencapture location "${HOME}/Downloads"

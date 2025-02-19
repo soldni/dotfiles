@@ -16,7 +16,7 @@ SCRIPT_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 
 SIMLINK_SRC=$1
 SIMLINK_DST=$2
-USE_HIDDEN=$3
+
 
 if [ -z "${SIMLINK_SRC}" ]; then
     SIMLINK_SRC="${SCRIPT_DIR}/home-symlink"
@@ -26,35 +26,24 @@ if [ -z "${SIMLINK_DST}" ]; then
     SIMLINK_DST="${HOME}"
 fi
 
-if [ -z "${USE_HIDDEN}" ]; then
-    USE_HIDDEN='1'
-fi
-
 all_files=( )
-IFS=$'\n' eval 'for i in `find ${SIMLINK_SRC}/* -name "*" -not -name ".DS_Store"`; do all_files+=( "$i" ); done'
+IFS=$'\n' eval 'for i in `find ${SIMLINK_SRC}/.* ${SIMLINK_SRC}/* -name "*" -not -name ".DS_Store" -not -name "." -not -name ".." 2>/dev/null`; do all_files+=( "$i" ); done'
 
 for ((i = 0; i < ${#all_files[@]}; i++)) do
     if [ -f "${all_files[i]}" ]; then
         relative=$(echo "${all_files[i]}" | sed "s|${SIMLINK_SRC}/||g")
         relative_dir=$(dirname "${relative}")
 
-        # set hidden prefix if use_hidden is 1
-        if [ "${USE_HIDDEN}" == '1' ]; then
-            hidden_prefix='.'
-        else
-            hidden_prefix=''
-        fi
-
       src="${SIMLINK_SRC}/${relative}"
-      dst="${SIMLINK_DST}/${hidden_prefix}${relative}"
+      dst="${SIMLINK_DST}/${relative}"
 
       if [ "${relative_dir}" != '.' ]; then
-            dest_rel_dir="${SIMLINK_DST}/${hidden_prefix}${relative_dir}"
+            dest_rel_dir="${SIMLINK_DST}/${relative_dir}"
 
             if [ ! -d "${dest_rel_dir}" ]; then
                 rm -rf "${dest_rel_dir}"
             fi
-            mkdir -p "${SIMLINK_DST}/${hidden_prefix}${relative_dir}"
+            mkdir -p "${SIMLINK_DST}/${relative_dir}"
       fi
       printf "Symlinking '${relative}':\n  src: ${src}\n  dst: ${dst}\n\n"
       rm -rf "${dst}"
