@@ -47,6 +47,8 @@ defaults write "com.apple.WindowManager" "EnableTopTilingByEdgeDrag" -int 1
 defaults write "com.apple.WindowManager" "EnableTilingOptionAccelerator" -int 1
 defaults write "com.apple.WindowManager" "EnableTiledWindowMargins" -int 0
 
+# we actually like these shortcuts for managing tiling, using globe key is a pita
+bash ${script_dir}/macos_old_window_shortcuts.sh
 
 # Local connections only for VNC
 sudo defaults write /Library/Preferences/com.apple.RemoteManagement.plist VNCOnlyLocalConnections -bool yes
@@ -346,16 +348,18 @@ brew_cask_to_install=(
     'firefox'               # browser
     'appcleaner'            # good for app cleanup
     'cyberduck'             # sftp client
+    'transmit'              # sftp client
     'discord'               # chat app
     'font-fira-code'        # font with ligatures
     'github'                # git client
     'imageoptim'            # image optimization
     'ghostty'               # terminal
     'keepingyouawake'       # prevent sleep
-    'lingon-x'              # manage startup items
+    # 'lingon-x'              # manage startup items
     'macvim'                # vim
     'mimestream'            # email client
-    'monitorcontrol'        # control external monitor setttings
+    # 'monitorcontrol'        # control external monitor settings
+    'orion'                 # browser
     'netnewswire'           # rss reader
     'orbstack'              # replacement for docker
     'signal'                # encrypted chat
@@ -406,7 +410,7 @@ mas_install=(
     '1569813296'    # 1Password for Safari       (2.24.2)
     '1592917505'    # Noir                       (2024.2.1)
     '1622835804'    # com.kagimacOS.Kagi-Search  (2.2.3)
-    '290986013'     # Deliveries                 (9.5.1)
+    # '290986013'     # Deliveries                 (9.5.1)
     '403304796'     # iNet Network Scanner       (3.1.1)
     '425424353'     # The Unarchiver             (4.3.8)
     '429449079'     # Patterns                   (1.3)
