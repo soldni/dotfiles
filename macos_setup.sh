@@ -272,6 +272,14 @@ cd ..
 rm -rf monaspace
 cd "${current_dir}"
 
+# install aporetic font (formerly known as font-iosevka-comfy)
+current_dir="$(pwd)"
+cd "${HOME}/Downloads"
+git clone https://github.com/protesilaos/aporetic.git
+cp aporetic/aporetic-*/TTF/*.ttf /Library/Fonts/
+rm -rf aporetic
+cd "${current_dir}"
+
 # Check if brew is installed; if not, install brew
 has_brew=`which brew 2>/dev/null`
 if [[ -z $has_brew ]]
@@ -345,40 +353,41 @@ done
 
 brew_cask_to_install=(
     '1password'             # Password Manager
-    'firefox'               # browser
     'appcleaner'            # good for app cleanup
-    'cyberduck'             # sftp client
-    'transmit'              # sftp client
+    'chatgpt'               # OpenAI desktop app
+    'claude'                # Anthropic desktop app
     'discord'               # chat app
+    'fantastical'           # calendar
+    'firefox@beta'               # browser
     'font-fira-code'        # font with ligatures
+    'ghostty'               # terminal
     'github'                # git client
     'imageoptim'            # image optimization
-    'ghostty'               # terminal
     'keepingyouawake'       # prevent sleep
-    # 'lingon-x'              # manage startup items
+    'mac-mouse-fix'         # additonal mouse settings
+    'maccy'                 # clipboard manager
     'macvim'                # vim
     'mimestream'            # email client
-    # 'monitorcontrol'        # control external monitor settings
-    'orion'                 # browser
     'netnewswire'           # rss reader
     'orbstack'              # replacement for docker
     'signal'                # encrypted chat
     'sketch'                # vector design
     'slack'                 # chat app
     'spotify'               # music player
+    'transmit'              # sftp client
+    'vanilla'               # hide menubar icons
     'visual-studio-code'    # text editor
     'zoom'                  # video conferencing
-    'mac-mouse-fix'         # additonal mouse settings
-    'vanilla'               # hide menubar icons
-    'maccy'                 # clipboard manager
-    'chatgpt'               # OpenAI desktop app
+    # 'cyberduck'             # sftp client
+    # 'lingon-x'              # manage startup items
+    # 'monitorcontrol'        # control external monitor settings
+    # 'orion'                 # browser
 )
 
 # Iosevka is a monospace font with ligatures that is nice and
 # narrow. I install all the variants of it.
 iosevka_fonts=(
     'font-iosevka'
-    'font-iosevka-comfy'
     'font-iosevka-curly'
     'font-iosevka-curly-slab'
     'font-iosevka-etoile'
