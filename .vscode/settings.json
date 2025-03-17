@@ -1,3 +1,11 @@
 {
-    "python.languageServer": "None"
+    "workbench.colorCustomizations": {
+        "sash.hoverBorder": "#628a6c",
+        "statusBar.background": "#4d6c55",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#628a6c",
+        "statusBarItem.remoteBackground": "#4d6c55",
+        "statusBarItem.remoteForeground": "#e7e7e7"
+    },
+    "peacock.color": "#4d6c55"
 }

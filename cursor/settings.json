@@ -1,0 +1,251 @@
+{
+  "breadcrumbs.enabled": true,
+  "cSpell.userWords": [
+    "@soldni",
+    "allenai",
+    "appname",
+    "binarize",
+    "binarized",
+    "boto",
+    "cuda",
+    "dataclass",
+    "dataclasses",
+    "desiderable",
+    "dtype",
+    "elems",
+    "flexyclass",
+    "flexyclasses",
+    "flist",
+    "fsspec",
+    "huggingface",
+    "ipdb",
+    "isclass",
+    "jsonl",
+    "logits",
+    "Luca",
+    "Mmda",
+    "nccl",
+    "ndarray",
+    "ngrams",
+    "numpy",
+    "olmo",
+    "olmoe",
+    "omegaconf",
+    "prefixify",
+    "pretrained",
+    "pretraining",
+    "Pylance",
+    "pyright",
+    "pysbd",
+    "PYTHONPATH",
+    "pytorch",
+    "qasper",
+    "rasterizer",
+    "retokenize",
+    "Soldaini",
+    "soldni",
+    "spacy",
+    "startswith",
+    "stopwords",
+    "subclasscheck",
+    "subquantizers",
+    "tensorboard",
+    "tensorize",
+    "tensorizer",
+    "textacy",
+    "tqdm",
+    "trouting",
+    "unifiedqa",
+    "unpathify",
+    "unsharded",
+    "wids"
+  ],
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.fontFamily": "Iosevka Medium",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 13,
+  "editor.fontWeight": "normal",
+  "editor.formatOnPaste": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.largeFileOptimizations": true,
+  "editor.lineHeight": 1.4,
+  "editor.minimap.autohide": true,
+  "editor.minimap.enabled": false,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.overviewRulerBorder": false,
+  "editor.renderWhitespace": "none",
+  "editor.rulers": [
+    115
+  ],
+  "editor.selectionHighlight": false,
+  "editor.snippetSuggestions": "top",
+  "editor.suggestSelection": "first",
+  "editor.tokenColorCustomizations": {
+    "[Atom One Light]": {
+      "textMateRules": [
+        {
+          "scope": "source",
+          "settings": {
+            "fontStyle": ""
+          }
+        }
+      ]
+    }
+  },
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 115,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.fileNesting.enabled": true,
+  "extensions.ignoreRecommendations": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false,
+    "yaml": true,
+    "python": true,
+    "toml": true
+  },
+  "github.copilot.editor.enableAutoCompletions": true,
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "python.analysis.completeFunctionParens": true,
+  "python.analysis.indexing": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "python.languageServer": "Cursor Pyright",
+  "redhat.telemetry.enabled": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.external.osxExec": "Ghostty.app",
+  "terminal.integrated.fontFamily": "Iosevka Medium",
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.lineHeight": 1.1,
+  "terminal.integrated.scrollback": 100000,
+  "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.tabs.enabled": false,
+  "timeline.pageOnScroll": true,
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]"
+  ],
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "window.closeWhenEmpty": true,
+  "window.openFilesInNewWindow": "on",
+  "window.title": "${rootName}${separator}${activeEditorMedium}",
+  "window.titleSeparator": " · ",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "workbench.panel.defaultLocation": "right",
+  "workbench.preferredDarkColorTheme": "Catppuccin Frappé",
+  "workbench.preferredLightColorTheme": "Catppuccin Latte",
+  "window.autoDetectColorScheme": true,
+  "peacock.affectActivityBar": false,
+  "peacock.affectTitleBar": false,
+  "workbench.tips.enabled": false,
+  "explorer.autoReveal": false,
+  "notebook.output.textLineLimit": 100,
+  "workbench.tree.indent": 16,
+  "terminal.integrated.tabs.title": "${process}${separator}${cwd}",
+  "terminal.integrated.tabs.separator": " · ",
+  "peacock.favoriteColors": [
+    {
+      "name": "Angular Red",
+      "value": "#dd0531"
+    },
+    {
+      "name": "Azure Blue",
+      "value": "#007fff"
+    },
+    {
+      "name": "JavaScript Yellow",
+      "value": "#f9e64f"
+    },
+    {
+      "name": "Mandalorian Blue",
+      "value": "#1857a4"
+    },
+    {
+      "name": "Node Green",
+      "value": "#215732"
+    },
+    {
+      "name": "React Blue",
+      "value": "#61dafb"
+    },
+    {
+      "name": "Something Different",
+      "value": "#832561"
+    },
+    {
+      "name": "Svelte Orange",
+      "value": "#ff3d00"
+    },
+    {
+      "name": "Vue Green",
+      "value": "#42b883"
+    },
+    {
+      "name": "bright-salmon",
+      "value": "#f8355d"
+    }
+  ],
+  "editor.stickyScroll.enabled": true,
+  "workbench.fontAliasing": "auto",
+  "workbench.editor.enablePreviewFromCodeNavigation": true,
+  "explorer.incrementalNaming": "smart",
+  "debug.allowBreakpointsEverywhere": true,
+  "testing.automaticallyOpenPeekViewDuringAutoRun": true,
+  "python.analysis.autoImportCompletions": true,
+  "[python]": {
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "window.commandCenter": true,
+  "jupyter.askForKernelRestart": false,
+  "workbench.editor.tabActionLocation": "left",
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "workbench.colorTheme": "Catppuccin Latte",
+  "git.openRepositoryInParentFolders": "always",
+  "diffEditor.maxComputationTime": 0,
+  "editor.multiCursorLimit": 100000,
+  "github.copilot.chat.localeOverride": "en",
+  "github.copilot.chat.startDebugging.enabled": true,
+  "github.copilot.chat.inlineChatCompletionTrigger.enabled": true,
+  "github.copilot.advanced": {
+    "useLanguageServer": true
+  },
+  "github.copilot.chat.generateTests.codeLens": true,
+  "github.copilot.chat.search.semanticTextResults": true,
+  "git.replaceTagsWhenPull": true,
+  "chat.editing.alwaysSaveWithGeneratedChanges": true,
+  "workbench.iconTheme": "catppuccin-latte",
+  "editor.fontVariations": true,
+  "github.copilot.chat.editor.temporalContext.enabled": true,
+  "symbols.hidesExplorerArrows": false,
+  "cursor.cpp.disabledLanguages": [
+    "scminput"
+  ],
+  "cursor.cpp.enablePartialAccepts": true,
+  "python.experiments.enabled": false
+}
