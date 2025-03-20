@@ -325,6 +325,8 @@ brew_packages_to_install=(
     'macvim'
     'mas'
     'mosh'
+    'node'
+    'npm'
     'openblas'
     'pigz'
     'pipx'
@@ -339,6 +341,9 @@ brew_packages_to_install=(
     'zsh-autosuggestions'
     'zstd'
 )
+
+# set default install location for node
+npm config set prefix "${HOME}/.local"
 
 
 for package in "${brew_packages_to_install[@]}"; do

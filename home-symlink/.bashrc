@@ -602,7 +602,6 @@ if [ -d "/opt/ai2ools" ]; then
     export PATH="${PATH}:/opt/ai2ools/bin"
 fi
 
-
 # Activate bash integration in iTerm2
 if [ -f "${HOME}/.iterm2_shell_integration.bash" ]; then
     source "${HOME}/.iterm2_shell_integration.bash"

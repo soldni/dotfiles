@@ -239,7 +239,7 @@
   "github.copilot.chat.search.semanticTextResults": true,
   "git.replaceTagsWhenPull": true,
   "chat.editing.alwaysSaveWithGeneratedChanges": true,
-  "workbench.iconTheme": "catppuccin-latte",
+  "workbench.iconTheme": "catppuccin-frappe",
   "editor.fontVariations": true,
   "github.copilot.chat.editor.temporalContext.enabled": true,
   "symbols.hidesExplorerArrows": false,
