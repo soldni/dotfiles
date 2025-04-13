@@ -107,24 +107,12 @@
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
-  "github.copilot.enable": {
-    "*": true,
-    "plaintext": true,
-    "markdown": true,
-    "scminput": false,
-    "yaml": true,
-    "python": true,
-    "toml": true
-  },
-  "github.copilot.editor.enableAutoCompletions": true,
   "javascript.updateImportsOnFileMove.enabled": "never",
   "latex-workshop.view.pdf.viewer": "tab",
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
   },
-  "python.analysis.completeFunctionParens": true,
-  "python.analysis.indexing": true,
   "python.analysis.typeCheckingMode": "basic",
   "python.languageServer": "Cursor Pyright",
   "redhat.telemetry.enabled": false,
@@ -229,23 +217,16 @@
   "git.openRepositoryInParentFolders": "always",
   "diffEditor.maxComputationTime": 0,
   "editor.multiCursorLimit": 100000,
-  "github.copilot.chat.localeOverride": "en",
-  "github.copilot.chat.startDebugging.enabled": true,
-  "github.copilot.chat.inlineChatCompletionTrigger.enabled": true,
-  "github.copilot.advanced": {
-    "useLanguageServer": true
-  },
-  "github.copilot.chat.generateTests.codeLens": true,
-  "github.copilot.chat.search.semanticTextResults": true,
   "git.replaceTagsWhenPull": true,
   "chat.editing.alwaysSaveWithGeneratedChanges": true,
-  "workbench.iconTheme": "catppuccin-frappe",
+  "workbench.iconTheme": "catppuccin-latte",
   "editor.fontVariations": true,
-  "github.copilot.chat.editor.temporalContext.enabled": true,
   "symbols.hidesExplorerArrows": false,
   "cursor.cpp.disabledLanguages": [
     "scminput"
   ],
   "cursor.cpp.enablePartialAccepts": true,
-  "python.experiments.enabled": false
+  "python.experiments.enabled": false,
+  "git.ignoreMissingGitWarning": true,
+  "cursor.composer.shouldAllowCustomModes": true
 }
