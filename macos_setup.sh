@@ -330,12 +330,14 @@ brew_packages_to_install=(
     'openblas'
     'pigz'
     'pipx'
+    'python'
     'reattach-to-user-namespace'
     'ripgrep'
     'rsync'
     'speedtest-cli'
     'tmux'
     'tree'
+    'uv'
     'wget'
     'xz'
     'zsh-autosuggestions'
@@ -356,14 +358,35 @@ for package in "${brew_packages_to_install[@]}"; do
 done
 
 
+# these are apps I don't use anymore
+# we uninstall them first and then do a cleanup
+brew_cask_to_uninstall=(
+    'cyberduck'             # sftp client
+    'fantastical'           # calendar
+    'lingon-x'              # manage startup items
+    'monitorcontrol'        # control external monitor settings
+    'orion'                 # browser
+    'vanilla'               # hide menubar icons
+    'visual-studio-code'    # text editor
+    'firefox@beta'          # browser
+    'readdle-spark'         # email client
+)
+
+for cask in "${brew_cask_to_uninstall[@]}"; do
+    brew uninstall --cask $cask
+done
+
+# do the cleanup
+brew cleanup
+
 brew_cask_to_install=(
     '1password'             # Password Manager
     'appcleaner'            # good for app cleanup
     'chatgpt'               # OpenAI desktop app
     'claude'                # Anthropic desktop app
+    'cursor'                # text editor
     'discord'               # chat app
-    'fantastical'           # calendar
-    'firefox@beta'               # browser
+    'mimestream'            # email client
     'font-fira-code'        # font with ligatures
     'ghostty'               # terminal
     'github'                # git client
@@ -372,7 +395,6 @@ brew_cask_to_install=(
     'mac-mouse-fix'         # additonal mouse settings
     'maccy'                 # clipboard manager
     'macvim'                # vim
-    'mimestream'            # email client
     'netnewswire'           # rss reader
     'orbstack'              # replacement for docker
     'signal'                # encrypted chat
@@ -380,13 +402,7 @@ brew_cask_to_install=(
     'slack'                 # chat app
     'spotify'               # music player
     'transmit'              # sftp client
-    'vanilla'               # hide menubar icons
-    'visual-studio-code'    # text editor
     'zoom'                  # video conferencing
-    # 'cyberduck'             # sftp client
-    # 'lingon-x'              # manage startup items
-    # 'monitorcontrol'        # control external monitor settings
-    # 'orion'                 # browser
 )
 
 # Iosevka is a monospace font with ligatures that is nice and
