@@ -114,7 +114,7 @@
     "jupyter-notebook": "left"
   },
   "python.analysis.typeCheckingMode": "basic",
-  "python.languageServer": "Cursor Pyright",
+  "python.languageServer": "None",
   "redhat.telemetry.enabled": false,
   "security.workspace.trust.untrustedFiles": "open",
   "terminal.external.osxExec": "Ghostty.app",
@@ -124,7 +124,6 @@
   "terminal.integrated.lineHeight": 1.1,
   "terminal.integrated.scrollback": 100000,
   "terminal.integrated.shellIntegration.enabled": true,
-  "terminal.integrated.tabs.enabled": false,
   "timeline.pageOnScroll": true,
   "todo-tree.general.tags": [
     "BUG",
@@ -228,5 +227,15 @@
   "cursor.cpp.enablePartialAccepts": true,
   "python.experiments.enabled": false,
   "git.ignoreMissingGitWarning": true,
-  "cursor.composer.shouldAllowCustomModes": true
+  "cursor.composer.shouldAllowCustomModes": true,
+  "python.defaultInterpreterPath": "/Users/lucas/Code/oe-eval-internal/.venv",
+  "update.releaseTrack": "prerelease",
+  "cursorpyright.analysis.autoImportCompletions": true,
+  "cursorpyright.analysis.typeCheckingMode": "basic",
+  "sync.autoDownload": true,
+  "sync.autoUpload": true,
+  "sync.quietSync": false,
+  "sync.gist": "77e8267262377201775be4790a1bebcb",
+  "window.newWindowProfile": "Default",
+  "local-sync.autorestore": true
 }

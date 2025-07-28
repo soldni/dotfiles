@@ -387,6 +387,8 @@ brew_cask_to_install=(
     'cursor'                # text editor
     'discord'               # chat app
     'mimestream'            # email client
+    # 'fantastical'           # calendar
+    # 'firefox@beta'          # browser
     'font-fira-code'        # font with ligatures
     'ghostty'               # terminal
     'github'                # git client

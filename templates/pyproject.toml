@@ -45,7 +45,7 @@ dev = [
 ]
 
 [tool.black]
-line-length = 79
+line-length = 115
 include = '\.pyi?$'
 exclude = '''
 (
@@ -62,11 +62,11 @@ exclude = '''
 
 [tool.isort]
 profile = "black"
-line_length = 79
+line_length = 115
 multi_line_output = 3
 
 [tool.autopep8]
-max_line_length = 79
+max_line_length = 115
 in-place = true
 recursive = true
 aggressive = 3
