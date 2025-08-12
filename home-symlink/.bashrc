@@ -378,18 +378,31 @@ get_dirty_git() {
 
 # get the name of the branch we are in
 parse_git_branch() {
-    if [ ! -d '.git' ]; then
+    is_git_repo=$(git rev-parse --is-inside-work-tree 2> /dev/null)
+    if [ -z "${is_git_repo}" ]; then
         # exit if we are not in a git repo
         return
     fi
 
-    branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+    # we use + for worktrees and * for main repos
+    if [ -d ".git" ]; then
+        # inside main git repo
+        symbol="*"
+    elif [ -f ".git" ]; then
+        # inside a worktree
+        symbol="+"
+    else
+        # not a git repo
+        return
+    fi
+
+    branch=$(git branch 2> /dev/null | grep -P '^\*' |  sed -e 's/* \(.*\)/\1/')
     if [ ! -z "${branch}" ]; then
         dirty="$(get_dirty_git)"
         if [ -z "${dirty}" ]; then
-            echo "${branch}"
+            echo "${symbol}${branch}"
         else
-            echo "${branch} [${dirty}]"
+            echo "${symbol}${branch} [${dirty}]"
         fi
     fi
 }

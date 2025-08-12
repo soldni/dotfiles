@@ -218,7 +218,7 @@
   "editor.multiCursorLimit": 100000,
   "git.replaceTagsWhenPull": true,
   "chat.editing.alwaysSaveWithGeneratedChanges": true,
-  "workbench.iconTheme": "catppuccin-latte",
+  "workbench.iconTheme": "catppuccin-frappe",
   "editor.fontVariations": true,
   "symbols.hidesExplorerArrows": false,
   "cursor.cpp.disabledLanguages": [

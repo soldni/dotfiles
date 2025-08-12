@@ -1,0 +1,132 @@
+{
+  "hideStaticSettings" : false,
+  "enableStaticCycle" : false,
+  "minimizeOnlyFocusedWindowOnMinus" : true,
+  "windowSwitcherFeatures" : 57,
+  "showWindowSwitcher" : false,
+  "appKeyAssignments" : [
+    {
+      "app" : {
+        "useCount" : 133,
+        "switchCount" : 0,
+        "path" : "/Applications/Claude.app",
+        "identifier" : "com.anthropic.claudefordesktop:49601",
+        "originalName" : "Claude"
+      },
+      "index" : 0,
+      "whenAlreadyFocusedAction" : 2,
+      "key" : "u"
+    },
+    {
+      "app" : {
+        "path" : "/Applications/Slack.app",
+        "useCount" : 1888,
+        "originalName" : "Slack",
+        "identifier" : "com.tinyspeck.slackmacgap:47631",
+        "switchCount" : 0
+      },
+      "index" : 5,
+      "whenAlreadyFocusedAction" : 2,
+      "key" : "l"
+    },
+    {
+      "app" : {
+        "useCount" : 20,
+        "switchCount" : 0,
+        "path" : "/Applications/Spotify.app",
+        "originalName" : "Spotify",
+        "identifier" : "com.spotify.client:81668"
+      },
+      "index" : 5,
+      "whenAlreadyFocusedAction" : 2,
+      "key" : "p"
+    }
+  ],
+  "specialKey" : "equal",
+  "windowSwitchOSDDelay" : 350,
+  "whenAlreadyFocusedAction" : 2,
+  "zeroAsLastFocusedWindow" : false,
+  "appSortReverse" : false,
+  "enableCycleHotkey" : false,
+  "windowKeyAssignments" : [
+
+  ],
+  "windowTriggerKeys" : [
+    1,
+    5
+  ],
+  "minimizeKey" : "minus",
+  "windowSwitcherAppearance" : "compact",
+  "appSwitcherFeatures" : 38,
+  "notificationsPermissionsGranted" : false,
+  "appSwitcherUseNumbersForWindows" : false,
+  "windowSwitcherDimFocused" : false,
+  "switcherScreenPlacement" : 1,
+  "appSort" : "score",
+  "triggerKeys" : [
+    4
+  ],
+  "allowWindowSwitcher" : true,
+  "enableHideOnFocusHotkey" : false,
+  "fnWindowSwitching" : false,
+  "enableAssignHotkey" : false,
+  "activateAllWindows" : true,
+  "keyTapThreshold" : 0.14,
+  "windowKeyPatterns" : [
+    {
+      "id" : "com.sublimetext.4",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.sublimetext.3",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.sublimetext.2",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.sublimetext.",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.visualstudio.code.oss",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.visualstudio.code",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.microsoft.VSCodiumInsiders",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.microsoft.VSCode",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.microsoft.VSCodeInsiders",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.microsoft.VSCod",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.todesktop.",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    }
+  ],
+  "windowOnlySwitchOSDDelay" : 0,
+  "ignoredApps" : [
+    "com.apple.MobileSMS"
+  ],
+  "hideOnlyFocusedAppOnMinus" : false,
+  "focusOnKeyUp" : false,
+  "ignoredKeys" : [
+
+  ],
+  "alwaysHideOthers" : false,
+  "showAppSwitcher" : true
+}
