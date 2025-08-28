@@ -96,17 +96,17 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         export JAVA_HOME="/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home/"
     fi
 
-    # add command to remove all apps from dock
-    alias dock-remove-all="defaults write com.apple.dock persistent-apps -array"
-
     # upgrade remotely
     alias macos-reboot='sudo fdesetup authrestart'
     alias macos-reboot-delay='sudo fdesetup authrestart -delayminutes -1'
     alias macos-run-software-update='sudo softwareupdate --install -a'
     alias macos-run-software-update-and-reboot='sudo fdesetup authrestart -delayminutes -1 && sudo softwareupdate --install -a --restart'
 
+    # alias to quickly remove all icons from dock
+    alias dock-clear="defaults write com.apple.dock persistent-apps -array; killall Dock"
+
     # add a space to the dock
-    alias dock-spacer="defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"spacer-tile\";}'; killall Dock"
+    alias dock-space="defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"spacer-tile\";}'; killall Dock"
 
     # add path to ruby
     MACOS_RUBY_PATH=/opt/homebrew/opt/ruby/bin
