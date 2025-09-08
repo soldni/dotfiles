@@ -83,6 +83,9 @@ fi
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # We're on macos
 
+    # increase limit open files
+    ulimit -n 10240
+
     # don't want to hear about bash being deprecated
     export BASH_SILENCE_DEPRECATION_WARNING=1
 
