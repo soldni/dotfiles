@@ -304,6 +304,8 @@ brew_packages_to_install=(
     'bash-completion'
     'bash'
     'blueutil'
+    'claude'
+    'codex'
     'colordiff'
     'coreutils'
     'diff-pdf'
@@ -363,13 +365,15 @@ done
 brew_cask_to_uninstall=(
     'cyberduck'             # sftp client
     'fantastical'           # calendar
+    'firefox@beta'          # browser
     'lingon-x'              # manage startup items
     'monitorcontrol'        # control external monitor settings
     'orion'                 # browser
+    'readdle-spark'         # email client
+    'spotify'               # music player
     'vanilla'               # hide menubar icons
     'visual-studio-code'    # text editor
-    'firefox@beta'          # browser
-    'readdle-spark'         # email client
+    'maccy'                 # clipboard manager
 )
 
 for cask in "${brew_cask_to_uninstall[@]}"; do
@@ -386,23 +390,19 @@ brew_cask_to_install=(
     'claude'                # Anthropic desktop app
     'cursor'                # text editor
     'discord'               # chat app
-    'mimestream'            # email client
-    # 'fantastical'           # calendar
-    # 'firefox@beta'          # browser
     'font-fira-code'        # font with ligatures
     'ghostty'               # terminal
     'github'                # git client
     'imageoptim'            # image optimization
     'keepingyouawake'       # prevent sleep
     'mac-mouse-fix'         # additonal mouse settings
-    'maccy'                 # clipboard manager
     'macvim'                # vim
+    'mimestream'            # email client
     'netnewswire'           # rss reader
     'orbstack'              # replacement for docker
     'signal'                # encrypted chat
     'sketch'                # vector design
     'slack'                 # chat app
-    'spotify'               # music player
     'transmit'              # sftp client
     'zoom'                  # video conferencing
 )
@@ -442,7 +442,7 @@ mas_install=(
     '1569813296'    # 1Password for Safari       (2.24.2)
     '1592917505'    # Noir                       (2024.2.1)
     '1622835804'    # com.kagimacOS.Kagi-Search  (2.2.3)
-    # '290986013'     # Deliveries                 (9.5.1)
+    '6475380719'    # Picture in Picture         (1.0.0)
     '403304796'     # iNet Network Scanner       (3.1.1)
     '425424353'     # The Unarchiver             (4.3.8)
     '429449079'     # Patterns                   (1.3)
@@ -534,5 +534,14 @@ bash ${script_dir}/home-symlink.sh \
 
 
 bash ${script_dir}/bootstrap.sh
+
+# clean up brew
+brew cleanup
+
+# clean up npm
+npm cache clean --force
+
+# purge uv cache
+uv cache clean
 
 echo "macOS setup completed."
