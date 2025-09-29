@@ -71,5 +71,10 @@
     "catppuccin-icons": true,
     "latex": true,
     "ruff": true
+  },
+  "languages": {
+    "Python": {
+      "language_servers": ["basedpyright", "ruff"]
+    }
   }
 }
