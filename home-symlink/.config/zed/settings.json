@@ -7,6 +7,24 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "agent": {
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-5-thinking-latest"
+    }
+  },
+  "ssh_connections": [
+    {
+      "host": "100.27.210.146",
+      "username": "ec2-user",
+      "projects": [
+        {
+          "paths": ["/home/ec2-user/vllm"]
+        }
+      ]
+    }
+  ],
   "buffer_font_features": {
     "calt": 1
   },
@@ -27,6 +45,7 @@
   "wrap_guides": [115],
   "preferred_line_length": 115,
   "soft_wrap": "editor_width",
+  "allow_rewrap": "anywhere",
   "debugger": {
     "dock": "right"
   },
@@ -53,15 +72,16 @@
     "metrics": false
   },
   "base_keymap": "SublimeText",
-  "ui_font_size": 16,
-  "buffer_font_size": 13.0,
+  "ui_font_size": 15,
+  "unstable.ui_density": "compact",
+  "buffer_font_size": 13,
   "buffer_line_height": {
     "custom": 1.35
   },
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Latte",
-    "dark": "Catppuccin Frappé"
+    "light": "Dayfox - opaque",
+    "dark": "Terafox - opaque"
   },
   "auto_install_extensions": {
     "html": true,

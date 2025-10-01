@@ -1,10 +1,14 @@
 # Visual elements
 font-family = "Iosevka Medium"
 font-size = "13"
-theme = "light:catppuccin-latte.conf,dark:catppuccin-frappe.conf"
+theme = "light:dayfox.ghostty,dark:terafox.ghostty"
 bold-is-bright = "false"
 adjust-cell-height = "10%"
 cursor-style = "block"
+
+# no blurring for now
+# background-blur = "true"
+# background-opacity = 0.9
 
 # MacOS specific settings
 macos-titlebar-style = "tabs"
