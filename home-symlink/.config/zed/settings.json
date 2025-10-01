@@ -80,8 +80,8 @@
   },
   "theme": {
     "mode": "system",
-    "light": "Lux Light",
-    "dark": "Noctis Minimus"
+    "light": "Dawnfox - opaque",
+    "dark": "Nordfox - opaque"
   },
   "auto_install_extensions": {
     "html": true,
