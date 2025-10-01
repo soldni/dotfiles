@@ -8,7 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "agent": {
-    "default_profile": "ask",
+    "default_profile": "write",
     "default_model": {
       "provider": "anthropic",
       "model": "claude-sonnet-4-5-thinking-latest"
@@ -80,8 +80,8 @@
   },
   "theme": {
     "mode": "system",
-    "light": "Dayfox - opaque",
-    "dark": "Terafox - opaque"
+    "light": "Lux Light",
+    "dark": "Noctis Minimus"
   },
   "auto_install_extensions": {
     "html": true,
@@ -90,7 +90,9 @@
     "dockerfile": true,
     "catppuccin-icons": true,
     "latex": true,
-    "ruff": true
+    "ruff": true,
+    "nvim-nightfox": true,
+    "noctis-port": true
   },
   "languages": {
     "Python": {

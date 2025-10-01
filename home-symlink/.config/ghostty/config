@@ -1,7 +1,7 @@
 # Visual elements
 font-family = "Iosevka Medium"
 font-size = "13"
-theme = "light:dayfox.ghostty,dark:terafox.ghostty"
+theme = "light:noctis-lux.ghostty-theme,dark:noctis-minimus.ghostty-theme"
 bold-is-bright = "false"
 adjust-cell-height = "10%"
 cursor-style = "block"
