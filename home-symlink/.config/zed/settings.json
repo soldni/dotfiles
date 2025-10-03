@@ -14,17 +14,6 @@
       "model": "claude-sonnet-4-5-thinking-latest"
     }
   },
-  "ssh_connections": [
-    {
-      "host": "100.27.210.146",
-      "username": "ec2-user",
-      "projects": [
-        {
-          "paths": ["/home/ec2-user/vllm"]
-        }
-      ]
-    }
-  ],
   "buffer_font_features": {
     "calt": 1
   },

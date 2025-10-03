@@ -21,37 +21,61 @@
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-]": "workspace::ToggleRightDock"
+      "ctrl-] ]": "workspace::ToggleRightDock"
     }
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-[": "workspace::ToggleLeftDock"
+      "ctrl-[ [": "workspace::ToggleLeftDock"
     }
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-/": "terminal_panel::Toggle"
+      "ctrl-] 1": "terminal_panel::Toggle"
     }
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-.": "agent::ToggleFocus"
+      "ctrl-] 2": "agent::ToggleFocus"
     }
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-;": "project_panel::ToggleFocus"
+      "ctrl-[ 1": "project_panel::ToggleFocus"
     }
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-'": "git_panel::ToggleFocus"
+      "ctrl-[ 2": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-[ 3": "outline_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-[ 4": "collab_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-] 3": "notification_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-] 4": "debug_panel::ToggleFocus"
     }
   }
 ]
