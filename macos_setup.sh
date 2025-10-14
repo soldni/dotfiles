@@ -373,7 +373,6 @@ brew_cask_to_uninstall=(
     'spotify'               # music player
     'vanilla'               # hide menubar icons
     'visual-studio-code'    # text editor
-    'maccy'                 # clipboard manager
 )
 
 for cask in "${brew_cask_to_uninstall[@]}"; do
@@ -384,6 +383,7 @@ done
 brew cleanup
 
 brew_cask_to_install=(
+    'maccy'                 # clipboard manager
     '1password'             # Password Manager
     'appcleaner'            # good for app cleanup
     'chatgpt'               # OpenAI desktop app
