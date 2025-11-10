@@ -7,6 +7,25 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "ssh_connections": [
+    {
+      "host": "44.210.92.8",
+      "username": "ec2-user",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/ec2-user/oe-data-internal"
+          ]
+        }
+      ]
+    }
+  ],
+  "title_bar": {
+    "show_menus": false,
+    "show_branch_icon": true
+  },
+  "confirm_quit": true,
   "agent": {
     "default_profile": "write",
     "default_model": {
@@ -45,6 +64,8 @@
     "auto_reveal_entries": false
   },
   "tabs": {
+    "file_icons": true,
+    "git_status": true,
     "close_position": "left"
   },
   "when_closing_with_no_tabs": "close_window",
@@ -79,7 +100,6 @@
     "dockerfile": true,
     "catppuccin-icons": true,
     "latex": true,
-    "ruff": true,
     "nvim-nightfox": true,
     "noctis-port": true
   },
