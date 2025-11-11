@@ -1,7 +1,41 @@
 // Place your key bindings in this file to override the defaults
 [
     {
-        "key": "cmd+i",
-        "command": "composerMode.agent"
-    }
+        "key": "alt+cmd+b",
+        "command": "composer.toggleBrowserTab"
+    },
+    {
+        "key": "shift+cmd+b",
+        "command": "-composer.toggleBrowserTab"
+    },
+    {
+        "key": "shift+cmd+y",
+        "command": "workbench.view.scm",
+        "when": "workbench.scm.active"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "-workbench.view.scm",
+        "when": "workbench.scm.active"
+    },
+    {
+        "key": "ctrl+1",
+        "command": "composerMode.agent",
+        "when": "composerFocused"
+    },
+    {
+        "key": "ctrl+2",
+        "command": "composerMode.plan",
+        "when": "composerFocused"
+    },
+    {
+        "key": "ctrl+3",
+        "command": "composerMode.chat",
+        "when": "composerFocused"
+    },
+    {
+        "key": "ctrl+4",
+        "command": "composerMode.background",
+        "when": "composerFocused"
+    },
 ]

@@ -93,5 +93,7 @@
   "workbench.preferredLightColorTheme": "Monokai Pro Light (Filter Sun)",
   "workbench.tips.enabled": false,
   "workbench.tree.indent": 16,
-  "local-sync.autorestore": true
+  "local-sync.autorestore": true,
+  "peacock.affectActivityBar": false,
+  "peacock.affectTitleBar": false
 }
