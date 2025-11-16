@@ -1,6 +1,8 @@
 [
   "anweber.local-sync",
   "anysphere.cursorpyright",
+  "anysphere.remote-containers",
+  "anysphere.remote-ssh",
   "charliermarsh.ruff",
   "dunstontc.viml",
   "earshinov.permute-lines",

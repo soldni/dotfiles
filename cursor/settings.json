@@ -95,5 +95,9 @@
   "workbench.tree.indent": 16,
   "local-sync.autorestore": true,
   "peacock.affectActivityBar": false,
-  "peacock.affectTitleBar": false
+  "peacock.affectTitleBar": false,
+  "remote.SSH.remotePlatform": {
+    "ec2-user@ec2-3-89-148-62.compute-1.amazonaws.com": "linux"
+  },
+  "redhat.telemetry.enabled": false
 }
