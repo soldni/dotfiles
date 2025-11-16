@@ -232,9 +232,6 @@ alias git-freeze='git update-index --assume-unchanged'
 alias git-unfreeze='git update-index --no-assume-unchanged'
 alias git-undo='git reset --soft HEAD~1'
 
-# increase bash history file size
-HISTFILESIZE=50000
-
 # bootstrap miniforge
 if [ -d "${HOME}/miniforge3" ]; then
     # initialization of miniforge
@@ -526,6 +523,35 @@ fi
 random_hash() {
     echo "${USER}_${HOSTNAME}_$(date)" | md5sum | cut -f1 -d ' '
 }
+
+
+# configure history file
+HISTFILE="${HOME}/.${CURRENT_SHELL_NAME}_histfile"
+HISTSIZE=100000
+SAVEHIST=100000
+if [[ "${CURRENT_SHELL_NAME}" == "zsh" ]]; then
+	# append to history file instead of overwriting
+	setopt APPEND_HISTORY
+
+	# write each command to $HISTFILE as soon as it’s entered
+	setopt INC_APPEND_HISTORY
+elif [[ "${CURRENT_SHELL_NAME}" == "bash" ]]; then
+    # append to history file instead of overwrite
+	shopt -s histappend
+
+	# function to sync history on every prompt
+	__hist_sync() {
+	  history -a   # append this session's new lines to $HISTFILE
+	  history -n   # read any new lines from $HISTFILE (other sessions)
+	}
+
+	# preserve any existing PROMPT_COMMAND
+	if [[ -n "$PROMPT_COMMAND" ]]; then
+	  PROMPT_COMMAND="__hist_sync; $PROMPT_COMMAND"
+	else
+	  PROMPT_COMMAND="__hist_sync"
+	fi
+fi
 
 
 if [[ "${CURRENT_SHELL_NAME}" == "zsh" ]]; then
