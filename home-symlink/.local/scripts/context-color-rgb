@@ -31,7 +31,7 @@ __rgb_to_hex() {
     printf "#%02x%02x%02x\n" ${rgb[@]}
 }
 
-context_color_rgb_nubers() {
+context_color_rgb_numbers() {
     has_python3=$(which python3 2>/dev/null)
     if [[ ! -z $has_python3 ]]; then
         python_exec="$(which python3)"
@@ -47,8 +47,8 @@ context_color_rgb_nubers() {
     echo "${rgb}"
 }
 
-context_color_hex_nubers() {
-    out=$(context_color_rgb_nubers)
+context_color_hex_numbers() {
+    out=$(context_color_rgb_numbers)
     outhex=$(__rgb_to_hex $out)
     echo $outhex | tr -d '\n'
 }
@@ -56,9 +56,9 @@ context_color_hex_nubers() {
 
 while getopts ":xr" opt; do
   case ${opt} in
-    x ) context_color_hex_nubers
+    x ) context_color_hex_numbers
       ;;
-    r ) context_color_rgb_nubers
+    r ) context_color_rgb_numbers
       ;;
   esac
 done
