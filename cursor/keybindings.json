@@ -14,6 +14,15 @@
         "when": "workbench.scm.active"
     },
     {
+        "key": "ctrl+]",
+        "command": "composer.focusComposer",
+    },
+    {
+        "key": "ctrl+]",
+        "command": "composer.closeComposerTab",
+        "when": "composerFocused"
+    },
+    {
         "key": "ctrl+shift+g",
         "command": "-workbench.view.scm",
         "when": "workbench.scm.active"
@@ -37,5 +46,23 @@
         "key": "ctrl+4",
         "command": "composerMode.background",
         "when": "composerFocused"
+    },
+    {
+        "key": "ctrl+cmd+b",
+        "command": "workbench.action.tasks.build",
+        "when": "taskCommandsRegistered"
+    },
+    {
+        "key": "shift+cmd+b",
+        "command": "-workbench.action.tasks.build",
+        "when": "taskCommandsRegistered"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "cmd+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
     },
 ]
