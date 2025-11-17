@@ -432,9 +432,11 @@ fi
 
 # set this variable to anything but the empty string to enable
 # hostname-based prompt coloring in bash/zsh
-HOST_BASED_PROMPT_COLORS=$(hostname)
+if [ -z "${LOCAL_CONTEXT_COLOR}" ]; then
+    export LOCAL_CONTEXT_COLOR=$(whoami; hostname)
+fi
 
-if [ -z "${HOST_BASED_PROMPT_COLORS}" ]; then
+if [ -z "${LOCAL_CONTEXT_COLOR}" ]; then
     # use the standard mapping for colors
     # uses either dircolors or gdircolors if they are available
     has_dircolors=$(which dircolors 2>/dev/null)
@@ -462,7 +464,7 @@ export LS_COLORS="$(echo $LS_COLORS | tr ':' '\n' | sed 's/1;/0;/g' | tr '\n' ':
 if [[ "${CURRENT_SHELL_NAME}" == "bash" ]]; then
     reset_color='\[\e[m\]'
 
-    if [ -z "${HOST_BASED_PROMPT_COLORS}" ]; then
+    if [ -z "${LOCAL_CONTEXT_COLOR}" ]; then
         magenta_color='\[\e[35m\]'
         green_color='\[\e[32m\]'
         yellow_color='\[\e[33m\]'
@@ -497,7 +499,7 @@ elif [[ "${CURRENT_SHELL_NAME}" == "zsh" ]]; then
     lambda_symbol=$'\u03bb'
     no_color='%f'
 
-    if [ -z "${HOST_BASED_PROMPT_COLORS}" ]; then
+    if [ -z "${LOCAL_CONTEXT_COLOR}" ]; then
         magenta_color='%F{magenta}'
         green_color='%F{green}'
         yellow_color='%F{yellow}'

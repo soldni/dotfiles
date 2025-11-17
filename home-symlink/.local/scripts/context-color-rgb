@@ -1,26 +1,35 @@
 #!/usr/bin/env bash
 
-CONTEXT="hostname; whoami"
-
 QUANTIZE_SCRIPT=$(cat <<END
 # python code starts here
-import sys, random
+import sys, colorsys
 
-value =int(sys.argv[1], 16)
-qmin = float(sys.argv[2])
-qmax = float(sys.argv[3])
-channels = int(sys.argv[4])
+hash_str = sys.argv[1]
 
-random.seed(value)
+# Use different parts of the hash for different color properties
+# This ensures maximum variety in hue while keeping consistency
+hue_part = int(hash_str[0:16], 16)
+sat_part = int(hash_str[16:32], 16)
+bright_part = int(hash_str[32:48], 16)
 
-rgb = []
-for channel in range(1, channels + 1):
-    percent = (value * random.random() % 100) * random.uniform(0.5, 1) / 100.
-    # rgb.append(percent)
-    scaled = (qmax - qmin) * percent + qmin
-    rgb.append(int(scaled))
+# Generate vibrant colors using HSV color space
+# Hue: full spectrum (0-1) - use entire range for maximum variety
+# we first quantize to 128 (7 bits) to make sure we have diverse enough colors
+hue =  round((hue_part % 360) / 360.0 * 128) / 128.0
 
-print(';'.join(map(str,rgb)))
+# Saturation: high for vibrant colors
+saturation = 0.5 + (sat_part % 1000) / 1000.0 * 0.2
+
+# Value/Brightness: medium-high range to work on both light and dark terminals
+brightness = 0.8 # + (bright_part % 1000) / 1000.0 * 0.1
+
+# Convert HSV to RGB (returns values 0-1)
+r, g, b = colorsys.hsv_to_rgb(hue, saturation, brightness)
+
+# Scale to 0-255 range
+rgb = [int(r * 255), int(g * 255), int(b * 255)]
+
+print(';'.join(map(str, rgb)))
 
 # python code ends here
 END
@@ -39,11 +48,10 @@ context_color_rgb_numbers() {
         python_exec="$(which python)"
     fi
 
-    context="${LOCAL_CONTEXT_COLOR} $(eval "${CONTEXT}")"
     # echo $context
-    fullhash=$(echo $context | sha256sum | awk '{ print $1 }')
+    fullhash=$(echo $LOCAL_CONTEXT_COLOR | sha256sum | awk '{ print $1 }')
     # echo $fullhash
-    rgb="$(${python_exec} -c "$QUANTIZE_SCRIPT" ${fullhash} 150 255 3)"
+    rgb="$(${python_exec} -c "$QUANTIZE_SCRIPT" ${fullhash})"
     echo "${rgb}"
 }
 
@@ -55,10 +63,29 @@ context_color_hex_numbers() {
 
 
 while getopts ":xr" opt; do
+  if [ -z "${LOCAL_CONTEXT_COLOR}" ]; then
+    echo "LOCAL_CONTEXT_COLOR is not set"
+    exit 1
+  fi
+
   case ${opt} in
-    x ) context_color_hex_numbers
+    x )
+      context_color_hex_numbers
       ;;
-    r ) context_color_rgb_numbers
+    r )
+      context_color_rgb_numbers
+      ;;
+    h )
+      echo "Usage: context-color-rgb [-x|-r|-h]"
+      echo "  -x    Output hex color (for context)"
+      echo "  -r    Output r;g;b color (for context)"
+      echo "  -h    Show this help message"
+      exit 0
+      ;;
+    \? )
+      echo "Invalid option: -${OPTARG}" >&2
+      echo "Try: context-color-rgb -h"
+      exit 1
       ;;
   esac
 done

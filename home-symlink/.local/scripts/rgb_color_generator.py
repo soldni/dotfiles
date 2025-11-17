@@ -197,8 +197,7 @@ def parse_options():
     opts = ap.parse_args()
 
     if opts.seed is None:
-        context = os.environ.get("LOCAL_CONTEXT_COLOR", "")
-        context = f"{gethostname()}; {getuser()}; {context}"
+        context = os.environ.get("LOCAL_CONTEXT_COLOR", f"{gethostname()}; {getuser()};")
         h = hashlib.md5(context.encode("utf-8")).hexdigest()
         opts.seed = int(h, 16)
 
