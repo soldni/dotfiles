@@ -432,7 +432,7 @@ fi
 
 # set this variable to anything but the empty string to enable
 # hostname-based prompt coloring in bash/zsh
-HOST_BASED_PROMPT_COLORS=''
+HOST_BASED_PROMPT_COLORS=$(hostname)
 
 if [ -z "${HOST_BASED_PROMPT_COLORS}" ]; then
     # use the standard mapping for colors
@@ -446,7 +446,10 @@ if [ -z "${HOST_BASED_PROMPT_COLORS}" ]; then
         eval "$(gdircolors -b)"
     fi
 else
-    hostcolor="38;2;$(rgb_color_generator.py -r)"
+    export HOST_COLOR_RGB="$(rgb_color_generator.py -r)"
+    export HOST_COLOR_HEX="$(rgb_color_generator.py -x)"
+
+    hostcolor="38;2;${HOST_COLOR_RGB}"
     greycolor="38;5;247"
 
     # some custom LS_COLORS to match the prompt
