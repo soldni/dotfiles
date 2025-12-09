@@ -42,9 +42,9 @@ defaults write "com.apple.dock" "expose-group-apps" -int 1
 defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" '{32={enabled=0;};34={enabled=0;};38={enabled=0;};40={enabled=0;};44={enabled=0;};46={enabled=0;};}'
 
 # Tiling settings
-defaults write "com.apple.WindowManager" "EnableTilingByEdgeDrag" -int 1
-defaults write "com.apple.WindowManager" "EnableTopTilingByEdgeDrag" -int 1
-defaults write "com.apple.WindowManager" "EnableTilingOptionAccelerator" -int 1
+defaults write "com.apple.WindowManager" "EnableTilingByEdgeDrag" -int 0
+defaults write "com.apple.WindowManager" "EnableTopTilingByEdgeDrag" -int 0
+defaults write "com.apple.WindowManager" "EnableTilingOptionAccelerator" -int 0
 defaults write "com.apple.WindowManager" "EnableTiledWindowMargins" -int 0
 
 # we actually like these shortcuts for managing tiling, using globe key is a pita
@@ -449,6 +449,9 @@ mas_install=(
     '497799835'     # Xcode                      (15.4)
     '899247664'     # TestFlight                 (3.5.1)
     '992115977'     # Image2icon                 (2.18)
+    '6468265473'    # Upscayl                    (2.15.0)
+    '6636520519'    # Framous                    (1.3.1)
+    '441258766'     # Magnet                     (3.0.7)
 )
 
 not_signed_in_mas="Not signed in"
