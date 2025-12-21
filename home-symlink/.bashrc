@@ -151,6 +151,41 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # export path to openblas if it is installed
     export OPENBLAS="$(brew --prefix openblas 2&> /dev/null)"
 
+    # define a nice command to set hostname
+
+    function set_macos_name {
+        local nice="$1"
+        if [[ -z "$nice" ]]; then
+            echo "usage: set_macos_name \"Nice Name\"" >&2
+            return 2
+        fi
+
+        # 1) Build slug:
+        # - lowercase
+        # - drop apostrophe and everything after it (both ' and ’)
+        # - turn all remaining non-alnum into '-'
+        # - collapse repeats, trim ends
+        local slug
+        slug="$(
+            printf '%s' "$nice" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed -E "s/[’'].*/ /" \
+            | sed -E 's/[^a-z0-9]+/-/g; s/^-+//; s/-+$//; s/-+/-/g'
+        )"
+
+        if [[ -z "$slug" ]]; then
+            echo "error: derived hostname is empty from input: $nice" >&2
+            return 1
+        fi
+
+        # 2) Apply to macOS names
+        sudo scutil --set ComputerName "$nice" &&
+        sudo scutil --set HostName "$slug" &&
+        sudo scutil --set LocalHostName "$slug" &&
+        sudo dscacheutil -flushcache
+
+        printf 'Set ComputerName=%q\nSet HostName=%q\nSet LocalHostName=%q\n' "$nice" "$slug" "$slug"
+    }
 fi
 if [[ "$OSTYPE" == "linux"* ]]; then
     alias hdtemp="hddtemp /dev/sd[abcdefghi]"
