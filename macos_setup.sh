@@ -450,8 +450,6 @@ mas_install=(
     '899247664'     # TestFlight                 (3.5.1)
     '992115977'     # Image2icon                 (2.18)
     '6468265473'    # Upscayl                    (2.15.0)
-    '6636520519'    # Framous                    (1.3.1)
-    '441258766'     # Magnet                     (3.0.7)
 )
 
 not_signed_in_mas="Not signed in"

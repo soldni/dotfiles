@@ -32,5 +32,4 @@ keybind = shift+enter=text:\n
 keybind = "super+i=prompt_surface_title"
 
 
-# Use prerelease builds
-auto-update-channel = tip
+auto-update-channel = stable
