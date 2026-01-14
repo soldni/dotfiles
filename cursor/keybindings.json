@@ -14,15 +14,6 @@
         "when": "workbench.scm.active"
     },
     {
-        "key": "ctrl+]",
-        "command": "composer.focusComposer",
-    },
-    {
-        "key": "ctrl+]",
-        "command": "composer.closeComposerTab",
-        "when": "composerFocused"
-    },
-    {
         "key": "ctrl+shift+g",
         "command": "-workbench.view.scm",
         "when": "workbench.scm.active"
@@ -65,4 +56,44 @@
         "key": "cmd+b",
         "command": "-workbench.action.toggleSidebarVisibility"
     },
+    {
+        "key": "ctrl+]",
+        "command": "claude-vscode.terminal.open.keyboard",
+        "when": "config.claudeCode.useTerminal"
+    },
+    {
+        "key": "cmd+escape",
+        "command": "-claude-vscode.terminal.open.keyboard",
+        "when": "config.claudeCode.useTerminal"
+    },
+    {
+        "key": "ctrl+]",
+        "command": "claude-vscode.blur",
+        "when": "!config.claudeCode.useTerminal && !editorTextFocus"
+    },
+    {
+        "key": "cmd+escape",
+        "command": "-claude-vscode.blur",
+        "when": "!config.claudeCode.useTerminal && !editorTextFocus"
+    },
+    {
+        "key": "ctrl+]",
+        "command": "claude-vscode.focus",
+        "when": "editorTextFocus && !config.claudeCode.useTerminal"
+    },
+    {
+        "key": "cmd+escape",
+        "command": "-claude-vscode.focus",
+        "when": "editorTextFocus && !config.claudeCode.useTerminal"
+    },
+    {
+        "key": "ctrl+\\",
+        "command": "workbench.action.toggleAuxiliaryBar",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "alt+cmd+b",
+        "command": "-workbench.action.toggleAuxiliaryBar",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    }
 ]

@@ -1,6 +1,5 @@
 {
   "breadcrumbs.enabled": true,
-  "cursor.composer.shouldAllowCustomModes": true,
   "cursorpyright.analysis.autoImportCompletions": true,
   "cursorpyright.analysis.typeCheckingMode": "basic",
   "diffEditor.maxComputationTime": 0,
@@ -83,10 +82,10 @@
   "window.systemColorTheme": "auto",
   "window.title": "${rootName}${separator}${activeEditorMedium}",
   "window.titleSeparator": " · ",
-  "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+  "workbench.colorTheme": "Monokai Pro Light (Filter Sun)",
   "workbench.editor.enablePreviewFromCodeNavigation": true,
   "workbench.fontAliasing": "auto",
-  "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+  "workbench.iconTheme": "Monokai Pro Light (Filter Sun) Icons",
   "workbench.preferredDarkColorTheme": "Monokai Pro (Filter Spectrum)",
   "workbench.preferredHighContrastColorTheme": "Monokai Pro (Filter Spectrum)",
   "workbench.preferredHighContrastLightColorTheme": "Monokai Pro Light (Filter Sun)",
@@ -96,5 +95,15 @@
   "local-sync.autorestore": true,
   "peacock.affectActivityBar": false,
   "peacock.affectTitleBar": false,
-  "redhat.telemetry.enabled": false
+  "redhat.telemetry.enabled": false,
+  "remote.SSH.remotePlatform": {
+    "spark": "linux",
+    "ec2-user@ec2-44-200-74-53.compute-1.amazonaws.com": "linux"
+  },
+  "claudeCode.preferredLocation": "panel",
+  "cursor.cpp.disabledLanguages": [],
+  "claudeCode.initialPermissionMode": "acceptEdits",
+  "claudeCode.selectedModel": "opus",
+  "workbench.layoutControl.type": "menu",
+  "workbench.layoutControl.enabled": false
 }
