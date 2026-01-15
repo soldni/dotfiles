@@ -20,7 +20,9 @@ else
 fi
 
 # execute machine specific bash script
-source "$HOME/.prelocalrc"
+if [ -f "${HOME}/.prelocalrc" ]; then
+    source "$HOME/.prelocalrc"
+fi
 
 export HOSTNAME=`hostname`
 export TERM=screen-256color
@@ -713,6 +715,13 @@ elif [[ "${CURRENT_SHELL_NAME}" == "zsh" ]]; then
     fi
 fi
 
+# load agentsrc file
+if [ -f "${HOME}/.agentsrc" ]; then
+    source "${HOME}/.agentsrc"
+fi
+
 
 # execute machine specific bash script
-source "$HOME/.postlocalrc"
+if [ -f "${HOME}/.postlocalrc" ]; then
+    source "$HOME/.postlocalrc"
+fi
