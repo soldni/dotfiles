@@ -7,14 +7,15 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "relative_line_numbers": "disabled",
   "scrollbar": {
     "axes": {
-      "horizontal": false
+      "horizontal": false,
     },
-    "show": "auto"
+    "show": "system",
   },
   "session": {
-    "trust_all_worktrees": true
+    "trust_all_worktrees": true,
   },
   "which_key": {
     "delay_ms": 500,
@@ -62,7 +63,7 @@
   "ensure_final_newline_on_save": true,
   "wrap_guides": [115],
   "preferred_line_length": 115,
-  "soft_wrap": "editor_width",
+  "soft_wrap": "bounded",
   "allow_rewrap": "anywhere",
   "debugger": {
     "dock": "right",
@@ -101,8 +102,8 @@
   },
   "theme": {
     "mode": "system",
-    "light": "Dawnfox - opaque",
-    "dark": "Nordfox - opaque",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Frappé",
   },
   "auto_install_extensions": {
     "html": true,
