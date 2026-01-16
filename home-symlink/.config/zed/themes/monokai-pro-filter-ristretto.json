@@ -1,10 +1,10 @@
 {
   "$schema": "https://zed.dev/schema/themes/v0.2.0.json",
-  "name": "Monokai Pro (Filter Ristretto) (CE)",
-  "author": "Erik Brüggemann",
+  "name": "Monokai Pro (Filter Ristretto)",
+  "author": "Luca Soldaini",
   "themes": [
     {
-      "name": "Monokai Pro (Filter Ristretto) (CE)",
+      "name": "Monokai Pro (Filter Ristretto)",
       "appearance": "dark",
       "style": {
         "accents": ["#FD6883", "#F38D70", "#F9CC6C", "#ADDA78", "#85DACC", "#A8A9EB"],

@@ -1,7 +1,7 @@
 # Visual elements
 font-family = "Iosevka Medium"
 font-size = "13"
-theme = "light:catppuccin-latte.ghostty,dark:catppuccin-frappe.ghostty"
+theme = "light:monokai-pro-light-sun.ghostty,dark:monokai-pro-spectrum.ghostty"
 window-theme = "system"
 bold-is-bright = "false"
 adjust-cell-height = "10%"

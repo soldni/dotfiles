@@ -94,8 +94,8 @@
   },
   "icon_theme": {
     "mode": "system",
-    "light": "Catppuccin Latte",
-    "dark": "Catppuccin Frappé",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)",
   },
   "telemetry": {
     "diagnostics": false,
@@ -109,9 +109,9 @@
     "custom": 1.35,
   },
   "theme": {
-    "mode": "dark",
-    "light": "Catppuccin Latte",
-    "dark": "Monokai Pro (CE)",
+    "mode": "system",
+    "light": "Monokai Pro Light (Filter Sun)",
+    "dark": "Monokai Pro (Filter Spectrum)",
   },
   "auto_install_extensions": {
     "html": true,
@@ -126,20 +126,6 @@
   "languages": {
     "Python": {
       "language_servers": ["basedpyright", "ruff"],
-    },
-  },
-  "theme_overrides": {
-    "One Dark": {
-      "editor.background": "#333",
-      "syntax": {
-        "comment": {
-          "font_style": "italic",
-        },
-        "comment.doc": {
-          "font_style": "italic",
-        },
-      },
-      "accents": ["#ff0000", "#ff7f00", "#ffff00", "#00ff00", "#0000ff", "#8b00ff"],
     },
   },
 }

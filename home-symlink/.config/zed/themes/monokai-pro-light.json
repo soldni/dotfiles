@@ -1,10 +1,10 @@
 {
   "$schema": "https://zed.dev/schema/themes/v0.2.0.json",
-  "name": "Monokai Pro Light (CE)",
-  "author": "Erik Brüggemann",
+  "name": "Monokai Pro Light",
+  "author": "Luca Soldaini",
   "themes": [
     {
-      "name": "Monokai Pro Light (CE)",
+      "name": "Monokai Pro Light",
       "appearance": "light",
       "style": {
         "accents": ["#E14775", "#E16032", "#CC7A0A", "#269D69", "#1C8CA8", "#7058BE"],
