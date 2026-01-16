@@ -105,5 +105,6 @@
   "claudeCode.initialPermissionMode": "acceptEdits",
   "claudeCode.selectedModel": "opus",
   "workbench.layoutControl.type": "menu",
-  "workbench.layoutControl.enabled": false
+  "workbench.layoutControl.enabled": false,
+  "remote.autoForwardPortsSource": "hybrid"
 }

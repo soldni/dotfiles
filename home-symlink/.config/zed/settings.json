@@ -7,45 +7,49 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "which_key": {
+    "delay_ms": 500,
+  },
+  "text_rendering_mode": "platform_default",
   "ssh_connections": [
     {
-      "host": "44.210.92.8",
-      "username": "ec2-user",
+      "host": "spark",
       "args": [],
       "projects": [
         {
-          "paths": [
-            "/home/ec2-user/oe-data-internal"
-          ]
-        }
-      ]
-    }
+          "paths": ["/home/lucas/olmo-bonepick"],
+        },
+      ],
+    },
   ],
   "title_bar": {
     "show_menus": false,
-    "show_branch_icon": true
+    "show_branch_icon": true,
   },
   "confirm_quit": true,
   "agent": {
     "default_profile": "write",
     "default_model": {
       "provider": "anthropic",
-      "model": "claude-sonnet-4-5-thinking-latest"
-    }
+      "model": "claude-sonnet-4-5-thinking-latest",
+    },
   },
   "buffer_font_features": {
-    "calt": 1
+    "calt": 1,
   },
   "buffer_font_family": "Iosevka Fixed",
   "ui_font_family": "Iosevka Comfy",
   "multi_cursor_modifier": "cmd_or_ctrl",
   "minimap": {
-    "show": "never"
+    "show": "never",
   },
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "copilot",
   },
-  "selection_highlight": false,
+  "selection_highlight": true,
   "auto_indent_on_paste": true,
   "show_whitespaces": "none",
   "show_edit_predictions": true,
@@ -55,43 +59,44 @@
   "soft_wrap": "editor_width",
   "allow_rewrap": "anywhere",
   "debugger": {
-    "dock": "right"
+    "dock": "right",
   },
   "terminal": {
-    "dock": "right"
+    "copy_on_select": true,
+    "dock": "right",
   },
   "project_panel": {
-    "auto_reveal_entries": false
+    "auto_reveal_entries": false,
   },
   "tabs": {
     "file_icons": true,
     "git_status": true,
-    "close_position": "left"
+    "close_position": "left",
   },
   "when_closing_with_no_tabs": "close_window",
   "preview_tabs": {
-    "enable_preview_from_code_navigation": true
+    "enable_keep_preview_on_code_navigation": true,
   },
   "icon_theme": {
     "mode": "system",
     "light": "Catppuccin Latte",
-    "dark": "Catppuccin Frappé"
+    "dark": "Catppuccin Frappé",
   },
   "telemetry": {
     "diagnostics": false,
-    "metrics": false
+    "metrics": false,
   },
   "base_keymap": "SublimeText",
   "ui_font_size": 15,
   "unstable.ui_density": "compact",
   "buffer_font_size": 13,
   "buffer_line_height": {
-    "custom": 1.35
+    "custom": 1.35,
   },
   "theme": {
     "mode": "system",
     "light": "Dawnfox - opaque",
-    "dark": "Nordfox - opaque"
+    "dark": "Nordfox - opaque",
   },
   "auto_install_extensions": {
     "html": true,
@@ -101,11 +106,11 @@
     "catppuccin-icons": true,
     "latex": true,
     "nvim-nightfox": true,
-    "noctis-port": true
+    "noctis-port": true,
   },
   "languages": {
     "Python": {
-      "language_servers": ["basedpyright", "ruff"]
-    }
-  }
+      "language_servers": ["basedpyright", "ruff"],
+    },
+  },
 }
