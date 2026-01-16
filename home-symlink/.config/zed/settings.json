@@ -7,6 +7,12 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "scrollbar": {
+    "axes": {
+      "horizontal": false
+    },
+    "show": "auto"
+  },
   "session": {
     "trust_all_worktrees": true
   },

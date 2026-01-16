@@ -10,72 +10,101 @@
     "context": "Workspace",
     "bindings": {
       // "shift shift": "file_finder::Toggle"
-    }
+    },
   },
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
       // "j k": "vim::NormalBefore"
-    }
+    },
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-] ]": "workspace::ToggleRightDock"
-    }
+      // easier for either to be accepted
+      "ctrl-] ]": "workspace::ToggleRightDock",
+      "ctrl-] ctrl-]": "workspace::ToggleRightDock",
+    },
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-[ [": "workspace::ToggleLeftDock"
-    }
+      // easier for either to be accepted
+      "ctrl-[ [": "workspace::ToggleLeftDock",
+      "ctrl-[ ctrl-[": "workspace::ToggleLeftDock",
+    },
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-] 1": "terminal_panel::Toggle"
-    }
+      "ctrl-] 1": "terminal_panel::Toggle",
+    },
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-] 2": "agent::ToggleFocus"
-    }
+      "ctrl-/": "agent::ToggleFocus",
+      "ctrl-] 2": "agent::ToggleFocus",
+    },
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-[ 1": "project_panel::ToggleFocus"
-    }
+      "ctrl-[ 1": "project_panel::ToggleFocus",
+    },
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-[ 2": "git_panel::ToggleFocus"
-    }
+      "ctrl-[ 2": "git_panel::ToggleFocus",
+    },
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-[ 3": "outline_panel::ToggleFocus"
-    }
+      "ctrl-[ 3": "outline_panel::ToggleFocus",
+    },
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-[ 4": "collab_panel::ToggleFocus"
-    }
+      "ctrl-[ 4": "collab_panel::ToggleFocus",
+    },
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-] 3": "notification_panel::ToggleFocus"
-    }
+      "ctrl-] 3": "notification_panel::ToggleFocus",
+    },
   },
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-] 4": "debug_panel::ToggleFocus"
-    }
-  }
+      "ctrl-] 4": "debug_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-k": "assistant::InlineAssist",
+    },
+  },
+  {
+    "context": "!ContextEditor > (Editor && mode == full)",
+    "bindings": {
+      "cmd-k": "assistant::InlineAssist",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-`": "terminal_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "(Editor && mode == full)",
+    "bindings": {
+      "cmd-r": "workspace::ToggleRightDock",
+    },
+  },
 ]
