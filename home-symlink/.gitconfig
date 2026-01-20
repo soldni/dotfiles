@@ -1,0 +1,26 @@
+[user]
+    name = Luca Soldaini
+	email = luca@soldaini.net
+
+[credential]
+	helper = store
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[pull]
+	rebase = false
+
+[push]
+	autoSetupRemote = true

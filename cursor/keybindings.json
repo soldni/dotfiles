@@ -95,5 +95,13 @@
         "key": "alt+cmd+b",
         "command": "-workbench.action.toggleAuxiliaryBar",
         "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "shift+enter",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "\u001b\r"
+        },
+        "when": "terminalFocus"
     }
 ]

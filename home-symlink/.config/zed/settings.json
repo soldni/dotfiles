@@ -27,18 +27,32 @@
       "args": [],
       "projects": [
         {
-          "paths": ["/home/lucas/OLMo-core"],
+          "paths": [
+            "/home/lucas/OLMo-core"
+          ]
         },
         {
-          "paths": ["/home/lucas/olmo-bonepick"],
+          "paths": [
+            "/home/lucas/olmo-bonepick"
+          ]
         },
-      ],
+        {
+          "paths": [
+            "/home/lucas/olmo-cookbook"
+          ]
+        }
+      ]
     },
     {
       "host": "spark",
       "args": [],
-      "projects": [],
+      "projects": []
     },
+    {
+      "host": "spark",
+      "args": [],
+      "projects": []
+    }
   ],
   "title_bar": {
     "show_menus": false,
@@ -46,6 +60,7 @@
   },
   "confirm_quit": true,
   "agent": {
+    "play_sound_when_agent_done": true,
     "default_profile": "write",
     "default_model": {
       "provider": "anthropic",
