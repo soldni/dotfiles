@@ -33,6 +33,16 @@
         },
         {
           "paths": [
+            "/home/lucas/datamap-rs"
+          ]
+        },
+        {
+          "paths": [
+            "/home/lucas/dolma3"
+          ]
+        },
+        {
+          "paths": [
             "/home/lucas/olmo-bonepick"
           ]
         },
@@ -52,6 +62,35 @@
       "host": "spark",
       "args": [],
       "projects": []
+    },
+    {
+      "host": "ec2-3-239-39-241.compute-1.amazonaws.com",
+      "username": "ec2-user",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/ec2-user"
+          ]
+        },
+        {
+          "paths": [
+            "/home/ec2-user/datamap-rs"
+          ]
+        }
+      ]
+    },
+    {
+      "host": "ec2-44-197-174-202.compute-1.amazonaws.com",
+      "username": "ec2-user",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/ec2-user/datamap-rs"
+          ]
+        }
+      ]
     }
   ],
   "title_bar": {
@@ -60,7 +99,11 @@
   },
   "confirm_quit": true,
   "agent": {
-    "play_sound_when_agent_done": true,
+    "inline_assistant_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-5-thinking-latest"
+    },
+    "play_sound_when_agent_done": false,
     "default_profile": "write",
     "default_model": {
       "provider": "anthropic",
