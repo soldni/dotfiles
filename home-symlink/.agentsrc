@@ -7,6 +7,6 @@ function claude-commit() {
         return 1
     fi
 
-    claude --model sonnet --allowedTools 'Bash(git:*) Edit' --print  "Write a commit message for the staged changes and commit. If there are no staged changes, stage all changes first (including untracked files). Sign the commit with -s flag."
+    claude --model sonnet --allowedTools 'Bash(git:*) Edit' --print  "Write a commit message for the staged changes and commit. If there are no staged changes, stage all changes first (including untracked files)."
     return 0
 }
