@@ -7,28 +7,14 @@ set -x
 # location of this script
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
-# configure custom keyboard shortcuts
-# from http://hints.macworld.com/article.php?story=20131123074223584
-# and https://ryanmo.co/2017/01/05/setting-keyboard-shortcuts-from-terminal-in-macos/
-# meta-keys are set as @ for Command, $ for Shift, ~ for Alt and ^ for Ctrl
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "Paste and Match Style" "@~\$v"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "Paste Special…" "@~\$v"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "Save as PDF" "@p"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "Save as PDF\\U2026" "@p"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "Merge All Windows" "@u"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "Show Help Menu" "~ "
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "Edit Tab Title" "@~^e"
-
-# Make ⌘Q keep window, ⌘⌥Q not
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit Safari" "@~q"
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit and Keep Windows" "@q"
+# Configure keyboard shortcuts
+bash ${script_dir}/macos_shortcuts.sh
 
 # Adjust Siri settings
 defaults write com.apple.Siri TypeToSiriEnabled -bool true
 defaults write com.apple.Siri VoiceTriggerUserEnabled -bool false
 defaults write com.apple.Siri StatusMenuVisible -bool false
 defaults write com.apple.Siri LockscreenEnabled -bool false
-defaults write com.apple.Siri HotkeyTag -int 4
 
 # Spaces sensible defaults
 defaults write "com.apple.spaces" "spans-displays" -int 0
@@ -38,29 +24,14 @@ defaults write "Apple Global Domain" "AppleSpacesSwitchOnActivate" -int 0
 # Mission control settings
 defaults write "com.apple.dock" "expose-group-apps" -int 1
 
-# Disable all keys/buttons for controlling mission control
-defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" '{32={enabled=0;};34={enabled=0;};38={enabled=0;};40={enabled=0;};44={enabled=0;};46={enabled=0;};}'
-
 # Tiling settings
 defaults write "com.apple.WindowManager" "EnableTilingByEdgeDrag" -int 0
 defaults write "com.apple.WindowManager" "EnableTopTilingByEdgeDrag" -int 0
 defaults write "com.apple.WindowManager" "EnableTilingOptionAccelerator" -int 0
 defaults write "com.apple.WindowManager" "EnableTiledWindowMargins" -int 0
 
-# we actually like these shortcuts for managing tiling, using globe key is a pita
-bash ${script_dir}/macos_old_window_shortcuts.sh
-
 # Local connections only for VNC
 sudo defaults write /Library/Preferences/com.apple.RemoteManagement.plist VNCOnlyLocalConnections -bool yes
-
-# set it up so that ⌘W doesn't close Amazon Chime windows anymore
-defaults write com.amazon.Amazon-Chime NSUserKeyEquivalents -dict-add "Hide Tab" "@\$w"
-
-# add a shortcut for quip to show/hide tab
-defaults write com.quip.Desktop NSUserKeyEquivalents -dict-add "Always Show Sidebar" "@~T"
-
-# change shortcut to achive for Apple Mail
-defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Archive" '@$A'
 
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
@@ -272,14 +243,6 @@ cd ..
 rm -rf monaspace
 cd "${current_dir}"
 
-# install aporetic font (formerly known as font-iosevka-comfy)
-current_dir="$(pwd)"
-cd "${HOME}/Downloads"
-git clone https://github.com/protesilaos/aporetic.git
-cp aporetic/aporetic-*/TTF/*.ttf /Library/Fonts/
-rm -rf aporetic
-cd "${current_dir}"
-
 # Check if brew is installed; if not, install brew
 has_brew=`which brew 2>/dev/null`
 if [[ -z $has_brew ]]
@@ -412,9 +375,7 @@ brew_cask_to_install=(
     'zen'                   # browser
 )
 
-# Iosevka is a monospace font with ligatures that is nice and
-# narrow. I install all the variants of it.
-iosevka_fonts=(
+fonts_to_install=(
     'font-iosevka'
     'font-iosevka-curly'
     'font-iosevka-curly-slab'
@@ -423,8 +384,24 @@ iosevka_fonts=(
     'font-iosevka-term-nerd-font'
     'font-iosevka-slab'
     'font-iosevka-term-slab-nerd-font'
+    'font-aporetic'
+    'font-manrope'
+    'font-mona-sans'
+    'font-monaspace'
+    'font-monaspice-nerd-font'
+    'font-atkinson-hyperlegible'
+    'font-atkinson-hyperlegible-next'
+    'font-atkinson-hyperlegible-mono'
+    'font-fira-code'
+    'font-fira-code-nerd-font'
+    'font-fira-mono'
+    'font-fira-mono-for-powerline'
+    'font-fira-mono-nerd-font'
+    'font-fira-sans'
+    'font-fira-sans-condensed'
+    'font-fira-sans-extra-condensed'
 )
-brew_cask_to_install+=("${iosevka_fonts[@]}")
+brew_cask_to_install+=("${fonts_to_install[@]}")
 
 for package in "${brew_cask_to_install[@]}"; do
     has_package=$(brew list ${package} 2>/dev/null)

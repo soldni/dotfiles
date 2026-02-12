@@ -28,7 +28,7 @@ Run `./bootstrap.sh`:
 Run `./macos_setup.sh` only when explicitly requested:
 
 - Applies many macOS `defaults` writes and keyboard shortcut remaps.
-- Runs `macos_old_window_shortcuts.sh`.
+- Runs `macos_shortcuts.sh`.
 - Runs privileged commands (`sudo`, `nvram`), restarts system components, and installs Xcode CLT.
 - Installs fonts from GitHub repos into system font locations.
 - Installs/updates Homebrew formulae and casks, uninstalls some casks, installs MAS apps.
@@ -58,7 +58,7 @@ Do not run either script unless the user explicitly asks for machine changes.
   - `home-symlink/Library/Application Support/com.nuebling.mac-mouse-fix/config.plist`: Mac Mouse Fix config.
 - `macos_setup.sh`: full macOS provisioning workflow.
 - `macos_no_animations.sh`: optional animation-reduction defaults.
-- `macos_old_window_shortcuts.sh`: custom window management shortcuts.
+- `macos_shortcuts.sh`: custom keyboard shortcuts.
 - `bootstrap.sh`: lightweight setup + symlink bootstrap.
 - `cursor/`: Cursor settings/keybindings/extensions snapshot.
 - `sublime-text/`: Sublime `Installed Packages` and `Packages/User` synced by macOS setup.
@@ -90,7 +90,7 @@ Run relevant checks based on changed files:
 
 ```bash
 # Shell scripts
-bash -n bootstrap.sh home-symlink.sh macos_setup.sh macos_no_animations.sh macos_old_window_shortcuts.sh
+bash -n bootstrap.sh home-symlink.sh macos_setup.sh macos_no_animations.sh macos_shortcuts.sh
 
 # JSON files (example)
 jq . cursor/settings.json >/dev/null
@@ -148,7 +148,7 @@ Notes:
 - Zsh-only startup behavior:
   - usually still goes through `home-symlink/.bashrc`; keep `home-symlink/.zshrc` minimal.
 - macOS shortcut/defaults tweaks:
-  - edit `macos_setup.sh` and/or `macos_old_window_shortcuts.sh`.
+  - edit `macos_shortcuts.sh` and/or `macos_setup.sh`.
 - Ghostty/Zed/Cursor/Sublime app config updates:
   - edit under their respective directories in this repo, then re-link/import as needed.
 
