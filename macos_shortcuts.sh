@@ -41,31 +41,31 @@ defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 65 "
 # Window tiling shortcuts
 
 ## Fill: cmd+opt+shift+return
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Fill" "@~$\\U21a9"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Fill" "@~\$\\U21a9"
 
 ## Return to Previous Size: cmd+opt+shift+r
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Return to Previous Size" "@~$r"
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Return to Previous Size" "@~$r"
 
 ## Halves: cmd+opt+shift+arrows
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Left Half" "@~$\\U2190"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Right Half" "@~$\\U2192"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Top Half" "@~$\\U2191"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Bottom Half" "@~$\\U2193"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Left" "@~$\\U2190"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Right" "@~$\\U2192"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top" "@~$\\U2191"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom" "@~$\\U2193"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Left Half" "@~\$\\U2190"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Right Half" "@~\$\\U2192"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Top Half" "@~\$\\U2191"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Bottom Half" "@~\$\\U2193"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Left" "@~\$\\U2190"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Right" "@~\$\\U2192"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top" "@~\$\\U2191"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom" "@~\$\\U2193"
 
 ## Quarters: cmd+opt+shift+h/l/j/k
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Top Left Quarter" "@~$h"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Top Right Quarter" "@~$l"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Bottom Left Quarter" "@~$j"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Bottom Right Quarter" "@~$k"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top Left" "@~$h"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top Right" "@~$l"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom Left" "@~$j"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom Right" "@~$k"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Top Left Quarter" "@~\$h"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Top Right Quarter" "@~\$l"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Bottom Left Quarter" "@~\$j"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Bottom Right Quarter" "@~\$k"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top Left" "@~\$h"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top Right" "@~\$l"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom Left" "@~\$j"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom Right" "@~\$k"
 
 ## Arrange actions should be unassigned ("none")
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Arrange Left and Right" ""
