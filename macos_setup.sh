@@ -373,6 +373,7 @@ brew_cask_to_uninstall=(
     'spotify'               # music player
     'vanilla'               # hide menubar icons
     'visual-studio-code'    # text editor
+    'transmit'              # sftp client
 )
 
 for cask in "${brew_cask_to_uninstall[@]}"; do
@@ -388,6 +389,9 @@ brew_cask_to_install=(
     'appcleaner'            # good for app cleanup
     'chatgpt'               # OpenAI desktop app
     'claude'                # Anthropic desktop app
+    'claude-code'           # Anthropic CLI coding agent
+    'codex'                 # OpenAI CLI coding agent
+    'codex-app'             # OpenAI Desktop coding app
     'cursor'                # text editor
     'discord'               # chat app
     'font-fira-code'        # font with ligatures
@@ -403,8 +407,9 @@ brew_cask_to_install=(
     'signal'                # encrypted chat
     'sketch'                # vector design
     'slack'                 # chat app
-    'transmit'              # sftp client
     'zoom'                  # video conferencing
+    'zed'                   # text editor
+    'zen'                   # browser
 )
 
 # Iosevka is a monospace font with ligatures that is nice and
