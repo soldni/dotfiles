@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__acp__Bash",
+      "mcp__acp__Write",
+      "Bash(bash -n:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(defaults read:*)",
+      "Bash(/usr/libexec/PlistBuddy:*)",
+      "Bash(sort:*)",
+      "Bash(done)"
+    ]
+  }
+}
