@@ -124,10 +124,19 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
     fi
 
-    # adding brew to path
+    # adding brew to path without spawning `brew shellenv` at startup
     if [ -d "/opt/homebrew" ]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-        export PATH="/opt/homebrew/sbin:$PATH"
+        export HOMEBREW_PREFIX="/opt/homebrew"
+        export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+        export HOMEBREW_REPOSITORY="/opt/homebrew/Homebrew"
+        case ":$PATH:" in
+            *":/opt/homebrew/bin:"*) ;;
+            *) export PATH="/opt/homebrew/bin:$PATH" ;;
+        esac
+        case ":$PATH:" in
+            *":/opt/homebrew/sbin:"*) ;;
+            *) export PATH="/opt/homebrew/sbin:$PATH" ;;
+        esac
     fi
 
     # add command to quickly unlock keychain for macOS
@@ -150,8 +159,14 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         done
     fi
 
-    # export path to openblas if it is installed
-    export OPENBLAS="$(brew --prefix openblas 2&> /dev/null)"
+    # export path to openblas if it is installed (avoid spawning brew at startup)
+    if [ -d "/opt/homebrew/opt/openblas" ]; then
+        export OPENBLAS="/opt/homebrew/opt/openblas"
+    elif [ -d "/usr/local/opt/openblas" ]; then
+        export OPENBLAS="/usr/local/opt/openblas"
+    else
+        unset OPENBLAS
+    fi
 
     # define a nice command to set hostname
 
@@ -470,7 +485,7 @@ fi
 # set this variable to anything but the empty string to enable
 # hostname-based prompt coloring in bash/zsh
 if [ -z "${LOCAL_CONTEXT_COLOR}" ]; then
-    export LOCAL_CONTEXT_COLOR=$(whoami; hostname)
+    export LOCAL_CONTEXT_COLOR="${USER};${HOSTNAME}"
 fi
 
 if [ -z "${LOCAL_CONTEXT_COLOR}" ]; then
@@ -485,8 +500,16 @@ if [ -z "${LOCAL_CONTEXT_COLOR}" ]; then
         eval "$(gdircolors -b)"
     fi
 else
-    export HOST_COLOR_RGB="$(rgb_color_generator.py -r)"
-    export HOST_COLOR_HEX="$(rgb_color_generator.py -x)"
+    if command -v rgb_color_generator.py >/dev/null 2>&1; then
+        export HOST_COLOR_RGB="$(rgb_color_generator.py -r)"
+        IFS=';' read -r HOST_COLOR_R HOST_COLOR_G HOST_COLOR_B <<< "${HOST_COLOR_RGB}"
+        printf -v HOST_COLOR_HEX '#%02x%02x%02x' \
+            "${HOST_COLOR_R:-0}" "${HOST_COLOR_G:-0}" "${HOST_COLOR_B:-0}"
+        export HOST_COLOR_HEX
+    else
+        export HOST_COLOR_RGB="128;128;128"
+        export HOST_COLOR_HEX="#808080"
+    fi
 
     hostcolor="38;2;${HOST_COLOR_RGB}"
     greycolor="38;5;247"
@@ -496,7 +519,7 @@ else
 fi
 
 # Remove the bold attribute from the colors
-export LS_COLORS="$(echo $LS_COLORS | tr ':' '\n' | sed 's/1;/0;/g' | tr '\n' ':')"
+export LS_COLORS="${LS_COLORS//1;/0;}"
 
 if [[ "${CURRENT_SHELL_NAME}" == "bash" ]]; then
     reset_color='\[\e[m\]'
