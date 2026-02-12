@@ -23,20 +23,21 @@ defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Archive" '@$A'
 # Siri keyboard shortcut: disable trigger shortcut
 defaults write com.apple.Siri HotkeyTag -int 4
 
-# Disable mission control keyboard shortcuts while preserving other UI-edited entries.
-defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 32 "{enabled=0;}"
-defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 34 "{enabled=0;}"
-defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 38 "{enabled=0;}"
-defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 40 "{enabled=0;}"
-defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 44 "{enabled=0;}"
-defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 46 "{enabled=0;}"
+# Disable symbolic hotkeys by setting enabled=false, preserving the value sub-dict.
+SH_PLIST=~/Library/Preferences/com.apple.symbolichotkeys.plist
 
-# Disable input source switching shortcuts.
-defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 60 "{enabled=0;}"
-defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 61 "{enabled=0;}"
+# Mission control shortcuts.
+for key in 32 34 38 40 44 46; do
+  /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:${key}:enabled false" "$SH_PLIST"
+done
 
-# Disable Finder search window shortcut (opt+cmd+space).
-defaults write "com.apple.symbolichotkeys" "AppleSymbolicHotKeys" -dict-add 65 "{enabled=0;}"
+# Input source switching shortcuts.
+for key in 60 61; do
+  /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:${key}:enabled false" "$SH_PLIST"
+done
+
+# Finder search window shortcut (opt+cmd+space).
+/usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:65:enabled false" "$SH_PLIST"
 
 # Window tiling shortcuts
 

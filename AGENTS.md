@@ -152,6 +152,14 @@ Notes:
 - Ghostty/Zed/Cursor/Sublime app config updates:
   - edit under their respective directories in this repo, then re-link/import as needed.
 
+## Modifying plist / defaults values
+
+- **Flat keys:** `defaults write` is fine for simple top-level values (strings, ints, bools).
+- **Nested dictionaries:** Do NOT use `defaults write -dict-add` with old-style plist shorthand like `"{enabled=0;}"` — it replaces the entire sub-dictionary, clobbering sibling keys (e.g. the `value`/`parameters`/`type` sub-dict that macOS maintains).
+- **Surgical nested edits:** Use `/usr/libexec/PlistBuddy -c "Set :Path:To:Key value" file.plist` to modify a single key within a nested dict without touching the rest.
+- **Verifying changes:** After writing, read back with `defaults read` or `PlistBuddy -c Print` and compare against what System Settings produces to confirm the structure matches.
+- **AppleSymbolicHotKeys specifically:** Each entry is a dict with `enabled` (bool) and `value` (dict containing `parameters` array and `type` string). To disable a shortcut, set only `:AppleSymbolicHotKeys:<id>:enabled` to `false` via PlistBuddy.
+
 ## Non-goals
 
 - Do not treat this repository as a package with unit/integration tests.
