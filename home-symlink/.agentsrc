@@ -19,6 +19,6 @@ function claude-tmux-window() {
         return 1
     fi
 
-    claude --model haiku 'using the name of the current directory and other relevant info for bash prompt, rename this tmux window using at most 2 words.' --allowedTools 'Bash(tmux:*)' --print
+    claude --model haiku 'using the name of the current directory and other relevant info for bash prompt, rename this tmux window using at most 2 words. Rename window IMMEDIATELY without confirmation' --allowedTools 'Bash(tmux:*)' --print
     return 0
 }
