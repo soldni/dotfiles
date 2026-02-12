@@ -47,7 +47,11 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-time-modifier -float 0.05
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.dock persistent-others -array
 defaults write com.apple.dock size-immutable -bool yes
+defaults write com.apple.dock contents-immutable -bool yes
+defaults write com.apple.dock showAppExposeGestureEnabled -bool true
+defaults write com.apple.dock showMissionControlGestureEnabled -bool true
 defaults write "com.apple.dock" "show-process-indicators" -int 0
 defaults write "com.apple.dock" "show-recents" -int 0
 killall Dock
