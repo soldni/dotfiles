@@ -44,9 +44,11 @@ done
 ## Fill: cmd+opt+shift+return
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Fill" "@~\$\\U21a9"
 
+## Center: cmd+opt+shift+c
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Center" "@~\$c"
+
 ## Return to Previous Size: cmd+opt+shift+r
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Return to Previous Size" "@~$r"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Return to Previous Size" "@~$r"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Return to Previous Size" "@~\$r"
 
 ## Halves: cmd+opt+shift+arrows
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Left Half" "@~\$\\U2190"
@@ -68,9 +70,7 @@ defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move 
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom Left" "@~\$j"
 defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom Right" "@~\$k"
 
-## Arrange actions should be unassigned ("none")
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Arrange Left and Right" ""
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Arrange Right and Left" ""
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Arrange Top and Bottom" ""
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Arrange Bottom and Top" ""
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Arrange in Quarters" ""
+## Disable Arrange actions (symbolic hotkeys, not menu shortcuts).
+for key in 248 249 250 251 256; do
+  /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:${key}:enabled false" "$SH_PLIST"
+done

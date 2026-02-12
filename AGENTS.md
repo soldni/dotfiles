@@ -159,6 +159,7 @@ Notes:
 - **Surgical nested edits:** Use `/usr/libexec/PlistBuddy -c "Set :Path:To:Key value" file.plist` to modify a single key within a nested dict without touching the rest.
 - **Verifying changes:** After writing, read back with `defaults read` or `PlistBuddy -c Print` and compare against what System Settings produces to confirm the structure matches.
 - **AppleSymbolicHotKeys specifically:** Each entry is a dict with `enabled` (bool) and `value` (dict containing `parameters` array and `type` string). To disable a shortcut, set only `:AppleSymbolicHotKeys:<id>:enabled` to `false` via PlistBuddy.
+- **Escaping `$` in NSUserKeyEquivalents:** In `macos_shortcuts.sh`, the `$` modifier (Shift) must be escaped as `\$` inside double-quoted strings, otherwise bash interprets it as a variable reference.
 
 ## Non-goals
 
