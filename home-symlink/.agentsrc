@@ -10,3 +10,15 @@ function claude-commit() {
     claude --model sonnet --allowedTools 'Bash(git:*) Edit' --print  "Write a commit message for the staged changes and commit. If there are no staged changes, stage all changes first (including untracked files)."
     return 0
 }
+
+
+function claude-tmux-window() {
+    has_claude=$(which claude 2>/dev/null)
+    if [ -z "${has_claude}" ]; then
+        echo "Claude CLI not found"
+        return 1
+    fi
+
+    claude --model haiku 'using the name of the current directory and other relevant info for bash prompt, rename this tmux window using at most 2 words.' --allowedTools 'Bash(tmux:*)' --print
+    return 0
+}
