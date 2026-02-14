@@ -72,7 +72,7 @@ class RgbChannel(Generic[CH]):
     def as_int(self: CH) -> CH:
         ch = copy.deepcopy(self)
         if ch.is_float:
-            ch.value = round(ch.value * 255)
+            ch.value = max(0, min(255, round(ch.value * 255)))
             ch.is_float = False
         return ch
 

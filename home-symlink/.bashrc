@@ -503,8 +503,13 @@ else
     if command -v rgb_color_generator.py >/dev/null 2>&1; then
         export HOST_COLOR_RGB="$(rgb_color_generator.py -r)"
         IFS=';' read -r HOST_COLOR_R HOST_COLOR_G HOST_COLOR_B <<< "${HOST_COLOR_RGB}"
+        # clamp channels to 0-255 (the generator can overshoot)
+        HOST_COLOR_R=$(( HOST_COLOR_R > 255 ? 255 : HOST_COLOR_R < 0 ? 0 : HOST_COLOR_R ))
+        HOST_COLOR_G=$(( HOST_COLOR_G > 255 ? 255 : HOST_COLOR_G < 0 ? 0 : HOST_COLOR_G ))
+        HOST_COLOR_B=$(( HOST_COLOR_B > 255 ? 255 : HOST_COLOR_B < 0 ? 0 : HOST_COLOR_B ))
+        export HOST_COLOR_RGB="${HOST_COLOR_R};${HOST_COLOR_G};${HOST_COLOR_B}"
         printf -v HOST_COLOR_HEX '#%02x%02x%02x' \
-            "${HOST_COLOR_R:-0}" "${HOST_COLOR_G:-0}" "${HOST_COLOR_B:-0}"
+            "${HOST_COLOR_R}" "${HOST_COLOR_G}" "${HOST_COLOR_B}"
         export HOST_COLOR_HEX
     else
         export HOST_COLOR_RGB="128;128;128"
