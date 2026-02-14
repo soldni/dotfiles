@@ -39,3 +39,4 @@ Temporary Items
 
 # ignore locks
 sync.lock
+uv.lock

@@ -66,6 +66,11 @@
         },
         {
           "paths": [
+            "/home/lucas/raccoon"
+          ]
+        },
+        {
+          "paths": [
             "/home/lucas/vllm"
           ]
         }
