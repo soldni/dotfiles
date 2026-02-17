@@ -376,6 +376,7 @@ brew_cask_to_install=(
     'zoom'                  # video conferencing
     'zed'                   # text editor
     'zen'                   # browser
+    'obsidian'              # note taking
 )
 
 fonts_to_install=(
@@ -416,8 +417,6 @@ for package in "${brew_cask_to_install[@]}"; do
 done
 
 mas_install=(
-    '1091189122'    # Bear                       (2.2.0)
-    '1289583905'    # Pixelmator Pro             (3.6.3)
     '1662217862'    # Wipr2                      (2.0)
     '6471380298'    # StopTheMadnessPro          (11.1)
     '1475387142'    # Tailscale                  (1.68.1)
