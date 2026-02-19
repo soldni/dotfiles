@@ -13,7 +13,7 @@
   "editor.inlineSuggest.enabled": true,
   "editor.largeFileOptimizations": true,
   "editor.lineHeight": 1.3,
-  "editor.minimap.autohide": "mouseover",
+  "editor.minimap.autohide": true,
   "editor.minimap.enabled": false,
   "editor.multiCursorLimit": 100000,
   "editor.multiCursorModifier": "ctrlCmd",
@@ -110,6 +110,6 @@
   "explorer.fileNesting.enabled": true,
   // "workbench.startupEditor": "none",
   "workbench.activityBar.location": "hidden",
-  "workbench.activityBar.orientation": "vertical"
+  // "workbench.activityBar.orientation": "vertical"
 
 }
