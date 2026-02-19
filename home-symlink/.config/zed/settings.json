@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "agent_ui_font_size": 15.0,
   "edit_predictions": {
     "provider": "zed"
   },
@@ -128,8 +129,8 @@
   "confirm_quit": true,
   "agent": {
     "inline_assistant_model": {
-      "provider": "zed.dev",
-      "model": "claude-opus-4-6"
+      "provider": "anthropic",
+      "model": "claude-opus-4-6-latest"
     },
     "play_sound_when_agent_done": false,
     "default_profile": "write",
@@ -160,6 +161,7 @@
     "dock": "right",
   },
   "terminal": {
+    "font_size": 13.0,
     "copy_on_select": true,
     "dock": "right",
   },
@@ -185,7 +187,7 @@
     "metrics": false,
   },
   "base_keymap": "SublimeText",
-  "ui_font_size": 15,
+  "ui_font_size": 15.0,
   "unstable.ui_density": "compact",
   "buffer_font_size": 13,
   "buffer_line_height": {
