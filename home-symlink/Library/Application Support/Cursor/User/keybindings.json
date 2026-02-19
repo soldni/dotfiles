@@ -8,7 +8,7 @@
     "command": "-composer.toggleBrowserTab"
   },
   {
-    "key": "ctrl+[ 2",
+    "key": "ctrl+[ 3",
     "command": "workbench.view.scm",
     "when": "workbench.scm.active"
   },
@@ -68,10 +68,6 @@
     "when": "terminalFocus"
   },
   {
-    "key": "ctrl+] 1",
-    "command": "claudeVSCodeSidebar.focus"
-  },
-  {
     "key": "ctrl+] 2",
     "command": "workbench.view.extension.codexViewContainer"
   },
@@ -122,6 +118,6 @@
   },
   {
     "key": "ctrl+] 1",
-    "command": "claudeVSCodeSidebarSecondary.focus"
+    "command": "claude-vscode.sidebar.open"
   }
 ]

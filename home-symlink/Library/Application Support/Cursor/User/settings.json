@@ -98,18 +98,18 @@
   "claudeCode.selectedModel": "opus",
   "workbench.layoutControl.type": "menu",
   "remote.autoForwardPortsSource": "hybrid",
-  "workbench.layoutControl.enabled": false,
   "remote.SSH.remotePlatform": {
-    "spark": "linux"
+    "spark": "linux",
+    "orb": "linux"
   },
-  "workbench.sideBar.location": "left",
   "window.newWindowProfile": "Default",
   "terminal.integrated.fontLigatures.enabled": true,
   "window.doubleClickIconToClose": true,
   "window.menuStyle": "inherit",
   "window.commandCenter": false,
-  "window.customTitleBarVisibility": "never",
-  "workbench.activityBar.location": "hidden",
   "explorer.fileNesting.enabled": true,
-  "workbench.startupEditor": "none",
+  // "workbench.startupEditor": "none",
+  "workbench.activityBar.location": "hidden",
+  "workbench.activityBar.orientation": "vertical"
+
 }
