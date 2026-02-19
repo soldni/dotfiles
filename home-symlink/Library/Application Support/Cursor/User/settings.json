@@ -107,5 +107,6 @@
     "spark": "linux"
   },
   "workbench.sideBar.location": "left",
-  "editor.experimentalGpuAcceleration": "on"
+  "editor.experimentalGpuAcceleration": "on",
+
 }

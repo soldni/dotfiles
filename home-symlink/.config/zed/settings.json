@@ -66,6 +66,11 @@
         },
         {
           "paths": [
+            "/home/lucas/open-instruct"
+          ]
+        },
+        {
+          "paths": [
             "/home/lucas/raccoon"
           ]
         },

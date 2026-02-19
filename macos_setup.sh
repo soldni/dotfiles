@@ -520,6 +520,9 @@ bash ${script_dir}/home-symlink.sh \
 
 bash ${script_dir}/bootstrap.sh
 
+# Restore IDE extensions (after IDEs are installed and home-symlink has run)
+bash ${script_dir}/ide_extensions.sh restore
+
 # clean up brew
 brew cleanup
 
