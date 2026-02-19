@@ -7,22 +7,29 @@ set -euo pipefail
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 usage() {
-    echo "Usage: $0 {backup|restore}"
+    echo "Usage: $0 {backup|restore} [code|cursor]"
     exit 1
 }
 
-[[ $# -eq 1 ]] || usage
+[[ $# -ge 1 && $# -le 2 ]] || usage
 
 command="$1"
 [[ "$command" == "backup" || "$command" == "restore" ]] || usage
+
+filter_cli="${2:-}"
+if [[ -n "$filter_cli" && "$filter_cli" != "code" && "$filter_cli" != "cursor" ]]; then
+    usage
+fi
 
 # Map CLI name -> extensions.txt path
 declare -A cli_ext_file
 cli_ext_file[code]="${script_dir}/home-symlink/Library/Application Support/Code/User/extensions.txt"
 cli_ext_file[cursor]="${script_dir}/home-symlink/Library/Application Support/Cursor/User/extensions.txt"
 
+target_clis=( ${filter_cli:-code cursor} )
+
 available_clis=()
-for cli in code cursor; do
+for cli in "${target_clis[@]}"; do
     if command -v "$cli" &>/dev/null; then
         available_clis+=("$cli")
         echo "Found $cli CLI."

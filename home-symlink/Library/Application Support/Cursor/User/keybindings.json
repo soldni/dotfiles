@@ -1,4 +1,3 @@
-// Place your key bindings in this file to override the defaults (both valid in Cursor and VSCode)
 [
   {
     "key": "alt+cmd+b",
@@ -53,8 +52,7 @@
   },
   {
     "key": "ctrl+] ]",
-    "command": "workbench.action.toggleAuxiliaryBar",
-    "when": "!isAuxiliaryWindowFocusedContext"
+    "command": "workbench.action.toggleAuxiliaryBar"
   },
   {
     "key": "alt+cmd+b",
@@ -116,5 +114,14 @@
     "key": "shift+cmd+d",
     "command": "-workbench.view.debug",
     "when": "viewContainer.workbench.view.debug.enabled"
+  },
+  {
+    "key": "ctrl+] 3",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "ctrl+] 1",
+    "command": "claudeVSCodeSidebarSecondary.focus"
   }
 ]
