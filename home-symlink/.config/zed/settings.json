@@ -7,9 +7,12 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "git_panel": {
+    "tree_view": true
+  },
   "agent_ui_font_size": 15.0,
   "edit_predictions": {
-    "provider": "zed"
+    "provider": "zed",
   },
   "relative_line_numbers": "disabled",
   "scrollbar": {
@@ -31,66 +34,46 @@
       "args": [],
       "projects": [
         {
-          "paths": [
-            "/home/lucas/OLMo-core"
-          ]
+          "paths": ["/home/lucas/OLMo-core"],
         },
         {
-          "paths": [
-            "/home/lucas/datamap-rs"
-          ]
+          "paths": ["/home/lucas/datamap-rs"],
         },
         {
-          "paths": [
-            "/home/lucas/dolma3"
-          ]
+          "paths": ["/home/lucas/dolma3"],
         },
         {
-          "paths": [
-            "/home/lucas/oe-data-internal"
-          ]
+          "paths": ["/home/lucas/oe-data-internal"],
         },
         {
-          "paths": [
-            "/home/lucas/olmerheim"
-          ]
+          "paths": ["/home/lucas/olmerheim"],
         },
         {
-          "paths": [
-            "/home/lucas/olmo-bonepick"
-          ]
+          "paths": ["/home/lucas/olmo-bonepick"],
         },
         {
-          "paths": [
-            "/home/lucas/olmo-cookbook"
-          ]
+          "paths": ["/home/lucas/olmo-cookbook"],
         },
         {
-          "paths": [
-            "/home/lucas/open-instruct"
-          ]
+          "paths": ["/home/lucas/open-instruct"],
         },
         {
-          "paths": [
-            "/home/lucas/raccoon"
-          ]
+          "paths": ["/home/lucas/raccoon"],
         },
         {
-          "paths": [
-            "/home/lucas/vllm"
-          ]
-        }
-      ]
+          "paths": ["/home/lucas/vllm"],
+        },
+      ],
     },
     {
       "host": "spark",
       "args": [],
-      "projects": []
+      "projects": [],
     },
     {
       "host": "spark",
       "args": [],
-      "projects": []
+      "projects": [],
     },
     {
       "host": "ec2-3-239-39-241.compute-1.amazonaws.com",
@@ -98,16 +81,12 @@
       "args": [],
       "projects": [
         {
-          "paths": [
-            "/home/ec2-user"
-          ]
+          "paths": ["/home/ec2-user"],
         },
         {
-          "paths": [
-            "/home/ec2-user/datamap-rs"
-          ]
-        }
-      ]
+          "paths": ["/home/ec2-user/datamap-rs"],
+        },
+      ],
     },
     {
       "host": "ec2-44-197-174-202.compute-1.amazonaws.com",
@@ -115,12 +94,10 @@
       "args": [],
       "projects": [
         {
-          "paths": [
-            "/home/ec2-user/datamap-rs"
-          ]
-        }
-      ]
-    }
+          "paths": ["/home/ec2-user/datamap-rs"],
+        },
+      ],
+    },
   ],
   "title_bar": {
     "show_menus": false,
@@ -129,14 +106,18 @@
   "confirm_quit": true,
   "agent": {
     "inline_assistant_model": {
-      "provider": "anthropic",
-      "model": "claude-opus-4-6-latest"
+      "provider": "openai",
+      "model": "gpt-5.2-codex",
+    },
+    "commit_message_model": {
+      "provider": "openai",
+      "model": "gpt-5.2-codex",
     },
     "play_sound_when_agent_done": false,
     "default_profile": "write",
     "default_model": {
-      "provider": "anthropic",
-      "model": "claude-sonnet-4-5-thinking-latest",
+      "provider": "openai",
+      "model": "gpt-5.2-codex",
     },
   },
   "buffer_font_features": {

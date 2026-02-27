@@ -110,6 +110,7 @@
   "explorer.fileNesting.enabled": true,
   "workbench.startupEditor": "none",
   "workbench.activityBar.location": "hidden",
+  "workbench.sideBar.location": "right",
   // "workbench.sideBar.location": "left",
   // "workbench.activityBar.orientation": "vertical"
 
