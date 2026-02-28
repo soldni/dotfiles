@@ -226,25 +226,6 @@ do
   checkOut="xcode-select: note: install requested for command line developer tools"
 done
 
-# install powerline fonts
-current_dir="$(pwd)"
-cd "${HOME}/Downloads"
-git clone https://github.com/powerline/fonts.git
-cd fonts
-bash install.sh
-cd ..
-rm -rf fonts
-cd "${current_dir}"
-
-# install Monaspace fonts
-current_dir="$(pwd)"
-cd "${HOME}/Downloads"
-git clone https://github.com/githubnext/monaspace.git
-cd monaspace
-bash ./util/install_macos.sh
-cd ..
-rm -rf monaspace
-cd "${current_dir}"
 
 # Check if brew is installed; if not, install brew
 has_brew=`which brew 2>/dev/null`
