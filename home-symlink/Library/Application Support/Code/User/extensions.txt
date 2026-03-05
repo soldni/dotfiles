@@ -1,10 +1,8 @@
 anthropic.claude-code
-anysphere.cursorpyright
-anysphere.remote-containers
-anysphere.remote-ssh
 charliermarsh.ruff
 dunstontc.viml
 earshinov.permute-lines
+github.copilot-chat
 gruntfuggly.todo-tree
 ibm.output-colorizer
 james-yu.latex-workshop
@@ -12,6 +10,8 @@ johnpapa.vscode-peacock
 monokai.theme-monokai-pro-vscode
 ms-python.debugpy
 ms-python.python
+ms-python.vscode-pylance
+ms-python.vscode-python-envs
 ms-vscode.sublime-keybindings
 njpwerner.autodocstring
 openai.chatgpt

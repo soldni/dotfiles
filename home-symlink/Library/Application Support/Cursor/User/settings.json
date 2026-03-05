@@ -13,7 +13,7 @@
   "editor.inlineSuggest.enabled": true,
   "editor.largeFileOptimizations": true,
   "editor.lineHeight": 1.3,
-  "editor.minimap.autohide": true,
+  "editor.minimap.autohide": "mouseover",
   "editor.minimap.enabled": false,
   "editor.multiCursorLimit": 100000,
   "editor.multiCursorModifier": "ctrlCmd",
@@ -106,11 +106,11 @@
   "terminal.integrated.fontLigatures.enabled": true,
   "window.doubleClickIconToClose": true,
   "window.menuStyle": "inherit",
-  "window.commandCenter": false,
   "explorer.fileNesting.enabled": true,
   "workbench.startupEditor": "none",
   "workbench.activityBar.location": "hidden",
-  "workbench.sideBar.location": "right",
+  "workbench.navigationControl.enabled": false,
+  "window.commandCenter": false,
   // "workbench.sideBar.location": "left",
   // "workbench.activityBar.orientation": "vertical"
 

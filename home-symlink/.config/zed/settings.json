@@ -7,6 +7,28 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "language_models": {
+    "openai_compatible": {
+      "Ai2 Cirrascale": {
+        "api_url": "https://ai2endpoints.cirrascale.ai/api",
+        "available_models": [
+          {
+            "name": "Olmo-3.1-32B-Instruct",
+            "max_tokens": 64000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 32000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+              "chat_completions": true
+            }
+          }
+        ]
+      }
+    }
+  },
   "git_panel": {
     "tree_view": true
   },
@@ -105,6 +127,11 @@
   },
   "confirm_quit": true,
   "agent": {
+    "notify_when_agent_waiting": "all_screens",
+    "tool_permissions": {
+      "default": "allow",
+      "tools": {}
+    },
     "inline_assistant_model": {
       "provider": "openai",
       "model": "gpt-5.2-codex",
@@ -113,11 +140,11 @@
       "provider": "openai",
       "model": "gpt-5.2-codex",
     },
-    "play_sound_when_agent_done": false,
+    "play_sound_when_agent_done": true,
     "default_profile": "write",
     "default_model": {
-      "provider": "openai",
-      "model": "gpt-5.2-codex",
+      "provider": "Ai2 Cirrascale",
+      "model": "Olmo-3.1-32B-Instruct",
     },
   },
   "buffer_font_features": {
