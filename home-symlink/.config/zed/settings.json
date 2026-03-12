@@ -22,15 +22,15 @@
               "images": false,
               "parallel_tool_calls": false,
               "prompt_cache_key": false,
-              "chat_completions": true
-            }
-          }
-        ]
-      }
-    }
+              "chat_completions": true,
+            },
+          },
+        ],
+      },
+    },
   },
   "git_panel": {
-    "tree_view": true
+    "tree_view": true,
   },
   "agent_ui_font_size": 15.0,
   "edit_predictions": {
@@ -56,46 +56,71 @@
       "args": [],
       "projects": [
         {
-          "paths": ["/home/lucas/OLMo-core"],
+          "paths": [
+            "/home/lucas/OLMo-core"
+          ]
         },
         {
-          "paths": ["/home/lucas/datamap-rs"],
+          "paths": [
+            "/home/lucas/datamap-rs"
+          ]
         },
         {
-          "paths": ["/home/lucas/dolma3"],
+          "paths": [
+            "/home/lucas/dolma3"
+          ]
         },
         {
-          "paths": ["/home/lucas/oe-data-internal"],
+          "paths": [
+            "/home/lucas/oe-data-internal"
+          ]
         },
         {
-          "paths": ["/home/lucas/olmerheim"],
+          "paths": [
+            "/home/lucas/olmerheim"
+          ]
         },
         {
-          "paths": ["/home/lucas/olmo-bonepick"],
+          "paths": [
+            "/home/lucas/olmo-bonepick"
+          ]
         },
         {
-          "paths": ["/home/lucas/olmo-cookbook"],
+          "paths": [
+            "/home/lucas/olmo-cookbook"
+          ]
         },
         {
-          "paths": ["/home/lucas/open-instruct"],
+          "paths": [
+            "/home/lucas/open-instruct"
+          ]
         },
         {
-          "paths": ["/home/lucas/raccoon"],
+          "paths": [
+            "/home/lucas/poormanray"
+          ]
         },
         {
-          "paths": ["/home/lucas/vllm"],
+          "paths": [
+            "/home/lucas/raccoon"
+          ]
         },
-      ],
+        {
+          "paths": [
+            "/home/lucas/vllm"
+          ]
+        }
+      ]
     },
     {
       "host": "spark",
       "args": [],
-      "projects": [],
+      "projects": []
     },
     {
       "host": "spark",
       "args": [],
-      "projects": [],
+      "projects": []
     },
     {
       "host": "ec2-3-239-39-241.compute-1.amazonaws.com",
@@ -103,12 +128,16 @@
       "args": [],
       "projects": [
         {
-          "paths": ["/home/ec2-user"],
+          "paths": [
+            "/home/ec2-user"
+          ]
         },
         {
-          "paths": ["/home/ec2-user/datamap-rs"],
-        },
-      ],
+          "paths": [
+            "/home/ec2-user/datamap-rs"
+          ]
+        }
+      ]
     },
     {
       "host": "ec2-44-197-174-202.compute-1.amazonaws.com",
@@ -116,10 +145,12 @@
       "args": [],
       "projects": [
         {
-          "paths": ["/home/ec2-user/datamap-rs"],
-        },
-      ],
-    },
+          "paths": [
+            "/home/ec2-user/datamap-rs"
+          ]
+        }
+      ]
+    }
   ],
   "title_bar": {
     "show_menus": false,
@@ -130,21 +161,13 @@
     "notify_when_agent_waiting": "all_screens",
     "tool_permissions": {
       "default": "allow",
-      "tools": {}
-    },
-    "inline_assistant_model": {
-      "provider": "openai",
-      "model": "gpt-5.2-codex",
-    },
-    "commit_message_model": {
-      "provider": "openai",
-      "model": "gpt-5.2-codex",
+      "tools": {},
     },
     "play_sound_when_agent_done": true,
     "default_profile": "write",
     "default_model": {
-      "provider": "Ai2 Cirrascale",
-      "model": "Olmo-3.1-32B-Instruct",
+      "provider": "openai",
+      "model": "gpt-5.3-codex",
     },
   },
   "buffer_font_features": {
