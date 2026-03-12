@@ -26,6 +26,7 @@ fi
 
 export HOSTNAME=`hostname`
 export TERM=screen-256color
+: "${COLORTERM:=truecolor}"; export COLORTERM
 
 if [[ "${CURRENT_SHELL_NAME}" == "bash" ]]; then
     # Make bash check its window size after a process completes
