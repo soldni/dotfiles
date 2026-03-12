@@ -1,8 +1,22 @@
 #!/usr/bin/env bash
 
-# This script runs several plist config command to get a mac to my liking.
+profile="${1:-work}"
+profile="$(printf '%s' "${profile}" | tr '[:upper:]' '[:lower:]')"
 
-set -x
+case "${profile}" in
+    personal|work)
+        ;;
+    *)
+        echo "Usage: $0 [personal|work]" >&2
+        exit 1
+        ;;
+esac
+
+# notifying user which kind of setup is being applied
+echo "Applying ${profile} setup..."
+
+# This script runs several plist config command to get a mac to my liking.
+set -eoux pipefail
 
 # location of this script
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
@@ -319,8 +333,10 @@ brew_cask_to_uninstall=(
     'readdle-spark'         # email client
     'spotify'               # music player
     'vanilla'               # hide menubar icons
-    'visual-studio-code'    # text editor
+    'cursor'                # text editor
     'transmit'              # sftp client
+    'zed'                   # text editor
+    'obsidian'              # note taking
 )
 
 for cask in "${brew_cask_to_uninstall[@]}"; do
@@ -339,28 +355,31 @@ brew_cask_to_install=(
     'claude-code'           # Anthropic CLI coding agent
     'codex'                 # OpenAI CLI coding agent
     'codex-app'             # OpenAI Desktop coding app
-    'cursor'                # text editor
+    'visual-studio-code'    # text editor
     'discord'               # chat app
-    'font-fira-code'        # font with ligatures
     'ghostty'               # terminal
     'github'                # git client
     'imageoptim'            # image optimization
     'keepingyouawake'       # prevent sleep
     'mac-mouse-fix'         # additonal mouse settings
     'macvim'                # vim
-    'mimestream'            # email client
-    'netnewswire'           # rss reader
-    'orbstack'              # replacement for docker
-    'signal'                # encrypted chat
     'sketch'                # vector design
     'slack'                 # chat app
     'zoom'                  # video conferencing
-    'zed'                   # text editor
     'zen'                   # browser
-    'obsidian'              # note taking
 )
 
+if [[ "${profile}" == "personal" ]]; then
+    brew_cask_to_install+=(
+        'mimestream'            # email client
+        'netnewswire'           # rss reader
+        'signal'                # encrypted chat
+        'orbstack'              # replacement for docker
+    )
+fi
+
 fonts_to_install=(
+    'font-fira-code'
     'font-iosevka'
     'font-iosevka-curly'
     'font-iosevka-curly-slab'
@@ -397,44 +416,49 @@ for package in "${brew_cask_to_install[@]}"; do
     fi
 done
 
-mas_install=(
-    '1662217862'    # Wipr2                      (2.0)
-    '6471380298'    # StopTheMadnessPro          (11.1)
-    '1475387142'    # Tailscale                  (1.68.1)
-    '1502111349'    # PDF Squeezer               (4.5.3)
-    '1508732804'    # Soulver 3                  (3.11.2)
-    '1545870783'    # Color Picker               (2.0.1)
-    '1569813296'    # 1Password for Safari       (2.24.2)
-    '1592917505'    # Noir                       (2024.2.1)
-    '1622835804'    # com.kagimacOS.Kagi-Search  (2.2.3)
-    '6475380719'    # Picture in Picture         (1.0.0)
-    '403304796'     # iNet Network Scanner       (3.1.1)
-    '425424353'     # The Unarchiver             (4.3.8)
-    '429449079'     # Patterns                   (1.3)
-    '497799835'     # Xcode                      (15.4)
-    '899247664'     # TestFlight                 (3.5.1)
-    '992115977'     # Image2icon                 (2.18)
-    '6468265473'    # Upscayl                    (2.15.0)
-)
+if [[ "${profile}" == "personal" ]]; then
+    # not assuming im logged in to mas on work profile
+    mas_install=(
+        '1662217862'    # Wipr2                      (2.0)
+        '6471380298'    # StopTheMadnessPro          (11.1)
+        '1502111349'    # PDF Squeezer               (4.5.3)
+        '1508732804'    # Soulver 3                  (3.11.2)
+        '1545870783'    # Color Picker               (2.0.1)
+        '1569813296'    # 1Password for Safari       (2.24.2)
+        '1592917505'    # Noir                       (2024.2.1)
+        '1622835804'    # com.kagimacOS.Kagi-Search  (2.2.3)
+        '429449079'     # Patterns                   (1.3)
+        '497799835'     # Xcode                      (15.4)
+        '899247664'     # TestFlight                 (3.5.1)
+        '992115977'     # Image2icon                 (2.18)
+        '6468265473'    # Upscayl                    (2.15.0)
+    )
 
-not_signed_in_mas="Not signed in"
+    # older apps
+    # '1475387142'    # Tailscale                  (1.68.1)
+    # '6475380719'    # Picture in Picture         (1.0.0)
+    # '403304796'     # iNet Network Scanner       (3.1.1)
+    # '425424353'     # The Unarchiver             (4.3.8)
 
-while [ ! -z "${not_signed_in_mas}" ]; do
-    not_signed_in_mas=$(mas account | grep "Not signed in")
+    not_signed_in_mas="Not signed in"
 
-    if [ ! -z "${not_signed_in_mas}" ]; then
-        echo "Please Sign in the Mac App Store and press return when done... "
-        read foo
-        continue
-    fi
+    while [ ! -z "${not_signed_in_mas}" ]; do
+        not_signed_in_mas=$(mas account | grep "Not signed in")
 
-    for mas_app in "${mas_install[@]}"; do
-        has_mas_app=$(mas list | grep $mas_app 2>/dev/null)
-        if [[ -z $has_mas_app ]]; then
-            mas install $mas_app
+        if [ ! -z "${not_signed_in_mas}" ]; then
+            echo "Please Sign in the Mac App Store and press return when done... "
+            read foo
+            continue
         fi
+
+        for mas_app in "${mas_install[@]}"; do
+            has_mas_app=$(mas list | grep $mas_app 2>/dev/null)
+            if [[ -z $has_mas_app ]]; then
+                mas install $mas_app
+            fi
+        done
     done
-done
+fi
 
 
 function install_from_repo () {
@@ -484,20 +508,6 @@ github_install=(
 for gh in "${github_install[@]}"; do
     install_from_repo "${gh}"
 done
-
-if [ -d "/Applications/iTerm.app" ]; then
-    # configure iterm2 if it exists
-    defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "${HOME}/dotfiles/iterm2"
-    rm -rf "${HOME}/Library/Application Support/iTerm2/Scripts"
-    ln -s ${script_dir}/iterm2-scripts "${HOME}/Library/Application Support/iTerm2/Scripts"
-fi
-
-# configure symlink for sublime text
-bash ${script_dir}/home-symlink.sh \
-    "${script_dir}/sublime-text" \
-    "${HOME}/Library/Application Support/Sublime Text" \
-    0
-
 
 bash ${script_dir}/bootstrap.sh
 

@@ -158,6 +158,11 @@
   },
   "confirm_quit": true,
   "agent": {
+    "inline_assistant_model": {
+      "provider": "openai",
+      "model": "gpt-5.4",
+      "enable_thinking": false
+    },
     "notify_when_agent_waiting": "all_screens",
     "tool_permissions": {
       "default": "allow",
