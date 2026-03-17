@@ -15,13 +15,109 @@ esac
 # notifying user which kind of setup is being applied
 echo "Applying ${profile} setup..."
 
-# This script runs several plist config command to get a mac to my liking.
+# This is a host-level provisioning script. It intentionally mutates macOS
+# defaults, installs software, and runs some interactive commands.
 set -eoux pipefail
+
+warned_container_domains=""
+
+# Some app domains resolve to sandbox container plists on current macOS
+# versions. Those can reject command-line writes even when the owning app is
+# installed, so warn once and keep applying the rest of the setup.
+note_unwritable_container_domain() {
+    local domain="$1"
+
+    case ",${warned_container_domains}," in
+        *,"${domain}",*)
+            return 0
+            ;;
+    esac
+
+    printf 'Skipping defaults writes for %s: macOS blocked CLI access to that app container preference domain.\n' "$domain" >&2
+    warned_container_domains="${warned_container_domains},${domain}"
+}
+
+# Wrapper around `defaults write` that treats container-domain failures as a
+# best-effort skip while still failing on unexpected errors.
+write_defaults() {
+    local domain="$1"
+    shift
+
+    local output
+    if ! output=$(defaults write "$domain" "$@" 2>&1); then
+        if [[ "$output" == *"Could not write domain "*"/Library/Containers/"* ]]; then
+            note_unwritable_container_domain "$domain"
+            return 0
+        fi
+
+        printf '%s\n' "$output" >&2
+        return 1
+    fi
+}
+
+list_contains() {
+    local list="$1"
+    local item="$2"
+
+    [[ -n "$list" ]] || return 1
+    grep -Fqx -- "$item" <<< "$list"
+}
+
+#
+# Small helpers for building batched brew/mas command lines without duplicate
+# entries from the configured package lists below.
+array_contains() {
+    local item="$1"
+    shift
+
+    local existing
+    for existing in "$@"; do
+        if [[ "$existing" == "$item" ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+# `xcode-select --install` is awkward to automate: it prints one message when
+# an install was requested, another when CLT is already present, and may still
+# return a non-zero exit status. Normalize those cases here.
+ensure_xcode_command_line_tools() {
+    local install_requested_msg='xcode-select: note: install requested for command line developer tools'
+    local already_installed_msg='xcode-select: note: Command line tools are already installed. Use "Software Update" in System Settings or the softwareupdate command line interface to install updates'
+    local sleep_timeout=30
+    local output
+
+    output="$(xcode-select --install 2>&1 || true)"
+
+    case "$output" in
+        "$install_requested_msg")
+            while ! xcode-select -p >/dev/null 2>&1; do
+                echo "xcode-select not completed, waiting ${sleep_timeout} s before checking again..."
+                sleep "${sleep_timeout}"
+            done
+            ;;
+        "$already_installed_msg")
+            echo "xcode-select reports command line tools are already installed; continuing."
+            ;;
+        "")
+            if ! xcode-select -p >/dev/null 2>&1; then
+                echo "xcode-select --install produced no output and command line tools are not configured." >&2
+                return 1
+            fi
+            ;;
+        *)
+            printf '%s\n' "$output" >&2
+            return 1
+            ;;
+    esac
+}
 
 # location of this script
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
-# Configure keyboard shortcuts
+# Apply the separate shortcut script first so menu and symbolic hotkeys are in
+# place before the rest of the workstation setup.
 bash ${script_dir}/macos_shortcuts.sh
 
 # Adjust Siri settings
@@ -132,22 +228,22 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 defaults write com.apple.finder QuitMenuItem -bool true
 
 # Safari
-defaults write com.apple.Safari HomePage -string "about:blank"
-defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
-defaults write com.apple.Safari ShowFavoritesBar -bool true
-defaults write com.apple.Safari ShowSidebarInTopSites -bool false
-defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
-defaults write com.apple.Safari AutoFillFromAddressBook -bool false
-defaults write com.apple.Safari AutoFillPasswords -bool false
-defaults write com.apple.Safari AutoFillCreditCardData -bool false
-defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
-defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
-defaults write com.apple.Safari NewTabBehavior -int 1
-defaults write com.apple.Safari NewWindowBehavior -int 1
-defaults write com.apple.Safari ShowIconsInTabs -int 1
+write_defaults com.apple.Safari HomePage -string "about:blank"
+write_defaults com.apple.Safari AutoOpenSafeDownloads -bool false
+write_defaults com.apple.Safari ShowFavoritesBar -bool true
+write_defaults com.apple.Safari ShowSidebarInTopSites -bool false
+write_defaults com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
+write_defaults com.apple.Safari IncludeDevelopMenu -bool true
+write_defaults com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+write_defaults com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+write_defaults com.apple.Safari AutoFillFromAddressBook -bool false
+write_defaults com.apple.Safari AutoFillPasswords -bool false
+write_defaults com.apple.Safari AutoFillCreditCardData -bool false
+write_defaults com.apple.Safari AutoFillMiscellaneousForms -bool false
+write_defaults com.apple.Safari SendDoNotTrackHTTPHeader -bool true
+write_defaults com.apple.Safari NewTabBehavior -int 1
+write_defaults com.apple.Safari NewWindowBehavior -int 1
+write_defaults com.apple.Safari ShowIconsInTabs -int 1
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
@@ -225,23 +321,10 @@ killall SystemUIServer
 sudo nvram StartupMute=%00
 
 # Gotta install xcode optional tools
-xcode-select --install
-
-# Waiting for xcode tools to be installed; adapted from here:
-#   https://stackoverflow.com/a/35005051
-check="$($(xcode-\select --install) 2>&1)"
-checkOut="xcode-select: note: install requested for command line developer tools"
-sleep_timeout=30
-while [[ "$check" == "$checkOut" ]];
-do
-  echo "xcode-select not completed, waiting ${sleep_timeout} s before checking again..."
-  sleep ${sleep_timeout}
-  check="$($(xcode-\select --install) 2>&1)"
-  checkOut="xcode-select: note: install requested for command line developer tools"
-done
+ensure_xcode_command_line_tools
 
 
-# Check if brew is installed; if not, install brew
+# Bootstrap Homebrew if needed before using the managed formula/cask lists.
 has_brew=`which brew 2>/dev/null`
 if [[ -z $has_brew ]]
 then
@@ -250,15 +333,17 @@ then
 fi
 
 brew_taps_to_add=(
-    'homebrew/cask'
     'jlhonora/lsusb'
-    'homebrew/cask-fonts'
+    # 'homebrew/cask-fonts'     # deprecated
+    # 'homebrew/cask'           # no longer needed
 )
 
 for tap in "${brew_taps_to_add[@]}"; do
     brew tap $tap
 done
 
+# Upgrade everything Homebrew already knows about. The managed install lists
+# below are then only responsible for adding missing packages/casks.
 brew update && brew upgrade
 
 brew_packages_to_install=(
@@ -309,14 +394,18 @@ brew_packages_to_install=(
 npm config set prefix "${HOME}/.local"
 
 
+# Install missing formulae in one brew invocation to reduce repeated brew
+# startup overhead. Already-installed formulae were handled by `brew upgrade`.
+installed_formulae="$(brew list --formula)"
+brew_packages_missing=()
 for package in "${brew_packages_to_install[@]}"; do
-    has_package=$(brew list ${package} 2>/dev/null)
-    if [[ -z $has_package ]]; then
-        brew install $package
-    else
-        brew upgrade $package
+    if ! list_contains "$installed_formulae" "$package" && ! array_contains "$package" "${brew_packages_missing[@]}"; then
+        brew_packages_missing+=("$package")
     fi
 done
+if [[ ${#brew_packages_missing[@]} -gt 0 ]]; then
+    brew install "${brew_packages_missing[@]}"
+fi
 
 
 # these are apps I don't use anymore
@@ -338,9 +427,18 @@ brew_cask_to_uninstall=(
     'mimestream'            # email client
 )
 
+# Only uninstall casks that are currently present, then batch them into a
+# single `brew uninstall --cask` call.
+installed_casks="$(brew list --cask)"
+brew_casks_present_to_uninstall=()
 for cask in "${brew_cask_to_uninstall[@]}"; do
-    brew uninstall --cask $cask
+    if list_contains "$installed_casks" "$cask" && ! array_contains "$cask" "${brew_casks_present_to_uninstall[@]}"; then
+        brew_casks_present_to_uninstall+=("$cask")
+    fi
 done
+if [[ ${#brew_casks_present_to_uninstall[@]} -gt 0 ]]; then
+    brew uninstall --force --cask "${brew_casks_present_to_uninstall[@]}"
+fi
 
 # do the cleanup
 brew cleanup
@@ -405,14 +503,18 @@ fonts_to_install=(
 )
 brew_cask_to_install+=("${fonts_to_install[@]}")
 
+# Batch missing casks and fonts into one install call. Duplicate entries in the
+# configured lists are filtered out before invoking brew.
+installed_casks="$(brew list --cask)"
+brew_casks_missing=()
 for package in "${brew_cask_to_install[@]}"; do
-    has_package=$(brew list ${package} 2>/dev/null)
-    if [[ -z $has_package ]]; then
-        brew install --cask $package
-    else
-        brew upgrade $package
+    if ! list_contains "$installed_casks" "$package" && ! array_contains "$package" "${brew_casks_missing[@]}"; then
+        brew_casks_missing+=("$package")
     fi
 done
+if [[ ${#brew_casks_missing[@]} -gt 0 ]]; then
+    brew install --cask --force "${brew_casks_missing[@]}"
+fi
 
 if [[ "${profile}" == "personal" ]]; then
     # not assuming im logged in to mas on work profile
@@ -438,27 +540,28 @@ if [[ "${profile}" == "personal" ]]; then
     # '403304796'     # iNet Network Scanner       (3.1.1)
     # '425424353'     # The Unarchiver             (4.3.8)
 
-    not_signed_in_mas="Not signed in"
-
-    while [ ! -z "${not_signed_in_mas}" ]; do
-        not_signed_in_mas=$(mas account | grep "Not signed in")
-
-        if [ ! -z "${not_signed_in_mas}" ]; then
-            echo "Please Sign in the Mac App Store and press return when done... "
-            read foo
-            continue
-        fi
-
-        for mas_app in "${mas_install[@]}"; do
-            has_mas_app=$(mas list | grep $mas_app 2>/dev/null)
-            if [[ -z $has_mas_app ]]; then
-                mas install $mas_app
-            fi
-        done
+    # `mas install` requires an active App Store session. Keep prompting until
+    # the user signs in, then install all missing app IDs in one command.
+    while [[ "$(mas account 2>&1 || true)" == *"Not signed in"* ]]; do
+        echo "Please sign in to the Mac App Store and press return when done..."
+        read -r _
     done
+
+    installed_mas_apps="$(mas list | awk '{print $1}')"
+    mas_apps_missing=()
+    for mas_app in "${mas_install[@]}"; do
+        if ! list_contains "$installed_mas_apps" "$mas_app" && ! array_contains "$mas_app" "${mas_apps_missing[@]}"; then
+            mas_apps_missing+=("$mas_app")
+        fi
+    done
+    if [[ ${#mas_apps_missing[@]} -gt 0 ]]; then
+        mas install "${mas_apps_missing[@]}"
+    fi
 fi
 
 
+# Install a small set of apps distributed outside Homebrew/App Store by pulling
+# the newest GitHub release asset and copying app bundles into place.
 function install_from_repo () {
     github_repo_name="${1}"
 
@@ -508,9 +611,6 @@ for gh in "${github_install[@]}"; do
 done
 
 bash ${script_dir}/bootstrap.sh
-
-# Restore IDE extensions (after IDEs are installed and home-symlink has run)
-bash ${script_dir}/ide_extensions.sh restore
 
 # clean up brew
 brew cleanup
