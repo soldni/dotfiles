@@ -27,6 +27,10 @@ Run `./bootstrap.sh`:
 
 Run `./macos_setup.sh` only when explicitly requested:
 
+- Profiles:
+  - `work`: baseline workstation setup.
+  - `personal`: `work` plus personal casks and MAS apps.
+  - `server`: equivalent to `personal`, then runs `macos_no_animations.sh` as a final pass.
 - Applies many macOS `defaults` writes and keyboard shortcut remaps.
 - Runs `macos_shortcuts.sh`.
 - Runs privileged commands (`sudo`, `nvram`), restarts system components, and installs Xcode CLT.
@@ -83,6 +87,21 @@ Do not run either script unless the user explicitly asks for machine changes.
 7. Note legacy compatibility:
    - `home-symlink/.local/scripts/diceware.py` targets Python 2.
    - `home-symlink/.local/scripts/chrome-to-firefox.scpt` is a compiled AppleScript/binary file.
+
+## Setup script assumptions
+
+- `macos_setup.sh` is order-sensitive operations code, not a library-style shell script. Preserve phase ordering unless the user explicitly asks to change behavior.
+- Keep profile semantics intact:
+  - `work` is the default baseline.
+  - `personal` extends `work`.
+  - `server` is `personal` plus a final `macos_no_animations.sh` run.
+- `macos_shortcuts.sh` is designed to be runnable on its own and from `macos_setup.sh`. Keep it standalone.
+- App-specific `defaults write` calls can fail on modern macOS when the preference domain lives inside an app container. Prefer the existing wrapper helpers over raw `defaults write` for those domains.
+- `AppleSymbolicHotKeys` entries are not guaranteed to exist on every machine. Guard nested plist edits so missing keys do not abort the run.
+- `xcode-select --install` is intentionally wrapped because it may print “already installed” and still exit non-zero. Preserve that tolerant handling.
+- The Homebrew section intentionally batches installs/uninstalls after one installed-state probe. Avoid reintroducing per-package loops unless there is a concrete need.
+- `mas install` requires an active Mac App Store session and may need to prompt the user before continuing.
+- `macos_no_animations.sh` is a separate optional pass. If its behavior changes, keep it safe to invoke both directly and from `macos_setup.sh`.
 
 ## Validation checklist after edits
 

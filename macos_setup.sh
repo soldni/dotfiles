@@ -2,12 +2,21 @@
 
 profile="${1:-work}"
 profile="$(printf '%s' "${profile}" | tr '[:upper:]' '[:lower:]')"
+is_personal_like="false"
+run_no_animations="false"
 
 case "${profile}" in
-    personal|work)
+    personal)
+        is_personal_like="true"
+        ;;
+    server)
+        is_personal_like="true"
+        run_no_animations="true"
+        ;;
+    work)
         ;;
     *)
-        echo "Usage: $0 [personal|work]" >&2
+        echo "Usage: $0 [personal|work|server]" >&2
         exit 1
         ;;
 esac
@@ -466,7 +475,7 @@ brew_cask_to_install=(
     'zen'                   # browser
 )
 
-if [[ "${profile}" == "personal" ]]; then
+if [[ "${is_personal_like}" == "true" ]]; then
     brew_cask_to_install+=(
         'netnewswire'           # rss reader
         'signal'                # encrypted chat
@@ -516,8 +525,8 @@ if [[ ${#brew_casks_missing[@]} -gt 0 ]]; then
     brew install --cask --force "${brew_casks_missing[@]}"
 fi
 
-if [[ "${profile}" == "personal" ]]; then
-    # not assuming im logged in to mas on work profile
+if [[ "${is_personal_like}" == "true" ]]; then
+    # `server` inherits the personal app set; `work` skips App Store work.
     mas_install=(
         '1662217862'    # Wipr2                      (2.0)
         '6471380298'    # StopTheMadnessPro          (11.1)
@@ -620,5 +629,11 @@ npm cache clean --force
 
 # purge uv cache
 uv cache clean
+
+if [[ "${run_no_animations}" == "true" ]]; then
+    # The `server` profile is the personal setup plus animation-reduction
+    # defaults applied as a final pass.
+    bash "${script_dir}/macos_no_animations.sh"
+fi
 
 echo "macOS setup completed."
