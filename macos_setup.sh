@@ -265,8 +265,6 @@ brew_packages_to_install=(
     'bash-completion'
     'bash'
     'blueutil'
-    'claude'
-    'codex'
     'colordiff'
     'coreutils'
     'diff-pdf'
