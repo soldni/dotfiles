@@ -30,9 +30,12 @@ defaults write -g NSBrowserColumnAnimationSpeedMultiplier -float 0
 # showing the Dock
 defaults write com.apple.dock autohide-time-modifier -float 0
 defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock orientation -string left
+defaults write com.apple.dock launchanim -bool false
 
 # showing and hiding Mission Control, command+numbers
 defaults write com.apple.dock expose-animation-duration -float 0
+defaults write com.apple.dock workspaces-swoosh-animation-off -bool true
 
 # showing and hiding Launchpad
 defaults write com.apple.dock springboard-show-duration -float 0
@@ -44,6 +47,15 @@ defaults write com.apple.dock springboard-page-duration -float 0
 # at least AnimateInfoPanes
 defaults write com.apple.finder DisableAllAnimations -bool true
 
+# accessibility display effects
+defaults write com.apple.universalaccess reduceMotion -bool true
+defaults write com.apple.universalaccess reduceTransparency -bool true
+defaults write com.apple.universalaccess increaseContrast -bool true
+
 # sending messages and opening windows for replies
 defaults write com.apple.Mail DisableSendAnimations -bool true
 defaults write com.apple.Mail DisableReplyAnimations -bool true
+
+killall Dock
+killall Finder
+killall SystemUIServer
