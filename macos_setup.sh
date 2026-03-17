@@ -337,6 +337,7 @@ brew_cask_to_uninstall=(
     'transmit'              # sftp client
     'zed'                   # text editor
     'obsidian'              # note taking
+    'mimestream'            # email client
 )
 
 for cask in "${brew_cask_to_uninstall[@]}"; do
@@ -371,7 +372,6 @@ brew_cask_to_install=(
 
 if [[ "${profile}" == "personal" ]]; then
     brew_cask_to_install+=(
-        'mimestream'            # email client
         'netnewswire'           # rss reader
         'signal'                # encrypted chat
         'orbstack'              # replacement for docker
