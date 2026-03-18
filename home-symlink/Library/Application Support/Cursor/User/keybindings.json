@@ -105,5 +105,19 @@
   {
     "key": "ctrl+] 2",
     "command": "chatgpt.openSidebar"
+  },
+  {
+    "key": "ctrl+shift+cmd+`",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+  },
+  {
+    "key": "ctrl+shift+`",
+    "command": "-workbench.action.terminal.new",
+    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+  },
+  {
+    "key": "ctrl+shift+`",
+    "command": "workbench.action.createTerminalEditor"
   }
 ]
