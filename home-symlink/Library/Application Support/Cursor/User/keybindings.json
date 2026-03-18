@@ -1,123 +1,109 @@
 [
   {
-    "key": "alt+cmd+b",
-    "command": "composer.toggleBrowserTab"
+    "command": "composer.toggleBrowserTab",
+    "key": "alt+cmd+b"
   },
   {
-    "key": "shift+cmd+b",
-    "command": "-composer.toggleBrowserTab"
+    "command": "-composer.toggleBrowserTab",
+    "key": "shift+cmd+b"
   },
   {
-    "key": "ctrl+[ 3",
     "command": "workbench.view.scm",
-    "when": "workbench.scm.active"
+    "key": "ctrl+[ 3"
   },
   {
-    "key": "ctrl+shift+g",
     "command": "-workbench.view.scm",
+    "key": "ctrl+shift+g",
     "when": "workbench.scm.active"
   },
   {
-    "key": "ctrl+cmd+b",
     "command": "workbench.action.tasks.build",
+    "key": "ctrl+cmd+b",
     "when": "taskCommandsRegistered"
   },
   {
-    "key": "shift+cmd+b",
     "command": "-workbench.action.tasks.build",
+    "key": "shift+cmd+b",
     "when": "taskCommandsRegistered"
   },
   {
-    "key": "ctrl+[ [",
-    "command": "workbench.action.toggleSidebarVisibility"
+    "command": "workbench.action.toggleSidebarVisibility",
+    "key": "ctrl+[ ["
   },
   {
-    "key": "cmd+b",
-    "command": "-workbench.action.toggleSidebarVisibility"
+    "command": "-workbench.action.toggleSidebarVisibility",
+    "key": "cmd+b"
   },
   {
-    "key": "cmd+escape",
     "command": "-claude-vscode.terminal.open.keyboard",
+    "key": "cmd+escape",
     "when": "config.claudeCode.useTerminal"
   },
   {
-    "key": "cmd+escape",
     "command": "-claude-vscode.blur",
+    "key": "cmd+escape",
     "when": "!config.claudeCode.useTerminal && !editorTextFocus"
   },
   {
-    "key": "cmd+escape",
     "command": "-claude-vscode.focus",
+    "key": "cmd+escape",
     "when": "editorTextFocus && !config.claudeCode.useTerminal"
   },
   {
-    "key": "ctrl+] ]",
-    "command": "workbench.action.toggleAuxiliaryBar"
+    "command": "workbench.action.toggleAuxiliaryBar",
+    "key": "ctrl+] ]"
   },
   {
-    "key": "alt+cmd+b",
     "command": "-workbench.action.toggleAuxiliaryBar",
+    "key": "alt+cmd+b",
     "when": "!isAuxiliaryWindowFocusedContext"
   },
   {
-    "key": "shift+enter",
-    "command": "workbench.action.terminal.sendSequence",
-    "args": {
-      "text": "\u001b\r"
-    },
-    "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+] 2",
-    "command": "workbench.view.extension.codexViewContainer"
-  },
-  {
-    "key": "ctrl+[ 1",
     "command": "workbench.view.explorer",
-    "when": "viewContainer.workbench.view.explorer.enabled"
+    "key": "ctrl+[ 1"
   },
   {
-    "key": "shift+cmd+e",
     "command": "-workbench.view.explorer",
+    "key": "shift+cmd+e",
     "when": "viewContainer.workbench.view.explorer.enabled"
   },
   {
-    "key": "ctrl+[ 2",
     "command": "workbench.view.search",
-    "when": "workbench.view.search.active && neverMatch =~ /doesNotMatch/"
+    "key": "ctrl+[ 2"
   },
   {
-    "key": "shift+cmd+f",
     "command": "-workbench.view.search",
+    "key": "shift+cmd+f",
     "when": "workbench.view.search.active && neverMatch =~ /doesNotMatch/"
   },
   {
-    "key": "ctrl+[ 4",
     "command": "workbench.view.extensions",
-    "when": "viewContainer.workbench.view.extensions.enabled"
+    "key": "ctrl+[ 4"
   },
   {
-    "key": "shift+cmd+x",
     "command": "-workbench.view.extensions",
+    "key": "shift+cmd+x",
     "when": "viewContainer.workbench.view.extensions.enabled"
   },
   {
-    "key": "ctrl+[ 5",
     "command": "workbench.view.debug",
-    "when": "viewContainer.workbench.view.debug.enabled"
+    "key": "ctrl+[ 5"
   },
   {
-    "key": "shift+cmd+d",
     "command": "-workbench.view.debug",
+    "key": "shift+cmd+d",
     "when": "viewContainer.workbench.view.debug.enabled"
   },
   {
-    "key": "ctrl+] 3",
     "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active"
+    "key": "ctrl+] 3"
   },
   {
     "key": "ctrl+] 1",
-    "command": "claude-vscode.sidebar.open"
+    "command": "workbench.view.extension.claude-sidebar-secondary"
+  },
+  {
+    "key": "ctrl+] 2",
+    "command": "chatgpt.openSidebar"
   }
 ]

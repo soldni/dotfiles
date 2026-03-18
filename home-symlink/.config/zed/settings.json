@@ -7,28 +7,12 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "language_models": {
-    "openai_compatible": {
-      "Ai2 Cirrascale": {
-        "api_url": "https://ai2endpoints.cirrascale.ai/api",
-        "available_models": [
-          {
-            "name": "Olmo-3.1-32B-Instruct",
-            "max_tokens": 64000,
-            "max_output_tokens": 32000,
-            "max_completion_tokens": 32000,
-            "capabilities": {
-              "tools": true,
-              "images": false,
-              "parallel_tool_calls": false,
-              "prompt_cache_key": false,
-              "chat_completions": true,
-            },
-          },
-        ],
-      },
-    },
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry"
+    }
   },
+
   "git_panel": {
     "tree_view": true,
   },
@@ -50,108 +34,6 @@
     "delay_ms": 500,
   },
   "text_rendering_mode": "platform_default",
-  "ssh_connections": [
-    {
-      "host": "spark",
-      "args": [],
-      "projects": [
-        {
-          "paths": [
-            "/home/lucas/OLMo-core"
-          ]
-        },
-        {
-          "paths": [
-            "/home/lucas/datamap-rs"
-          ]
-        },
-        {
-          "paths": [
-            "/home/lucas/dolma3"
-          ]
-        },
-        {
-          "paths": [
-            "/home/lucas/oe-data-internal"
-          ]
-        },
-        {
-          "paths": [
-            "/home/lucas/olmerheim"
-          ]
-        },
-        {
-          "paths": [
-            "/home/lucas/olmo-bonepick"
-          ]
-        },
-        {
-          "paths": [
-            "/home/lucas/olmo-cookbook"
-          ]
-        },
-        {
-          "paths": [
-            "/home/lucas/open-instruct"
-          ]
-        },
-        {
-          "paths": [
-            "/home/lucas/poormanray"
-          ]
-        },
-        {
-          "paths": [
-            "/home/lucas/raccoon"
-          ]
-        },
-        {
-          "paths": [
-            "/home/lucas/vllm"
-          ]
-        }
-      ]
-    },
-    {
-      "host": "spark",
-      "args": [],
-      "projects": []
-    },
-    {
-      "host": "spark",
-      "args": [],
-      "projects": []
-    },
-    {
-      "host": "ec2-3-239-39-241.compute-1.amazonaws.com",
-      "username": "ec2-user",
-      "args": [],
-      "projects": [
-        {
-          "paths": [
-            "/home/ec2-user"
-          ]
-        },
-        {
-          "paths": [
-            "/home/ec2-user/datamap-rs"
-          ]
-        }
-      ]
-    },
-    {
-      "host": "ec2-44-197-174-202.compute-1.amazonaws.com",
-      "username": "ec2-user",
-      "args": [],
-      "projects": [
-        {
-          "paths": [
-            "/home/ec2-user/datamap-rs"
-          ]
-        }
-      ]
-    }
-  ],
   "title_bar": {
     "show_menus": false,
     "show_branch_icon": true,
