@@ -280,6 +280,20 @@ fi
 function ta { if [ -z ${1} ]; then tmux -2 attach; else tmux -2 attach -t ${1}; fi }
 function tn { if [ -z ${1} ]; then tmux -2; else tmux -2 new -s ${1}; fi }
 function tl { tmux -2 list-sessions; }
+function tmux-rename {
+    if [[ $# -ne 2 ]]; then
+        echo "usage: tmux-rename <window|session> <name>" >&2
+        return 2
+    fi
+    case "$1" in
+        window)  tmux rename-window "$2" ;;
+        session) tmux rename-session "$2" ;;
+        *)
+            echo "tmux-rename: first argument must be 'window' or 'session'" >&2
+            return 1
+            ;;
+    esac
+}
 
 alias git-freeze='git update-index --assume-unchanged'
 alias git-unfreeze='git update-index --no-assume-unchanged'

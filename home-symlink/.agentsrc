@@ -1,24 +1,44 @@
 # This file one-line commands that use agents to do things.
 
-function claude-commit() {
+
+export CLAUDE_FAST_MODEL="haiku"
+export CODEX_FAST_MODEL="gpt-5.3-codex-spark"
+
+function claude-fast() {
     has_claude=$(which claude 2>/dev/null)
     if [ -z "${has_claude}" ]; then
         echo "Claude CLI not found"
         return 1
     fi
 
-    claude --model haiku --allowedTools 'Bash(git:*) Edit' --print  "Write a commit message for the staged changes and commit. If there are no staged changes, stage all changes first (including untracked files)."
+    claude --allow-dangerously-skip-permissions --bare --model "$CLAUDE_FAST_MODEL" --print "$@"
     return 0
 }
 
-
-function claude-tmux-window() {
-    has_claude=$(which claude 2>/dev/null)
-    if [ -z "${has_claude}" ]; then
-        echo "Claude CLI not found"
+function codex-fast() {
+    has_codex=$(which codex 2>/dev/null)
+    if [ -z "${has_codex}" ]; then
+        echo "Codex CLI not found"
         return 1
     fi
-
-    claude --model haiku 'using the name of the current directory and other relevant info for bash prompt, rename this tmux window using at most 2 words. Rename window IMMEDIATELY without confirmation' --allowedTools 'Bash(tmux:*)' --print
+    codex exec -m $CODEX_FAST_MODEL --sandbox "danger-full-access" --ephemeral --progress-cursor "$@"
     return 0
 }
+
+
+# Agent task definitions: each _agent-<task> takes the agent name as $1
+function _agent-commit() {
+    "$1"-fast "Write a commit message for the staged changes and commit. If there are no staged changes, stage all changes first (including untracked files)."
+}
+
+function _agent-tmux-window() {
+    "$1"-fast "using the name of the current directory and other relevant info for bash prompt, rename this tmux window using at most 2 words. Rename window IMMEDIATELY without confirmation"
+}
+
+# Generate <agent>-<task> functions for each agent
+for _agent in claude codex; do
+    for _task in commit tmux-window; do
+        eval "function ${_agent}-${_task}() { _agent-${_task} ${_agent}; }"
+    done
+done
+unset _agent _task
