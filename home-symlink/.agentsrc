@@ -11,7 +11,11 @@ function claude-fast() {
         return 1
     fi
 
-    claude --allow-dangerously-skip-permissions --bare --model "$CLAUDE_FAST_MODEL" --print "$@"
+    claude --print \
+        --model "$CLAUDE_FAST_MODEL" \
+        --allow-dangerously-skip-permissions \
+        --bare \
+        "$@"
     return 0
 }
 
@@ -21,7 +25,13 @@ function codex-fast() {
         echo "Codex CLI not found"
         return 1
     fi
-    codex exec -m $CODEX_FAST_MODEL --sandbox "danger-full-access" --ephemeral --progress-cursor "$@"
+    codex exec \
+        --model $CODEX_FAST_MODEL \
+        --sandbox "danger-full-access" \
+        --ephemeral \
+        --skip-git-repo-check \
+        --progress-cursor \
+        "$@"
     return 0
 }
 
