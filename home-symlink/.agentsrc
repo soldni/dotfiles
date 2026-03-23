@@ -32,7 +32,7 @@ function _agent-commit() {
 }
 
 function _agent-tmux-window() {
-    "$1"-fast "using the name of the current directory and other relevant info for bash prompt, rename this tmux window using at most 2 words. Rename window IMMEDIATELY without confirmation"
+    "$1"-fast "using the name of the current directory and other relevant info for bash prompt, rename this tmux window using at most 2 words. Rename window IMMEDIATELY without confirmation. use [a-z0-9_\-]+ only, no spaces or special characters. If the current name is already good, keep it unchanged."
 }
 
 # Generate <agent>-<task> functions for each agent
