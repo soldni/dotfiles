@@ -55,7 +55,6 @@
   },
   "notebook.output.textLineLimit": 100,
   "peacock.affectActivityBar": false,
-  "peacock.affectTitleBar": false,
   "python.analysis.typeCheckingMode": "standard",
   "redhat.telemetry.enabled": false,
   "remote.SSH.remotePlatform": {
@@ -86,7 +85,6 @@
   "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
   "window.autoDetectColorScheme": true,
   "window.closeWhenEmpty": true,
-  "window.commandCenter": false,
   "window.doubleClickIconToClose": true,
   "window.menuStyle": "inherit",
   "window.newWindowProfile": "Default",
@@ -108,5 +106,15 @@
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
-  "workbench.tree.indent": 16
+  "workbench.tree.indent": 16,
+  "terminal.integrated.hideOnStartup": "always",
+  "claudeCode.hideOnboarding": true,
+  "window.customTitleBarVisibility": "windowed",
+  "peacock.affectTitleBar": false,
+  "workbench.layoutControl.enabled": false,
+  "window.commandCenter": false,
+  "coloredTitleBar.colorOnStartup": true,
+  "cSpell.userWords": [
+    "Multimodal"
+  ]
 }
