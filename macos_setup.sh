@@ -434,6 +434,7 @@ brew_cask_to_uninstall=(
     'zed'                   # text editor
     'obsidian'              # note taking
     'mimestream'            # email client
+    'zoom'                  # video conferencing
 )
 
 # Only uninstall casks that are currently present, then batch them into a
@@ -471,7 +472,6 @@ brew_cask_to_install=(
     'macvim'                # vim
     'sketch'                # vector design
     'slack'                 # chat app
-    'zoom'                  # video conferencing
     'zen'                   # browser
 )
 
