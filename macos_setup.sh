@@ -4,14 +4,17 @@ profile="${1:-work}"
 profile="$(printf '%s' "${profile}" | tr '[:upper:]' '[:lower:]')"
 is_personal_like="false"
 run_no_animations="false"
+is_work_like="true"
 
 case "${profile}" in
     personal)
         is_personal_like="true"
+        is_work_like="false"
         ;;
     server)
         is_personal_like="true"
         run_no_animations="true"
+        is_work_like="false"
         ;;
     work)
         ;;
@@ -343,6 +346,7 @@ fi
 
 brew_taps_to_add=(
     'jlhonora/lsusb'
+    'erictli/tap'   # for notes app
     # 'homebrew/cask-fonts'     # deprecated
     # 'homebrew/cask'           # no longer needed
 )
@@ -457,11 +461,8 @@ brew_cask_to_install=(
     'maccy'                 # clipboard manager
     '1password'             # Password Manager
     'appcleaner'            # good for app cleanup
-    'chatgpt'               # OpenAI desktop app
-    'claude'                # Anthropic desktop app
     'claude-code'           # Anthropic CLI coding agent
     'codex'                 # OpenAI CLI coding agent
-    'codex-app'             # OpenAI Desktop coding app
     'visual-studio-code'    # text editor
     'discord'               # chat app
     'ghostty'               # terminal
@@ -472,7 +473,6 @@ brew_cask_to_install=(
     'macvim'                # vim
     'sketch'                # vector design
     'slack'                 # chat app
-    'zen'                   # browser
 )
 
 if [[ "${is_personal_like}" == "true" ]]; then
@@ -480,6 +480,15 @@ if [[ "${is_personal_like}" == "true" ]]; then
         'netnewswire'           # rss reader
         'signal'                # encrypted chat
         'orbstack'              # replacement for docker
+        'codex-app'             # OpenAI Desktop coding app
+        'claude'                # Anthropic desktop app
+        'chatgpt'               # OpenAI desktop app
+    )
+fi
+
+if [[ "${is_work_like}" == "true" ]]; then
+    brew_cask_to_install+=(
+        'erictli/tap/scratch'
     )
 fi
 
