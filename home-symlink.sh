@@ -37,6 +37,12 @@ printf "symlinking %s files...\n" "${#all_files[@]}"
 for ((i = 0; i < ${#all_files[@]}; i++)) do
     if [ -f "${all_files[i]}" ]; then
         relative=$(echo "${all_files[i]}" | sed "s|${SIMLINK_SRC}/||g")
+
+        # older version of find may return paths with ../ in them, skip those
+        if [[ "${relative}" == ..* ]]; then
+            continue
+        fi
+
         relative_dir=$(dirname "${relative}")
 
       src="${SIMLINK_SRC}/${relative}"
