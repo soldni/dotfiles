@@ -19,10 +19,6 @@ else
     CURRENT_SHELL_NAME=$(echo $0 | sed 's/\-//g' )
 fi
 
-# execute machine specific bash script
-if [ -f "${HOME}/.prelocalrc" ]; then
-    source "$HOME/.prelocalrc"
-fi
 
 export HOSTNAME=`hostname`
 export TERM=screen-256color
@@ -768,10 +764,4 @@ fi
 # load agentsrc file
 if [ -f "${HOME}/.agentsrc" ]; then
     source "${HOME}/.agentsrc"
-fi
-
-
-# execute machine specific bash script
-if [ -f "${HOME}/.postlocalrc" ]; then
-    source "$HOME/.postlocalrc"
 fi

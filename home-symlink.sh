@@ -54,7 +54,20 @@ for ((i = 0; i < ${#all_files[@]}; i++)) do
         if [ "${relative}" = ".gitconfig" ]; then
             printf "Writing '%s':\n  include path: %s\n  dst: %s\n\n" "${relative}" "${src}" "${dst}"
             rm -rf "${dst}"
-            printf "[include]\n    path = %s\n" "${src}" > "${dst}"
+            printf "[include]\n    path = %s\n" "${src}" > "${dst}"]]
+            continue
+        fi
+
+        if [ "${relative}" = ".bashrc" ] || [ "${relative}" = ".zshrc" ] || [ "${relative}" = ".bash_profile" ] || [ "${relative}" = ".profile" ]; then
+            printf "Source-injecting '%s':\n  src: %s\n  dst: %s\n\n" "${relative}" "${src}" "${dst}"
+            source_line="source ${src}"
+            if [ -f "${dst}" ]; then
+                # Remove any existing line sourcing this file
+                grep -vF "${source_line}" "${dst}" > "${dst}.tmp" && mv "${dst}.tmp" "${dst}"
+            fi
+            # Prepend source line at the top
+            printf "%s\n" "${source_line}" | cat - "${dst}" 2>/dev/null > "${dst}.tmp"
+            mv "${dst}.tmp" "${dst}"
             continue
         fi
 
