@@ -720,7 +720,7 @@ if [ -d "${HOME}/.nvm" ]; then
 fi
 
 # Rust
-if [ -f "${HOME}/.cargo/env" ]; then
+if [ -d "${HOME}/.cargo" ] && [ -f "${HOME}/.cargo/env" ]; then
     source "$HOME/.cargo/env"
 fi
 
