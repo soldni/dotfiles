@@ -1,7 +1,3 @@
-[user]
-    name = Luca Soldaini
-	email = luca@soldaini.net
-
 [credential]
 	helper = store
 

@@ -758,6 +758,13 @@ elif [[ "${CURRENT_SHELL_NAME}" == "zsh" ]]; then
     fi
 fi
 
+# if brew is available, use this command to properly set shell env
+has_brew_cli=$(which cli 2>/dev/null)
+if [[ ! -z $has_brew_cli ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+
 # load agentsrc file
 if [ -f "${HOME}/.agentsrc" ]; then
     source "${HOME}/.agentsrc"

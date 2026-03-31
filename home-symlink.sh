@@ -26,8 +26,13 @@ if [ -z "${SIMLINK_DST}" ]; then
     SIMLINK_DST="${HOME}"
 fi
 
+
+echo "SIMLINK_SRC=${SIMLINK_SRC}"
+echo "SIMLINK_DST=${SIMLINK_DST}"
 all_files=( )
 IFS=$'\n' eval 'for i in `find ${SIMLINK_SRC}/.* ${SIMLINK_SRC}/* -name "*" -not -name ".DS_Store" -not -name "." -not -name ".." 2>/dev/null`; do all_files+=( "$i" ); done'
+printf "symlinking %s files...\n" "${#all_files[@]}"
+
 
 for ((i = 0; i < ${#all_files[@]}; i++)) do
     if [ -f "${all_files[i]}" ]; then
@@ -37,16 +42,24 @@ for ((i = 0; i < ${#all_files[@]}; i++)) do
       src="${SIMLINK_SRC}/${relative}"
       dst="${SIMLINK_DST}/${relative}"
 
-      if [ "${relative_dir}" != '.' ]; then
+        if [ "${relative_dir}" != '.' ]; then
             dest_rel_dir="${SIMLINK_DST}/${relative_dir}"
 
             if [ ! -d "${dest_rel_dir}" ]; then
                 rm -rf "${dest_rel_dir}"
             fi
             mkdir -p "${SIMLINK_DST}/${relative_dir}"
-      fi
-      printf "Symlinking '${relative}':\n  src: ${src}\n  dst: ${dst}\n\n"
-      rm -rf "${dst}"
-      ln -s "${src}" "${dst}"
+        fi
+
+        if [ "${relative}" = ".gitconfig" ]; then
+            printf "Writing '%s':\n  include path: %s\n  dst: %s\n\n" "${relative}" "${src}" "${dst}"
+            rm -rf "${dst}"
+            printf "[include]\n    path = %s\n" "${src}" > "${dst}"
+            continue
+        fi
+
+        printf "Symlinking '${relative}':\n  src: ${src}\n  dst: ${dst}\n\n"
+        rm -rf "${dst}"
+        ln -s "${src}" "${dst}"
     fi
 done
