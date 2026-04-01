@@ -154,9 +154,9 @@ set incsearch
 " sudo write
 ca w!! w !sudo tee >/dev/null "%"
 
-" open a new tab with shift+O
-nnoremap <C-o>  :edit<Space>
-nnoremap <S-o>  :tabe<Space>
+" open a file with ctrl+o, open in new tab with ctrl+o ctrl+o
+nnoremap <C-o>      :edit<Space>
+nnoremap <C-o><C-o> :tabe<Space>
 
 " unbind C-T so that it can be reused later
 nnoremap <C-T>  <NOP>
