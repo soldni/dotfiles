@@ -393,17 +393,27 @@ alias git-rm-submodule="submodule deinit"
 # shallow clone helpers
 function fast-clone-gh {
     if [[ -z "$1" || -z "$2" ]]; then
-        echo "usage: fast-clone-gh <owner/repo> <branch>" >&2
+        echo "usage: fast-clone-gh <owner/repo> <branch> [extra-args...]" >&2
         return 2
     fi
-    gh repo clone "$1" -- --depth 1 --branch "$2" --single-branch
+    local owner_repo="$1"
+    local branch="$2"
+    shift 2
+    gh repo clone "$owner_repo" -- --depth 1 --branch "$branch" --single-branch "$@"
 }
 function fast-clone-git {
     if [[ -z "$1" || -z "$2" ]]; then
-        echo "usage: fast-clone-git <repo-url> <branch>" >&2
+        echo "usage: fast-clone-git <repo-url> <branch> [extra-args...]" >&2
         return 2
     fi
-    git clone --depth 1 --branch "$2" --single-branch "$1"
+    local repo_url="$1"
+    local branch="$2"
+    shift 2
+    git clone --depth 1 --branch "$branch" --single-branch "$@" "$repo_url"
+}
+
+function git-status-fast {
+    git status -uno
 }
 
 # Use bash-completion if available

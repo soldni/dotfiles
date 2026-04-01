@@ -92,13 +92,11 @@
   "window.systemColorTheme": "auto",
   "window.title": "${rootName}${separator}${activeEditorMedium}",
   "window.titleSeparator": " · ",
-  "workbench.activityBar.location": "hidden",
   "workbench.colorTheme": "Monokai Pro Light (Filter Sun)",
   "workbench.editor.enablePreviewFromCodeNavigation": true,
   "workbench.fontAliasing": "auto",
   "workbench.iconTheme": "Monokai Pro Light (Filter Sun) Icons",
   "workbench.layoutControl.type": "menu",
-  "workbench.navigationControl.enabled": false,
   "workbench.preferredDarkColorTheme": "Monokai Pro (Filter Spectrum)",
   "workbench.preferredHighContrastColorTheme": "Monokai Pro (Filter Spectrum)",
   "workbench.preferredHighContrastLightColorTheme": "Monokai Pro Light (Filter Sun)",
@@ -111,10 +109,11 @@
   "claudeCode.hideOnboarding": true,
   "window.customTitleBarVisibility": "windowed",
   "peacock.affectTitleBar": false,
-  "workbench.layoutControl.enabled": false,
-  "window.commandCenter": false,
   "coloredTitleBar.colorOnStartup": true,
   "cSpell.userWords": [
     "Multimodal"
-  ]
+  ],
+  "workbench.navigationControl.enabled": false,
+  "window.commandCenter": false,
+  "workbench.activityBar.compact": true,
 }
