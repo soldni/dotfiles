@@ -390,6 +390,22 @@ alias git-init-submodules="git submodule update --init --recursive"
 alias git-pull-submodules="git pull --recurse-submodules"
 alias git-rm-submodule="submodule deinit"
 
+# shallow clone helpers
+function fast-clone-gh {
+    if [[ -z "$1" || -z "$2" ]]; then
+        echo "usage: fast-clone-gh <owner/repo> <branch>" >&2
+        return 2
+    fi
+    gh repo clone "$1" -- --depth 1 --branch "$2" --single-branch
+}
+function fast-clone-git {
+    if [[ -z "$1" || -z "$2" ]]; then
+        echo "usage: fast-clone-git <repo-url> <branch>" >&2
+        return 2
+    fi
+    git clone --depth 1 --branch "$2" --single-branch "$1"
+}
+
 # Use bash-completion if available
 if [[ "${CURRENT_SHELL_NAME}" == "bash" ]]; then
     [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
