@@ -406,67 +406,82 @@ fi
 
 # fuction to get what's changed
 get_dirty_git() {
-    porcelain=$(git status --porcelain 2>/dev/null)
+    # --no-optional-locks avoids stalling on a locked index.
+    # Porcelain v1: each line is "XY path" where X=index, Y=worktree.
+    local porcelain
+    porcelain=$(git --no-optional-locks status --porcelain 2>/dev/null)
 
     if [ -z "${porcelain}" ]; then
-        git_sync_status="$(git status 2>/dev/null)"
-        git_ahead=$(echo "${git_sync_status}" | grep 'Your branch is ahead')
-        if [ ! -z "${git_ahead}" ]; then
+        # Check ahead of upstream with a single lightweight rev-list call.
+        local ahead
+        ahead=$(git --no-optional-locks rev-list --count "@{u}..HEAD" 2>/dev/null)
+        if [ -n "${ahead}" ] && [ "${ahead}" -gt 0 ] 2>/dev/null; then
             echo 'P'
-        else
-            echo ''
         fi
-    else
-        git_status=""
-        if ([ ! -z "$(echo $porcelain | grep 'M ')" ] || [ ! -z "$(echo $porcelain | grep 'R ')" ]); then
-            # Modified/renamed
-            git_status="S${git_status}"
-        fi
-        if ([ ! -z "$(echo $porcelain | grep '? ')" ] || [ ! -z "$(echo $porcelain | grep 'A ')" ]); then
-            # Added/to add
-            git_status="I${git_status}"
-        fi
-        if [ ! -z "$(echo $porcelain | grep 'D ')" ]; then
-            # Deleted
-            git_status="D${git_status}"
-        fi
-
-        if [ -z $git_status ]; then
-            git_status="O"
-        fi
-
-        echo $git_status
+        return
     fi
+
+    local git_status=""
+    # Use bash [[ glob matching — no subshell grep forks.
+    # Porcelain lines: each starts with two-char XY status code.
+    # M or R in column 1 or 2 = modified/renamed staged or unstaged.
+    if [[ "${porcelain}" == *$'\nM '* ]] || [[ "${porcelain}" == *$'\n M'* ]] || \
+       [[ "${porcelain}" == "M "* ]] || [[ "${porcelain}" == " M"* ]] || \
+       [[ "${porcelain}" == *$'\nR '* ]] || [[ "${porcelain}" == "R "* ]]; then
+        git_status="S"
+    fi
+    if [[ "${porcelain}" == *$'\n?? '* ]] || [[ "${porcelain}" == *$'\nA '* ]] || \
+       [[ "${porcelain}" == "?? "* ]] || [[ "${porcelain}" == "A "* ]]; then
+        git_status="I${git_status}"
+    fi
+    if [[ "${porcelain}" == *$'\nD '* ]] || [[ "${porcelain}" == *$'\n D'* ]] || \
+       [[ "${porcelain}" == "D "* ]] || [[ "${porcelain}" == " D"* ]]; then
+        git_status="D${git_status}"
+    fi
+
+    if [ -z "${git_status}" ]; then
+        git_status="O"
+    fi
+
+    echo "${git_status}"
 }
 
 # get the name of the branch we are in
 parse_git_branch() {
-    is_git_repo=$(git rev-parse --is-inside-work-tree 2> /dev/null)
-    if [ -z "${is_git_repo}" ]; then
-        # exit if we are not in a git repo
-        return
+    # git rev-parse is faster than is-inside-work-tree for branch detection
+    local branch
+    branch=$(git --no-optional-locks symbolic-ref --short HEAD 2>/dev/null)
+
+    if [ -z "${branch}" ]; then
+        # Detached HEAD or not a git repo
+        branch=$(git --no-optional-locks rev-parse --short HEAD 2>/dev/null)
+        [ -z "${branch}" ] && return
     fi
 
     # we use + for worktrees and * for main repos
+    local symbol
     if [ -d ".git" ]; then
-        # inside main git repo
         symbol="*"
     elif [ -f ".git" ]; then
-        # inside a worktree
         symbol="+"
     else
-        # not a git repo
-        return
+        # Subdirectory of a repo: walk up to find .git
+        local gitdir
+        gitdir=$(git rev-parse --git-dir 2>/dev/null)
+        [ -z "${gitdir}" ] && return
+        if [ -f "${gitdir}/../.git" ] 2>/dev/null || [ "${gitdir}" != "${gitdir%/.git}" ]; then
+            symbol="+"
+        else
+            symbol="*"
+        fi
     fi
 
-    branch=$(git branch 2> /dev/null | grep -P '^\*' |  sed -e 's/* \(.*\)/\1/')
-    if [ ! -z "${branch}" ]; then
-        dirty="$(get_dirty_git)"
-        if [ -z "${dirty}" ]; then
-            echo "${symbol}${branch}"
-        else
-            echo "${symbol}${branch} [${dirty}]"
-        fi
+    local dirty
+    dirty="$(get_dirty_git)"
+    if [ -z "${dirty}" ]; then
+        echo "${symbol}${branch}"
+    else
+        echo "${symbol}${branch} [${dirty}]"
     fi
 }
 
