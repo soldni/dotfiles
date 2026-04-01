@@ -448,6 +448,9 @@ get_dirty_git() {
 
 # get the name of the branch we are in
 parse_git_branch() {
+    # Skip all git subprocesses when FAST_STATUS=1
+    [ "${FAST_STATUS}" = "1" ] && return
+
     # git rev-parse is faster than is-inside-work-tree for branch detection
     local branch
     branch=$(git --no-optional-locks symbolic-ref --short HEAD 2>/dev/null)
@@ -487,8 +490,23 @@ parse_git_branch() {
 
 # shorter prompt
 short_pwd() {
-    cwd=$(pwd | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')
-    echo -n $cwd
+    if [ "${FAST_STATUS}" = "1" ]; then
+        # Pure shell path shortening — no perl subprocess
+        local cwd="${PWD/#$HOME/~}"
+        local IFS='/'
+        local parts=()
+        read -ra parts <<< "${cwd}"
+        local result=""
+        local i
+        for (( i=0; i<${#parts[@]}-1; i++ )); do
+            [ -n "${parts[$i]}" ] && result+="${parts[$i]:0:1}/"
+        done
+        echo -n "${result}${parts[-1]}"
+    else
+        local cwd
+        cwd=$(pwd | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')
+        echo -n $cwd
+    fi
 }
 
 
