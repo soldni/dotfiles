@@ -29,20 +29,15 @@ fi
 
 echo "SIMLINK_SRC=${SIMLINK_SRC}"
 echo "SIMLINK_DST=${SIMLINK_DST}"
-all_files=( )
-IFS=$'\n' eval 'for i in `find ${SIMLINK_SRC}/.* ${SIMLINK_SRC}/* -name "*" -not -name ".DS_Store" -not -name "." -not -name ".." 2>/dev/null`; do all_files+=( "$i" ); done'
+mapfile -t all_files < <(find "${SIMLINK_SRC}" -mindepth 1 \
+  -not -name ".DS_Store" \
+  2>/dev/null)
 printf "symlinking %s files...\n" "${#all_files[@]}"
 
 
 for ((i = 0; i < ${#all_files[@]}; i++)) do
     if [ -f "${all_files[i]}" ]; then
         relative=$(echo "${all_files[i]}" | sed "s|${SIMLINK_SRC}/||g")
-
-        # older version of find may return paths with ../ in them, skip those
-        if [[ "${relative}" == ..* ]]; then
-            continue
-        fi
-
         relative_dir=$(dirname "${relative}")
 
       src="${SIMLINK_SRC}/${relative}"
