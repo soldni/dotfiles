@@ -200,6 +200,3 @@ function! ToggleNetrw()
     endif
 endfunction
 noremap <silent> <C-x> :call ToggleNetrw()<CR>
-
-" Map multiple escape sequences to <Esc>
-:inoremap <Esc> <Esc><Esc>

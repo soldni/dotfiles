@@ -82,7 +82,7 @@ write_app_shortcut com.apple.Safari "Quit and Keep Windows" "@q"
 write_app_shortcut com.amazon.Amazon-Chime "Hide Tab" "@\$w"
 write_app_shortcut com.quip.Desktop "Always Show Sidebar" "@~T"
 write_app_shortcut com.apple.mail "Archive" '@$A'
-write_app_shortcut com.microsoft.onenote.mac "Format->Styles->Code" "@~\$k"
+write_app_shortcut com.microsoft.onenote.mac "\033Format\033Styles\033Code" "@~\$k"
 
 # Siri keyboard shortcut: disable trigger shortcut
 defaults write com.apple.Siri HotkeyTag -int 4
