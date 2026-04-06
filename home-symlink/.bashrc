@@ -425,61 +425,62 @@ fi
 
 # command to attach to to a running slurm job with a menu of options if there are multiple
 sattach() {
-  local command_filter="${SATTACH_COMMAND:-\(null\)}"
+  local command_filter="${SATTACH_COMMAND:-"(null)"}"
   local -a job_ids=()
   local -a menu_lines=()
-  local line jobid jobname part state elapsed nodelist scontrol_line
-  local count=0 choice selected_job
+  local jobid part jobname state elapsed nodelist scontrol_line
+  local i choice selected_job
 
-  # Build candidate list from squeue-like output, then filter by Command=...
-  while IFS=$'\t' read -r jobid part jobname state elapsed nodelist; do
-    [[ -z "$jobid" ]] && continue
+  while IFS='|' read -r jobid part jobname state elapsed nodelist; do
+    [[ -n "$jobid" ]] || continue
 
-    scontrol_line="$(scontrol show job -o "$jobid" 2>/dev/null)" || continue
+    scontrol_line="$(command scontrol show job -o "$jobid" 2>/dev/null)" || continue
 
-    if [[ "$scontrol_line" == *"Command=${command_filter}"* ]]; then
+    if [[ -z "$command_filter" ]] || grep -Fq "Command=${command_filter}" <<<"$scontrol_line"; then
       job_ids+=("$jobid")
-      menu_lines+=("$(printf '%-10s %-12s %-24s %-3s %-12s %s' \
+      menu_lines+=("$(printf '%-10s %-16s %-24s %-3s %-12s %s' \
         "$jobid" "$part" "$jobname" "$state" "$elapsed" "$nodelist")")
-      ((count++))
     fi
-  done < <(squeue --me -h -o "%A\t%P\t%j\t%T\t%M\t%R")
+  done < <(command squeue --me -h -o "%A|%P|%j|%t|%M|%R")
 
-  if (( count == 0 )); then
+  if (( ${#job_ids[@]} == 0 )); then
     echo "No matching jobs found."
-    echo "Current filter: Command=${command_filter}"
-    echo "Set SATTACH_COMMAND to change it, for example:"
-    echo "  export SATTACH_COMMAND='bash'"
+    if [[ -n "$command_filter" ]]; then
+      echo "Current filter: Command=${command_filter}"
+      echo "Override with, for example:"
+      echo "  export SATTACH_COMMAND=/bin/bash"
+      echo "Or disable filtering entirely for this shell:"
+      echo "  export SATTACH_COMMAND="
+    fi
     return 1
   fi
 
-  if (( count == 1 )); then
+  if (( ${#job_ids[@]} == 1 )); then
     echo "Attaching to:"
-    printf '%-10s %-12s %-24s %-3s %-12s %s\n' \
-      "JOBID" "PARTITION" "NAME" "ST" "TIME" "NODELIST"
+    printf '%-10s %-16s %-24s %-3s %-12s %s\n' \
+      "JOBID" "PARTITION" "NAME" "ST" "TIME" "NODELIST(REASON)"
     echo "${menu_lines[0]}"
-    exec srun --jobid="${job_ids[0]}" --pty bash
+    command srun --jobid="${job_ids[0]}" --pty bash
+    return
   fi
 
-  printf '%-4s %-10s %-12s %-24s %-3s %-12s %s\n' \
-    "#" "JOBID" "PARTITION" "NAME" "ST" "TIME" "NODELIST"
+  printf '%-4s %-10s %-16s %-24s %-3s %-12s %s\n' \
+    "#" "JOBID" "PARTITION" "NAME" "ST" "TIME" "NODELIST(REASON)"
 
-  for ((i = 0; i < count; i++)); do
+  for ((i = 0; i < ${#job_ids[@]}; i++)); do
     printf '%-4s %s\n' "$((i + 1))" "${menu_lines[$i]}"
   done
 
   while true; do
-    read -r -p "Attach to which job? [1-${count}] " choice
-
-    if [[ "$choice" =~ ^[0-9]+$ ]] && (( choice >= 1 && choice <= count )); then
+    read -r -p "Attach to which job? [1-${#job_ids[@]}] " choice
+    if [[ "$choice" =~ ^[0-9]+$ ]] && (( choice >= 1 && choice <= ${#job_ids[@]} )); then
       selected_job="${job_ids[$((choice - 1))]}"
-      exec srun --jobid="$selected_job" --pty bash
+      command srun --jobid="$selected_job" --pty bash
+      return
     fi
-
     echo "Invalid selection."
   done
 }
-
 
 # if you have acme.sh installed for
 # Let's Encrypt, add it to the path
