@@ -423,6 +423,63 @@ if [[ "${CURRENT_SHELL_NAME}" == "bash" ]]; then
     [[ -r "/etc/profile.d/bash_completion.sh" ]] && . "/etc/profile.d/bash_completion.sh"
 fi
 
+# command to attach to to a running slurm job with a menu of options if there are multiple
+sattach() {
+  local command_filter="${SATTACH_COMMAND:-\(null\)}"
+  local -a job_ids=()
+  local -a menu_lines=()
+  local line jobid jobname part state elapsed nodelist scontrol_line
+  local count=0 choice selected_job
+
+  # Build candidate list from squeue-like output, then filter by Command=...
+  while IFS=$'\t' read -r jobid part jobname state elapsed nodelist; do
+    [[ -z "$jobid" ]] && continue
+
+    scontrol_line="$(scontrol show job -o "$jobid" 2>/dev/null)" || continue
+
+    if [[ "$scontrol_line" == *"Command=${command_filter}"* ]]; then
+      job_ids+=("$jobid")
+      menu_lines+=("$(printf '%-10s %-12s %-24s %-3s %-12s %s' \
+        "$jobid" "$part" "$jobname" "$state" "$elapsed" "$nodelist")")
+      ((count++))
+    fi
+  done < <(squeue --me -h -o "%A\t%P\t%j\t%T\t%M\t%R")
+
+  if (( count == 0 )); then
+    echo "No matching jobs found."
+    echo "Current filter: Command=${command_filter}"
+    echo "Set SATTACH_COMMAND to change it, for example:"
+    echo "  export SATTACH_COMMAND='bash'"
+    return 1
+  fi
+
+  if (( count == 1 )); then
+    echo "Attaching to:"
+    printf '%-10s %-12s %-24s %-3s %-12s %s\n' \
+      "JOBID" "PARTITION" "NAME" "ST" "TIME" "NODELIST"
+    echo "${menu_lines[0]}"
+    exec srun --jobid="${job_ids[0]}" --pty bash
+  fi
+
+  printf '%-4s %-10s %-12s %-24s %-3s %-12s %s\n' \
+    "#" "JOBID" "PARTITION" "NAME" "ST" "TIME" "NODELIST"
+
+  for ((i = 0; i < count; i++)); do
+    printf '%-4s %s\n' "$((i + 1))" "${menu_lines[$i]}"
+  done
+
+  while true; do
+    read -r -p "Attach to which job? [1-${count}] " choice
+
+    if [[ "$choice" =~ ^[0-9]+$ ]] && (( choice >= 1 && choice <= count )); then
+      selected_job="${job_ids[$((choice - 1))]}"
+      exec srun --jobid="$selected_job" --pty bash
+    fi
+
+    echo "Invalid selection."
+  done
+}
+
 
 # if you have acme.sh installed for
 # Let's Encrypt, add it to the path
