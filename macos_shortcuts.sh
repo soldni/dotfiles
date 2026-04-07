@@ -106,35 +106,35 @@ disable_symbolic_hotkey 65
 # Window tiling shortcuts
 # Nested menu items use ESC-delimited menu paths in NSUserKeyEquivalents,
 # e.g. "Window > Move & Resize > Left".
+# Disabling because using mooom
+# ## Fill: cmd+opt+shift+return
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Fill" "@~\$\\U21a9"
 
-## Fill: cmd+opt+shift+return
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Fill" "@~\$\\U21a9"
+# ## Center: cmd+opt+shift+c
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Center" "@~\$c"
 
-## Center: cmd+opt+shift+c
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Center" "@~\$c"
+# ## Return to Previous Size: cmd+opt+shift+r
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Return to Previous Size" "@~\$r"
 
-## Return to Previous Size: cmd+opt+shift+r
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Return to Previous Size" "@~\$r"
+# ## Halves: cmd+opt+shift+arrows
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Left Half" "@~\$\\U2190"
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Right Half" "@~\$\\U2192"
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Top Half" "@~\$\\U2191"
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Bottom Half" "@~\$\\U2193"
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Left" "@~\$\\U2190"
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Right" "@~\$\\U2192"
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top" "@~\$\\U2191"
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom" "@~\$\\U2193"
 
-## Halves: cmd+opt+shift+arrows
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Left Half" "@~\$\\U2190"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Right Half" "@~\$\\U2192"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Top Half" "@~\$\\U2191"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Bottom Half" "@~\$\\U2193"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Left" "@~\$\\U2190"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Right" "@~\$\\U2192"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top" "@~\$\\U2191"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom" "@~\$\\U2193"
-
-## Quarters: cmd+opt+shift+h/l/j/k
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Top Left Quarter" "@~\$h"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Top Right Quarter" "@~\$l"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Bottom Left Quarter" "@~\$j"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Bottom Right Quarter" "@~\$k"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top Left" "@~\$h"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top Right" "@~\$l"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom Left" "@~\$j"
-defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom Right" "@~\$k"
+# ## Quarters: cmd+opt+shift+h/l/j/k
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Top Left Quarter" "@~\$h"
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Top Right Quarter" "@~\$l"
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Bottom Left Quarter" "@~\$j"
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Tile Bottom Right Quarter" "@~\$k"
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top Left" "@~\$h"
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Top Right" "@~\$l"
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom Left" "@~\$j"
+# defaults write -globalDomain NSUserKeyEquivalents -dict-add "\033Window\033Move & Resize\033Bottom Right" "@~\$k"
 
 ## Disable Arrange actions (symbolic hotkeys, not menu shortcuts).
 for key in 248 249 250 251 256; do

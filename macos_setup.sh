@@ -473,6 +473,7 @@ brew_cask_to_install=(
     'macvim'                # vim
     'sketch'                # vector design
     'slack'                 # chat app
+    'moom'                  # window manager
 )
 
 if [[ "${is_personal_like}" == "true" ]]; then
@@ -488,7 +489,8 @@ fi
 
 if [[ "${is_work_like}" == "true" ]]; then
     brew_cask_to_install+=(
-        'erictli/tap/scratch'
+        'sidequery/tap/mdnb'    # note-taking app; backed in git
+        'cameracontroller'      # manage 3rd party webcam settings
     )
 fi
 
