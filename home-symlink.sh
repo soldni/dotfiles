@@ -55,7 +55,7 @@ for ((i = 0; i < ${#all_files[@]}; i++)) do
         if [ "${relative}" = ".gitconfig" ]; then
             printf "Writing '%s':\n  include path: %s\n  dst: %s\n\n" "${relative}" "${src}" "${dst}"
             rm -rf "${dst}"
-            printf "[include]\n    path = %s\n" "${src}" > "${dst}"]]
+            printf "[include]\n    path = %s\n" "${src}" > "${dst}"
             continue
         fi
 
