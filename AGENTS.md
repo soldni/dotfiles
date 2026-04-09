@@ -93,8 +93,7 @@ Instead, this repo uses `plist_manager.sh` to export/import preference domains v
 ```
 
 During backup, the script automatically strips:
-- **Top-level keys** matching sensitive patterns: `license`, `serial`, `registration`, `token`, `email`, `account`, `SULastCheckTime`, `PMSparkleWrapperUpdateStatus`, `NSWindow Frame *`.
-- **Nested keys** at any depth: `Window Description`, `Snapshot`, `Snapshot Screens`, `PID`, `Window Number`, `Window Title` (app-specific window metadata containing hostnames, file paths, and process IDs).
+- **Top-level keys** matching sensitive patterns: `license`, `serial`, `registration`, `email`, `NSWindow Frame *`.
 
 ### Restoring preferences
 

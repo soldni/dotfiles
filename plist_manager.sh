@@ -33,24 +33,11 @@ SENSITIVE_TOP_LEVEL_PATTERNS=(
     'license'
     'serial'
     'registration'
-    'token'
     'email'
-    'account'
-    'SULastCheckTime'
-    'PMSparkleWrapperUpdateStatus'
     'NSWindow Frame'
 )
 # Recursive patterns: exact key names stripped at any nesting depth.
-# Moom stores per-window snapshot metadata (PIDs, window titles with SSH hosts,
-# app names) inside "Window Description" / "Snapshot" dicts — these are
-# machine-specific and contain PII.
 SENSITIVE_RECURSIVE_KEYS=(
-    'Window Description'
-    'Snapshot'
-    'Snapshot Screens'
-    'PID'
-    'Window Number'
-    'Window Title'
 )
 # ────────────────────────────────────────────────────────────────────────────
 
@@ -103,7 +90,8 @@ backup_domain() {
 import plistlib, sys, re
 
 top_patterns = sys.argv[1].split('|')
-recursive_keys = set(sys.argv[2].split('|'))
+recursive_keys_raw = sys.argv[2]
+recursive_keys = set(recursive_keys_raw.split('|')) if recursive_keys_raw else set()
 
 with open(sys.argv[3], 'rb') as f:
     data = plistlib.load(f)
@@ -128,7 +116,8 @@ def scrub(obj):
         for item in obj:
             scrub(item)
 
-scrub(data)
+if recursive_keys:
+    scrub(data)
 
 with open(sys.argv[3], 'wb') as f:
     plistlib.dump(data, f, fmt=plistlib.FMT_XML)

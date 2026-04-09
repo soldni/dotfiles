@@ -15,6 +15,67 @@
 			<array>
 				<dict>
 					<key>Action</key>
+					<integer>41</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>1C7BB65C-782A-4386-AFCD-CCAFC0AA13E0</string>
+						<key>Key Code</key>
+						<integer>47</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>.</string>
+					</dict>
+					<key>Identifier</key>
+					<string>1C7BB65C-782A-4386-AFCD-CCAFC0AA13E0</string>
+					<key>Loop Through Displays</key>
+					<false/>
+					<key>Move Direction</key>
+					<integer>5</integer>
+					<key>Resize Proportionally</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>41</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>D3369802-67F0-4190-A06B-5F89F67F60D6</string>
+						<key>Key Code</key>
+						<integer>43</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>,</string>
+					</dict>
+					<key>Identifier</key>
+					<string>D3369802-67F0-4190-A06B-5F89F67F60D6</string>
+					<key>Loop Through Displays</key>
+					<true/>
+					<key>Move Direction</key>
+					<integer>9</integer>
+					<key>Resize Proportionally</key>
+					<false/>
+				</dict>
+			</array>
+			<key>Children Expanded</key>
+			<true/>
+			<key>Identifier</key>
+			<string>75B4B6CC-8C54-4345-9457-4916377D3BAE</string>
+			<key>Title</key>
+			<string>Move Displays</string>
+		</dict>
+		<dict>
+			<key>Action</key>
+			<integer>10001</integer>
+			<key>Chain Mode</key>
+			<integer>0</integer>
+			<key>Children</key>
+			<array>
+				<dict>
+					<key>Action</key>
 					<integer>19</integer>
 					<key>Configuration Grid</key>
 					<dict>
@@ -29,6 +90,27 @@
 					<string>{{0, 0.66666666666666674}, {1, 0.33333333333333326}}</string>
 					<key>Title</key>
 					<string>1/3 Top</string>
+					<key>Window Description</key>
+					<dict>
+						<key>Application Name</key>
+						<string>Code</string>
+						<key>Available Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Bundle Identifier</key>
+						<string>com.microsoft.vscode</string>
+						<key>PID</key>
+						<string>70678</string>
+						<key>Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Window Frame</key>
+						<string>{{-1080, 0}, {1080, 960}}</string>
+						<key>Window Number</key>
+						<string>28945</string>
+						<key>Window Subrole</key>
+						<string>AXStandardWindow</string>
+						<key>Window Title</key>
+						<string>tool_chained [SSH: slurm-cpu-icelake-238-031] · user_scripts/lucasoldaini/dreamworks/clean_fun/prompts/phase2.py</string>
+					</dict>
 				</dict>
 				<dict>
 					<key>Action</key>
@@ -46,6 +128,27 @@
 					<string>{{0, 0}, {1, 0.33333333333333331}}</string>
 					<key>Title</key>
 					<string>1/3 Bottom</string>
+					<key>Window Description</key>
+					<dict>
+						<key>Application Name</key>
+						<string>Code</string>
+						<key>Available Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Bundle Identifier</key>
+						<string>com.microsoft.vscode</string>
+						<key>PID</key>
+						<string>70678</string>
+						<key>Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Window Frame</key>
+						<string>{{-1080, 0}, {1080, 960}}</string>
+						<key>Window Number</key>
+						<string>28945</string>
+						<key>Window Subrole</key>
+						<string>AXStandardWindow</string>
+						<key>Window Title</key>
+						<string>tool_chained [SSH: slurm-cpu-icelake-238-031] · user_scripts/lucasoldaini/dreamworks/clean_fun/prompts/phase2.py</string>
+					</dict>
 				</dict>
 				<dict>
 					<key>Action</key>
@@ -63,6 +166,27 @@
 					<string>{{0, 0}, {0.33333333333333331, 1}}</string>
 					<key>Title</key>
 					<string>1/3 Left</string>
+					<key>Window Description</key>
+					<dict>
+						<key>Application Name</key>
+						<string>Code</string>
+						<key>Available Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Bundle Identifier</key>
+						<string>com.microsoft.vscode</string>
+						<key>PID</key>
+						<string>70678</string>
+						<key>Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Window Frame</key>
+						<string>{{-1080, 0}, {1080, 960}}</string>
+						<key>Window Number</key>
+						<string>28945</string>
+						<key>Window Subrole</key>
+						<string>AXStandardWindow</string>
+						<key>Window Title</key>
+						<string>tool_chained [SSH: slurm-cpu-icelake-238-031] · user_scripts/lucasoldaini/dreamworks/clean_fun/prompts/phase2.py</string>
+					</dict>
 				</dict>
 				<dict>
 					<key>Action</key>
@@ -80,6 +204,27 @@
 					<string>{{0.66666666666666674, 0}, {0.33333333333333326, 1}}</string>
 					<key>Title</key>
 					<string>1/3 Right</string>
+					<key>Window Description</key>
+					<dict>
+						<key>Application Name</key>
+						<string>Code</string>
+						<key>Available Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Bundle Identifier</key>
+						<string>com.microsoft.vscode</string>
+						<key>PID</key>
+						<string>70678</string>
+						<key>Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Window Frame</key>
+						<string>{{-1080, 0}, {1080, 960}}</string>
+						<key>Window Number</key>
+						<string>28945</string>
+						<key>Window Subrole</key>
+						<string>AXStandardWindow</string>
+						<key>Window Title</key>
+						<string>tool_chained [SSH: slurm-cpu-icelake-238-031] · user_scripts/lucasoldaini/dreamworks/clean_fun/prompts/phase2.py</string>
+					</dict>
 				</dict>
 			</array>
 			<key>Children Expanded</key>
@@ -123,6 +268,27 @@
 					<string>{{0, 0.33333333333333331}, {1, 0.66666666666666674}}</string>
 					<key>Title</key>
 					<string>2/3 Top</string>
+					<key>Window Description</key>
+					<dict>
+						<key>Application Name</key>
+						<string>Code</string>
+						<key>Available Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Bundle Identifier</key>
+						<string>com.microsoft.vscode</string>
+						<key>PID</key>
+						<string>70678</string>
+						<key>Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Window Frame</key>
+						<string>{{-1080, 0}, {1080, 960}}</string>
+						<key>Window Number</key>
+						<string>28945</string>
+						<key>Window Subrole</key>
+						<string>AXStandardWindow</string>
+						<key>Window Title</key>
+						<string>tool_chained [SSH: slurm-cpu-icelake-238-031] · user_scripts/lucasoldaini/dreamworks/clean_fun/prompts/phase2.py</string>
+					</dict>
 				</dict>
 				<dict>
 					<key>Action</key>
@@ -140,6 +306,27 @@
 					<string>{{0, 0}, {0.66666666666666674, 1}}</string>
 					<key>Title</key>
 					<string>2/3 Left</string>
+					<key>Window Description</key>
+					<dict>
+						<key>Application Name</key>
+						<string>Code</string>
+						<key>Available Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Bundle Identifier</key>
+						<string>com.microsoft.vscode</string>
+						<key>PID</key>
+						<string>70678</string>
+						<key>Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Window Frame</key>
+						<string>{{-1080, 0}, {1080, 960}}</string>
+						<key>Window Number</key>
+						<string>28945</string>
+						<key>Window Subrole</key>
+						<string>AXStandardWindow</string>
+						<key>Window Title</key>
+						<string>tool_chained [SSH: slurm-cpu-icelake-238-031] · user_scripts/lucasoldaini/dreamworks/clean_fun/prompts/phase2.py</string>
+					</dict>
 				</dict>
 				<dict>
 					<key>Action</key>
@@ -157,6 +344,27 @@
 					<string>{{0, 0}, {1, 0.66666666666666674}}</string>
 					<key>Title</key>
 					<string>2/3 Bottom</string>
+					<key>Window Description</key>
+					<dict>
+						<key>Application Name</key>
+						<string>Code</string>
+						<key>Available Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Bundle Identifier</key>
+						<string>com.microsoft.vscode</string>
+						<key>PID</key>
+						<string>70678</string>
+						<key>Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Window Frame</key>
+						<string>{{-1080, 0}, {1080, 960}}</string>
+						<key>Window Number</key>
+						<string>28945</string>
+						<key>Window Subrole</key>
+						<string>AXStandardWindow</string>
+						<key>Window Title</key>
+						<string>tool_chained [SSH: slurm-cpu-icelake-238-031] · user_scripts/lucasoldaini/dreamworks/clean_fun/prompts/phase2.py</string>
+					</dict>
 				</dict>
 				<dict>
 					<key>Action</key>
@@ -174,6 +382,27 @@
 					<string>{{0.33333333333333331, 0}, {0.66666666666666674, 1}}</string>
 					<key>Title</key>
 					<string>2/3 Right</string>
+					<key>Window Description</key>
+					<dict>
+						<key>Application Name</key>
+						<string>Code</string>
+						<key>Available Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Bundle Identifier</key>
+						<string>com.microsoft.vscode</string>
+						<key>PID</key>
+						<string>70678</string>
+						<key>Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Window Frame</key>
+						<string>{{-1080, 0}, {1080, 960}}</string>
+						<key>Window Number</key>
+						<string>28945</string>
+						<key>Window Subrole</key>
+						<string>AXStandardWindow</string>
+						<key>Window Title</key>
+						<string>tool_chained [SSH: slurm-cpu-icelake-238-031] · user_scripts/lucasoldaini/dreamworks/clean_fun/prompts/phase2.py</string>
+					</dict>
 				</dict>
 			</array>
 			<key>Children Expanded</key>
@@ -220,6 +449,30 @@
 					<true/>
 					<key>Identifier</key>
 					<string>7F7C83E9-39D4-413F-B950-1598DAB9E7F6</string>
+					<key>Snapshot</key>
+					<array>
+						<dict>
+							<key>Application Name</key>
+							<string>Code</string>
+							<key>Available Screen Frame</key>
+							<string>{{-1080, 0}, {1080, 1920}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.microsoft.vscode</string>
+							<key>Screen Frame</key>
+							<string>{{-1080, 0}, {1080, 1920}}</string>
+							<key>Window Frame</key>
+							<string>{{-810, 480}, {540, 960}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>Visual Studio Code</string>
+						</dict>
+					</array>
+					<key>Snapshot Screens</key>
+					<array>
+						<string>{{0, 0}, {1080, 1920}}</string>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+					</array>
 					<key>Stubborn</key>
 					<false/>
 					<key>Title</key>
@@ -244,6 +497,30 @@
 					<true/>
 					<key>Identifier</key>
 					<string>CFD1FB42-D144-487B-BC0E-24B0EA7F7695</string>
+					<key>Snapshot</key>
+					<array>
+						<dict>
+							<key>Application Name</key>
+							<string>Code</string>
+							<key>Available Screen Frame</key>
+							<string>{{-1080, 0}, {1080, 1920}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.microsoft.vscode</string>
+							<key>Screen Frame</key>
+							<string>{{-1080, 0}, {1080, 1920}}</string>
+							<key>Window Frame</key>
+							<string>{{-810, 0}, {540, 1920}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>Visual Studio Code</string>
+						</dict>
+					</array>
+					<key>Snapshot Screens</key>
+					<array>
+						<string>{{0, 0}, {1080, 1920}}</string>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+					</array>
 					<key>Stubborn</key>
 					<false/>
 					<key>Title</key>
@@ -268,6 +545,30 @@
 					<true/>
 					<key>Identifier</key>
 					<string>B1A53CFE-C56A-45E1-9926-68344A438306</string>
+					<key>Snapshot</key>
+					<array>
+						<dict>
+							<key>Application Name</key>
+							<string>Code</string>
+							<key>Available Screen Frame</key>
+							<string>{{-1080, 0}, {1080, 1920}}</string>
+							<key>Bundle Identifier</key>
+							<string>com.microsoft.vscode</string>
+							<key>Screen Frame</key>
+							<string>{{-1080, 0}, {1080, 1920}}</string>
+							<key>Window Frame</key>
+							<string>{{-1080, 480}, {1080, 960}}</string>
+							<key>Window Subrole</key>
+							<string>AXStandardWindow</string>
+							<key>Window Title</key>
+							<string>Visual Studio Code</string>
+						</dict>
+					</array>
+					<key>Snapshot Screens</key>
+					<array>
+						<string>{{0, 0}, {1080, 1920}}</string>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+					</array>
 					<key>Stubborn</key>
 					<false/>
 					<key>Title</key>
@@ -315,6 +616,27 @@
 					<string>{{0, 0.5}, {1, 0.5}}</string>
 					<key>Title</key>
 					<string>1/2 Top</string>
+					<key>Window Description</key>
+					<dict>
+						<key>Application Name</key>
+						<string>Code</string>
+						<key>Available Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Bundle Identifier</key>
+						<string>com.microsoft.vscode</string>
+						<key>PID</key>
+						<string>70678</string>
+						<key>Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Window Frame</key>
+						<string>{{-1080, 0}, {1080, 960}}</string>
+						<key>Window Number</key>
+						<string>28945</string>
+						<key>Window Subrole</key>
+						<string>AXStandardWindow</string>
+						<key>Window Title</key>
+						<string>tool_chained [SSH: slurm-cpu-icelake-238-031] · user_scripts/lucasoldaini/dreamworks/clean_fun/prompts/phase2.py</string>
+					</dict>
 				</dict>
 				<dict>
 					<key>Action</key>
@@ -332,6 +654,27 @@
 					<string>{{0, 0}, {0.5, 1}}</string>
 					<key>Title</key>
 					<string>1/2 Left</string>
+					<key>Window Description</key>
+					<dict>
+						<key>Application Name</key>
+						<string>Code</string>
+						<key>Available Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Bundle Identifier</key>
+						<string>com.microsoft.vscode</string>
+						<key>PID</key>
+						<string>70678</string>
+						<key>Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Window Frame</key>
+						<string>{{-1080, 0}, {1080, 960}}</string>
+						<key>Window Number</key>
+						<string>28945</string>
+						<key>Window Subrole</key>
+						<string>AXStandardWindow</string>
+						<key>Window Title</key>
+						<string>tool_chained [SSH: slurm-cpu-icelake-238-031] · user_scripts/lucasoldaini/dreamworks/clean_fun/prompts/phase2.py</string>
+					</dict>
 				</dict>
 				<dict>
 					<key>Action</key>
@@ -349,6 +692,27 @@
 					<string>{{0, 0}, {1, 0.5}}</string>
 					<key>Title</key>
 					<string>1/2 Bottom</string>
+					<key>Window Description</key>
+					<dict>
+						<key>Application Name</key>
+						<string>Code</string>
+						<key>Available Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Bundle Identifier</key>
+						<string>com.microsoft.vscode</string>
+						<key>PID</key>
+						<string>70678</string>
+						<key>Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Window Frame</key>
+						<string>{{-1080, 0}, {1080, 960}}</string>
+						<key>Window Number</key>
+						<string>28945</string>
+						<key>Window Subrole</key>
+						<string>AXStandardWindow</string>
+						<key>Window Title</key>
+						<string>tool_chained [SSH: slurm-cpu-icelake-238-031] · user_scripts/lucasoldaini/dreamworks/clean_fun/prompts/phase2.py</string>
+					</dict>
 				</dict>
 				<dict>
 					<key>Action</key>
@@ -366,6 +730,27 @@
 					<string>{{0.5, 0}, {0.5, 1}}</string>
 					<key>Title</key>
 					<string>1/2 Right</string>
+					<key>Window Description</key>
+					<dict>
+						<key>Application Name</key>
+						<string>Code</string>
+						<key>Available Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Bundle Identifier</key>
+						<string>com.microsoft.vscode</string>
+						<key>PID</key>
+						<string>70678</string>
+						<key>Screen Frame</key>
+						<string>{{-1080, 0}, {1080, 1920}}</string>
+						<key>Window Frame</key>
+						<string>{{-1080, 0}, {1080, 960}}</string>
+						<key>Window Number</key>
+						<string>28945</string>
+						<key>Window Subrole</key>
+						<string>AXStandardWindow</string>
+						<key>Window Title</key>
+						<string>tool_chained [SSH: slurm-cpu-icelake-238-031] · user_scripts/lucasoldaini/dreamworks/clean_fun/prompts/phase2.py</string>
+					</dict>
 				</dict>
 			</array>
 			<key>Children Expanded</key>
@@ -410,11 +795,11 @@
 	<key>Key Control: Arrow: Option</key>
 	<integer>53</integer>
 	<key>Key Control: Escape</key>
-	<integer>0</integer>
-	<key>Key Control: Return</key>
-	<integer>11</integer>
-	<key>Key Control: Space</key>
 	<integer>1</integer>
+	<key>Key Control: Return</key>
+	<integer>0</integer>
+	<key>Key Control: Space</key>
+	<integer>11</integer>
 	<key>Keyboard Controls</key>
 	<dict>
 		<key>Identifier</key>
@@ -438,6 +823,8 @@
 	<integer>3</integer>
 	<key>Mouse Controls Grid: Rows</key>
 	<integer>8</integer>
+	<key>PMSparkleWrapperUpdateStatus</key>
+	<string>4.4.2:1775586462:</string>
 	<key>Palette</key>
 	<dict>
 		<key>3-3</key>
@@ -459,6 +846,8 @@
 	<true/>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
+	<key>SULastCheckTime</key>
+	<date>2026-04-09T15:43:28Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Show Intro Popover</key>
