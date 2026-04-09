@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Application Mode</key>
+	<integer>2</integer>
+	<key>Custom Controls (4001)</key>
+	<array>
+		<dict>
+			<key>Action</key>
+			<integer>10001</integer>
+			<key>Chain Mode</key>
+			<integer>0</integer>
+			<key>Children</key>
+			<array>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Configuration Grid</key>
+					<dict>
+						<key>Configuration Grid: Columns</key>
+						<integer>9</integer>
+						<key>Configuration Grid: Rows</key>
+						<integer>9</integer>
+					</dict>
+					<key>Identifier</key>
+					<string>D60C7B7E-FAA1-4584-91C1-8FFD17F84268</string>
+					<key>Relative Frame</key>
+					<string>{{0, 0.66666666666666674}, {1, 0.33333333333333326}}</string>
+					<key>Title</key>
+					<string>1/3 Top</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Configuration Grid</key>
+					<dict>
+						<key>Configuration Grid: Columns</key>
+						<integer>9</integer>
+						<key>Configuration Grid: Rows</key>
+						<integer>9</integer>
+					</dict>
+					<key>Identifier</key>
+					<string>10D5D785-6C48-4A57-B040-61F99598A607</string>
+					<key>Relative Frame</key>
+					<string>{{0, 0}, {1, 0.33333333333333331}}</string>
+					<key>Title</key>
+					<string>1/3 Bottom</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Configuration Grid</key>
+					<dict>
+						<key>Configuration Grid: Columns</key>
+						<integer>9</integer>
+						<key>Configuration Grid: Rows</key>
+						<integer>9</integer>
+					</dict>
+					<key>Identifier</key>
+					<string>FCFD5778-7CC7-467F-B8B2-70568F5F38DD</string>
+					<key>Relative Frame</key>
+					<string>{{0, 0}, {0.33333333333333331, 1}}</string>
+					<key>Title</key>
+					<string>1/3 Left</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Configuration Grid</key>
+					<dict>
+						<key>Configuration Grid: Columns</key>
+						<integer>9</integer>
+						<key>Configuration Grid: Rows</key>
+						<integer>9</integer>
+					</dict>
+					<key>Identifier</key>
+					<string>AF46BC4B-81A8-44AF-91E9-A83CC7466C7E</string>
+					<key>Relative Frame</key>
+					<string>{{0.66666666666666674, 0}, {0.33333333333333326, 1}}</string>
+					<key>Title</key>
+					<string>1/3 Right</string>
+				</dict>
+			</array>
+			<key>Children Expanded</key>
+			<true/>
+			<key>Hot Key</key>
+			<dict>
+				<key>Identifier</key>
+				<string>1FCC5D54-0699-4910-9958-0DEDFD935A80</string>
+				<key>Key Code</key>
+				<integer>6</integer>
+				<key>Modifier Flags</key>
+				<integer>256</integer>
+				<key>Visual Representation</key>
+				<string>Z</string>
+			</dict>
+			<key>Identifier</key>
+			<string>1FCC5D54-0699-4910-9958-0DEDFD935A80</string>
+			<key>Title</key>
+			<string>1/3</string>
+		</dict>
+		<dict>
+			<key>Action</key>
+			<integer>10001</integer>
+			<key>Chain Mode</key>
+			<integer>0</integer>
+			<key>Children</key>
+			<array>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Configuration Grid</key>
+					<dict>
+						<key>Configuration Grid: Columns</key>
+						<integer>9</integer>
+						<key>Configuration Grid: Rows</key>
+						<integer>9</integer>
+					</dict>
+					<key>Identifier</key>
+					<string>EC1A2E9C-01EB-4630-BC9E-3909D5064362</string>
+					<key>Relative Frame</key>
+					<string>{{0, 0.33333333333333331}, {1, 0.66666666666666674}}</string>
+					<key>Title</key>
+					<string>2/3 Top</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Configuration Grid</key>
+					<dict>
+						<key>Configuration Grid: Columns</key>
+						<integer>9</integer>
+						<key>Configuration Grid: Rows</key>
+						<integer>9</integer>
+					</dict>
+					<key>Identifier</key>
+					<string>A427B751-8C27-44CD-A233-E8AF04C9DCE8</string>
+					<key>Relative Frame</key>
+					<string>{{0, 0}, {0.66666666666666674, 1}}</string>
+					<key>Title</key>
+					<string>2/3 Left</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Configuration Grid</key>
+					<dict>
+						<key>Configuration Grid: Columns</key>
+						<integer>9</integer>
+						<key>Configuration Grid: Rows</key>
+						<integer>9</integer>
+					</dict>
+					<key>Identifier</key>
+					<string>F2BA4663-DB20-436B-810E-81C471B9111F</string>
+					<key>Relative Frame</key>
+					<string>{{0, 0}, {1, 0.66666666666666674}}</string>
+					<key>Title</key>
+					<string>2/3 Bottom</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Configuration Grid</key>
+					<dict>
+						<key>Configuration Grid: Columns</key>
+						<integer>9</integer>
+						<key>Configuration Grid: Rows</key>
+						<integer>9</integer>
+					</dict>
+					<key>Identifier</key>
+					<string>651D0341-A840-450B-8F1B-01ACB179ED49</string>
+					<key>Relative Frame</key>
+					<string>{{0.33333333333333331, 0}, {0.66666666666666674, 1}}</string>
+					<key>Title</key>
+					<string>2/3 Right</string>
+				</dict>
+			</array>
+			<key>Children Expanded</key>
+			<true/>
+			<key>Hot Key</key>
+			<dict>
+				<key>Identifier</key>
+				<string>4984F9AE-1E6A-415F-9B9C-5005EEFC81D9</string>
+				<key>Key Code</key>
+				<integer>7</integer>
+				<key>Modifier Flags</key>
+				<integer>256</integer>
+				<key>Visual Representation</key>
+				<string>X</string>
+			</dict>
+			<key>Identifier</key>
+			<string>4984F9AE-1E6A-415F-9B9C-5005EEFC81D9</string>
+			<key>Title</key>
+			<string>2/3</string>
+		</dict>
+		<dict>
+			<key>Action</key>
+			<integer>10001</integer>
+			<key>Chain Mode</key>
+			<integer>0</integer>
+			<key>Children</key>
+			<array>
+				<dict>
+					<key>Action</key>
+					<integer>1001</integer>
+					<key>Activate Applications</key>
+					<false/>
+					<key>Apply to Active Display</key>
+					<false/>
+					<key>Apply to Overlapping Windows</key>
+					<true/>
+					<key>Auto-Trigger</key>
+					<false/>
+					<key>Auto-Trigger Display Count</key>
+					<integer>1</integer>
+					<key>Auto-Trigger: Wake</key>
+					<false/>
+					<key>Generic</key>
+					<true/>
+					<key>Identifier</key>
+					<string>7F7C83E9-39D4-413F-B950-1598DAB9E7F6</string>
+					<key>Stubborn</key>
+					<false/>
+					<key>Title</key>
+					<string>Center Center</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>1001</integer>
+					<key>Activate Applications</key>
+					<false/>
+					<key>Apply to Active Display</key>
+					<false/>
+					<key>Apply to Overlapping Windows</key>
+					<true/>
+					<key>Auto-Trigger</key>
+					<false/>
+					<key>Auto-Trigger Display Count</key>
+					<integer>1</integer>
+					<key>Auto-Trigger: Wake</key>
+					<false/>
+					<key>Generic</key>
+					<true/>
+					<key>Identifier</key>
+					<string>CFD1FB42-D144-487B-BC0E-24B0EA7F7695</string>
+					<key>Stubborn</key>
+					<false/>
+					<key>Title</key>
+					<string>Center Tall</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>1001</integer>
+					<key>Activate Applications</key>
+					<false/>
+					<key>Apply to Active Display</key>
+					<false/>
+					<key>Apply to Overlapping Windows</key>
+					<true/>
+					<key>Auto-Trigger</key>
+					<false/>
+					<key>Auto-Trigger Display Count</key>
+					<integer>1</integer>
+					<key>Auto-Trigger: Wake</key>
+					<false/>
+					<key>Generic</key>
+					<true/>
+					<key>Identifier</key>
+					<string>B1A53CFE-C56A-45E1-9926-68344A438306</string>
+					<key>Stubborn</key>
+					<false/>
+					<key>Title</key>
+					<string>Center Wide</string>
+				</dict>
+			</array>
+			<key>Children Expanded</key>
+			<true/>
+			<key>Hot Key</key>
+			<dict>
+				<key>Identifier</key>
+				<string>568C85F6-39E5-4CFC-9B0C-0DC3D860FE31</string>
+				<key>Key Code</key>
+				<integer>8</integer>
+				<key>Modifier Flags</key>
+				<integer>256</integer>
+				<key>Visual Representation</key>
+				<string>C</string>
+			</dict>
+			<key>Identifier</key>
+			<string>568C85F6-39E5-4CFC-9B0C-0DC3D860FE31</string>
+			<key>Title</key>
+			<string>Center</string>
+		</dict>
+		<dict>
+			<key>Action</key>
+			<integer>10001</integer>
+			<key>Chain Mode</key>
+			<integer>0</integer>
+			<key>Children</key>
+			<array>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Configuration Grid</key>
+					<dict>
+						<key>Configuration Grid: Columns</key>
+						<integer>10</integer>
+						<key>Configuration Grid: Rows</key>
+						<integer>10</integer>
+					</dict>
+					<key>Identifier</key>
+					<string>B8708256-9A0C-4630-AC5D-71F5F944EE1B</string>
+					<key>Relative Frame</key>
+					<string>{{0, 0.5}, {1, 0.5}}</string>
+					<key>Title</key>
+					<string>1/2 Top</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Configuration Grid</key>
+					<dict>
+						<key>Configuration Grid: Columns</key>
+						<integer>10</integer>
+						<key>Configuration Grid: Rows</key>
+						<integer>10</integer>
+					</dict>
+					<key>Identifier</key>
+					<string>6DC4169F-2CEB-4643-B77C-082ABD7C2C20</string>
+					<key>Relative Frame</key>
+					<string>{{0, 0}, {0.5, 1}}</string>
+					<key>Title</key>
+					<string>1/2 Left</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Configuration Grid</key>
+					<dict>
+						<key>Configuration Grid: Columns</key>
+						<integer>10</integer>
+						<key>Configuration Grid: Rows</key>
+						<integer>10</integer>
+					</dict>
+					<key>Identifier</key>
+					<string>86A49816-8308-4179-BBCE-A6AB5A45F910</string>
+					<key>Relative Frame</key>
+					<string>{{0, 0}, {1, 0.5}}</string>
+					<key>Title</key>
+					<string>1/2 Bottom</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>19</integer>
+					<key>Configuration Grid</key>
+					<dict>
+						<key>Configuration Grid: Columns</key>
+						<integer>10</integer>
+						<key>Configuration Grid: Rows</key>
+						<integer>10</integer>
+					</dict>
+					<key>Identifier</key>
+					<string>E1EB65AB-75B5-4C02-9509-5AC4E88C6F30</string>
+					<key>Relative Frame</key>
+					<string>{{0.5, 0}, {0.5, 1}}</string>
+					<key>Title</key>
+					<string>1/2 Right</string>
+				</dict>
+			</array>
+			<key>Children Expanded</key>
+			<true/>
+			<key>Hot Key</key>
+			<dict>
+				<key>Identifier</key>
+				<string>8BCB054A-E373-4B81-AC09-7E07A08A7293</string>
+				<key>Key Code</key>
+				<integer>9</integer>
+				<key>Modifier Flags</key>
+				<integer>256</integer>
+				<key>Visual Representation</key>
+				<string>V</string>
+			</dict>
+			<key>Identifier</key>
+			<string>8BCB054A-E373-4B81-AC09-7E07A08A7293</string>
+			<key>Title</key>
+			<string>1/2</string>
+		</dict>
+	</array>
+	<key>Drop Snap</key>
+	<true/>
+	<key>Focus</key>
+	<real>0.32603313379542115</real>
+	<key>Focus: Style</key>
+	<integer>1</integer>
+	<key>Grid Spacing</key>
+	<false/>
+	<key>Grid Spacing: Auto-Enabled Default Spacing</key>
+	<true/>
+	<key>Grid Spacing: Gap</key>
+	<integer>1</integer>
+	<key>Hover</key>
+	<false/>
+	<key>Key Control: Arrow</key>
+	<integer>12</integer>
+	<key>Key Control: Arrow: Command</key>
+	<integer>52</integer>
+	<key>Key Control: Arrow: Control</key>
+	<integer>31</integer>
+	<key>Key Control: Arrow: Option</key>
+	<integer>53</integer>
+	<key>Key Control: Escape</key>
+	<integer>0</integer>
+	<key>Key Control: Return</key>
+	<integer>11</integer>
+	<key>Key Control: Space</key>
+	<integer>1</integer>
+	<key>Keyboard Controls</key>
+	<dict>
+		<key>Identifier</key>
+		<string>Keyboard Controls</string>
+		<key>Key Code</key>
+		<integer>47</integer>
+		<key>Modifier Flags</key>
+		<integer>1048848</integer>
+		<key>Visual Representation</key>
+		<string>⌘.</string>
+	</dict>
+	<key>Keyboard Controls Grid</key>
+	<true/>
+	<key>Mouse Controls Delay</key>
+	<real>0.1</real>
+	<key>Mouse Controls Grid</key>
+	<true/>
+	<key>Mouse Controls Grid: Columns</key>
+	<integer>8</integer>
+	<key>Mouse Controls Grid: Mode</key>
+	<integer>3</integer>
+	<key>Mouse Controls Grid: Rows</key>
+	<integer>8</integer>
+	<key>Palette</key>
+	<dict>
+		<key>3-3</key>
+		<integer>2</integer>
+		<key>4-3</key>
+		<integer>9</integer>
+		<key>5-3</key>
+		<integer>5</integer>
+		<key>6-3</key>
+		<integer>3</integer>
+		<key>7-3</key>
+		<integer>7</integer>
+	</dict>
+	<key>Palette: Hidden Items</key>
+	<array/>
+	<key>Quit Without Confirmation</key>
+	<true/>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUHasLaunchedBefore</key>
+	<true/>
+	<key>SUSendProfileInfo</key>
+	<false/>
+	<key>Show Intro Popover</key>
+	<false/>
+	<key>Snap</key>
+	<true/>
+	<key>Snap Delay</key>
+	<real>0.2</real>
+	<key>Snap: 10</key>
+	<integer>13</integer>
+	<key>Snap: Ignore Bordering Edges And Corners</key>
+	<false/>
+	<key>WebKitCacheModelPreferenceKey</key>
+	<integer>1</integer>
+</dict>
+</plist>

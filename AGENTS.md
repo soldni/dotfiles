@@ -7,7 +7,8 @@ This repo is a personal dotfiles and workstation-provisioning repo. It is intent
 ## What this repo manages
 
 - Shell and terminal behavior (`home-symlink/.bashrc`, `.zshrc`, `.tmux.conf`, `.vimrc`, terminal configs).
-- App/editor settings (Ghostty, Zed, Cursor, Sublime Text, iTerm2, Alfred, rcmd).
+- App/editor settings (Ghostty, Zed, VS Code, Cursor, Sublime Text, iTerm2, Alfred, rcmd).
+- macOS app preferences via plist backup/restore (`plist_manager.sh`, `plists/`).
 - macOS defaults and full workstation bootstrap (`macos_setup.sh`).
 - A small set of reusable templates (`templates/pyproject.toml`) and utility scripts (`home-symlink/.local/scripts`).
 
@@ -34,12 +35,10 @@ Run `./macos_setup.sh` only when explicitly requested:
 - Applies many macOS `defaults` writes and keyboard shortcut remaps.
 - Runs `macos_shortcuts.sh`.
 - Runs privileged commands (`sudo`, `nvram`), restarts system components, and installs Xcode CLT.
-- Installs fonts from GitHub repos into system font locations.
 - Installs/updates Homebrew formulae and casks, uninstalls some casks, installs MAS apps.
 - Installs some apps from GitHub releases.
-- Configures iTerm2 custom prefs path and scripts symlink.
-- Symlinks `sublime-text/` into `~/Library/Application Support/Sublime Text`.
 - Calls `./bootstrap.sh` near the end.
+- Restores tracked app preference plists via `plist_manager.sh restore`.
 
 ## High-risk scripts (read before running)
 
@@ -59,20 +58,67 @@ Do not run either script unless the user explicitly asks for machine changes.
   - `home-symlink/.agentsrc`: local shell helpers for agent tooling.
   - `home-symlink/.local/scripts/`: personal utility scripts (mixed quality/age; some legacy Python).
   - `home-symlink/.config/ghostty`, `home-symlink/.config/zed`: editor/terminal settings.
-  - `home-symlink/Library/Application Support/com.nuebling.mac-mouse-fix/config.plist`: Mac Mouse Fix config.
+  - `home-symlink/Library/Application Support/Code/User/`: VS Code settings, keybindings, extensions list.
+  - `home-symlink/Library/Application Support/Cursor/User/`: Cursor settings, keybindings, extensions list.
+  - `home-symlink/Library/Application Support/com.nuebling.mac-mouse-fix/config.plist`: Mac Mouse Fix config (symlinked directly; this app reads its config file, not a preferences domain).
+- `plist_manager.sh`: backup and restore macOS preference-domain plists as human-readable XML.
+- `plists/`: versioned XML backups of tracked app preference domains (e.g. `com.manytricks.Moom.xml`). Managed by `plist_manager.sh`; never edit these files by hand.
 - `macos_setup.sh`: full macOS provisioning workflow.
 - `macos_no_animations.sh`: optional animation-reduction defaults.
 - `macos_shortcuts.sh`: custom keyboard shortcuts.
 - `bootstrap.sh`: lightweight setup + symlink bootstrap.
+- `ide_extensions.sh`: IDE extension installer script.
 - `cursor/`: Cursor settings/keybindings/extensions snapshot.
-- `sublime-text/`: Sublime `Installed Packages` and `Packages/User` synced by macOS setup.
+- `sublime-text/`: Sublime `Installed Packages` and `Packages/User`.
 - `defaults/sublime-text/`: default-file placeholders used by Sublime workflows.
-- `iterm2/`, `iterm2-scripts/`: iTerm2 prefs and scripts linked by macOS setup.
+- `iterm2/`: iTerm2 preferences plist.
 - `rcmd/settings.json`: app switcher config.
 - `Alfred.alfredpreferences/`: exported Alfred settings/workflows/snippets.
 - `templates/pyproject.toml`: reusable Python project template.
-- `home-symlink-backup/`: backup artifacts; not part of normal install flow.
-- `.gitmodules`: declares optional `dotsecrets` submodule (may be absent in local checkout).
+
+## App preference plist management
+
+macOS apps store their preferences as plist files in `~/Library/Preferences/`. Symlink-based approaches do not work for these because `cfprefsd` ignores symlinks, and apps overwrite the file on every settings change.
+
+Instead, this repo uses `plist_manager.sh` to export/import preference domains via `defaults export`/`defaults import` and stores the results as human-readable XML in `plists/`.
+
+### Backing up preferences
+
+```bash
+# Back up all tracked domains
+./plist_manager.sh backup
+
+# Back up a single domain
+./plist_manager.sh backup com.manytricks.Moom
+```
+
+During backup, the script automatically strips:
+- **Top-level keys** matching sensitive patterns: `license`, `serial`, `registration`, `token`, `email`, `account`, `SULastCheckTime`, `PMSparkleWrapperUpdateStatus`, `NSWindow Frame *`.
+- **Nested keys** at any depth: `Window Description`, `Snapshot`, `Snapshot Screens`, `PID`, `Window Number`, `Window Title` (app-specific window metadata containing hostnames, file paths, and process IDs).
+
+### Restoring preferences
+
+```bash
+# Restore all tracked domains
+./plist_manager.sh restore
+
+# Restore a single domain
+./plist_manager.sh restore com.manytricks.Moom
+```
+
+`macos_setup.sh` calls `plist_manager.sh restore` automatically after apps are installed.
+
+### Adding a new tracked domain
+
+1. Add the domain string to the `TRACKED_DOMAINS` array in `plist_manager.sh`.
+2. Run `./plist_manager.sh backup <domain>` to create the initial XML.
+3. Review the generated file in `plists/` for any PII or secrets that slipped through — add new patterns to `SENSITIVE_TOP_LEVEL_PATTERNS` or `SENSITIVE_RECURSIVE_KEYS` as needed.
+4. Commit the XML file.
+
+### Plist vs. symlink: when to use which
+
+- **Preference domains** (`~/Library/Preferences/*.plist`): always use `plist_manager.sh`. These are managed by `cfprefsd` and must not be symlinked.
+- **App config files** (`~/Library/Application Support/*/config.plist` or similar): symlinks via `home-symlink.sh` are fine when the app reads its config file directly (e.g. Mac Mouse Fix).
 
 ## Editing rules for agents
 
@@ -87,6 +133,7 @@ Do not run either script unless the user explicitly asks for machine changes.
 7. Note legacy compatibility:
    - `home-symlink/.local/scripts/diceware.py` targets Python 2.
    - `home-symlink/.local/scripts/chrome-to-firefox.scpt` is a compiled AppleScript/binary file.
+8. Never hand-edit files in `plists/` — always use `plist_manager.sh backup` to regenerate them from the live system.
 
 ## Setup script assumptions
 
@@ -102,6 +149,7 @@ Do not run either script unless the user explicitly asks for machine changes.
 - The Homebrew section intentionally batches installs/uninstalls after one installed-state probe. Avoid reintroducing per-package loops unless there is a concrete need.
 - `mas install` requires an active Mac App Store session and may need to prompt the user before continuing.
 - `macos_no_animations.sh` is a separate optional pass. If its behavior changes, keep it safe to invoke both directly and from `macos_setup.sh`.
+- `plist_manager.sh restore` runs after `bootstrap.sh` in `macos_setup.sh` so that apps installed by Homebrew cask are already present when their preferences are imported.
 
 ## Validation checklist after edits
 
@@ -109,13 +157,14 @@ Run relevant checks based on changed files:
 
 ```bash
 # Shell scripts
-bash -n bootstrap.sh home-symlink.sh macos_setup.sh macos_no_animations.sh macos_shortcuts.sh
+bash -n bootstrap.sh home-symlink.sh macos_setup.sh macos_no_animations.sh macos_shortcuts.sh plist_manager.sh
 
 # JSON files (example)
 jq . cursor/settings.json >/dev/null
 
-# plist files (example)
-plutil -lint "home-symlink/Library/Application Support/com.nuebling.mac-mouse-fix/config.plist"
+# plist files
+plutil -lint “home-symlink/Library/Application Support/com.nuebling.mac-mouse-fix/config.plist”
+plutil -lint plists/*.xml
 ```
 
 If a change affects symlink-managed files, apply with care:
@@ -139,14 +188,14 @@ time bash --noprofile --norc -i -c 'source /Users/lucas/dotfiles/home-symlink/.b
 
 ```bash
 TRACE_FILE=/tmp/bashrc_trace.$$.log
-bash --noprofile --norc -i -c 'export PS4="+${EPOCHREALTIME}\t${BASH_SOURCE}:${LINENO}: "; exec 3>"'"$TRACE_FILE"'"; BASH_XTRACEFD=3; set -x; source /Users/lucas/dotfiles/home-symlink/.bashrc; set +x'
-echo "$TRACE_FILE"
+bash --noprofile --norc -i -c 'export PS4=”+${EPOCHREALTIME}\t${BASH_SOURCE}:${LINENO}: “; exec 3>”'”$TRACE_FILE”'”; BASH_XTRACEFD=3; set -x; source /Users/lucas/dotfiles/home-symlink/.bashrc; set +x'
+echo “$TRACE_FILE”
 ```
 
 3. Rank hotspots (largest gaps between traced commands first):
 
 ```bash
-awk 'BEGIN{prev_ts=0;prev_line=""} /^\++[0-9]+\.[0-9]+/{line=$0; sub(/^\++/,"",line); ts=substr(line,1,17)+0; if(prev_ts>0){d=ts-prev_ts; if(d>0.02) printf "%.3fs | %s\n", d, prev_line} prev_ts=ts; prev_line=$0 }' "$TRACE_FILE" | sort -nr | head -n 30
+awk 'BEGIN{prev_ts=0;prev_line=””} /^\++[0-9]+\.[0-9]+/{line=$0; sub(/^\++/,””,line); ts=substr(line,1,17)+0; if(prev_ts>0){d=ts-prev_ts; if(d>0.02) printf “%.3fs | %s\n”, d, prev_line} prev_ts=ts; prev_line=$0 }' “$TRACE_FILE” | sort -nr | head -n 30
 ```
 
 4. Re-check with multiple runs after edits:
@@ -170,15 +219,20 @@ Notes:
   - edit `macos_shortcuts.sh` and/or `macos_setup.sh`.
 - Ghostty/Zed/Cursor/Sublime app config updates:
   - edit under their respective directories in this repo, then re-link/import as needed.
+- VS Code / Cursor settings and keybindings:
+  - edit under `home-symlink/Library/Application Support/Code/User/` or `home-symlink/Library/Application Support/Cursor/User/`.
+- App preference changes (Moom, etc.):
+  - adjust settings in the running app, then run `./plist_manager.sh backup` to capture the change.
 
 ## Modifying plist / defaults values
 
 - **Flat keys:** `defaults write` is fine for simple top-level values (strings, ints, bools).
-- **Nested dictionaries:** Do NOT use `defaults write -dict-add` with old-style plist shorthand like `"{enabled=0;}"` — it replaces the entire sub-dictionary, clobbering sibling keys (e.g. the `value`/`parameters`/`type` sub-dict that macOS maintains).
-- **Surgical nested edits:** Use `/usr/libexec/PlistBuddy -c "Set :Path:To:Key value" file.plist` to modify a single key within a nested dict without touching the rest.
+- **Nested dictionaries:** Do NOT use `defaults write -dict-add` with old-style plist shorthand like `”{enabled=0;}”` — it replaces the entire sub-dictionary, clobbering sibling keys (e.g. the `value`/`parameters`/`type` sub-dict that macOS maintains).
+- **Surgical nested edits:** Use `/usr/libexec/PlistBuddy -c “Set :Path:To:Key value” file.plist` to modify a single key within a nested dict without touching the rest.
 - **Verifying changes:** After writing, read back with `defaults read` or `PlistBuddy -c Print` and compare against what System Settings produces to confirm the structure matches.
 - **AppleSymbolicHotKeys specifically:** Each entry is a dict with `enabled` (bool) and `value` (dict containing `parameters` array and `type` string). To disable a shortcut, set only `:AppleSymbolicHotKeys:<id>:enabled` to `false` via PlistBuddy.
 - **Escaping `$` in NSUserKeyEquivalents:** In `macos_shortcuts.sh`, the `$` modifier (Shift) must be escaped as `\$` inside double-quoted strings, otherwise bash interprets it as a variable reference.
+- **Full app preferences:** Do not use `defaults write` to manage entire app preference domains. Use `plist_manager.sh` instead — it handles backup with PII stripping and restore via `defaults import`.
 
 ## Non-goals
 

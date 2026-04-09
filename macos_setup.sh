@@ -632,6 +632,10 @@ done
 
 bash ${script_dir}/bootstrap.sh
 
+# Restore tracked app preference plists from the repo's XML backups.
+# Apps should already be installed by this point (via brew cask above).
+bash "${script_dir}/plist_manager.sh" restore
+
 # clean up brew
 brew cleanup
 
