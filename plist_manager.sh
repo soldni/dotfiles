@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 
-# Backup and restore macOS preference-domain plists as human-readable XML files.
+# Backup and restore macOS preference-domain plists.
 #
 # Usage:
-#   plist_manager.sh backup  [domain]   Export plist(s) to plists/<domain>.xml
-#   plist_manager.sh restore [domain]   Import plists/<domain>.xml into live domain(s)
+#   plist_manager.sh backup  [domain]   Export plist(s) to plists/<domain>.plist
+#   plist_manager.sh restore [domain]   Import plists/<domain>.plist into live domain(s)
 #
 # When <domain> is omitted, the action runs against all TRACKED_DOMAINS.
 #
-# The backed-up XML files live under the "plists/" directory next to this script
-# and are safe to commit to git.
+# Both backup and restore will quit the owning app first (derived from the
+# domain's bundle identifier) and relaunch it afterward if it was running.
+#
+# The backed-up plist files live under the "plists/" directory next to this
+# script and are safe to commit to git.
 
 set -euo pipefail
 
@@ -18,6 +21,8 @@ PLIST_DIR="${SCRIPT_DIR}/plists"
 
 # ── Tracked preference domains ──────────────────────────────────────────────
 # Add any preference domain whose plist you want backed up into this repo.
+# Each entry is just the domain string (e.g. 'com.manytricks.Moom'). The app
+# name is derived heuristically for quit/relaunch during restore.
 TRACKED_DOMAINS=(
     'com.manytricks.Moom'
 )
@@ -41,6 +46,54 @@ SENSITIVE_RECURSIVE_KEYS=(
 )
 # ────────────────────────────────────────────────────────────────────────────
 
+# ── App-name heuristic ───────────────────────────────────────────────────
+# Derive the macOS app name from a preference domain so we can quit it
+# before restore. Strategy:
+#   1. Find an app bundle whose CFBundleIdentifier matches the domain.
+#   2. Fall back to the last component of the domain (e.g. "Moom").
+app_name_for_domain() {
+    local domain="$1"
+
+    # Search common app locations for a matching bundle identifier.
+    local search_dirs=(/Applications "$HOME/Applications" /System/Applications)
+    for dir in "${search_dirs[@]}"; do
+        [[ -d "${dir}" ]] || continue
+        while IFS= read -r -d '' app_bundle; do
+            local info_plist="${app_bundle}/Contents/Info.plist"
+            [[ -f "${info_plist}" ]] || continue
+            local bundle_id
+            bundle_id="$(/usr/libexec/PlistBuddy -c "Print :CFBundleIdentifier" "${info_plist}" 2>/dev/null || true)"
+            if [[ "${bundle_id}" == "${domain}" ]]; then
+                # Return the app name without the .app extension.
+                basename "${app_bundle}" .app
+                return 0
+            fi
+        done < <(find "${dir}" -maxdepth 2 -name '*.app' -print0 2>/dev/null)
+    done
+
+    # Fallback: last segment of the reverse-DNS domain.
+    echo "${domain##*.}"
+}
+
+# Quit an app by name. Returns 0 whether or not the app was running.
+quit_app() {
+    local app_name="$1"
+    if pgrep -xq "${app_name}"; then
+        echo "  Quitting ${app_name}..."
+        osascript -e "tell application \"${app_name}\" to quit" 2>/dev/null || true
+        # Give it a moment to finish writing preferences.
+        sleep 1
+    fi
+}
+
+# Relaunch an app by name (best-effort, no error on failure).
+relaunch_app() {
+    local app_name="$1"
+    echo "  Relaunching ${app_name}..."
+    open -a "${app_name}" 2>/dev/null || true
+}
+# ────────────────────────────────────────────────────────────────────────────
+
 usage() {
     echo "Usage: $0 {backup|restore} [preference-domain]" >&2
     echo "" >&2
@@ -54,16 +107,17 @@ usage() {
 
 backup_domain() {
     local domain="$1"
-    local xml_file="${PLIST_DIR}/${domain}.xml"
+    local plist_file="${PLIST_DIR}/${domain}.plist"
 
-    # Read the live preference domain and write it as XML1 into the repo.
-    # XML1 is used instead of JSON because some plists contain <date> values
-    # that the JSON serializer rejects.
-    local plist_path="${HOME}/Library/Preferences/${domain}.plist"
-    if [[ ! -f "${plist_path}" ]]; then
-        echo "Error: No plist found at ${plist_path}" >&2
-        return 1
+    local app_name
+    app_name="$(app_name_for_domain "${domain}")"
+
+    # Quit the app so cfprefsd flushes in-memory state to disk.
+    local was_running=false
+    if pgrep -xq "${app_name}"; then
+        was_running=true
     fi
+    quit_app "${app_name}"
 
     mkdir -p "${PLIST_DIR}"
 
@@ -72,16 +126,15 @@ backup_domain() {
     tmp_plist="$(mktemp /tmp/plist_backup.XXXXXX.plist)"
     trap "rm -f '${tmp_plist}'" RETURN
 
-    # Try `defaults export` first for the cfprefsd-merged view. If the
-    # domain comes back empty (e.g. symlinked plists that cfprefsd ignores),
-    # fall back to converting the on-disk file directly.
+    # Use `defaults export` for the cfprefsd-merged view.
     local exported
     exported="$(defaults export "${domain}" - 2>/dev/null || true)"
-    if [[ -n "${exported}" ]] && ! echo "${exported}" | grep -q '<dict/>'; then
-        echo "${exported}" | plutil -convert xml1 -o "${tmp_plist}" -
-    else
-        plutil -convert xml1 -o "${tmp_plist}" "${plist_path}"
+    if [[ -z "${exported}" ]] || echo "${exported}" | grep -q '<dict/>'; then
+        echo "Error: No preferences found for domain ${domain}" >&2
+        [[ "${was_running}" == true ]] && relaunch_app "${app_name}"
+        return 1
     fi
+    echo "${exported}" | plutil -convert xml1 -o "${tmp_plist}" -
 
     # Strip sensitive keys (license keys, PII, ephemeral state) so they are
     # never committed to the repo. Uses Python's plistlib to handle both
@@ -126,24 +179,38 @@ with open(sys.argv[3], 'wb') as f:
         "$(IFS='|'; echo "${SENSITIVE_RECURSIVE_KEYS[*]}")" \
         "${tmp_plist}"
 
-    cp "${tmp_plist}" "${xml_file}"
-    echo "Backed up ${domain} → ${xml_file}"
+    cp "${tmp_plist}" "${plist_file}"
+    echo "Backed up ${domain} → ${plist_file}"
+
+    [[ "${was_running}" == true ]] && relaunch_app "${app_name}"
 }
 
 restore_domain() {
     local domain="$1"
-    local xml_file="${PLIST_DIR}/${domain}.xml"
+    local plist_file="${PLIST_DIR}/${domain}.plist"
 
-    # Import the stored XML back into the live preference domain.
-    if [[ ! -f "${xml_file}" ]]; then
-        echo "Error: No backup found at ${xml_file}" >&2
+    if [[ ! -f "${plist_file}" ]]; then
+        echo "Error: No backup found at ${plist_file}" >&2
         echo "Run '$0 backup ${domain}' first." >&2
         return 1
     fi
 
-    defaults import "${domain}" "${xml_file}"
+    local app_name
+    app_name="$(app_name_for_domain "${domain}")"
 
-    echo "Restored ${domain} ← ${xml_file}"
+    # Quit the app before importing preferences (recommended by Many Tricks
+    # and generally required so cfprefsd picks up the new values cleanly).
+    local was_running=false
+    if pgrep -xq "${app_name}"; then
+        was_running=true
+    fi
+    quit_app "${app_name}"
+
+    defaults import "${domain}" "${plist_file}"
+
+    echo "Restored ${domain} ← ${plist_file}"
+
+    [[ "${was_running}" == true ]] && relaunch_app "${app_name}"
 }
 
 if [[ $# -lt 1 ]]; then

@@ -61,8 +61,8 @@ Do not run either script unless the user explicitly asks for machine changes.
   - `home-symlink/Library/Application Support/Code/User/`: VS Code settings, keybindings, extensions list.
   - `home-symlink/Library/Application Support/Cursor/User/`: Cursor settings, keybindings, extensions list.
   - `home-symlink/Library/Application Support/com.nuebling.mac-mouse-fix/config.plist`: Mac Mouse Fix config (symlinked directly; this app reads its config file, not a preferences domain).
-- `plist_manager.sh`: backup and restore macOS preference-domain plists as human-readable XML.
-- `plists/`: versioned XML backups of tracked app preference domains (e.g. `com.manytricks.Moom.xml`). Managed by `plist_manager.sh`; never edit these files by hand.
+- `plist_manager.sh`: backup and restore macOS preference-domain plists via `defaults export`/`defaults import`, with automatic app quit/relaunch.
+- `plists/`: versioned plist backups of tracked app preference domains (e.g. `com.manytricks.Moom.plist`). Managed by `plist_manager.sh`; never edit these files by hand.
 - `macos_setup.sh`: full macOS provisioning workflow.
 - `macos_no_animations.sh`: optional animation-reduction defaults.
 - `macos_shortcuts.sh`: custom keyboard shortcuts.
@@ -80,7 +80,9 @@ Do not run either script unless the user explicitly asks for machine changes.
 
 macOS apps store their preferences as plist files in `~/Library/Preferences/`. Symlink-based approaches do not work for these because `cfprefsd` ignores symlinks, and apps overwrite the file on every settings change.
 
-Instead, this repo uses `plist_manager.sh` to export/import preference domains via `defaults export`/`defaults import` and stores the results as human-readable XML in `plists/`.
+Instead, this repo uses `plist_manager.sh` to export/import preference domains via `defaults export`/`defaults import` and stores the results in `plists/`.
+
+Both backup and restore automatically quit the owning app before operating (to ensure `cfprefsd` flushes in-memory state) and relaunch it afterward if it was running. The app name is derived heuristically: the script scans `/Applications`, `~/Applications`, and `/System/Applications` for an app bundle whose `CFBundleIdentifier` matches the domain, falling back to the last segment of the reverse-DNS domain name.
 
 ### Backing up preferences
 
@@ -92,8 +94,10 @@ Instead, this repo uses `plist_manager.sh` to export/import preference domains v
 ./plist_manager.sh backup com.manytricks.Moom
 ```
 
-During backup, the script automatically strips:
-- **Top-level keys** matching sensitive patterns: `license`, `serial`, `registration`, `email`, `NSWindow Frame *`.
+During backup, the script automatically:
+- Quits the app (so preferences are flushed to disk).
+- Strips **top-level keys** matching sensitive patterns: `license`, `serial`, `registration`, `email`, `NSWindow Frame *`.
+- Relaunches the app if it was running.
 
 ### Restoring preferences
 
@@ -110,14 +114,70 @@ During backup, the script automatically strips:
 ### Adding a new tracked domain
 
 1. Add the domain string to the `TRACKED_DOMAINS` array in `plist_manager.sh`.
-2. Run `./plist_manager.sh backup <domain>` to create the initial XML.
+2. Run `./plist_manager.sh backup <domain>` to create the initial plist file.
 3. Review the generated file in `plists/` for any PII or secrets that slipped through — add new patterns to `SENSITIVE_TOP_LEVEL_PATTERNS` or `SENSITIVE_RECURSIVE_KEYS` as needed.
-4. Commit the XML file.
+4. Commit the plist file.
 
 ### Plist vs. symlink: when to use which
 
 - **Preference domains** (`~/Library/Preferences/*.plist`): always use `plist_manager.sh`. These are managed by `cfprefsd` and must not be symlinked.
 - **App config files** (`~/Library/Application Support/*/config.plist` or similar): symlinks via `home-symlink.sh` are fine when the app reads its config file directly (e.g. Mac Mouse Fix).
+
+## Dotfile style conventions
+
+These conventions are observed in the existing files and should be followed when editing them.
+
+### `.bashrc` (primary shell config)
+
+- **Shared by bash and zsh.** The file detects the current shell via `CURRENT_SHELL_NAME` and branches where needed. Never add bash-only or zsh-only syntax without guarding it.
+- **Section structure:** Major sections are separated by `###############################` comment banners. Keep new code in the appropriate existing section; add a new banner only if no section fits.
+- **Indentation:** 4 spaces (some zsh-specific blocks use tabs — match the surrounding code).
+- **Function definitions:** Use `function name {` syntax (bash style), not `name() {`.
+- **Variable naming:** `UPPER_CASE` for exported globals and environment variables; `lower_case` for local variables (declared with `local`).
+- **Function naming:** `lower_case` or `kebab-case` for function names.
+- **Quoting:** Prefer `"${VAR}"` with braces. Use single quotes only to prevent expansion.
+- **Conditionals:** Use `[[ ]]` (extended test), not `[ ]`, for string/pattern tests. Use `[ -d "path" ]` for file-existence checks (POSIX-portable).
+- **Platform detection:** `[[ "$OSTYPE" == "darwin"* ]]` for macOS, `[[ "$OSTYPE" == "linux"* ]]` for Linux. macOS-specific code lives in a dedicated section (currently lines ~82–203); keep it there.
+- **PATH manipulation:** Prepend (`export PATH="new:$PATH"`) rather than append. Guard with `[ -d "path" ]` before adding.
+- **Tool availability:** Check with `which tool 2>/dev/null`; store result in a `has_tool` variable. Define tool-specific aliases/functions only inside the availability guard.
+- **Error output:** Use `>&2` for error/warning messages; `return 1` for failure.
+- **Command substitution:** Older parts of the file use backticks; new code should use `$(...)`.
+
+### `.zshrc` and `.bash_profile`
+
+- Minimal (3–7 lines each). They conditionally source `.bashrc` and nothing else.
+- Do not add configuration here — put it in `.bashrc` with a shell-type guard if needed.
+
+### `.agentsrc`
+
+- Defines AI agent CLI wrappers (Claude, Codex).
+- **Naming:** Exported model constants are `UPPER_CASE`; wrapper functions use `kebab-case` (e.g. `claude-fast`).
+- **Pattern:** Check tool availability first (`has_X=$(which X 2>/dev/null)`), then define functions that pass through `"$@"`.
+- **Dynamic generation:** Uses `eval` in nested loops to generate agent-task combination functions. Clean up loop variables with `unset` afterward.
+
+### `.tmux.conf`
+
+- **Options:** Set with `set -g` (global) or `setw -g` (window). Custom variables prefixed with `@` (e.g. `@has-fpp`).
+- **Key bindings:** Use `bind-key` or `bind` with `-n` for root table. Comment each binding's purpose.
+- **Conditionals:** `if 'command -v X' 'set -gq @var true'` for feature detection.
+- **Colors:** Uses tmux color names (`colour2`, `white`) and dynamic hostname-based colors via `run-shell`. Status bar styles use `fg=`/`bg=` pairs.
+- **Naming:** tmux options use `kebab-case`.
+
+### `.vimrc`
+
+- **Comments:** Use `"` (vim comment character), inline or above the setting.
+- **Options:** Set with `set optionname` / `set nooptionname` or `set opt=value`.
+- **Keymaps:** Mode-specific (`nmap`, `imap`, `vnoremap`). Modifier keys as `<C-X>`, `<S-X>`, `<M-X>`. Leader key is backtick.
+- **Functions:** `function! Name()` ... `endfunction`. Use `let` for local assignment.
+- **Autocmds:** Used for buffer-write hooks (e.g. stripping trailing whitespace).
+- **Formatting:** 4-space indentation in function bodies. Commented-out code left as reference is acceptable.
+
+### General cross-file patterns
+
+- **Graceful degradation:** All tool integrations check availability before use; missing tools must not cause errors.
+- **Error suppression:** `2>/dev/null` for existence checks and optional commands.
+- **DRY:** Profile files delegate to `.bashrc`; do not duplicate configuration.
+- **Platform-specific sections:** Keep macOS and Linux code in clearly separated blocks with `$OSTYPE` detection.
 
 ## Editing rules for agents
 
@@ -163,7 +223,7 @@ jq . cursor/settings.json >/dev/null
 
 # plist files
 plutil -lint “home-symlink/Library/Application Support/com.nuebling.mac-mouse-fix/config.plist”
-plutil -lint plists/*.xml
+plutil -lint plists/*.plist
 ```
 
 If a change affects symlink-managed files, apply with care:
