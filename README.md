@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.png" alt="dotfiles logo" width="200">
+</p>
+
 # dotfiles
 
 Personal dotfiles and macOS workstation provisioning.
