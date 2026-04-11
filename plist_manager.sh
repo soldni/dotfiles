@@ -182,7 +182,10 @@ with open(sys.argv[3], 'wb') as f:
     cp "${tmp_plist}" "${plist_file}"
     echo "Backed up ${domain} → ${plist_file}"
 
-    [[ "${was_running}" == true ]] && relaunch_app "${app_name}"
+    if [[ "${was_running}" == true ]]; then
+        relaunch_app "${app_name}"
+    fi
+    return 0
 }
 
 restore_domain() {
@@ -210,7 +213,10 @@ restore_domain() {
 
     echo "Restored ${domain} ← ${plist_file}"
 
-    [[ "${was_running}" == true ]] && relaunch_app "${app_name}"
+    if [[ "${was_running}" == true ]]; then
+        relaunch_app "${app_name}"
+    fi
+    return 0
 }
 
 if [[ $# -lt 1 ]]; then
