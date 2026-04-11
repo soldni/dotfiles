@@ -30,7 +30,6 @@ function codex-fast() {
         --sandbox "danger-full-access" \
         --ephemeral \
         --skip-git-repo-check \
-        --progress-cursor \
         "$@"
     return 0
 }
