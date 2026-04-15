@@ -59,6 +59,15 @@ imap <C-e> <End>
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
 
+" Keep Option+word motions in insert mode for terminals that send
+" them as Meta-b / Meta-f or Meta-arrow escape sequences.
+inoremap <M-b> <C-o>b
+inoremap <M-f> <C-o>e
+inoremap <M-Left> <C-o>b
+inoremap <M-Right> <C-o>e
+inoremap <M-Up> <C-o>{
+inoremap <M-Down> <C-o>}
+
 "rremap ':' to ';'
 nmap ; :
 
