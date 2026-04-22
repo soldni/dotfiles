@@ -21,16 +21,66 @@
 						<key>Identifier</key>
 						<string>1C7BB65C-782A-4386-AFCD-CCAFC0AA13E0</string>
 						<key>Key Code</key>
-						<integer>47</integer>
+						<integer>34</integer>
 						<key>Modifier Flags</key>
 						<integer>256</integer>
 						<key>Visual Representation</key>
-						<string>.</string>
+						<string>I</string>
 					</dict>
 					<key>Identifier</key>
 					<string>1C7BB65C-782A-4386-AFCD-CCAFC0AA13E0</string>
 					<key>Loop Through Displays</key>
+					<true/>
+					<key>Move Direction</key>
+					<integer>3</integer>
+					<key>Resize Proportionally</key>
 					<false/>
+					<key>Title</key>
+					<string>Move to Display on the Top</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>41</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>E6F14A27-BAC4-4C5E-B6FB-6D400342871F</string>
+						<key>Key Code</key>
+						<integer>40</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>K</string>
+					</dict>
+					<key>Identifier</key>
+					<string>E6F14A27-BAC4-4C5E-B6FB-6D400342871F</string>
+					<key>Loop Through Displays</key>
+					<true/>
+					<key>Move Direction</key>
+					<integer>5</integer>
+					<key>Resize Proportionally</key>
+					<false/>
+					<key>Title</key>
+					<string>Move to Display on the Bottom</string>
+				</dict>
+				<dict>
+					<key>Action</key>
+					<integer>41</integer>
+					<key>Hot Key</key>
+					<dict>
+						<key>Identifier</key>
+						<string>7B0A4DFB-E8B4-4542-8FE5-713287267FAC</string>
+						<key>Key Code</key>
+						<integer>38</integer>
+						<key>Modifier Flags</key>
+						<integer>256</integer>
+						<key>Visual Representation</key>
+						<string>J</string>
+					</dict>
+					<key>Identifier</key>
+					<string>7B0A4DFB-E8B4-4542-8FE5-713287267FAC</string>
+					<key>Loop Through Displays</key>
+					<true/>
 					<key>Move Direction</key>
 					<integer>5</integer>
 					<key>Resize Proportionally</key>
@@ -44,11 +94,11 @@
 						<key>Identifier</key>
 						<string>D3369802-67F0-4190-A06B-5F89F67F60D6</string>
 						<key>Key Code</key>
-						<integer>43</integer>
+						<integer>37</integer>
 						<key>Modifier Flags</key>
 						<integer>256</integer>
 						<key>Visual Representation</key>
-						<string>,</string>
+						<string>L</string>
 					</dict>
 					<key>Identifier</key>
 					<string>D3369802-67F0-4190-A06B-5F89F67F60D6</string>
@@ -234,11 +284,11 @@
 				<key>Identifier</key>
 				<string>1FCC5D54-0699-4910-9958-0DEDFD935A80</string>
 				<key>Key Code</key>
-				<integer>6</integer>
+				<integer>18</integer>
 				<key>Modifier Flags</key>
 				<integer>256</integer>
 				<key>Visual Representation</key>
-				<string>Z</string>
+				<string>1</string>
 			</dict>
 			<key>Identifier</key>
 			<string>1FCC5D54-0699-4910-9958-0DEDFD935A80</string>
@@ -412,11 +462,11 @@
 				<key>Identifier</key>
 				<string>4984F9AE-1E6A-415F-9B9C-5005EEFC81D9</string>
 				<key>Key Code</key>
-				<integer>7</integer>
+				<integer>20</integer>
 				<key>Modifier Flags</key>
 				<integer>256</integer>
 				<key>Visual Representation</key>
-				<string>X</string>
+				<string>3</string>
 			</dict>
 			<key>Identifier</key>
 			<string>4984F9AE-1E6A-415F-9B9C-5005EEFC81D9</string>
@@ -760,11 +810,11 @@
 				<key>Identifier</key>
 				<string>8BCB054A-E373-4B81-AC09-7E07A08A7293</string>
 				<key>Key Code</key>
-				<integer>9</integer>
+				<integer>19</integer>
 				<key>Modifier Flags</key>
 				<integer>256</integer>
 				<key>Visual Representation</key>
-				<string>V</string>
+				<string>2</string>
 			</dict>
 			<key>Identifier</key>
 			<string>8BCB054A-E373-4B81-AC09-7E07A08A7293</string>
@@ -772,6 +822,10 @@
 			<string>1/2</string>
 		</dict>
 	</array>
+	<key>Dismiss After Moving</key>
+	<false/>
+	<key>Dismiss After Other</key>
+	<false/>
 	<key>Drop Snap</key>
 	<true/>
 	<key>Focus</key>
@@ -787,11 +841,11 @@
 	<key>Hover</key>
 	<false/>
 	<key>Key Control: Arrow</key>
-	<integer>12</integer>
+	<integer>31</integer>
 	<key>Key Control: Arrow: Command</key>
 	<integer>52</integer>
 	<key>Key Control: Arrow: Control</key>
-	<integer>31</integer>
+	<integer>12</integer>
 	<key>Key Control: Arrow: Option</key>
 	<integer>53</integer>
 	<key>Key Control: Escape</key>
@@ -824,18 +878,40 @@
 	<key>Mouse Controls Grid: Rows</key>
 	<integer>8</integer>
 	<key>PMSparkleWrapperUpdateStatus</key>
-	<string>4.4.2:1775586462:</string>
+	<string>4.4.2:1776810857:</string>
 	<key>Palette</key>
 	<dict>
-		<key>3-3</key>
-		<integer>2</integer>
+		<key>4-1</key>
+		<string>CFD1FB42-D144-487B-BC0E-24B0EA7F7695</string>
+		<key>4-2</key>
+		<string>FCFD5778-7CC7-467F-B8B2-70568F5F38DD</string>
 		<key>4-3</key>
+		<string>A427B751-8C27-44CD-A233-E8AF04C9DCE8</string>
+		<key>4-4</key>
 		<integer>9</integer>
+		<key>5-1</key>
+		<string>B1A53CFE-C56A-45E1-9926-68344A438306</string>
+		<key>5-2</key>
+		<string>AF46BC4B-81A8-44AF-91E9-A83CC7466C7E</string>
 		<key>5-3</key>
+		<string>651D0341-A840-450B-8F1B-01ACB179ED49</string>
+		<key>5-4</key>
 		<integer>5</integer>
+		<key>6-1</key>
+		<string>7F7C83E9-39D4-413F-B950-1598DAB9E7F6</string>
+		<key>6-2</key>
+		<string>D60C7B7E-FAA1-4584-91C1-8FFD17F84268</string>
 		<key>6-3</key>
+		<string>EC1A2E9C-01EB-4630-BC9E-3909D5064362</string>
+		<key>6-4</key>
 		<integer>3</integer>
+		<key>7-1</key>
+		<integer>2</integer>
+		<key>7-2</key>
+		<string>10D5D785-6C48-4A57-B040-61F99598A607</string>
 		<key>7-3</key>
+		<string>F2BA4663-DB20-436B-810E-81C471B9111F</string>
+		<key>7-4</key>
 		<integer>7</integer>
 	</dict>
 	<key>Palette: Hidden Items</key>
@@ -847,9 +923,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2026-04-09T15:43:28Z</date>
+	<date>2026-04-21T22:34:17Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
+	<key>Show Cheat Sheet</key>
+	<true/>
 	<key>Show Intro Popover</key>
 	<false/>
 	<key>Snap</key>
