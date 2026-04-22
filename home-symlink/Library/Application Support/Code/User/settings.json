@@ -92,7 +92,7 @@
     "window.systemColorTheme": "auto",
     "window.title": "${rootName}${separator}${activeEditorMedium}",
     "window.titleSeparator": " · ",
-    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+    "workbench.colorTheme": "Monokai Pro Light (Filter Sun)",
     "workbench.editor.enablePreviewFromCodeNavigation": true,
     "workbench.fontAliasing": "auto",
     "workbench.iconTheme": "Monokai Pro Light (Filter Sun) Icons",

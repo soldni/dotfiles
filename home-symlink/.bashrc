@@ -722,6 +722,28 @@ random_hash() {
     echo "${USER}_${HOSTNAME}_$(date)" | md5sum | cut -f1 -d ' '
 }
 
+# if slurm is available, gets ip of head node
+has_slurm=$(command -v srun >/dev/null 2>&1 && echo 1 || echo 0)
+if [[ "${has_slurm}" == "1" ]]; then
+    slurm-head-ip() {
+        local jobid="${1:-}"
+        if [[ -z "$jobid" ]]; then
+            echo "Usage: slurm-head-ip <jobid>" >&2
+            return 1
+        fi
+        local head
+        head=$(scontrol show job "$jobid" 2>/dev/null | awk -F= '/BatchHost/ {print $2; exit}')
+        if [[ -z "$head" ]]; then
+            echo "Could not find head node for job $jobid" >&2
+            return 1
+        fi
+        local ip
+        ip=$(getent hosts "$head" | awk '{print $1}')
+        echo "Head node: $head"
+        echo "IP:        $ip"
+    }
+fi
+
 
 # configure history file
 HISTFILE="${HOME}/.${CURRENT_SHELL_NAME}_histfile"
