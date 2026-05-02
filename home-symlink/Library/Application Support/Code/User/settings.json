@@ -21,7 +21,7 @@
     "editor.overviewRulerBorder": false,
     "editor.renderWhitespace": "none",
     "editor.rulers": [
-        115
+        100
     ],
     "editor.selectionHighlight": false,
     "editor.snippetSuggestions": "top",
@@ -31,7 +31,7 @@
     "editor.unicodeHighlight.invisibleCharacters": false,
     "editor.unicodeHighlight.nonBasicASCII": false,
     "editor.wordWrap": "bounded",
-    "editor.wordWrapColumn": 115,
+    "editor.wordWrapColumn": 100,
     "emmet.includeLanguages": {
         "javascript": "javascriptreact"
     },
@@ -148,5 +148,10 @@
     ],
     "settingsSync.ignoredSettings": [
         "claudeCode.environmentVariables"
-    ]
+    ],
+    "scm.repositories.selectionMode": "single",
+    "workbench.activityBar.location": "top",
+    "workbench.openInAgents.enabled": false,
+    "workbench.browser.showInTitleBar": false,
+    "workbench.layoutControl.enabled": false
 }
