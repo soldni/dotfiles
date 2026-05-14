@@ -125,7 +125,7 @@
     "command": "workbench.view.remote"
   },
   {
-    "key": "ctrl+] 5",
+    "key": "ctrl+] 4",
     "command": "workbench.panel.chat",
     "when": "workbench.panel.chat.view.copilot.active"
   },
