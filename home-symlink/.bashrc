@@ -899,6 +899,28 @@ if [[ ! -z $has_brew_cli ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+truncate_model_name() {
+    local model_name="$1"
+
+    if (( ${#model_name} <= 100 )); then
+        printf '%s\n' "$model_name"
+        return
+    fi
+
+    local model_hash
+    if command -v md5sum >/dev/null 2>&1; then
+        model_hash="$(printf '%s' "$model_name" | md5sum | cut -c1-8)"
+    elif command -v md5 >/dev/null 2>&1; then
+        model_hash="$(printf '%s' "$model_name" | md5 -q | cut -c1-8)"
+    else
+        echo "truncate_model_name requires md5sum or md5" >&2
+        return 1
+    fi
+
+    printf '%s__%s\n' "${model_name:0:90}" "$model_hash"
+}
+
+
 
 # load agentsrc file
 if [ -f "${HOME}/.agentsrc" ]; then
