@@ -154,5 +154,6 @@
     "workbench.openInAgents.enabled": false,
     "workbench.browser.showInTitleBar": false,
     "workbench.layoutControl.enabled": false,
-    "latex-workshop.latex.autoBuild.run": "onSave"
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "chat.viewSessions.orientation": "stacked"
 }

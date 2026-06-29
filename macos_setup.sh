@@ -421,7 +421,7 @@ if [[ ${#brew_packages_missing[@]} -gt 0 ]]; then
 fi
 
 
-# these are apps I don't use anymore
+# these are apps I do not use anymore
 # we uninstall them first and then do a cleanup
 brew_cask_to_uninstall=(
     'cyberduck'             # sftp client
@@ -436,9 +436,10 @@ brew_cask_to_uninstall=(
     'cursor'                # text editor
     'transmit'              # sftp client
     'zed'                   # text editor
-    'obsidian'              # note taking
     'mimestream'            # email client
     'zoom'                  # video conferencing
+    'moom'                  # window manager
+    'sidequery/tap/mdnb'    # note-taking app backed in git
 )
 
 # Only uninstall casks that are currently present, then batch them into a
@@ -473,7 +474,7 @@ brew_cask_to_install=(
     'macvim'                # vim
     'sketch'                # vector design
     'slack'                 # chat app
-    'moom'                  # window manager
+    'tailscale'             # vpn
 )
 
 if [[ "${is_personal_like}" == "true" ]]; then
@@ -489,8 +490,8 @@ fi
 
 if [[ "${is_work_like}" == "true" ]]; then
     brew_cask_to_install+=(
-        'sidequery/tap/mdnb'    # note-taking app; backed in git
         'cameracontroller'      # manage 3rd party webcam settings
+        'obsidian'              # note taking
     )
 fi
 

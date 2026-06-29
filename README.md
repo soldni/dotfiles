@@ -16,6 +16,30 @@ Personal dotfiles and macOS workstation provisioning.
 ./macos_setup.sh [work|personal|server]
 ```
 
+## Repo-local GitHub SSH override
+
+This repo's remote is `git@github.com:soldni/dotfiles.git`, but on this machine the global `~/.ssh/config` can inject the wrong identity via a broad `Host *` stanza. Setting only `-i ~/.ssh/personal` is not enough, because SSH still reads the global config and may offer another key first.
+
+If `git push` starts authenticating as the wrong GitHub account, set a repo-local SSH command that ignores global SSH config entirely:
+
+```bash
+git config core.sshCommand 'ssh -F /dev/null -i ~/.ssh/personal -o IdentitiesOnly=yes'
+```
+
+Why this works:
+
+- `-F /dev/null` tells `ssh` not to read `~/.ssh/config`.
+- `-i ~/.ssh/personal` pins the key for this repo.
+- `-o IdentitiesOnly=yes` prevents `ssh` from offering extra identities from the agent or config.
+
+Verify it with:
+
+```bash
+GIT_TRACE=1 git push --dry-run origin HEAD
+```
+
+You should see Git invoke `ssh -F /dev/null -i ~/.ssh/personal -o IdentitiesOnly=yes ...` and the dry run should succeed.
+
 ## What's here
 
 - **Shell config** -- `.bashrc` (shared by bash/zsh), `.tmux.conf`, `.vimrc`
