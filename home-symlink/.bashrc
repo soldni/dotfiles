@@ -577,15 +577,20 @@ short_pwd() {
     if [ "${FAST_STATUS}" = "1" ]; then
         # Pure shell path shortening — no perl subprocess
         local cwd="${PWD/#$HOME/~}"
-        local IFS='/'
-        local parts=()
-        read -ra parts <<< "${cwd}"
         local result=""
-        local i
-        for (( i=0; i<${#parts[@]}-1; i++ )); do
-            [ -n "${parts[$i]}" ] && result+="${parts[$i]:0:1}/"
+        local part
+
+        if [[ "${cwd}" == "/" ]]; then
+            echo -n "/"
+            return
+        fi
+
+        while [[ "${cwd}" == */* ]]; do
+            part="${cwd%%/*}"
+            cwd="${cwd#*/}"
+            [ -n "${part}" ] && result+="${part:0:1}/"
         done
-        echo -n "${result}${parts[-1]}"
+        echo -n "${result}${cwd}"
     else
         local cwd
         cwd=$(pwd | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')
