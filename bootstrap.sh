@@ -46,6 +46,45 @@ fi
 
 bash ${SCRIPT_DIR}/home-symlink.sh
 
+# setup GitHub Copilot CLI
+has_copilot=$(which copilot 2>/dev/null || true)
+if [ -n "${has_copilot}" ]; then
+    has_jq=$(which jq 2>/dev/null || true)
+    if [ -z "${has_jq}" ]; then
+        echo "ERROR: jq is required to configure GitHub Copilot CLI." >&2
+        exit 1
+    fi
+
+    copilot_settings_dir="${HOME}/.copilot"
+    copilot_settings_file="${copilot_settings_dir}/settings.json"
+    mkdir -p "${copilot_settings_dir}"
+    copilot_settings_tmp=$(mktemp "${copilot_settings_file}.tmp.XXXXXX")
+    copilot_settings_filter='. + {
+        "colorMode": "default",
+        "theme": "default",
+        "experimental": true,
+        "logLevel": "default",
+        "reasoningEffort": "xhigh",
+        "defaultMode": "autopilot",
+        "defaultPermissionMode": "assisted",
+        "showTipsOnStartup": true
+    }'
+
+    if {
+        if [ -f "${copilot_settings_file}" ]; then
+            "${has_jq}" "${copilot_settings_filter}" "${copilot_settings_file}"
+        else
+            "${has_jq}" --null-input "${copilot_settings_filter}"
+        fi
+    } > "${copilot_settings_tmp}"; then
+        mv "${copilot_settings_tmp}" "${copilot_settings_file}"
+    else
+        rm -f "${copilot_settings_tmp}"
+        echo "ERROR: failed to update ${copilot_settings_file}." >&2
+        exit 1
+    fi
+fi
+
 # setup tsv-utils
 if [[ "$OSTYPE" == "darwin"* ]]; then
     echo "Configuring macOS to my liking..."
