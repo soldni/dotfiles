@@ -925,7 +925,11 @@ truncate_model_name() {
     printf '%s__%s\n' "${model_name:0:90}" "$model_hash"
 }
 
-
+# command to fetch and fast fwd tree
+git-fetch-ff() {
+    branch_name=$(git branch --show-current)
+    git fetch --no-tags origin ${branch_name} && git merge --ff-only FETCH_HEAD
+}
 
 # load agentsrc file
 if [ -f "${HOME}/.agentsrc" ]; then
