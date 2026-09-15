@@ -60,4 +60,19 @@ You should see Git invoke `ssh -F /dev/null -i ~/.ssh/personal -o IdentitiesOnly
 
 The script derives the app name from the preference domain, quits it before export/import, and relaunches afterward. Sensitive keys (license, email, etc.) are stripped automatically during backup.
 
+## IDE backup and restore
+
+```bash
+# Back up VS Code and Cursor extensions, settings, and keyboard shortcuts
+./ide_extensions.sh backup
+
+# Limit backup or restore to one editor (code or cursor)
+./ide_extensions.sh backup code
+./ide_extensions.sh restore code
+```
+
+Backups use `extensions.txt`, `settings.json`, and `keybindings.json` under `home-symlink/Library/Application Support/{Code,Cursor}/User/`. The script copies settings and shortcuts from the default user directories on macOS or Linux (respecting `XDG_CONFIG_HOME` on Linux), even if the editor CLI is missing. Missing files are skipped, preserving existing backups.
+
+`home-symlink.sh` already links these config files into the repo, so linked files need no copying. Explicit backup also captures files that have become regular files. Restore copies settings and shortcuts back and replaces installed extensions with the saved list.
+
 See `AGENTS.md` for full details.

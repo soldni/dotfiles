@@ -33,5 +33,8 @@ keybind = "super+r=reload_config"
 keybind = shift+enter=text:\n
 keybind = "super+i=prompt_surface_title"
 
+# Use
+keybind = cmd+b=toggle_mouse_reporting
 
+# Stable update
 auto-update-channel = stable
