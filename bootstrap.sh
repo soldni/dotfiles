@@ -87,11 +87,11 @@ fi
 
 
 # setup fresh editor
-has_fresh=$(which fresh 2>/dev/null)
-if [ -z "${has_fresh}" ]; then  
+has_fresh=$(which fresh 2>/dev/null || true)
+if [ -z "${has_fresh}" ]; then
     echo "installing fresh editor"
-    has_brew=$(which brew 2>/dev/null)
-    if [ -z "${has_brew}" ]; then
+    has_brew=$(which brew 2>/dev/null || true)
+    if [ -n "${has_brew}" ]; then
         brew install fresh-editor
     else
         curl -fsSL https://raw.githubusercontent.com/sinelaw/fresh/refs/heads/master/scripts/install.sh | sh
@@ -99,9 +99,9 @@ if [ -z "${has_fresh}" ]; then
 fi
 
 # setup tsv-utils
-has_tsv_utils=$(which tsv-pretty 2>/dev/null)
+has_tsv_utils=$(which tsv-pretty 2>/dev/null || true)
 
-if [ -z ""${has_tsv_utils}"" ]; then 
+if [ -z "${has_tsv_utils}" ]; then
     echo "installing tsv-utils"
     if [[ "$OSTYPE" == "darwin"* ]]; then
         curl -L "https://github.com/eBay/tsv-utils/releases/download/v2.2.1/tsv-utils-v2.2.1_osx-x86_64_ldc2.tar.gz" | tar xz
