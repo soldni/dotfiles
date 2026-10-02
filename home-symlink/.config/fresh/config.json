@@ -4,7 +4,7 @@
     "use_terminal_bg": true,
     "page_width": 100
   },
-  "theme": "builtin://terminal",
+  "theme": "builtin://high-contrast",
   "file_explorer": {
     "show_hidden": true,
     "show_gitignored": true
