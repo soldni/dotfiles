@@ -85,19 +85,35 @@ if [ -n "${has_copilot}" ]; then
     fi
 fi
 
-# setup tsv-utils
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    echo "Configuring macOS to my liking..."
-    curl -L "https://github.com/eBay/tsv-utils/releases/download/v2.2.1/tsv-utils-v2.2.1_osx-x86_64_ldc2.tar.gz" | tar xz
-elif [[ "$OSTYPE" == "linux"* ]]; then
-    curl -L "https://github.com/eBay/tsv-utils/releases/download/v2.2.0/tsv-utils-v2.2.0_linux-x86_64_ldc2.tar.gz" | tar xz
-fi
-cd tsv-utils*
-mkdir -p "${HOME}/.local/bin"
-cp bin/* "${HOME}/.local/bin/"
-cd ..
-rm -rf tsv-utils*
 
+# setup fresh editor
+has_fresh=$(which fresh 2>/dev/null)
+if [ -z "${has_fresh}" ]; then  
+    echo "installing fresh editor"
+    has_brew=$(which brew 2>/dev/null)
+    if [ -z "${has_brew}" ]; then
+        brew install fresh-editor
+    else
+        curl -fsSL https://raw.githubusercontent.com/sinelaw/fresh/refs/heads/master/scripts/install.sh | sh
+    fi
+fi
+
+# setup tsv-utils
+has_tsv_utils=$(which tsv-pretty 2>/dev/null)
+
+if [ -z ""${has_tsv_utils}"" ]; then 
+    echo "installing tsv-utils"
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        curl -L "https://github.com/eBay/tsv-utils/releases/download/v2.2.1/tsv-utils-v2.2.1_osx-x86_64_ldc2.tar.gz" | tar xz
+    elif [[ "$OSTYPE" == "linux"* ]]; then
+        curl -L "https://github.com/eBay/tsv-utils/releases/download/v2.2.0/tsv-utils-v2.2.0_linux-x86_64_ldc2.tar.gz" | tar xz
+    fi
+    cd tsv-utils*
+    mkdir -p "${HOME}/.local/bin"
+    cp bin/* "${HOME}/.local/bin/"
+    cd ..
+    rm -rf tsv-utils*
+fi
 
 # for the next command, exit on error must be disabled
 set +e
