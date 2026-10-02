@@ -1,0 +1,12 @@
+{
+  "editor": {
+    "line_numbers": true,
+    "use_terminal_bg": true,
+    "page_width": 100
+  },
+  "theme": "builtin://terminal",
+  "file_explorer": {
+    "show_hidden": true,
+    "show_gitignored": true
+  }
+}
