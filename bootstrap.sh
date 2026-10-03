@@ -97,6 +97,7 @@ if [ -z "${has_fresh}" ]; then
         curl -fsSL https://raw.githubusercontent.com/sinelaw/fresh/refs/heads/master/scripts/install.sh | sh
     fi
 fi
+bash "${SCRIPT_DIR}/ide_extensions.sh" restore fresh
 
 # setup tsv-utils
 has_tsv_utils=$(which tsv-pretty 2>/dev/null || true)

@@ -67,7 +67,8 @@ Do not run either script unless the user explicitly asks for machine changes.
 - `macos_no_animations.sh`: optional animation-reduction defaults.
 - `macos_shortcuts.sh`: custom keyboard shortcuts.
 - `bootstrap.sh`: lightweight setup + symlink bootstrap.
-- `ide_extensions.sh`: IDE extension installer script.
+- `ide_extensions.sh`: VS Code/Cursor extensions, settings, and shortcuts backup/restore, plus Fresh config backup/restore.
+- `fresh/`: Fresh config snapshots, copied to/from `~/.config/fresh` (or `$XDG_CONFIG_HOME/fresh`) by `ide_extensions.sh`; keep these outside `home-symlink/`.
 - `cursor/`: Cursor settings/keybindings/extensions snapshot.
 - `sublime-text/`: Sublime `Installed Packages` and `Packages/User`.
 - `defaults/sublime-text/`: default-file placeholders used by Sublime workflows.
@@ -280,6 +281,8 @@ Notes:
   - edit under their respective directories in this repo, then re-link/import as needed.
 - VS Code / Cursor settings and keybindings:
   - edit under `home-symlink/Library/Application Support/Code/User/` or `home-symlink/Library/Application Support/Cursor/User/`.
+- Fresh configuration:
+  - use `./ide_extensions.sh backup fresh` and `./ide_extensions.sh restore fresh`; restore migrates old symlinks to regular files.
 - App preference changes (Moom, etc.):
   - adjust settings in the running app, then run `./plist_manager.sh backup` to capture the change.
 
