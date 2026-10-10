@@ -18,6 +18,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 PLIST_DIR="${SCRIPT_DIR}/plists"
+source "${SCRIPT_DIR}/macos_app_preferences.sh"
 
 # ── Tracked preference domains ──────────────────────────────────────────────
 # Add any preference domain whose plist you want backed up into this repo.
@@ -191,6 +192,11 @@ with open(sys.argv[3], 'wb') as f:
 restore_domain() {
     local domain="$1"
     local plist_file="${PLIST_DIR}/${domain}.plist"
+
+    if ! app_is_installed "$domain"; then
+        printf 'Skipping preference restore for %s: app is not installed.\n' "$domain" >&2
+        return 0
+    fi
 
     if [[ ! -f "${plist_file}" ]]; then
         echo "Error: No backup found at ${plist_file}" >&2

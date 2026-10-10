@@ -31,42 +31,6 @@ echo "Applying ${profile} setup..."
 # defaults, installs software, and runs some interactive commands.
 set -eoux pipefail
 
-warned_container_domains=""
-
-# Some app domains resolve to sandbox container plists on current macOS
-# versions. Those can reject command-line writes even when the owning app is
-# installed, so warn once and keep applying the rest of the setup.
-note_unwritable_container_domain() {
-    local domain="$1"
-
-    case ",${warned_container_domains}," in
-        *,"${domain}",*)
-            return 0
-            ;;
-    esac
-
-    printf 'Skipping defaults writes for %s: macOS blocked CLI access to that app container preference domain.\n' "$domain" >&2
-    warned_container_domains="${warned_container_domains},${domain}"
-}
-
-# Wrapper around `defaults write` that treats container-domain failures as a
-# best-effort skip while still failing on unexpected errors.
-write_defaults() {
-    local domain="$1"
-    shift
-
-    local output
-    if ! output=$(defaults write "$domain" "$@" 2>&1); then
-        if [[ "$output" == *"Could not write domain "*"/Library/Containers/"* ]]; then
-            note_unwritable_container_domain "$domain"
-            return 0
-        fi
-
-        printf '%s\n' "$output" >&2
-        return 1
-    fi
-}
-
 list_contains() {
     local list="$1"
     local item="$2"
@@ -127,6 +91,7 @@ ensure_xcode_command_line_tools() {
 
 # location of this script
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+source "${script_dir}/macos_app_preferences.sh"
 
 # Apply the separate shortcut script first so menu and symbolic hotkeys are in
 # place before the rest of the workstation setup.
@@ -240,22 +205,22 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 defaults write com.apple.finder QuitMenuItem -bool true
 
 # Safari
-write_defaults com.apple.Safari HomePage -string "about:blank"
-write_defaults com.apple.Safari AutoOpenSafeDownloads -bool false
-write_defaults com.apple.Safari ShowFavoritesBar -bool true
-write_defaults com.apple.Safari ShowSidebarInTopSites -bool false
-write_defaults com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
-write_defaults com.apple.Safari IncludeDevelopMenu -bool true
-write_defaults com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-write_defaults com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
-write_defaults com.apple.Safari AutoFillFromAddressBook -bool false
-write_defaults com.apple.Safari AutoFillPasswords -bool false
-write_defaults com.apple.Safari AutoFillCreditCardData -bool false
-write_defaults com.apple.Safari AutoFillMiscellaneousForms -bool false
-write_defaults com.apple.Safari SendDoNotTrackHTTPHeader -bool true
-write_defaults com.apple.Safari NewTabBehavior -int 1
-write_defaults com.apple.Safari NewWindowBehavior -int 1
-write_defaults com.apple.Safari ShowIconsInTabs -int 1
+write_app_defaults com.apple.Safari HomePage -string "about:blank"
+write_app_defaults com.apple.Safari AutoOpenSafeDownloads -bool false
+write_app_defaults com.apple.Safari ShowFavoritesBar -bool true
+write_app_defaults com.apple.Safari ShowSidebarInTopSites -bool false
+write_app_defaults com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
+write_app_defaults com.apple.Safari IncludeDevelopMenu -bool true
+write_app_defaults com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+write_app_defaults com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+write_app_defaults com.apple.Safari AutoFillFromAddressBook -bool false
+write_app_defaults com.apple.Safari AutoFillPasswords -bool false
+write_app_defaults com.apple.Safari AutoFillCreditCardData -bool false
+write_app_defaults com.apple.Safari AutoFillMiscellaneousForms -bool false
+write_app_defaults com.apple.Safari SendDoNotTrackHTTPHeader -bool true
+write_app_defaults com.apple.Safari NewTabBehavior -int 1
+write_app_defaults com.apple.Safari NewWindowBehavior -int 1
+write_app_defaults com.apple.Safari ShowIconsInTabs -int 1
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
@@ -264,13 +229,13 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 defaults write com.apple.dock persistent-apps -array
 
 # Show all processes in Activity Monitor
-defaults write com.apple.ActivityMonitor ShowCategory -int 0
+write_app_defaults com.apple.ActivityMonitor ShowCategory -int 0
 
 # Use plain text mode for new TextEdit documents
-defaults write com.apple.TextEdit RichText -int 0
+write_app_defaults com.apple.TextEdit RichText -int 0
 # Open and save files as UTF-8 in TextEdit
-defaults write com.apple.TextEdit PlainTextEncoding -int 4
-defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+write_app_defaults com.apple.TextEdit PlainTextEncoding -int 4
+write_app_defaults com.apple.TextEdit PlainTextEncodingForWrite -int 4
 
 # Show icons for hard drives, servers, and removable media on the desktop
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
@@ -321,7 +286,7 @@ defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # PasteBot hide menubar and dock
-defaults write com.tapbots.Pastebot2Mac UIVisibilityState 10
+write_app_defaults com.tapbots.Pastebot2Mac UIVisibilityState 10
 
 # Show the ~/Library folder
 chflags nohidden ~/Library

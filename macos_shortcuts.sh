@@ -3,47 +3,21 @@
 set -euo pipefail
 
 # Configure menu shortcuts via NSUserKeyEquivalents and lower-level system
-# shortcuts via AppleSymbolicHotKeys. Newer macOS releases block some
-# app-container preference domains from plain shell processes, so app-specific
-# writes are best-effort instead of fatal.
+# shortcuts via AppleSymbolicHotKeys. Skip missing apps and inaccessible app
+# containers while still failing on unexpected errors.
+
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+source "${script_dir}/macos_app_preferences.sh"
 
 # meta-keys are: @ Command, $ Shift, ~ Option, ^ Ctrl
 
-warned_container_domains=""
-
-# Some Apple apps store preferences in sandbox containers and reject
-# `defaults write` from an unsandboxed shell. Warn once per domain and keep
-# applying the rest of the shortcut set.
-note_unwritable_container_domain() {
-  local domain="$1"
-
-  case ",${warned_container_domains}," in
-    *,"${domain}",*)
-      return 0
-      ;;
-  esac
-
-  printf 'Skipping app shortcut writes for %s: macOS blocked CLI access to that app container preference domain.\n' "$domain" >&2
-  warned_container_domains="${warned_container_domains},${domain}"
-}
-
 # NSUserKeyEquivalents targets literal menu titles. This helper centralizes the
-# container-domain handling for app-specific menu shortcuts.
+# defaults arguments for app-specific menu shortcuts.
 write_app_shortcut() {
   local domain="$1"
   local menu_item="$2"
   local shortcut="$3"
-  local output
-
-  if ! output=$(defaults write "$domain" NSUserKeyEquivalents -dict-add "$menu_item" "$shortcut" 2>&1); then
-    if [[ "$output" == *"Could not write domain "*"/Library/Containers/"* ]]; then
-      note_unwritable_container_domain "$domain"
-      return 0
-    fi
-
-    printf '%s\n' "$output" >&2
-    return 1
-  fi
+  write_app_defaults "$domain" NSUserKeyEquivalents -dict-add "$menu_item" "$shortcut"
 }
 
 # AppleSymbolicHotKeys entries vary by OS version, hardware, and which features

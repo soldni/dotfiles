@@ -1,6 +1,9 @@
 #! /usr/bin/env bash
 set -x
 
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+source "${script_dir}/macos_app_preferences.sh"
+
 # opening and closing windows and popovers
 defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 
@@ -53,8 +56,8 @@ defaults write com.apple.universalaccess reduceTransparency -bool true
 defaults write com.apple.universalaccess increaseContrast -bool true
 
 # sending messages and opening windows for replies
-defaults write com.apple.Mail DisableSendAnimations -bool true
-defaults write com.apple.Mail DisableReplyAnimations -bool true
+write_app_defaults com.apple.mail DisableSendAnimations -bool true
+write_app_defaults com.apple.mail DisableReplyAnimations -bool true
 
 killall Dock
 killall Finder
