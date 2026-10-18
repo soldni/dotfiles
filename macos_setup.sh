@@ -42,6 +42,8 @@ list_contains() {
 #
 # Small helpers for building batched brew/mas command lines without duplicate
 # entries from the configured package lists below.
+# Callers use ${array[@]+"${array[@]}"} for arrays that may be empty because
+# Bash 3.2 treats plain empty-array expansion as unbound under `set -u`.
 array_contains() {
     local item="$1"
     shift
@@ -377,7 +379,7 @@ npm config set prefix "${HOME}/.local"
 installed_formulae="$(brew list --formula)"
 brew_packages_missing=()
 for package in "${brew_packages_to_install[@]}"; do
-    if ! list_contains "$installed_formulae" "$package" && ! array_contains "$package" "${brew_packages_missing[@]}"; then
+    if ! list_contains "$installed_formulae" "$package" && ! array_contains "$package" ${brew_packages_missing[@]+"${brew_packages_missing[@]}"}; then
         brew_packages_missing+=("$package")
     fi
 done
@@ -412,7 +414,7 @@ brew_cask_to_uninstall=(
 installed_casks="$(brew list --cask)"
 brew_casks_present_to_uninstall=()
 for cask in "${brew_cask_to_uninstall[@]}"; do
-    if list_contains "$installed_casks" "$cask" && ! array_contains "$cask" "${brew_casks_present_to_uninstall[@]}"; then
+    if list_contains "$installed_casks" "$cask" && ! array_contains "$cask" ${brew_casks_present_to_uninstall[@]+"${brew_casks_present_to_uninstall[@]}"}; then
         brew_casks_present_to_uninstall+=("$cask")
     fi
 done
@@ -494,7 +496,7 @@ brew_cask_to_install+=("${fonts_to_install[@]}")
 installed_casks="$(brew list --cask)"
 brew_casks_missing=()
 for package in "${brew_cask_to_install[@]}"; do
-    if ! list_contains "$installed_casks" "$package" && ! array_contains "$package" "${brew_casks_missing[@]}"; then
+    if ! list_contains "$installed_casks" "$package" && ! array_contains "$package" ${brew_casks_missing[@]+"${brew_casks_missing[@]}"}; then
         brew_casks_missing+=("$package")
     fi
 done
@@ -536,7 +538,7 @@ if [[ "${is_personal_like}" == "true" ]]; then
     installed_mas_apps="$(mas list | awk '{print $1}')"
     mas_apps_missing=()
     for mas_app in "${mas_install[@]}"; do
-        if ! list_contains "$installed_mas_apps" "$mas_app" && ! array_contains "$mas_app" "${mas_apps_missing[@]}"; then
+        if ! list_contains "$installed_mas_apps" "$mas_app" && ! array_contains "$mas_app" ${mas_apps_missing[@]+"${mas_apps_missing[@]}"}; then
             mas_apps_missing+=("$mas_app")
         fi
     done
